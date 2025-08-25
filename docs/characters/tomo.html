@@ -37,7 +37,7 @@
             <li><a href="#overview">Overview</a></li>
             <li class=header><a href="#mechanics">Unique Mechanics</a></li>
             <li><a href="#Mana">Mana</a></li>
-<li><a href="#Stagger State">Stagger State</a></li>
+<li><a href="#Exhaustion">Exhaustion</a></li>
 
             <li class=header><a href="#command-normals">Command Normals</a></li>
             <li><a href="#6S">6S</a></li>
@@ -58,23 +58,24 @@
         <h2 id=overview><a href="#overview">Tomo</a> <a href="../index.html">(Back to Home)</a></h2>
         <div class=overview>
           <div class=content>
-            <p>Weilding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to
-then close the gap and convert into full combos up close.
+            <p>Wielding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to then close the gap
+and convert into full combos up close.
 </p>
             <h2 id=mechanics><a href="#mechanics">Unique Mechanics</a></h2>
 <a href="#Mana">
   <h3 id="Mana" class=move-name>Mana</h3>
 </a>
-<p>Mana is a resource that Tomo spends to perform his specials. Upon being hit, he loses Mana equal to the HP
-damage that he takes. He cannot use specials that cost more Mana then he has. Upon hitting 0 Mana, enter
-Stagger state, then regain all Mana.
-</p><a href="#Stagger State">
-  <h3 id="Stagger State" class=move-name>Stagger State</h3>
+<p>Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana equal proportionate
+to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
+stay on top of his resource. If he is to lose all of his Mana, he enters <a href="#Exhaustion" class=ref button="generic" title="Exhaustion">Exhaustion</a>.
+</p><a href="#Exhaustion">
+  <h3 id="Exhaustion" class=move-name>Exhaustion</h3>
 </a>
-<p>When Tomo's mana is exhausted, he automatically enters Stagger State. During this state, Tomo is left <b>helpless
+<p>When Tomo's mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
 and vulnerable</b>—he cannot input any commands, he takes <b>twice</b> as much damage as normal, and the following hit
-triggers an <b>automatic counter hit</b>. Stagger State until a couple seconds have passed or the end of the current
-combo.
+triggers an <b>automatic counter hit</b>. Exhaustion lasts until a couple seconds have passed or until the
+current combo ends. At the end of this state, Tomo recovers with 100% Mana, and is able to restart his
+offense.
 </p>
           </div>
           <section class=info>
@@ -140,16 +141,17 @@ opponent up into the air.
   <div class=move-details>
     <p>Tomo summons blades of wind that can be used to push the opponent.
 <ul>
-    <li><em class=btn button="s">S</em> <b>Ventus Thrust</b> summons blades of wind from the opposite side of the screen, pushing the
-    opponent towards Tomo. Can catch opponents who have a habit of backdashing. Pressing <em class=btn button="s">S</em> again makes Tomo
-    perform a forward thrust with his spear, sending the opponent into the winds.</li>
-    <li><em class=btn button="h">H</em> <b>Ventus Thrust</b> summons blades directly in front of Tomo, sending the opponent away. Pressing
-    <em class=btn button="h">H</em> again causes the blades to switch direction and move diagonally.</li>
+    <li>In <em class=btn button="s">S</em> <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
+    the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing <em class=btn button="s">S</em> again makes
+    Tomo perform a forward thrust with his spear, sending the opponent into the winds.</li>
+    <li>In <em class=btn button="h">H</em> <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the oppponent.
+    Pressing <em class=btn button="h">H</em> again halts his movement to float upwards, shortly before diving into the ground and hitting
+    the opponent high.</li>
 </ul>
 </p>
   </div>
 </div><a href="#Renovare">
-  <h3 id="Renovare" class=move-name>Renovare</h3>
+  <h3 id="Renovare" class=move-name>Renovare (Hold OK)</h3>
 </a>
 <div class=move>
   <div class=move-info>
@@ -162,8 +164,11 @@ opponent up into the air.
     <p>Tomo stands in place and recovers his Mana gauge
 <ul>
     <li><em class=btn button="p">P</em> <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
-    should be very careful when using it.</li>
-    <li><em class=btn button="k">K</em> <b>Renovare</b> recovers mana quickly at the cost of meter.</li>
+    should be very careful when using it. This version is almost always overshadowed by <em class=btn button="k">22K</em> unless
+    Tomo has secured a safe position to use it in.</li>
+    <li><em class=btn button="k">K</em> <b>Renovare</b> recovers mana quickly at the cost of meter. This version is much safer to use in
+    neutral, but is still requires a similar caution to its <em class=btn button="p">P</em> counterpart, as Tomo will gradually lose
+    more meter over time.</li>
 </ul>
 </p>
   </div>
@@ -201,5 +206,8 @@ option for setting up damage using a fully charged <a href="#Ignis Rush" class=r
         </div>
       </main>
     </div>
+    <footer>
+      <p>This page was last updated on Mon Aug 25 2025, 3:36:34 PM. <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+    </footer>
   </body>
 </html>

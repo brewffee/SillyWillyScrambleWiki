@@ -1,8 +1,8 @@
 [Character]
 Name="Tomo"
 Description="""
-Weilding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to
-then close the gap and convert into full combos up close.
+Wielding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to then close the gap
+and convert into full combos up close.
 """
 IconPath=""
 PortraitPath=""
@@ -14,18 +14,19 @@ Type=""
 [[Character.Mechanics]] # Mana
 Name="Mana"
 Description="""
-Mana is a resource that Tomo spends to perform his specials. Upon being hit, he loses Mana equal to the HP
-damage that he takes. He cannot use specials that cost more Mana then he has. Upon hitting 0 Mana, enter
-Stagger state, then regain all Mana.
+Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana equal proportionate
+to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
+stay on top of his resource. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
 """
 
-[[Character.Mechanics]] # Stagger State
-Name="Stagger State"
+[[Character.Mechanics]] # Exhaustion
+Name="Exhaustion"
 Description="""
-When Tomo's mana is exhausted, he automatically enters Stagger State. During this state, Tomo is left <b>helpless
+When Tomo's mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
 and vulnerable</b>—he cannot input any commands, he takes <b>twice</b> as much damage as normal, and the following hit
-triggers an <b>automatic counter hit</b>. Stagger State until a couple seconds have passed or the end of the current
-combo.
+triggers an <b>automatic counter hit</b>. Exhaustion lasts until a couple seconds have passed or until the
+current combo ends. At the end of this state, Tomo recovers with 100% Mana, and is able to restart his
+offense.
 """
 
 ###################################
@@ -73,11 +74,12 @@ Image=""
 Description="""
 Tomo summons blades of wind that can be used to push the opponent.
 <ul>
-    <li>%btn(s,S) <b>Ventus Thrust</b> summons blades of wind from the opposite side of the screen, pushing the
-    opponent towards Tomo. Can catch opponents who have a habit of backdashing. Pressing %btn(s,S) again makes Tomo
-    perform a forward thrust with his spear, sending the opponent into the winds.</li>
-    <li>%btn(h,H) <b>Ventus Thrust</b> summons blades directly in front of Tomo, sending the opponent away. Pressing
-    %btn(h,H) again causes the blades to switch direction and move diagonally.</li>
+    <li>In %btn(s,S) <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
+    the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing %btn(s,S) again makes
+    Tomo perform a forward thrust with his spear, sending the opponent into the winds.</li>
+    <li>In %btn(h,H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the oppponent.
+    Pressing %btn(h,H) again halts his movement to float upwards, shortly before diving into the ground and hitting
+    the opponent high.</li>
 </ul>
 """
 
@@ -85,13 +87,17 @@ Tomo summons blades of wind that can be used to push the opponent.
 Name="Renovare"
 Inputs=["22P", "K"]
 Buttons=["p", "k"]
+HoldOK=true
 Image=""
 Description="""
 Tomo stands in place and recovers his Mana gauge
 <ul>
     <li>%btn(p,P) <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
-    should be very careful when using it.</li>
-    <li>%btn(k,K) <b>Renovare</b> recovers mana quickly at the cost of meter.</li>
+    should be very careful when using it. This version is almost always overshadowed by %btn(k,22K) unless
+    Tomo has secured a safe position to use it in.</li>
+    <li>%btn(k,K) <b>Renovare</b> recovers mana quickly at the cost of meter. This version is much safer to use in
+    neutral, but is still requires a similar caution to its %btn(p,P) counterpart, as Tomo will gradually lose
+    more meter over time.</li>
 </ul>
 """
 
