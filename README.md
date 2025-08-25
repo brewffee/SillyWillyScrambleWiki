@@ -1,18 +1,21 @@
 # Silly Willy Scramble Wiki
+Click [here](https://brewffee.github.io/SillyWillyScrambleWiki/) to open the latest version of the wiki
 
 ## Characters
-| Character                           | Description | Type         |
-|-------------------------------------|-------------|--------------|
-| **[Tomo](character/tomo.md)**       |             |              |
-| **[Seagull](character/seagull.md)** |             |              |
-| **[Kofy](character/kofy.md)**       |             | All-Arounder |
-| **[FailEs](character/failes.md)**   |             | Gooner       |
-| **[Max](character/max.md)**         |             |              |
-| **[Dani](character/dani.md)**       |             |              |
-| **[Berb](character/berb.md)**       |             | _Freaky_     |
-| **[Osi](character/osi.md)**         |             |              |
-| **[Guiblo](character/guiblo.md)**   |             | Grappler     |
-| **[Percebe](character/percebe.md)** |             |              |
+| Character                                                                              | Type         | Progress                           |
+|----------------------------------------------------------------------------------------|--------------|------------------------------------|
+| **[Tomo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/tomo.html)**     |              | ![](https://geps.dev/progress/70)  |
+| **Seagull**                                                                            |              | ![](https://geps.dev/progress/10)  |
+| **Kofy**                                                                               | All-Arounder | ![](https://geps.dev/progress/3)   |
+| **FailEs**                                                                             | Gooner       | ![](https://geps.dev/progress/5)   |
+| **Max**                                                                                |              | ![](https://geps.dev/progress/0)   |
+| **Dani**                                                                               |              | ![](https://geps.dev/progress/0)   |
+| **[Berb](https://brewffee.github.io/SillyWillyScrambleWiki/characters/berb.html)**     | _Freaky_     | ![](https://geps.dev/progress/90)  |
+| **Osi**                                                                                |              | ![](https://geps.dev/progress/0)   |
+| **[Guiblo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/guiblo.html)** | Grappler     | ![](https://geps.dev/progress/100) |
+| **Percebe**                                                                            |              | ![](https://geps.dev/progress/2)   |
 
 ## System Information
-:3
+| Page | Progress                         |
+|------|----------------------------------|
+|      | ![](https://geps.dev/progress/0) |
