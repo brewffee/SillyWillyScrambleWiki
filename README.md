@@ -4,8 +4,8 @@ Click [here](https://brewffee.github.io/SillyWillyScrambleWiki/) to open the lat
 ## Characters
 | Character                                                                                | Type         | Progress                          |
 |------------------------------------------------------------------------------------------|--------------|-----------------------------------|
-| **[Tomo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/tomo.html)**       |              | ![](https://geps.dev/progress/80) |
-| **[Seagull](https://brewffee.github.io/SillyWillyScrambleWiki/characters/seagull.html)** |              | ![](https://geps.dev/progress/20) |
+| **[Tomo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/tomo.html)**       | Magic        | ![](https://geps.dev/progress/95) |
+| **[Seagull](https://brewffee.github.io/SillyWillyScrambleWiki/characters/seagull.html)** | Avian        | ![](https://geps.dev/progress/95) |
 | **Kofy**                                                                                 | All-Arounder | ![](https://geps.dev/progress/3)  |
 | **FailEs**                                                                               | Gooner       | ![](https://geps.dev/progress/5)  |
 | **Max**                                                                                  |              | ![](https://geps.dev/progress/0)  |

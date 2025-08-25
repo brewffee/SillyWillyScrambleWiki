@@ -10,6 +10,28 @@ PortraitPath=""
 Type="Freaky"
 
 ###################################
+# Unique Mechanics
+###################################
+[[Character.Mechanics]] # Rifts in Time
+Name="Rifts in Time"
+Description="""
+Berb can use specific attacks (such as %ref(Time Rift,214P,p) or %ref(Time Fault,2141236P,p)) to create Rift Points
+that last until consumed or destroyed. Berd can use these Rift Points to teleport himself using %ref(Chrono
+Shift,214K,k) or to juggle the opponent by teleporting them with %ref(Distortion,236S,s). If Berd tries to create
+a Rift Point when there are already three active, or if he is hit while a Rift is active, the oldest Rift will
+be destroyed.
+"""
+
+[[Character.Mechanics]] # Time Machine
+Name="Time Machine"
+Description="""
+With his supers %ref(Chrono Stasis,Chrono Stasis,k) and %ref(Accent Acceleration,Accent Acceleration,h) (and even
+his %ref(Taunt,taunt,taunt) to a degree), Berb can manipulate time to lock down or pressure the opponent. Combined
+with his incredible agility and his full-screen super, his time manipulation makes for a truly unique and threatening
+ability.
+"""
+
+###################################
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunt
@@ -51,8 +73,8 @@ Inputs=["236S"]
 Buttons=["s"]
 Image=""
 Description="""
-Berd attacks the opponent, teleporting the opponent to the most recent Rift Point. Pressing %btn(s,S) again will
-prolong the teleport, instead moving to the next most recent point, or if repeated, the oldest point.
+Berd attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
+teleport, instead moving to the next most recent point, or if repeated, the oldest point.
 """
 
 [[Character.Specials]] # Clockwork
@@ -78,8 +100,8 @@ air on hit.
 ###################################
 # Supers
 ###################################
-[[Character.Supers]] # Chrono Statis
-Name="Chrono Statis"
+[[Character.Supers]] # Chrono Stasis
+Name="Chrono Stasis"
 Inputs=["632146K"]
 Condition="with 50% meter"
 Buttons=["k"]

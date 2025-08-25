@@ -7,7 +7,7 @@ take advantage when the opportunity presents itself.
 """
 IconPath=""
 PortraitPath=""
-Type=""
+Type="Avian"
 
 ###################################
 # Command Normals
@@ -50,6 +50,58 @@ Seagull shoots himself downwards at a steep angle with no hitbox. He can use thi
 opponent for a scary three-way mixup, or to escape a dire situation with low commitment.
 """
 
+[[Character.Specials]] # Your
+Name="Your"
+Inputs=["236S"]
+Buttons=["s"]
+Image=""
+Description="""
+Seagull shoots out a blue fireball from his hands, travelling in a straight line across the screen.
+"""
+
+[[Character.Specials]] # Bad
+Name="Bad"
+Inputs=["S"]
+Buttons=["s"]
+Condition="after Your"
+Image=""
+Description="""
+Seagull rolls forwards, slamming himself into opponents who are trying to slide past
+the blind spot of the fireball.
+"""
+
+[[Character.Specials]] # The King
+Name="The King"
+Inputs=["214H"]
+Buttons=["h"]
+Image=""
+Description="""
+Seagull flies into the air and screams at the opponent with a large hitbox. When blocked, leaves Seagull airborne and
+actionable, and places the opponent into Guard Crush.
+"""
+
 ###################################
 # Supers
 ###################################
+[[Character.Supers]] # Double or Nothing
+Name="Double or Nothing"
+Inputs=["632146H"]
+Buttons=["h"]
+Image=""
+Description="""
+An invincible rising reversal that has the ability to loop into itself. Seagull rises up into the air, then divebombs
+downwards, taking the opponent with him. If %btn(h,H) is pressed again after the initial divebomb, Seagull will enter
+a parry stance that catches strike attacks. If the parry makes contact, Double or Nothing will loop back into itself
+and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing %btn(h,H). If the parry
+misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
+"""
+
+[[Character.Supers]] # Ground Orange Duck
+Name="Ground Orange Duck"
+Inputs=["214214P"]
+Buttons=["p"]
+Image=""
+Description="""
+Seagull releases a large amount of energy, transforming himself into GroundOrangeDuck for a short duration. While in
+Duck form, Seagull deals more damage and is able to freely cancel specials into eachother, even if they miss.
+"""

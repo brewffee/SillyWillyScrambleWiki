@@ -16,9 +16,9 @@ HoldOK=true
 Button="taunt"
 Image=""
 Description="""
-Guiblo holds a toaster in his hand. If held for 3 seconds, the toaster sprouts legs and walks
-out of Guiblo's hand, wandering around the stage and turning around when reaching the end of
-the stage. When reaching the opponent, the toaster electrocutes itself and explodes
+Guiblo holds a toaster in his hand. If held for 3 seconds, the toaster sprouts legs and walks out of Guiblo's hand,
+wandering around the stage and turning around when reaching the end of the stage. When reaching the opponent, the
+toaster electrocutes itself and explodes.
 """
 
 [[Character.Normals]] # 6H
@@ -26,9 +26,8 @@ Input="6H"
 Button="h"
 Image=""
 Description="""
-Guiblo's arms turn into springs and then coil, shortly before springing forwards with a large
-and powerful disjointed punch. Causes ground and wall bounce on hit, and sends the opponent
-flying on counter hit.
+Guiblo's arms turn into springs and then coil, shortly before springing forwards with a large and powerful disjointed
+punch. Causes ground and wall bounce on hit, and sends the opponent flying on counter hit.
 """
 
 [[Character.Normals]] # 3S
@@ -48,8 +47,8 @@ Inputs=["623H"]
 Buttons=["h"]
 Image=""
 Description="""
-An invincible reversal. Guiblo reaches diagonally for the opponent. On contact, Guiblo rises
-with the opponent before slamming them down into the ground.
+An invincible reversal. Guiblo reaches diagonally for the opponent. On contact, Guiblo rises with the opponent before
+slamming them down into the ground.
 """
 
 [[Character.Specials]] # Guiblo Grenade
@@ -59,10 +58,9 @@ AirOK=true
 Buttons=["p", "s", "h"]
 Image=""
 Description="""
-Guiblo blows himself up with a grenade, damaging himself and sending him in a specified
-direction. %btn(p,P) version launches himself upwards, %btn(s,S) version launches horizontally,
-and %btn(h,H) sends him diagonally downwards. If he performs the H version on the ground, Guiblo
-will only move slightly forwards.
+Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %btn(p,P) version
+launches himself upwards, %btn(s,S) version launches horizontally, and %btn(h,H) sends him diagonally downwards. If
+he performs the %btn(h,H) version on the ground, Guiblo will only move slightly forwards.
 """
 
 [[Character.Specials]] # Parry
@@ -72,9 +70,9 @@ AirOK=true
 Buttons=["p"]
 Image=""
 Description="""
-Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact
-with a strike, the opponent's attack is cancelled, and they are put into Guard Crush. With a
-projectile, it is sent back torwards the opponent.
+Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact with a strike, the
+opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back torwards the
+opponent.
 """
 
 [[Character.Specials]] # Gone Fishin'

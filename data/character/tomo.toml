@@ -6,7 +6,7 @@ and convert into full combos up close.
 """
 IconPath=""
 PortraitPath=""
-Type=""
+Type="Magic"
 
 ###################################
 # Unique Mechanics
@@ -45,23 +45,26 @@ corner combos.
 
 ###################################
 # Special Attacks
-# todo: These special attacks might not have sufficient combo potential in implementation, needs revision.
 ###################################
 [[Character.Specials]] # Ignis Rush
 Name="Ignis Rush"
 Inputs=["236S", "H"]
 HoldOK=true
+AirOK=true
 Buttons=["s", "h"]
 Condition="with 20% Mana"
 Image=""
 Description="""
 A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
-opponent up into the air.
+opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
+can travel before exploding or disappearing.
 <ul>
-    <li>%btn(s,S) <b>Ignis Rush</b> creates a projectile that travels along the ground. The explosion triggers after
-    a certain amount of distance or upon hitting the opponent.</li>
-    <li>%btn(h,H) <b>Ignis Rush</b> creates a projectile that travels diagonally into the air. The explosion no longer
-    triggers automatically, only activating when it hits the opponent.</li>
+    <li>%btn(s,S) <b>Ignis Rush</b> creates a projectile that travels along the ground. When performed in the air,
+    the projectile maintains its usual horizontal trajectory.The explosion triggers after a certain amount of distance
+     or upon hitting the opponent.</li>
+    <li>%btn(h,H) <b>Ignis Rush</b> creates a projectile that travels diagonally up into the air. When performed in
+     the air, the projectile travels diagonally downwards. The explosion no longer triggers automatically, only
+     activating when it hits the opponent.</li>
 </ul>
 """
 
@@ -126,3 +129,24 @@ option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,ge
 ###################################
 # Supers
 ###################################
+[[Character.Supers]] # Mana Crimen
+Name="Mana Crimen"
+Inputs=["214214K"]
+Buttons=["k"]
+Condition="with 50% meter"
+Image=""
+Description="""
+Tomo instantly charges his Mana gauge to max.
+"""
+
+[[Character.Supers]] # Tonitru Pirouette
+Name="Tonitru Pirouette"
+Inputs=["236236S"]
+Buttons=["s"]
+Condition="with 50% meter"
+Image=""
+Description="""
+An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
+of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for
+his next move.
+"""
