@@ -282,6 +282,7 @@ em { font-style: normal }
 [button=p] { color: #b22ea1 }
 [button=x] { color: dimgray }
 [button=or] { color: black }
+[button=generic] { /* inherit from browser default */ }
 
 .move-info img {
     max-width: 240px;
