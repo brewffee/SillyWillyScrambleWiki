@@ -30,12 +30,12 @@ function main() {
         .replace("%DATE%", new Date().toDateString())
         .replace("%TIME%", new Date().toLocaleTimeString());
 
-    fs.writeFileSync("html/index.html", template);
+    fs.writeFileSync("docs/index.html", template);
 
     // Character Pages
     characters.forEach(character => {
         console.log(`[${character.Name}] Generating character page...`);
-        if (!fs.existsSync("html/characters/")) fs.mkdirSync("html/characters/");
+        if (!fs.existsSync("docs/characters/")) fs.mkdirSync("docs/characters/");
         let rendered = character.render();
 
         // Navbar can only be built after the main character content is rendered i think
@@ -43,7 +43,7 @@ function main() {
         rendered = rendered.replace(character.characterNav, character.characterNavActive);
 
         // gg
-        fs.writeFileSync("html/characters/" + character.Name.toLowerCase() + ".html", rendered);
+        fs.writeFileSync("docs/characters/" + character.Name.toLowerCase() + ".html", rendered);
     });
 
     // todo: System Pages
