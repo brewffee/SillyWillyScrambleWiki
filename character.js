@@ -93,7 +93,10 @@ class Character {
             // More advanced configuration for this part
             specialTemplate = specialTemplate.replace(/%BUTTON%/g, special.Buttons[0]);
 
-            let inputStr = special.Inputs[0];
+            let inputStr = "";
+            if (special.AirOnly === true) inputStr += "j.";
+            inputStr += special.Inputs[0];
+
             for (let i = 1; i < special.Buttons.length; i++) {
                 if (special.Buttons.length !== special.Inputs.length) return; // what are u doing ????
                 // add <em button=x>/</em> <em button=%BUTTON%>%INPUT%</em> for each input

@@ -1,0 +1,55 @@
+[Character]
+Name="Seagull"
+Description="""
+Seagull is a rushdown character with tight air movement who focuses on air combos and tricky movement to overwhelm
+the opponent. With an astonishing 3 air jumps and incredible mobility, Seagull is able to stay out of reach and
+take advantage when the opportunity presents itself.
+"""
+IconPath=""
+PortraitPath=""
+Type=""
+
+###################################
+# Command Normals
+###################################
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]] # Scam
+Name="Scam"
+Inputs=["214S"]
+AirOK=true
+Buttons=["s"]
+Image=""
+Description="""
+Seagull lets out a large scream with a cartoon speech bubble appearing behind him and hitting the opponent from afar.
+If used in the air, Seagull retains his previous air momentum.
+"""
+
+[[Character.Specials]] # Bet
+Name="Bet"
+Inputs=["236P", "S", "H"]
+AirOnly=true
+Buttons=["p", "s", "h"]
+Image=""
+Description="""
+Seagull quickly dashes through the air, hitting anything in his path. %btn(p,P) version sends Seagull diagonally
+upwards, %btn(s,S) version sends Seagull horizontally, and %btn(h,H) version sends Seagull diagonally downwards.
+All versions of Bet hit overhead. Using %btn(s,S) or %btn(h,H) <b>Bet</b> close to the ground combined with the
+threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredbly ambiguous overhead.
+"""
+
+[[Character.Specials]] # Skill
+Name="Skill"
+Inputs=["236K"]
+Buttons=["k"]
+Image=""
+Description="""
+Seagull shoots himself downwards at a steep angle with no hitbox. He can use this move to quickly cross through the
+opponent for a scary three-way mixup, or to escape a dire situation with low commitment.
+"""
+
+###################################
+# Supers
+###################################
