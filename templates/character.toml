@@ -1,0 +1,63 @@
+# Descriptions support linking to other moves using the
+# macro %ref(<move name>, <input string>, <button>). For
+# example, %ref(Chrono Shift, 214K, k) will link to the
+# Chrono Shift move and display as "214K" in the description.
+# Descriptions also support coloring text according to
+# button with %btn(<button>, <text>). For example, %btn(k, K)
+# will display as "K" in the associated color (blue for Kick).
+# You can also use raw HTML to create lists, make text bold or
+# italic, and so on.
+
+[Character]
+Name=""
+Description="""
+"""
+IconPath=""         # Path to icon (relative to html dir)
+PortraitPath=""     # Path to portrait art
+Type=""             # Fighting style
+
+###################################
+# Unique Mechanics
+###################################
+[[Character.Mechanics]] # Custom mechanic with a summary of its effects
+Name=""
+Description="""
+"""
+
+###################################
+# Command Normals
+###################################
+[[Character.Normals]]
+Input=""            # Input string
+Button=""           # Any of p, k, s, x, or taunt
+AirOK=false         # Can this be used in the air?
+HoldOK=false        # Can this be held?
+AirOnly=false       # Can this only be used in the air?
+Image=""            # Move sprite
+Description="""
+"""
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]]
+Name=""
+Inputs=[""]         # The input strings. A value of ["236P", "K"] will display as "236P/K"
+Buttons=[""]        # The button for each input, should match the order of the above list
+Condition=""        # Special requirements for the move, displayed after input string
+Image=""            # Move sprite
+Description="""
+"""
+
+###################################
+# Supers
+###################################
+[[Character.Supers]]
+Name=""
+Inputs=[""]         # The input strings. A value of ["236236P", "K"] will display as "236236P/K"
+Buttons=[""]        # The button for each input, should match the order of the above list
+Condition=""        # Will mostly be "with 50% meter" in the case of supers
+Image=""            # Move sprite
+Description="""
+"""
+
