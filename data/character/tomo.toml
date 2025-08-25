@@ -34,6 +34,7 @@ combo.
 [[Character.Normals]] # 6S Magia Wall
 Input="6S"
 Button="s"
+Condition="with 5% Mana"
 Image=""
 Description="""
 Tomo uses his tome to quickly summon a wall of magic that not only reflects any incoming projectiles. In addition to
@@ -50,6 +51,7 @@ Name="Ignis Rush"
 Inputs=["236S", "H"]
 HoldOK=true
 Buttons=["s", "h"]
+Condition="with 20% Mana"
 Image=""
 Description="""
 A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
@@ -66,6 +68,7 @@ opponent up into the air.
 Name="Ventus Thrust"
 Inputs=["214S", "H"]
 Buttons=["s", "h"]
+Condition="with 10% Mana"
 Image=""
 Description="""
 Tomo summons blades of wind that can be used to push the opponent.
@@ -96,16 +99,22 @@ Tomo stands in place and recovers his Mana gauge
 Name="Glacies Pierce"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
+Condition="with 15% Mana"
 Image=""
 Description="""
-Tomo summons a large pillar of ice to interupt the opponent's approach. On contact, freezes the opponent in place.
+Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
+place until a set amount of time passes or immediately upon the next hit.
 <ul>
-    <li>%btn(p,P) <b>Glacies Pierce</b> summons a large pillar of ice from the ground that hits the opponent low.
-    Creates a large enough barrier to make it difficult for the opponent to jump over.</li>
-    <li>%btn(k,K) <b>Glacies Pierce</b> summons a large pilar of ice from the sky that hits the opponent high. Is
-    summoned high enough to where it is difficult to jump over, and low enough that the opponent needs to use a good
-    low-profile option to respond.</li>
+    <li>In %btn(p,P) <b>Glacies Pierce</b>, Tomo slams the ground in front of him, sprouting a large pillar of ice
+    that hits the opponent low. Creates a large enough barrier to make it difficult for the opponent to jump over.</li>
+    <li>In %btn(k,K) <b>Glacies Pierce</b>, Tomo rides into the air, summoning a trail of ice underneath him that hits
+    the opponent high. On air hit, the opponent is frozen until they reach the ground, taking additional damage and
+    causing a ground bounce. The ice trail is summoned high enough to where it is difficult to jump over, and low
+    enough that the opponent needs to use a good low-profile option to respond.</li>
 </ul>
+Boasting its large space control and relatively low mana cost, Glacies Pierce is a formidable move that demands respect
+in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,generic) and a great
+option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,generic).
 """
 
 ###################################
