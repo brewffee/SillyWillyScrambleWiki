@@ -60,12 +60,10 @@ class Character {
             let normalTemplate = fs.readFileSync('templates/character/normal.html', 'utf8');
             normalTemplate = normalTemplate
             .replace(/%INPUT%/g, normal.Input)
+            .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${normal.Condition}</em>` : '')
             .replace(/%BUTTON%/g, normal.Button)
             .replace(/%IMAGE%/g, normal.Image)
             .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
-
-            // converts %BUTTON(NAME,INPUT)% to <a href="#NAME" button=BUTTON>INPUT</a>
-            //.replace(/%DESCRIPTION%/g, normal.Description);
 
             if (normal.HoldOK === true && normal.AirOK === true) {
                 normalTemplate = normalTemplate.replace(/%EXTRA%/g, ' (Hold, Air OK)');
