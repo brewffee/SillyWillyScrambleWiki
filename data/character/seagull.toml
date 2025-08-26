@@ -21,64 +21,130 @@ Name="Scam"
 Inputs=["214S"]
 AirOK=true
 Buttons=["s"]
-Image=""
+Images=[""]
 Description="""
 Seagull lets out a large scream with a cartoon speech bubble appearing behind him and hitting the opponent from afar.
 If used in the air, Seagull retains his previous air momentum.
 """
+[[Character.Specials.Data]]
+Version="214S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="j.214S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # Bet
 Name="Bet"
 Inputs=["236P", "S", "H"]
 AirOnly=true
 Buttons=["p", "s", "h"]
-Image=""
+Images=[""]
 Description="""
 Seagull quickly dashes through the air, hitting anything in his path. %btn(p,P) version sends Seagull diagonally
 upwards, %btn(s,S) version sends Seagull horizontally, and %btn(h,H) version sends Seagull diagonally downwards.
 All versions of Bet hit overhead. Using %btn(s,S) or %btn(h,H) <b>Bet</b> close to the ground combined with the
 threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredbly ambiguous overhead.
 """
+[[Character.Specials.Data]]
+Version="j.236P"
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="j.236S"
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="j.236H"
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # Skill
 Name="Skill"
 Inputs=["236K"]
 Buttons=["k"]
-Image=""
+AirOnly=true
+Images=[""]
 Description="""
 Seagull shoots himself downwards at a steep angle with no hitbox. He can use this move to quickly cross through the
 opponent for a scary three-way mixup, or to escape a dire situation with low commitment.
 """
+[[Character.Specials.Data]]
+Startup="-"
+Recovery="-"
+Invuln=["Pass-through"]
 
 [[Character.Specials]] # Your
 Name="Your"
 Inputs=["236S"]
 Buttons=["s"]
-Image=""
+Images=[""]
 Description="""
 Seagull shoots out a blue fireball from his hands, travelling in a straight line across the screen.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # Bad
 Name="Bad"
 Inputs=["S"]
 Buttons=["s"]
 Condition="after Your"
-Image=""
+Images=[""]
 Description="""
 Seagull rolls forwards, slamming himself into opponents who are trying to slide past
 the blind spot of the fireball.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # The King
 Name="The King"
 Inputs=["214H"]
 Buttons=["h"]
-Image=""
+Images=[""]
 Description="""
 Seagull flies into the air and screams at the opponent with a large hitbox. When blocked, leaves Seagull airborne and
 actionable, and places the opponent into Guard Crush.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="+"
 
 ###################################
 # Supers
@@ -87,7 +153,7 @@ actionable, and places the opponent into Guard Crush.
 Name="Double or Nothing"
 Inputs=["632146H"]
 Buttons=["h"]
-Image=""
+Images=[""]
 Description="""
 An invincible rising reversal that has the ability to loop into itself. Seagull rises up into the air, then divebombs
 downwards, taking the opponent with him. If %btn(h,H) is pressed again after the initial divebomb, Seagull will enter
@@ -95,13 +161,42 @@ a parry stance that catches strike attacks. If the parry makes contact, Double o
 and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing %btn(h,H). If the parry
 misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
 """
+[[Character.Supers.Data]]
+Version="632146H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+[[Character.Supers.Data]]
+Version="Parry"
+Damage="-"
+Startup="-"
+Active="-"
+Recovery="-"
+Invuln=["Full"]
 
 [[Character.Supers]] # Ground Orange Duck
 Name="Ground Orange Duck"
 Inputs=["214214P"]
 Buttons=["p"]
-Image=""
+Images=[""]
+ImageNotes=["If you can't beat 'em, join 'em"]
 Description="""
 Seagull releases a large amount of energy, transforming himself into GroundOrangeDuck for a short duration. While in
 Duck form, Seagull deals more damage and is able to freely cancel specials into eachother, even if they miss.
 """
+[[Character.Supers.Data]]
+Version="214214P"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Supers.Data]]
+Version="Install"
+Active="-"
+Recovery="-"

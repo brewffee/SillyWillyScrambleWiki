@@ -31,29 +31,49 @@ Type="Grappler"
 Input="Taunt"
 HoldOK=true
 Button="taunt"
-Image=""
+Images=[""]
 Description="""
 Guiblo holds a toaster in his hand. If held for 3 seconds, the toaster sprouts legs and walks out of Guiblo's hand,
 wandering around the stage and turning around when reaching the end of the stage. When reaching the opponent, the
 toaster electrocutes itself and explodes.
 """
+[[Character.Normals.Data]]
+Version="Explosion"
+Damage="-"
+Guard="All"
+Startup="+"
+Active="-"
 
 [[Character.Normals]] # 6H
 Input="6H"
 Button="h"
-Image=""
+Images=[""]
 Description="""
 Guiblo's arms turn into springs and then coil, shortly before springing forwards with a large and powerful disjointed
 punch. Causes ground and wall bounce on hit, and sends the opponent flying on counter hit.
 """
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Normals]] # 3S
 Input="3S"
 Button="s"
-Image=""
+Images=[""]
 Description="""
 Guiblo drops a rake on the ground and steps on it, launching the opponent high into the air.
 """
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 ###################################
 # Special Attacks
@@ -62,45 +82,89 @@ Guiblo drops a rake on the ground and steps on it, launching the opponent high i
 Name="Huebenly Buster"
 Inputs=["623H"]
 Buttons=["h"]
-Image=""
+Images=[""]
 Description="""
 An invincible reversal. Guiblo reaches diagonally for the opponent. On contact, Guiblo rises with the opponent before
 slamming them down into the ground.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+Invuln=["Full"]
 
 [[Character.Specials]] # Guiblo Grenade
 Name="Guiblo Grenade"
 Inputs=["236P", "S", "H"] # looks weird but would give us 236P/S/H as a desired input str
 AirOK=true
 Buttons=["p", "s", "h"]
-Image=""
+Images=[""]
 Description="""
 Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %btn(p,P) version
 launches himself upwards, %btn(s,S) version launches horizontally, and %btn(h,H) sends him diagonally downwards. If
 he performs the %btn(h,H) version on the ground, Guiblo will only move slightly forwards.
 """
+[[Character.Specials.Data]]
+Version="236P"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # Parry
 Name="Parry"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
-Image=""
+Images=[""]
 Description="""
 Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact with a strike, the
 opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back torwards the
 opponent.
 """
+[[Character.Specials.Data]]
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
 
 [[Character.Specials]] # Gone Fishin'
 Name="Gone Fishin'"
 Inputs=["236K"]
 Buttons=["k"]
-Image=""
+Images=[""]
 Description="""
 Guiblo equips an angler's hat and throws a fishing hook towards the opponent. When the hook
 reaches the opponent, it pulls them close to Guiblo.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 ###################################
 # Supers
@@ -110,19 +174,34 @@ Name="Heavenly Guiblo Buster"
 Inputs=["632146S"]
 Condition="with 50% meter"
 Buttons=["s"]
-Image=""
+Images=[""]
 Description="""
 An incredibly fast command grab super.
 """
+[[Character.Supers.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Supers]] # Ultimate Sandwich
 Name="Ultimate Sandwich"
 Inputs=["236236P"]
 Condition="with 50% meter"
 Buttons=["p"]
-Image=""
+Images=[""]
 Description="""
 Invincible at startup. Guiblo grabs the opponent and holds them in front of him. From his
 pocket, a light shines, revealing a sandwich that freezes the game and explodes the opponent
 on unfreeze.
 """
+[[Character.Supers.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]

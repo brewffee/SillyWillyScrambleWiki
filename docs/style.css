@@ -244,7 +244,6 @@ div.roster a .type {
 .move {
     border: 1px solid #000;
     display: flex;
-    gap: 12px;
     margin: 0 0 12px;
 }
 
@@ -253,8 +252,9 @@ div.roster a .type {
     flex-direction: column;
     background: #e4e4e4;
     border-right: 1px solid #000;
-    min-width: 240px;
+    min-width: 230px;
     width: 240px;
+    padding: 4px 8px;
 }
 
 a:has(.move-name) {
@@ -270,10 +270,15 @@ a:has(.move-name) {
 .move-info .move-input {
     text-align: center;
     width: 100%;
-    padding: 4px 8px;
     box-sizing: border-box;
     font-size: 14px;
     font-weight: bold;
+}
+
+.image-note {
+    font-size: 12px;
+    color: dimgray;
+    text-align: center;
 }
 
 em { font-style: normal }
@@ -291,17 +296,48 @@ em { font-style: normal }
     height: auto;
     display: block;
     margin: 0 auto;
+    font-size: 12px;
 }
 
 .move-details {
-    padding: 8px 4px;
     font-size: 14px !important;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.move-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.move-details th {
+    background: #e4e4e4;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.move-details th:last-child, .move-details td:last-child {
+    border-right: none;
+}
+
+.move-details td {
+    padding: 4px 0;
+    font-size: 10px;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.move-details tbody {
 
 }
 
 .move-details p {
     margin: 0;
     font-weight: normal;
+    padding: 6px 12px;
 }
 
 .move-details ul {

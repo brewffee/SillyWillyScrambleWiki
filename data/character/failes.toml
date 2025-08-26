@@ -16,7 +16,7 @@ Type="Gooner"
 Name="Riptide"
 Inputs=["[4]6S", "[2]8H"]
 Buttons=["s", "h"]
-Image=""
+Images=[""]
 Description="""
 Fail throws his trident and hops on, travelling until he hits the opponent or the edge of the screen. At any point
 during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. %btn(s,[4]6S) sends
@@ -26,36 +26,83 @@ Fail horizontally, while %btn(h,[2]8H) sends him upwards at a steep angle.
     <li>%btn(k,K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.
 </ul>
 """
+[[Character.Specials.Data]]
+Version="[4]6S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="[2]8H"
+Damage="-"
+Guard="All->High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="P"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="K"
+Recovery="-"
+
 
 [[Character.Specials]] # Channeling
 Name="Channeling"
 Inputs=["236S"]
 Buttons=["s"]
 AirOK=true
-Image=""
+Images=[""]
 Description="""
 Fail, preserving his existing momentum, jumps into the air and charges his opponent with electricity. After hovering in
 the air, he quickly comes down for a high hitting dive attack. If he is already in the air, he will immediately begin
 charging from where he started.
 """
+[[Character.Specials.Data]]
+Version="236S"
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="j.236S"
+Damage="-"
+Guard="High"
+Startup="-"
+Active="Landing"
+Recovery="Landing"
+OnBlock="-"
 
 [[Character.Specials]] # Impaling
 Name="Impaling"
 Inputs=["236K"]
 Buttons=["k"]
-Image=""
+Images=[""]
 Description="""
 Fail slides along the floor until he hits the opponent or a set distance, before performing a powerful strike with his
 trident. Has a great low-profile and hits the opponent low for both slide and strike. The strike also reaches much
 higher and launches the opponent upwards a good distance.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Low,Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Low Profile"]
 
 [[Character.Specials]] # Loyalty
 Name="Loyalty"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 AirOK=true
-Image=""
+Images=[""]
 Description="""
 Fail throws his trident at a specified angle. If he presses the corresponding button again during the throw, Fail
 moves to the trident's position. Additionally, if he is moving towards the trident, he can cancel the rest of the
@@ -65,17 +112,57 @@ attack into another special, including the recovery.
     <li><b>%btn(k,K) Loyalty</b> throws trident upwards diagonally, or if in the air, downwards diagonally.
 </ul>
 """
+[[Character.Specials.Data]]
+Version="214P"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214K"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214P~P"
+Startup="-"
+[[Character.Specials.Data]]
+Version="214K~K"
+Startup="-"
 
 [[Character.Specials]] # Mending
 Name="Mending"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
-Image=""
+Images=[""]
 Description="""
 An invincible rising reversal. Fail rises into the air as he spins his trident around him, preserving existing momentum.
 Launches the opponent upwards and gains a special cancel on hit.
 """
+[[Character.Specials.Data]]
+Version="623H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+[[Character.Specials.Data]]
+Version="j.623H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
 
 ###################################
 # Supers
@@ -85,22 +172,45 @@ Name="Trident Tornado"
 Inputs=["632146S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Image=""
+Images=[""]
 Description="""
 Fail summons 3 tridents that follow him around. The tridents fly towards the opponent one at a time, with small delays
 between each launch, giving him safe pressure strings or excellent corner carry. On hit, the opponent is launched
 upwards, and on block, the opponent is sent into Guard Crush. In exchange, Fail is in counterhit state for the entie
 duration of the move, and the tridents immediately disappear when countered.
 """
+[[Character.Supers.Data]]
+Damage="-xN"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Supers]] # failEs Friday
 Name="failEs Friday"
 Inputs=["632146H"]
 Buttons=["h"]
 Condition="with 50% meter"
-Image=""
+Images=[""]
 Description="""
 An invincible rising reversal. Fail instantly flies offscreen. If the first hit makes contact with the opponent, he
 comes back down for a finisher. However, if blocked or whiffed, Fail falls down, unable to move and in a guaranteed
 counterhit state.
 """
+[[Character.Supers.Data]]
+Version="632146H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+[[Character.Supers.Data]]
+Version="Dive"
+Damage="-"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"

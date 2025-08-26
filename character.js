@@ -39,6 +39,30 @@ class Character {
         return result;
     }
 
+    renderFrameData(data) {
+        if (!data) return '';
+        // create the header and body
+        let frameDataTable = "<th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>\n<tbody>";
+
+        // if the first item has the version field, the rest must have it too (otherwise you are DUUUUMB !!!)
+        frameDataTable = "<table><thead><tr>" + (data[0].Version ? "<th>Version</th>" : "") + frameDataTable;
+        frameDataTable += data.map((d) => {
+            let dataRow = "<tr>"
+            if (d.Version) dataRow += `<td>${d.Version || ""}</td>`;
+            dataRow += `<td>${d.Damage || ""}</td>`;
+            dataRow += `<td>${d.Guard || ""}</td>`;
+            dataRow += `<td>${d.Startup || ""}</td>`;
+            dataRow += `<td>${d.Active || ""}</td>`;
+            dataRow += `<td>${d.Recovery || ""}</td>`;
+            dataRow += `<td>${d.OnBlock || ""}</td>`;
+            dataRow += `<td>${d.Invuln?.join("<br>") || ""}</td>`;
+            dataRow += "</tr>";
+            return dataRow;
+        }).join('');
+
+        return frameDataTable + "</tbody>\n</table>";
+    }
+
     renderMechanics(mechanics) {
         if (!mechanics) return '';
         const mechanicsHeader = "<h2 id=mechanics><a href=\"#mechanics\">Unique Mechanics</a></h2>\n"
@@ -51,6 +75,24 @@ class Character {
             return mechanicTemplate;
         }).join('');
     }
+
+    renderImages(move, name) {
+        if (!move.Images) return '';
+        let imageStr = "";
+        for (let i = 0; i < move.Images.length; i++) {
+            if (!move.Images[i]) {
+                imageStr += `<img alt="${name} Sprite">\n`
+            } else {
+                imageStr += `<img src="../${move.Images[i]}" alt="${name} Sprite">\n`
+            }
+
+            if (move.ImageNotes?.[i]) {
+                imageStr += `<span class=image-note>${move.ImageNotes[i]}</span>`
+            }
+        }
+        return imageStr;
+    }
+
     renderNormals(normals) {
         if (!normals) return '';
         return normals.map((normal) => {
@@ -60,9 +102,11 @@ class Character {
             .replace(/%INPUT%/g, normal.Input)
             .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${normal.Condition}</em>` : '')
             .replace(/%BUTTON%/g, normal.Button)
-            .replace(/%IMAGE%/g, normal.Image)
+            .replace(/%IMAGE%/g, this.renderImages(normal, normal.Input))
+            .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
 
+            // add Hold or Air OK to the end of the move name if it has those properties
             if (normal.HoldOK === true && normal.AirOK === true) {
                 normalTemplate = normalTemplate.replace(/%EXTRA%/g, ' (Hold, Air OK)');
             } else if (normal.HoldOK === true) {
@@ -85,7 +129,8 @@ class Character {
             specialTemplate = specialTemplate
             .replace(/%NAME%/g, special.Name)
             .replace(/%CONDITION%/g, special.Condition ? `<em button=x>${special.Condition}</em>` : '')
-            .replace(/%IMAGE%/g, "../" + special.Image)
+            .replace(/%IMAGE%/g, this.renderImages(special, special.Name))
+            .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
 
             // More advanced configuration for this part

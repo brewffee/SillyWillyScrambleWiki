@@ -34,12 +34,13 @@ AirOK=false         # Can this be used in the air?
 HoldOK=false        # Can this be held?
 AirOnly=false       # Can this only be used in the air?
 Condition=""        # Does this move have any special requirements?
-Image=""            # Move sprite
+Images=[""]         # Featured move sprites
+ImageNotes=[""]     # Notes for each featured move sprite
 Description="""
 """
 
 [[Character.Normals.Data]]
-Name=""             # The version of this move to display
+Version=""          # The version of this move to display
 Damage=""           # How much does this move deal?
 Guard=""            # Where the opponent can block this move
 Startup=""          # How many frames it takes to start the move
@@ -59,7 +60,8 @@ Name=""
 Inputs=[""]         # The input strings. A value of ["236P", "K"] will display as "236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Special requirements for the move, displayed after input string
-Image=""            # Move sprite
+Images=[""]         # Featured move sprites
+ImageNotes=[""]     # Notes for each featured move sprite
 Description="""
 """
 
@@ -71,7 +73,8 @@ Name=""
 Inputs=[""]         # The input strings. A value of ["236236P", "K"] will display as "236236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Will mostly be "with 50% meter" in the case of supers
-Image=""            # Move sprite
+Images=[""]         # Featured move sprites
+ImageNotes=[""]     # Notes for each featured move sprite
 Description="""
 """
 

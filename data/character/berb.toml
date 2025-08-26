@@ -37,10 +37,13 @@ ability.
 [[Character.Normals]] # Taunt
 Input="Taunt"
 Button="taunt"
-Image=""
+Images=[""]
+ImageNotes=["Would you look at the time!"]
 Description="""
 Advances the in-game timer by 3 seconds.
 """
+[[Character.Normals.Data]]
+Recovery="-"
 
 ###################################
 # Special Attacks
@@ -50,52 +53,89 @@ Name="Time Rift"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
-Image=""
+Images=[""]
 Description="""
 Berb summons a Rift Point to which he can teleport later. Up to three teleport points can be placed at a time,
 overriding the oldest point first.
 """
+[[Character.Specials.Data]]
+Version="214P"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="j.214P"
+Recovery="-"
 
 [[Character.Specials]] # Chrono Shift
 Name="Chrono Shift"
 Inputs=["214K"]
 AirOK=true
 Buttons=["k"]
-Image=""
+Images=[""]
 Description="""
 Berb teleports to the most recent Rift Point. Pressing %btn(k,K) again during the animation will prolong the teleport,
 instead moving to the next most recent point, or if repeated, the oldest point.
 """
+[[Character.Specials.Data]]
+Version="214K"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="214K~K"
+Recovery="-"
 
 [[Character.Specials]] # Distortion
 Name="Distortion"
 Inputs=["236S"]
 Buttons=["s"]
-Image=""
+Images=[""]
 Description="""
 Berd attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
 teleport, instead moving to the next most recent point, or if repeated, the oldest point.
 """
+[[Character.Specials.Data]]
+Version="236S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236S~S"
+Recovery="-"
 
 [[Character.Specials]] # Clockwork
 Name="Clockwork"
 Inputs=["214S"]
 Buttons=["s"]
-Image=""
+Images=[""]
 Description="""
 Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
 on hit, sending the opponent into stagger, or Guard Crush on block.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="+"
 
 [[Character.Specials]] # Tempo Synchronization
 Name="Tempo Synchronization"
 Inputs=["236H"]
 Buttons=["h"]
-Image=""
+Images=[""]
 Description="""
 Berd sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
 air on hit.
 """
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 ###################################
 # Supers
@@ -105,31 +145,49 @@ Name="Chrono Stasis"
 Inputs=["632146K"]
 Condition="with 50% meter"
 Buttons=["k"]
-Image=""
+Images=[""]
 Description="""
 A powerful move that freezes time, locking the opponent in place. Although it has slow startup, it hits anywhere on
 the screen and cannot be evaded using invulnerability frames. The opponent is frozen for 2 seconds, allowing Berb an
 opportunity to set up a high-power combo. If the opponent was hit while frozen, they will be launched when time
 unfreezes.
 """
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All (Block only)"
+Startup="+"
+Active="120"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Supers]] # Accent Acceleration
 Name="Accent Acceleration"
 Inputs=["214214H"]
 Condition="with 50% meter"
 Buttons=["h"]
-Image=""
+Images=[""]
 Description="""
 Increases the rate of which the in-game timer and mechanic timers advance by 15%
 """
+[[Character.Supers.Data]]
+Startup="+"
+Recovery="-"
 
 [[Character.Supers]] # Time Fault
 Name="Time Fault"
 Inputs=["2141236P"] # QCB to QCF motion
 Condition="with 50% meter"
 Buttons=["p"]
-Image=""
+Images=[""]
 Description="""
 Berd jumps backwards and suddenly appears far forwards. If Berd crosses through the opponent, they are hit and a Rift
 Point is created in their place (if there are not already 3 points active)
 """
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="+"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Pass-through"]

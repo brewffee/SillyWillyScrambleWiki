@@ -36,12 +36,19 @@ offense.
 Input="6S"
 Button="s"
 Condition="with 5% Mana"
-Image=""
+Images=[""]
 Description="""
 Tomo uses his tome to quickly summon a wall of magic that not only reflects any incoming projectiles. In addition to
 its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
 corner combos.
 """
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 ###################################
 # Special Attacks
@@ -53,7 +60,7 @@ HoldOK=true
 AirOK=true
 Buttons=["s", "h"]
 Condition="with 20% Mana"
-Image=""
+Images=[""]
 Description="""
 A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
 opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
@@ -67,13 +74,46 @@ can travel before exploding or disappearing.
      activating when it hits the opponent.</li>
 </ul>
 """
+[[Character.Specials.Data]]
+Version="236S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236[S]"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236[H]"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
 
 [[Character.Specials]] # Ventus Thrust
 Name="Ventus Thrust"
 Inputs=["214S", "H"]
 Buttons=["s", "h"]
 Condition="with 10% Mana"
-Image=""
+Images=[""]
 Description="""
 Tomo summons blades of wind that can be used to push the opponent.
 <ul>
@@ -85,13 +125,45 @@ Tomo summons blades of wind that can be used to push the opponent.
     the opponent high.</li>
 </ul>
 """
+[[Character.Specials.Data]]
+Version="214S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214S~S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214H~H"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 [[Character.Specials]] # Renovare
 Name="Renovare"
 Inputs=["22P", "K"]
 Buttons=["p", "k"]
 HoldOK=true
-Image=""
+Images=[""]
 Description="""
 Tomo stands in place and recovers his Mana gauge
 <ul>
@@ -103,13 +175,24 @@ Tomo stands in place and recovers his Mana gauge
     more meter over time.</li>
 </ul>
 """
+[[Character.Specials.Data]]
+Version="22P"
+Startup="-"
+Active="-"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="22K"
+Startup="-"
+Active="-"
+Recovery="-"
 
 [[Character.Specials]] # Glacies Pierce
 Name="Glacies Pierce"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 Condition="with 15% Mana"
-Image=""
+Images=[""]
+# TODO: paragraphs end as soon as an unordered list is created, investigate further
 Description="""
 Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.
@@ -121,10 +204,27 @@ place until a set amount of time passes or immediately upon the next hit.
     causing a ground bounce. The ice trail is summoned high enough to where it is difficult to jump over, and low
     enough that the opponent needs to use a good low-profile option to respond.</li>
 </ul>
+<p>
 Boasting its large space control and relatively low mana cost, Glacies Pierce is a formidable move that demands respect
 in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,generic) and a great
 option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,generic).
+</p>
 """
+[[Character.Specials.Data]]
+Version="214P"
+Damage="-"
+Guard="Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214K"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
 
 ###################################
 # Supers
@@ -134,19 +234,30 @@ Name="Mana Crimen"
 Inputs=["214214K"]
 Buttons=["k"]
 Condition="with 50% meter"
-Image=""
+Images=[""]
 Description="""
 Tomo instantly charges his Mana gauge to max.
 """
+[[Character.Supers.Data]]
+Startup="-"
+Recovery="-"
 
 [[Character.Supers]] # Tonitru Pirouette
 Name="Tonitru Pirouette"
 Inputs=["236236S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Image=""
+Images=[""]
 Description="""
 An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
 of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for
 his next move.
 """
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
