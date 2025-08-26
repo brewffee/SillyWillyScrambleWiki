@@ -1,0 +1,106 @@
+[Character]
+Name="failEs"
+Description="""
+Fail wields a trident, and uses his momentum to speed around the stage. Using Riptide, Channeling and Loyalty, Fail
+is able to quickly get wherever he wishes. The ability to take advantage of his momentum is crucial to mastering this
+character.
+"""
+IconPath=""
+PortraitPath=""
+Type="Gooner"
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]] # Riptide
+Name="Riptide"
+Inputs=["[4]6S", "H"]
+Buttons=["s", "h"]
+Image=""
+Description="""
+Fail throws his trident and hops on, travelling until he hits the opponent or the edge of the screen. At any point
+during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. The %btn(s,S) version
+sends Fail horizontally, while the %btn(h,H) version sends him upwards at a steep angle.
+<ul>
+    <li>%btn(p,P) cancel stops the attack immediately and sends him into a short recovery period.
+    <li>%btn(h,H) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.
+</ul>
+"""
+
+[[Character.Specials]] # Channeling
+Name="Channeling"
+Inputs=["236S"]
+Buttons=["s"]
+AirOK=true
+Image=""
+Description="""
+Fail, preserving his existing momentum, jumps into the air and charges his opponent with electricity. After hovering in
+the air, he quickly comes down for a high hitting dive attack. If he is already in the air, he will immediately begin
+charging from where he started.
+"""
+
+[[Character.Specials]] # Impaling
+Name="Impaling"
+Inputs=["236K"]
+Buttons=["k"]
+Image=""
+Description="""
+Fail slides along the floor until he hits the opponent or a set distance, before performing a powerful strike with his
+trident. Has a great low-profile and hits the opponent low for both slide and strike. The strike also reaches much
+higher and launches the opponent upwards a good distance.
+"""
+
+[[Character.Specials]] # Loyalty
+Name="Loyalty"
+Inputs=["214P", "K"]
+Buttons=["k"]
+AirOK=true
+Image=""
+Description="""
+Fail throws his trident at a specified angle. If he presses the corresponding button again during the throw, Fail
+moves to the trident's position. Additionally, if he is moving towards the trident, he can cancel the rest of the
+attack into another special, including the recovery.
+<ul>
+    <li><b>%btn(p,P) Loyalty</b> throws the trident straight forwards.
+    <li><b>%btn(k,K) Loyalty</b> throws trident upwards diagonally, or if in the air, downwards diagonally.
+</ul>
+"""
+
+[[Character.Specials]] # Mending
+Name="Mending"
+Inputs=["623H"]
+Buttons=["k"]
+AirOK=true
+Image=""
+Description="""
+An invincible rising reversal. Fail rises into the air as he spins his trident around him, preserving existing momentum.
+Launches the opponent upwards and gains a special cancel on hit.
+"""
+
+###################################
+# Supers
+###################################
+[[Character.Supers]] # Trident Tornado
+Name="Trident Tornado"
+Inputs=["632146S"]
+Buttons=["s"]
+Condition="with 50% meter"
+Image=""
+Description="""
+Fail summons 3 tridents that follow him around. The tridents fly towards the opponent one at a time, with small delays
+between each launch, giving him safe pressure strings or excellent corner carry. On hit, the opponent is launched
+upwards, and on block, the opponent is sent into Guard Crush. In exchange, Fail is in counterhit state for the entie
+duration of the move, and the tridents immediately disappear when countered.
+"""
+
+[[Character.Supers]] # failEs Friday
+Name="failEs Friday"
+Inputs=["632146H"]
+Buttons=["h"]
+Condition="with 50% meter"
+Image=""
+Description="""
+An invincible rising reversal. Fail instantly flies offscreen. If the first hit makes contact with the opponent, he
+comes back down for a finisher. However, if blocked or whiffed, Fail falls down, unable to move and in a guaranteed
+counterhit state.
+"""
