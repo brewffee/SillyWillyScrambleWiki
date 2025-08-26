@@ -215,7 +215,7 @@ div.roster a .type {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 12px auto;
 }
 
 .info table {
@@ -255,6 +255,7 @@ div.roster a .type {
     min-width: 230px;
     width: 240px;
     padding: 4px 8px;
+    gap: 4px;
 }
 
 a:has(.move-name) {
@@ -292,7 +293,7 @@ em { font-style: normal }
 [button=generic] { /* inherit from browser default */ }
 
 .move-info img {
-    max-width: 240px;
+    max-width: 230px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -328,10 +329,6 @@ em { font-style: normal }
     font-size: 10px;
     border-bottom: 1px solid #000;
     border-right: 1px solid #000;
-}
-
-.move-details tbody {
-
 }
 
 .move-details p {

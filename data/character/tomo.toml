@@ -4,8 +4,8 @@ Description="""
 Wielding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to then close the gap
 and convert into full combos up close.
 """
-IconPath=""
-PortraitPath=""
+IconPath="images/tomo/icon/Tomo_Icon.png"
+PortraitPath="images/tomo/portrait/Tomo_Portrait.png"
 Type="Magic"
 
 ###################################
@@ -36,7 +36,7 @@ offense.
 Input="6S"
 Button="s"
 Condition="with 5% Mana"
-Images=[""]
+Images=["images/tomo/move/Tomo_6S.png"]
 Description="""
 Tomo uses his tome to quickly summon a wall of magic that not only reflects any incoming projectiles. In addition to
 its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
