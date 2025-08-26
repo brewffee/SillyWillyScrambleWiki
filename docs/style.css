@@ -195,22 +195,22 @@ div.roster a .type {
     border-top: 1px solid #000;
 }
 
-.overview {
+.overview .content {
     display: flex;
-    justify-content: space-between;
-    gap: 12px;
 }
 
 .overview p {
     margin-top: 0;
+    width: 100%;
 }
 
 .info {
     display: inline-block;
+    float: right;
     width: 240px;
     min-width: 240px;
-    margin: 0;
     height: fit-content;
+    margin: 0 0 0 12px;
 }
 
 .info img {
@@ -237,6 +237,10 @@ div.roster a .type {
     border-right: 1px solid #000;
     font-weight: bold;
     width: 50%;
+}
+
+#command-normals, #mechanics, #specials, #supers {
+    width: 100%;
 }
 
 .move {
