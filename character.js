@@ -24,11 +24,9 @@ class Character {
 
     // resolve button links and references (todo: external links)
     resolveReferences(input) {
-        let result = input;
-
         // specific move reference
         // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
-        result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (match, name, input, button) => {
+        let result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (match, name, input, button) => {
             return `<a href="#${name}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`;
         });
 
@@ -144,11 +142,20 @@ class Character {
         .replace(/%NAV_SPECIALS%/g, this.Specials?.map((special) => `<li><a href="#${special.Name}">${special.Name}</a></li>\n`).join("") || "")
         .replace(/%NAV_SUPERS%/g, this.Supers?.map((sup) => `<li><a href="#${sup.Name}">${sup.Name}</a></li>\n`).join("") || "");
 
-        // Remove nav headers if their children are empty
+        // Remove nav and section headers if their children are empty
         if (!this.Mechanics) template = template.replace("<li class=header><a href=\"#mechanics\">Unique Mechanics</a></li>", "");
-        if (!this.Normals) template = template.replace("<li class=header><a href=\"#command-normals\">Command Normals</a></li>", "");
-        if (!this.Specials) template = template.replace("<li class=header><a href=\"#specials\">Special Attacks</a></li>", "");
-        if (!this.Supers) template = template.replace("<li class=header><a href=\"#supers\">Supers</a></li>", "");
+        if (!this.Normals) {
+            template = template.replace("<li class=header><a href=\"#command-normals\">Command Normals</a></li>", "");
+            template = template.replace("<h2 id=command-normals><a href=\"#command-normals\">Command Normals</a></h2>", "");
+        }
+        if (!this.Specials) {
+            template = template.replace("<li class=header><a href=\"#specials\">Special Attacks</a></li>", "");
+            template = template.replace("<h2 id=specials><a href=\"#specials\">Special Attacks</a></h2>", "");
+        }
+        if (!this.Supers) {
+            template = template.replace("<li class=header><a href=\"#supers\">Supers</a></li>", "");
+            template = template.replace("<h2 id=supers><a href=\"#supers\">Supers</a></h2>", "");
+        }
 
         return template;
     }

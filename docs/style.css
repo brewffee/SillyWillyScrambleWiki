@@ -205,8 +205,6 @@ div.roster a .type {
 }
 
 .info {
-    display: inline-block;
-    float: right;
     width: 240px;
     min-width: 240px;
     height: fit-content;

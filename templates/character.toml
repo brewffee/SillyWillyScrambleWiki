@@ -38,6 +38,19 @@ Image=""            # Move sprite
 Description="""
 """
 
+[[Character.Normals.Data]]
+Name=""             # The version of this move to display
+Damage=""           # How much does this move deal?
+Guard=""            # Where the opponent can block this move
+Startup=""          # How many frames it takes to start the move
+Active=""           # How many frames the move is active
+Recovery=""         # How many frames it takes to recover from the move
+OnBlock=""          # The advantage or disadvantage on block
+OnHit=""            # The advantage or disadvantage on hit
+Invuln=[""]         # Where and how is this move invulnerable?
+SpecialFrames=[""]  # Is there something of note for a specific frame?
+SpecialNote=""      # What's so special about them?
+
 ###################################
 # Special Attacks
 ###################################

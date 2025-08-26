@@ -14,16 +14,16 @@ Type="Gooner"
 ###################################
 [[Character.Specials]] # Riptide
 Name="Riptide"
-Inputs=["[4]6S", "H"]
+Inputs=["[4]6S", "[2]8H"]
 Buttons=["s", "h"]
 Image=""
 Description="""
 Fail throws his trident and hops on, travelling until he hits the opponent or the edge of the screen. At any point
-during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. The %btn(s,S) version
-sends Fail horizontally, while the %btn(h,H) version sends him upwards at a steep angle.
+during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. %btn(s,[4]6S) sends
+Fail horizontally, while %btn(h,[2]8H) sends him upwards at a steep angle.
 <ul>
     <li>%btn(p,P) cancel stops the attack immediately and sends him into a short recovery period.
-    <li>%btn(h,H) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.
+    <li>%btn(k,K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.
 </ul>
 """
 
@@ -53,7 +53,7 @@ higher and launches the opponent upwards a good distance.
 [[Character.Specials]] # Loyalty
 Name="Loyalty"
 Inputs=["214P", "K"]
-Buttons=["k"]
+Buttons=["p", "k"]
 AirOK=true
 Image=""
 Description="""
@@ -69,7 +69,7 @@ attack into another special, including the recovery.
 [[Character.Specials]] # Mending
 Name="Mending"
 Inputs=["623H"]
-Buttons=["k"]
+Buttons=["h"]
 AirOK=true
 Image=""
 Description="""
