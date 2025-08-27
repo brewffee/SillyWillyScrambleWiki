@@ -8,6 +8,9 @@ take advantage when the opportunity presents itself.
 IconPath=""
 PortraitPath=""
 Type="Avian"
+Reversals=[
+    "%ref(Double or Nothing,632146H,h)",
+]
 
 ###################################
 # Command Normals

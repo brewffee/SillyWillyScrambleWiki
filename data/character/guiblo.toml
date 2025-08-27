@@ -6,9 +6,9 @@ correctly, Guiblo can very easily capitalize on the opponent's whiff for great r
 <br><br>
 Guiblo's strategy mainly revolves around controlling the opponent's position using tools such as
 %ref(Gone Fishin',Gone Fishin',k) or his long range normals. Once Guiblo has secured a position, he can can close in
-to strike %ref(Huebenly Buster,the fear of god,_) into the opponent's hearts coupled with his oppressive pressure.
-Boasting incredible air control, terrifying ground control, and a %ref(Parry,powerful parry,_), it will be very easy
-for Guiblo to condition the opponent to act according to his favor.
+to strike %ref(Heavenly Guiblo Buster,the fear of god,_) into the opponent's hearts coupled with his oppressive
+pressure. Boasting incredible air control, terrifying ground control, and a %ref(Parry,powerful parry,_), it will be
+very easy for Guiblo to condition the opponent to act according to his favor.
 <br><br>
 Guiblo's main weakness is that despite his immovable offense, he doesn't hold much in the way of good defensive options.
 He <b>only</b> has command grab supers, both of which could be easily outclassed by a relatively well-placed strike.
@@ -19,10 +19,14 @@ or his parry to steal back his turn.
 While he suffers slightly from his imbalanced kit, don't let that cloud your judgement—All Guiblo needs is to land one
 good sequence and a beer to thoroughly crush his foe.
 """
-
 IconPath="images/guiblo.png"
 PortraitPath="images/guiblo.png"
 Type="Grappler"
+Reversals=[
+    "%ref(Huebenly Buster,623H,h)",
+    "%ref(Parry,214P,p)",
+    "%ref(Ultimate Sandwich,236236P,p)"
+]
 
 ###################################
 # Command Normals

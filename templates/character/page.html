@@ -8,7 +8,7 @@
     <script src="../menu.js"></script>
   </head>
   <body class=main>
-    <header>
+    <header id=top>
       <h1>
         <a href="../index.html">Silly Willy Scramble Wiki</a>
       </h1>
@@ -40,7 +40,7 @@
             %NAV_SUPERS%
           </ul>
         </nav>
-
+        <a class=nav-top href="#top">Back to Top</a>
       </div>
       <main>
         <h2 id=overview><a href="#overview">%NAME%</a> <a href="../index.html">(Back to Home)</a></h2>
@@ -52,11 +52,14 @@
               <img src="%PORTRAITPATH%" alt="%NAME% Portrait">
               <table>
                 <tr><td>Type</td> <td>%TYPE%</td></tr>
+                <tr><td>Reversals</td> <td>%REVERSALS%</td></tr>
               </table>
             </section>
           </div>
         </div>
-        %MECHANICS%
+        <div class=mechanics>
+          %MECHANICS%
+        </div>
         <div class=command-normals>
           <h2 id=command-normals><a href="#command-normals">Command Normals</a></h2>
           %COMMAND_NORMALS%

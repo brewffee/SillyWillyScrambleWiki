@@ -1,12 +1,30 @@
 [Character]
 Name="Tomo"
 Description="""
-Wielding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to then close the gap
-and convert into full combos up close.
+Wielding a glaive and tome, Tomo is a master of the midrange who uses his resources to control the ebb and flow
+of the match.
+<br><br>
+Tomo is entirely defined by his unique resource, %ref(Mana,Mana,generic). Tomo uses a portion of his Mana to cast
+any of his special moves (including %ref(6S,6S,s)). If a move costs more mana than he currently has, it will not
+trigger and instead will whiff. If his Mana is depleted, he will enter %ref(Exhaustion,Exhaustion,generic)—a
+debilitating state that leaves him highly vulnerable to massive damage.
+<br><br>
+Once he is at a safe range, Tomo can use his specials to expertly control the midrange, forcing the opponent to
+think twice about their approach. With the right momentum he can easily keep up a solid web of denial; once
+his opponent is caught, Tomo is free to close in for a full combo combined with the choice of okizeme or resource
+recovery. When having %ref(Mana Crimen,Mana Crimen,k) and 50% meter on his side, Tomo can skip this choice altogether
+and opt for a much longer and more effective pressure sequence which at worst leaves him at neutral odds with the
+opponent.
+<br><br>
+Tomo's kit gives him the freedom to decide how the game unfolds, provided he has the resources to do so. In the
+right hands, Tomo is a highly versatile and cerebral fighter who rewards patience, precision, and exeuction.
 """
 IconPath="images/tomo/icon/Tomo_Icon.png"
 PortraitPath="images/tomo/portrait/Tomo_Portrait.png"
 Type="Magic"
+Reversals=[
+    "%ref(Tonitru Pirouette,236236S,s)",
+]
 
 ###################################
 # Unique Mechanics
@@ -192,7 +210,6 @@ Inputs=["214P", "K"]
 Buttons=["p", "k"]
 Condition="with 15% Mana"
 Images=[""]
-# TODO: paragraphs end as soon as an unordered list is created, investigate further
 Description="""
 Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.

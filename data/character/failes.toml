@@ -8,6 +8,10 @@ character.
 IconPath=""
 PortraitPath=""
 Type="Gooner"
+Reversals=[
+    "%ref(Mending,623H,h)",
+    "%ref(failEs Friday,632146H,h)"
+]
 
 ###################################
 # Special Attacks

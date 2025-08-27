@@ -8,7 +8,7 @@
     <script src="../menu.js"></script>
   </head>
   <body class=main>
-    <header>
+    <header id=top>
       <h1>
         <a href="../index.html">Silly Willy Scramble Wiki</a>
       </h1>
@@ -56,7 +56,7 @@
 
           </ul>
         </nav>
-
+        <a class=nav-top href="#top">Back to Top</a>
       </div>
       <main>
         <h2 id=overview><a href="#overview">Berb</a> <a href="../index.html">(Back to Home)</a></h2>
@@ -71,11 +71,13 @@ whim, Berd can excellently control the flow of the match (quite literally) to hi
               <img src="../" alt="Berb Portrait">
               <table>
                 <tr><td>Type</td> <td>Freaky</td></tr>
+                <tr><td>Reversals</td> <td><em button=x>None</em></td></tr>
               </table>
             </section>
           </div>
         </div>
-        <h2 id=mechanics><a href="#mechanics">Unique Mechanics</a></h2>
+        <div class=mechanics>
+          <h2 id=mechanics><a href="#mechanics">Unique Mechanics</a></h2>
 <a href="#Rifts in Time">
   <h3 id="Rifts in Time" class=move-name>Rifts in Time</h3>
 </a>
@@ -93,6 +95,7 @@ his <a href="#Taunt" class=ref button="taunt" title="Taunt">taunt</a> to a degre
 with his incredible agility and his full-screen super, his time manipulation makes for a truly unique and threatening
 ability.
 </p>
+        </div>
         <div class=command-normals>
           <h2 id=command-normals><a href="#command-normals">Command Normals</a></h2>
           <a href="#Taunt">
@@ -108,8 +111,8 @@ ability.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Advances the in-game timer by 3 seconds.
-</p>
+    <span>Advances the in-game timer by 3 seconds.
+</span>
   </div>
 </div>
         </div>
@@ -130,9 +133,9 @@ ability.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>214P</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr><tr><td>j.214P</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Berb summons a Rift Point to which he can teleport later. Up to three teleport points can be placed at a time,
+    <span>Berb summons a Rift Point to which he can teleport later. Up to three teleport points can be placed at a time,
 overriding the oldest point first.
-</p>
+</span>
   </div>
 </div><a href="#Chrono Shift">
   <h3 id="Chrono Shift" class=move-name>Chrono Shift (Air OK)</h3>
@@ -149,9 +152,9 @@ overriding the oldest point first.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>214K</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr><tr><td>214K~K</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Berb teleports to the most recent Rift Point. Pressing <em class=btn button="k">K</em> again during the animation will prolong the teleport,
+    <span>Berb teleports to the most recent Rift Point. Pressing <em class=btn button="k">K</em> again during the animation will prolong the teleport,
 instead moving to the next most recent point, or if repeated, the oldest point.
-</p>
+</span>
   </div>
 </div><a href="#Distortion">
   <h3 id="Distortion" class=move-name>Distortion</h3>
@@ -168,9 +171,9 @@ instead moving to the next most recent point, or if repeated, the oldest point.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>236S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236S~S</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Berd attacks the opponent, teleporting them to the most recent Rift Point. Pressing <em class=btn button="s">S</em> again will prolong the
+    <span>Berd attacks the opponent, teleporting them to the most recent Rift Point. Pressing <em class=btn button="s">S</em> again will prolong the
 teleport, instead moving to the next most recent point, or if repeated, the oldest point.
-</p>
+</span>
   </div>
 </div><a href="#Clockwork">
   <h3 id="Clockwork" class=move-name>Clockwork</h3>
@@ -187,9 +190,9 @@ teleport, instead moving to the next most recent point, or if repeated, the olde
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>High</td><td>-</td><td>-</td><td>-</td><td>+</td><td></td></tr></tbody>
 </table>
-    <p>Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
+    <span>Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
 on hit, sending the opponent into stagger, or Guard Crush on block.
-</p>
+</span>
   </div>
 </div><a href="#Tempo Synchronization">
   <h3 id="Tempo Synchronization" class=move-name>Tempo Synchronization</h3>
@@ -206,9 +209,9 @@ on hit, sending the opponent into stagger, or Guard Crush on block.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>Berd sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
+    <span>Berd sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
 air on hit.
-</p>
+</span>
   </div>
 </div>
         </div>
@@ -229,11 +232,11 @@ air on hit.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>All (Block only)</td><td>+</td><td>120</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>A powerful move that freezes time, locking the opponent in place. Although it has slow startup, it hits anywhere on
+    <span>A powerful move that freezes time, locking the opponent in place. Although it has slow startup, it hits anywhere on
 the screen and cannot be evaded using invulnerability frames. The opponent is frozen for 2 seconds, allowing Berb an
 opportunity to set up a high-power combo. If the opponent was hit while frozen, they will be launched when time
 unfreezes.
-</p>
+</span>
   </div>
 </div><a href="#Accent Acceleration">
   <h3 id="Accent Acceleration" class=move-name>Accent Acceleration</h3>
@@ -250,8 +253,8 @@ unfreezes.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td></td><td></td><td>+</td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Increases the rate of which the in-game timer and mechanic timers advance by 15%
-</p>
+    <span>Increases the rate of which the in-game timer and mechanic timers advance by 15%
+</span>
   </div>
 </div><a href="#Time Fault">
   <h3 id="Time Fault" class=move-name>Time Fault</h3>
@@ -268,16 +271,16 @@ unfreezes.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>All</td><td>+</td><td>-</td><td>-</td><td>-</td><td>Pass-through</td></tr></tbody>
 </table>
-    <p>Berd jumps backwards and suddenly appears far forwards. If Berd crosses through the opponent, they are hit and a Rift
+    <span>Berd jumps backwards and suddenly appears far forwards. If Berd crosses through the opponent, they are hit and a Rift
 Point is created in their place (if there are not already 3 points active)
-</p>
+</span>
   </div>
 </div>
         </div>
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Wed Aug 27 2025, 10:36:55 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Wed Aug 27 2025, 12:12:42 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

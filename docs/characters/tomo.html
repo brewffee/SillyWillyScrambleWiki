@@ -8,7 +8,7 @@
     <script src="../menu.js"></script>
   </head>
   <body class=main>
-    <header>
+    <header id=top>
       <h1>
         <a href="../index.html">Silly Willy Scramble Wiki</a>
       </h1>
@@ -54,25 +54,42 @@
 
           </ul>
         </nav>
-
+        <a class=nav-top href="#top">Back to Top</a>
       </div>
       <main>
         <h2 id=overview><a href="#overview">Tomo</a> <a href="../index.html">(Back to Home)</a></h2>
         <div class=overview>
           <div class=content>
-            <p>Wielding a glaive and tome, Tomo focuses on keeping the opponent at a safe distance, allowing him to then close the gap
-and convert into full combos up close.
+            <p>Wielding a glaive and tome, Tomo is a master of the midrange who uses his resources to control the ebb and flow
+of the match.
+<br><br>
+Tomo is entirely defined by his unique resource, <a href="#Mana" class=ref button="generic" title="Mana">Mana</a>. Tomo uses a portion of his Mana to cast
+any of his special moves (including <a href="#6S" class=ref button="s" title="6S">6S</a>). If a move costs more mana than he currently has, it will not
+trigger and instead will whiff. If his Mana is depleted, he will enter <a href="#Exhaustion" class=ref button="generic" title="Exhaustion">Exhaustion</a>—a
+debilitating state that leaves him highly vulnerable to massive damage.
+<br><br>
+Once he is at a safe range, Tomo can use his specials to expertly control the midrange, forcing the opponent to
+think twice about their approach. With the right momentum he can easily keep up a solid web of denial; once
+his opponent is caught, Tomo is free to close in for a full combo combined with the choice of okizeme or resource
+recovery. When having <a href="#Mana Crimen" class=ref button="k" title="Mana Crimen">Mana Crimen</a> and 50% meter on his side, Tomo can skip this choice altogether
+and opt for a much longer and more effective pressure sequence which at worst leaves him at neutral odds with the
+opponent.
+<br><br>
+Tomo's kit gives him the freedom to decide how the game unfolds, provided he has the resources to do so. In the
+right hands, Tomo is a highly versatile and cerebral fighter who rewards patience, precision, and exeuction.
 </p>
             <section class=info>
               <h3>Tomo</h3>
               <img src="../images/tomo/portrait/Tomo_Portrait.png" alt="Tomo Portrait">
               <table>
                 <tr><td>Type</td> <td>Magic</td></tr>
+                <tr><td>Reversals</td> <td><a href="#Tonitru Pirouette" class=ref button="s" title="Tonitru Pirouette">236236S</a></td></tr>
               </table>
             </section>
           </div>
         </div>
-        <h2 id=mechanics><a href="#mechanics">Unique Mechanics</a></h2>
+        <div class=mechanics>
+          <h2 id=mechanics><a href="#mechanics">Unique Mechanics</a></h2>
 <a href="#Mana">
   <h3 id="Mana" class=move-name>Mana</h3>
 </a>
@@ -88,6 +105,7 @@ triggers an <b>automatic counter hit</b>. Exhaustion lasts until a couple second
 current combo ends. At the end of this state, Tomo recovers with 100% Mana, and is able to restart his
 offense.
 </p>
+        </div>
         <div class=command-normals>
           <h2 id=command-normals><a href="#command-normals">Command Normals</a></h2>
           <a href="#6S">
@@ -103,10 +121,10 @@ offense.
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>Tomo uses his tome to quickly summon a large wall of magic that reflects any incoming projectiles. In addition to
+    <span>Tomo uses his tome to quickly summon a large wall of magic that reflects any incoming projectiles. In addition to
 its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
 corner combos.
-</p>
+</span>
   </div>
 </div>
         </div>
@@ -127,7 +145,7 @@ corner combos.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>236S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236[S]</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236[H]</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
+    <span>A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
 opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
 can travel before exploding or disappearing.
 <ul>
@@ -138,7 +156,7 @@ can travel before exploding or disappearing.
      the air, the projectile travels diagonally downwards. The explosion no longer triggers automatically, only
      activating when it hits the opponent.</li>
 </ul>
-</p>
+</span>
   </div>
 </div><a href="#Ventus Thrust">
   <h3 id="Ventus Thrust" class=move-name>Ventus Thrust</h3>
@@ -155,7 +173,7 @@ can travel before exploding or disappearing.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>214S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214S~S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214H~H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>Tomo summons blades of wind that can be used to push the opponent.
+    <span>Tomo summons blades of wind that can be used to push the opponent.
 <ul>
     <li>In <em class=btn button="s">S</em> <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
     the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing <em class=btn button="s">S</em> again makes
@@ -164,7 +182,7 @@ can travel before exploding or disappearing.
     Pressing <em class=btn button="h">H</em> again halts his movement to float upwards, shortly before diving into the ground and hitting
     the opponent high.</li>
 </ul>
-</p>
+</span>
   </div>
 </div><a href="#Renovare">
   <h3 id="Renovare" class=move-name>Renovare (Hold OK)</h3>
@@ -181,7 +199,7 @@ can travel before exploding or disappearing.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>22P</td><td></td><td></td><td>-</td><td>-</td><td>-</td><td></td><td></td></tr><tr><td>22K</td><td></td><td></td><td>-</td><td>-</td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Tomo stands in place and recovers his Mana gauge
+    <span>Tomo stands in place and recovers his Mana gauge
 <ul>
     <li><em class=btn button="p">P</em> <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
     should be very careful when using it. This version is almost always overshadowed by <em class=btn button="k">22K</em> unless
@@ -190,7 +208,7 @@ can travel before exploding or disappearing.
     neutral, but is still requires a similar caution to its <em class=btn button="p">P</em> counterpart, as Tomo will gradually lose
     more meter over time.</li>
 </ul>
-</p>
+</span>
   </div>
 </div><a href="#Glacies Pierce">
   <h3 id="Glacies Pierce" class=move-name>Glacies Pierce</h3>
@@ -207,7 +225,7 @@ can travel before exploding or disappearing.
     <table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>214P</td><td>-</td><td>Low</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214K</td><td></td><td>High</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table>
-    <p>Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
+    <span>Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.
 <ul>
     <li>In <em class=btn button="p">P</em> <b>Glacies Pierce</b>, Tomo slams the ground in front of him, sprouting a large pillar of ice
@@ -222,7 +240,7 @@ Boasting its large space control and relatively low mana cost, Glacies Pierce is
 in neutral, making it simultaneously one of Tomo's safest options to set up <a href="#Renovare" class=ref button="generic" title="Renovare">Renovare</a> and a great
 option for setting up damage using a fully charged <a href="#Ignis Rush" class=ref button="generic" title="Ignis Rush">Ignis Rush</a>.
 </p>
-</p>
+</span>
   </div>
 </div>
         </div>
@@ -243,8 +261,8 @@ option for setting up damage using a fully charged <a href="#Ignis Rush" class=r
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td></td><td></td><td>-</td><td></td><td>-</td><td></td><td></td></tr></tbody>
 </table>
-    <p>Tomo instantly charges his Mana gauge to max.
-</p>
+    <span>Tomo instantly charges his Mana gauge to max.
+</span>
   </div>
 </div><a href="#Tonitru Pirouette">
   <h3 id="Tonitru Pirouette" class=move-name>Tonitru Pirouette</h3>
@@ -261,17 +279,17 @@ option for setting up damage using a fully charged <a href="#Ignis Rush" class=r
     <table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Full</td></tr></tbody>
 </table>
-    <p>An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
+    <span>An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
 of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for
 his next move.
-</p>
+</span>
   </div>
 </div>
         </div>
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Wed Aug 27 2025, 10:36:55 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Wed Aug 27 2025, 12:12:42 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

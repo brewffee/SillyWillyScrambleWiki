@@ -15,6 +15,7 @@ Description="""
 IconPath=""         # Path to icon (relative to html dir)
 PortraitPath=""     # Path to portrait art
 Type=""             # Fighting style
+Reversals=[]        # List of moves with invulnerable startup
 
 ###################################
 # Unique Mechanics

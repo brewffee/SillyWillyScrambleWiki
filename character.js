@@ -4,9 +4,11 @@ class Character {
     constructor(data) {
         this.Name = data.Name;
         this.Description = data.Description;
-        this.Type = data.Type;
         this.IconPath = data.IconPath;
         this.PortraitPath = data.PortraitPath;
+        this.Type = data.Type;
+        this.Reversals = data.Reversals;
+
 
         this.Mechanics = data.Mechanics;
         this.Normals = data.Normals;
@@ -164,15 +166,19 @@ class Character {
         // the format for supers is identical to specials
         return this.renderSpecials(supers);
     }
-
+    renderReversals() {
+        if (!this.Reversals) return '<em button=x>None</em>';
+        return this.Reversals.map(rev => this.resolveReferences(rev)).join("<br>");
+    }
     render() {
         let template = fs.readFileSync("templates/character/page.html", "utf8");
         template = template
         .replace(/%NAME%/g, this.Name)
         .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description))
-        .replace(/%TYPE%/g, this.Type)
         .replace(/%PORTRAITPATH%/g, "../" + this.PortraitPath)
         .replace(/%ICONPATH%/g, "../" + this.IconPath)
+        .replace(/%TYPE%/g, this.Type)
+        .replace(/%REVERSALS%/g, this.renderReversals())
         .replace(/%MECHANICS%/g, this.renderMechanics(this.Mechanics))
         .replace(/%COMMAND_NORMALS%/g, this.renderNormals(this.Normals))
         .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
@@ -180,6 +186,8 @@ class Character {
         .replace("%DATE%", new Date().toDateString())
         .replace("%TIME%", new Date().toLocaleTimeString())
         .replace("%TZ%", new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]);
+
+
 
         // Add navigation items
         template = template
