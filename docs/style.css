@@ -8,10 +8,15 @@ body {
 }
 
 header {
-    padding: 12px;
+    padding: 4px 12px;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+header h1 {
+    margin: 12px 0;
+    border-bottom: 1px solid #000;
 }
 
 header a {
@@ -19,8 +24,6 @@ header a {
     display: inline-block;
     font-weight: normal;
     text-decoration: none;
-    border-bottom: 1px solid #000;
-    width: 100%;
 }
 
 .main .container {
@@ -28,7 +31,7 @@ header a {
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 12px;
+    padding: 0 12px 12px;
     gap: 12px;
 }
 
@@ -41,6 +44,37 @@ header a {
     height: fit-content;
     position: sticky;
     top: 12px;
+
+    @media screen and (max-width: 740px) {
+        display: none;
+        position: fixed;
+        top: 56px;
+        background: lightgray;
+        padding: 12px;
+        border: 1px solid black;
+        max-height: calc(100vh - 123px - 48px);
+        overflow-y: scroll;
+    }
+
+    &.shown {
+        display: flex !important;
+    }
+}
+
+.nav-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    border-radius: 0;
+    border: 1px solid #000;
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+
+    @media screen and (max-width: 740px) {
+        display: block;
+    }
 }
 
 nav {
@@ -119,6 +153,7 @@ main {
     box-sizing: border-box;
     padding: 12px;
     min-width: 0;
+    overflow-y: hidden;
 }
 
 main h2 {
@@ -197,6 +232,14 @@ div.roster a .type {
 
 .overview .content {
     display: flex;
+    @media screen and (max-width: 500px) {
+        .info {
+            width: 100%;
+            min-width: 100%;
+            margin: 0 0 12px;
+        }
+        flex-direction: column-reverse;
+    }
 }
 
 .overview p {
@@ -245,6 +288,19 @@ div.roster a .type {
     border: 1px solid #000;
     display: flex;
     margin: 0 0 12px;
+    width: 100%;
+    min-height: fit-content;
+    overflow: hidden;
+
+    /* re-shifts sizing again when the screen is small enough to justify hiding the sidebar */
+    @media screen and (width < 900px) and (width > 740px), screen and (width <= 700px) {
+        flex-direction: column;
+        .move-info {
+            width: unset;
+            border-right: none;
+            border-bottom: 1px solid #000;
+        }
+    }
 }
 
 .move-info {

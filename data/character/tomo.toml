@@ -16,7 +16,7 @@ Name="Mana"
 Description="""
 Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana equal proportionate
 to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
-stay on top of his resource. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
+stay on top of his resources. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
 """
 
 [[Character.Mechanics]] # Exhaustion
@@ -38,7 +38,7 @@ Button="s"
 Condition="with 5% Mana"
 Images=["images/tomo/move/Tomo_6S.png"]
 Description="""
-Tomo uses his tome to quickly summon a wall of magic that not only reflects any incoming projectiles. In addition to
+Tomo uses his tome to quickly summon a large wall of magic that reflects any incoming projectiles. In addition to
 its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
 corner combos.
 """

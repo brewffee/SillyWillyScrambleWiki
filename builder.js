@@ -28,7 +28,8 @@ function main() {
 
     template = template.replace(/%CHARACTERS%/g, characterSelector.join(""))
         .replace("%DATE%", new Date().toDateString())
-        .replace("%TIME%", new Date().toLocaleTimeString());
+        .replace("%TIME%", new Date().toLocaleTimeString())
+        .replace("%TZ%", new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]);
 
     fs.writeFileSync("docs/index.html", template);
 

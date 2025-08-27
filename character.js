@@ -178,7 +178,8 @@ class Character {
         .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
         .replace(/%SUPERS%/g, this.renderSupers(this.Supers))
         .replace("%DATE%", new Date().toDateString())
-        .replace("%TIME%", new Date().toLocaleTimeString());
+        .replace("%TIME%", new Date().toLocaleTimeString())
+        .replace("%TZ%", new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]);
 
         // Add navigation items
         template = template
