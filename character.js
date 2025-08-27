@@ -187,12 +187,7 @@ class Character {
         .replace(/%MECHANICS%/g, this.renderMechanics(this.Mechanics))
         .replace(/%COMMAND_NORMALS%/g, this.renderNormals(this.Normals))
         .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
-        .replace(/%SUPERS%/g, this.renderSupers(this.Supers))
-        .replace("%DATE%", new Date().toDateString())
-        .replace("%TIME%", new Date().toLocaleTimeString())
-        .replace("%TZ%", new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]);
-
-
+        .replace(/%SUPERS%/g, this.renderSupers(this.Supers));
 
         // Add navigation items
         template = template
