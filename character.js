@@ -9,7 +9,6 @@ class Character {
         this.Type = data.Type;
         this.Reversals = data.Reversals;
 
-
         this.Mechanics = data.Mechanics;
         this.Normals = data.Normals;
         this.Specials = data.Specials;
@@ -78,19 +77,21 @@ class Character {
         }).join('');
     }
 
-    renderImages(move, name) {
-        if (!move.Images) return '';
+    renderImages(images, notes, name) {
+        if (!images) return '';
         let imageStr = "";
-        for (let i = 0; i < move.Images.length; i++) {
-            if (!move.Images[i]) {
-                imageStr += `<img alt="${name} Sprite">\n`
-            } else {
-                imageStr += `<img src="../${move.Images[i]}" alt="${name} Sprite">\n`
+        for (let i = 0; i < images.length; i++) {
+            if (!fs.existsSync("docs/" + images[i])) {
+                console.log(`[${this.Name}] Could not find requested image: ${images[i]}`);
             }
 
-            if (move.ImageNotes?.[i]) {
-                imageStr += `<span class=image-note>${move.ImageNotes[i]}</span>`
+            if (!images[i]) {
+                imageStr += `<img src="" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
+            } else {
+                imageStr += `<img src="../${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
             }
+
+            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`
         }
         return imageStr;
     }
@@ -99,12 +100,14 @@ class Character {
         if (!normals) return '';
         return normals.map((normal) => {
             console.log(`[${this.Name}] Generating documentation for command normal: ${normal.Input}`);
+
             let normalTemplate = fs.readFileSync('templates/character/normal.html', 'utf8');
             normalTemplate = normalTemplate
             .replace(/%INPUT%/g, normal.Input)
             .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${normal.Condition}</em>` : '')
             .replace(/%BUTTON%/g, normal.Button)
-            .replace(/%IMAGE%/g, this.renderImages(normal, normal.Input))
+            .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.ImageNotes, normal.Input))
+            .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.HitboxNotes, normal.Input))
             .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
 
@@ -130,8 +133,10 @@ class Character {
             let specialTemplate = fs.readFileSync('templates/character/special.html', 'utf8');
             specialTemplate = specialTemplate
             .replace(/%NAME%/g, special.Name)
+            .replace(/%NAMEJ%/g, special.Name.replace(/ /g, '-'))
             .replace(/%CONDITION%/g, special.Condition ? `<em button=x>${special.Condition}</em>` : '')
-            .replace(/%IMAGE%/g, this.renderImages(special, special.Name))
+            .replace(/%IMAGE%/g, this.renderImages(special.Images, special.ImageNotes, special.Name))
+            .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.HitboxNotes, special.Name))
             .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
 
@@ -214,6 +219,5 @@ class Character {
         return template;
     }
 }
-
 
 module.exports = Character;

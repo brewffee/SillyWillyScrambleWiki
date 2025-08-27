@@ -55,6 +55,7 @@ Input="6S"
 Button="s"
 Condition="with 5% Mana"
 Images=["images/tomo/move/Tomo_6S.png"]
+Hitboxes=["images/tomo/move/Tomo_6S_Hitbox.png"]
 Description="""
 Tomo uses his tome to quickly summon a large wall of magic that reflects any incoming projectiles. In addition to
 its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
@@ -78,7 +79,12 @@ HoldOK=true
 AirOK=true
 Buttons=["s", "h"]
 Condition="with 20% Mana"
-Images=[""]
+Images=["images/tomo/move/Tomo_236X.png", "images/tomo/move/Tomo_j236X.png"]
+Hitboxes=[
+    "images/tomo/move/Tomo_236S_Hitbox.png", "images/tomo/move/Tomo_236H_Hitbox.png",
+    "images/tomo/move/Tomo_j236S_Hitbox.png", "images/tomo/move/Tomo_j236H_Hitbox.png",
+]
+HitboxNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,j.S) version", "%btn(h,j.H) version"]
 Description="""
 A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
 opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
@@ -131,7 +137,18 @@ Name="Ventus Thrust"
 Inputs=["214S", "H"]
 Buttons=["s", "h"]
 Condition="with 10% Mana"
-Images=[""]
+Images=[
+    "images/tomo/move/Tomo_Ventus_Thrust.png",
+    "images/tomo/move/Tomo_214S~S.png",
+    "images/tomo/move/Tomo_214H~H.png"
+]
+Hitboxes=[
+    "images/tomo/move/Tomo_214S_Hitbox.png",
+    "images/tomo/move/Tomo_214H_Hitbox.png",
+    "images/tomo/move/Tomo_214S~S_Hitbox.png",
+    "images/tomo/move/Tomo_214H~H_Hitbox.png"
+]
+HitboxNotes=["%btn(s,S) version", "%btn(h,H) version"]
 Description="""
 Tomo summons blades of wind that can be used to push the opponent.
 <ul>
@@ -181,7 +198,8 @@ Name="Renovare"
 Inputs=["22P", "K"]
 Buttons=["p", "k"]
 HoldOK=true
-Images=[""]
+Images=["images/tomo/move/Tomo_22X.png"]
+Hitboxes=["images/tomo/move/Tomo_22X.png"]
 Description="""
 Tomo stands in place and recovers his Mana gauge
 <ul>
@@ -209,7 +227,8 @@ Name="Glacies Pierce"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 Condition="with 15% Mana"
-Images=[""]
+Images=["images/tomo/move/Tomo_214P.png", "images/tomo/move/Tomo_214K.png"]
+Hitboxes=["images/tomo/move/Tomo_214P_Hitbox.png", "images/tomo/move/Tomo_214K_Hitbox.png"]
 Description="""
 Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.
@@ -221,11 +240,9 @@ place until a set amount of time passes or immediately upon the next hit.
     causing a ground bounce. The ice trail is summoned high enough to where it is difficult to jump over, and low
     enough that the opponent needs to use a good low-profile option to respond.</li>
 </ul>
-<p>
 Boasting its large space control and relatively low mana cost, Glacies Pierce is a formidable move that demands respect
 in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,generic) and a great
 option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,generic).
-</p>
 """
 [[Character.Specials.Data]]
 Version="214P"
@@ -251,7 +268,8 @@ Name="Mana Crimen"
 Inputs=["214214K"]
 Buttons=["k"]
 Condition="with 50% meter"
-Images=[""]
+Images=["images/tomo/move/Tomo_214214K.png"]
+Hitboxes=["images/tomo/move/Tomo_214214K_Hitbox.png"]
 Description="""
 Tomo instantly charges his Mana gauge to max.
 """
@@ -264,7 +282,8 @@ Name="Tonitru Pirouette"
 Inputs=["236236S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Images=[""]
+Images=["images/tomo/move/Tomo_236236S.png"]
+Hitboxes=["images/tomo/move/Tomo_236236S_Hitbox.png"]
 Description="""
 An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
 of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for

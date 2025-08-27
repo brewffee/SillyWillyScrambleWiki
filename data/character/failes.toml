@@ -20,7 +20,18 @@ Reversals=[
 Name="Riptide"
 Inputs=["[4]6S", "[2]8H"]
 Buttons=["s", "h"]
-Images=[""]
+Images=[
+    "images/failes/Failes_46S.png", "images/failes/Failes_28H.png",
+    "images/failes/Failes_46S~K.png", "images/failes/Failes_28H~K.png"
+]
+Hitboxes=[
+    "images/failes/Failes_46S_Hitbox.png", "images/failes/Failes_28H_Hitbox.png",
+    "images/failes/Failes_Riptide~K_Hitbox.png"
+]
+HitboxNotes=[
+    "%btn(s,[4]6S) version", "%btn(h,[2]8H) version",
+    "%btn(k,K) cancel"
+]
 Description="""
 Fail throws his trident and hops on, travelling until he hits the opponent or the edge of the screen. At any point
 during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. %btn(s,[4]6S) sends
@@ -53,13 +64,13 @@ Recovery="-"
 Version="K"
 Recovery="-"
 
-
 [[Character.Specials]] # Channeling
 Name="Channeling"
 Inputs=["236S"]
 Buttons=["s"]
 AirOK=true
-Images=[""]
+Images=["images/failes/Failes_236S.png", "images/failes/Failes_236S_Dive.png"]
+Hitboxes=["images/failes/Failes_236S_Hitbox.png", "images/failes/Failes_236S_Dive_Hitbox.png"]
 Description="""
 Fail, preserving his existing momentum, jumps into the air and charges his opponent with electricity. After hovering in
 the air, he quickly comes down for a high hitting dive attack. If he is already in the air, he will immediately begin
@@ -86,7 +97,8 @@ OnBlock="-"
 Name="Impaling"
 Inputs=["236K"]
 Buttons=["k"]
-Images=[""]
+Images=["images/failes/Failes_236K.png", "images/failes/Failes_236K_2.png"]
+Hitboxes=["images/failes/Failes_236K_Hitbox.png", "images/failes/Failes_236K_2_Hitbox.png"]
 Description="""
 Fail slides along the floor until he hits the opponent or a set distance, before performing a powerful strike with his
 trident. Has a great low-profile and hits the opponent low for both slide and strike. The strike also reaches much
@@ -106,7 +118,15 @@ Name="Loyalty"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 AirOK=true
-Images=[""]
+Images=[
+    "images/failes/Failes_Loyalty.png",
+    "images/failes/Failes_214X~X.png"
+]
+Hitboxes=[
+    "images/failes/Failes_214P_Hitbox.png",
+    "images/failes/Failes_214K_Hitbox.png",
+    "images/failes/Failes_214X~X_Hitbox.png"
+]
 Description="""
 Fail throws his trident at a specified angle. If he presses the corresponding button again during the throw, Fail
 moves to the trident's position. Additionally, if he is moving towards the trident, he can cancel the rest of the
@@ -144,7 +164,8 @@ Name="Mending"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
-Images=[""]
+Images=["images/failes/Failes_623H.png"]
+Hitboxes=["images/failes/Failes_623H_Hitbox.png"]
 Description="""
 An invincible rising reversal. Fail rises into the air as he spins his trident around him, preserving existing momentum.
 Launches the opponent upwards and gains a special cancel on hit.
@@ -176,7 +197,8 @@ Name="Trident Tornado"
 Inputs=["632146S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Images=[""]
+Images=["images/failes/Failes_632146S.png"]
+Hitboxes=["images/failes/Failes_632146S_Hitbox.png", "images/failes/Failes_632146S_Trident_Hitbox.png"]
 Description="""
 Fail summons 3 tridents that follow him around. The tridents fly towards the opponent one at a time, with small delays
 between each launch, giving him safe pressure strings or excellent corner carry. On hit, the opponent is launched
@@ -196,7 +218,16 @@ Name="failEs Friday"
 Inputs=["632146H"]
 Buttons=["h"]
 Condition="with 50% meter"
-Images=[""]
+Images=[
+    "images/failes/Failes_632146H.png",
+    "images/failes/Failes_632146H_Finish.png",
+    "images/failes/Failes__632146H_Whiff.png"
+]
+Hitboxes=[
+    "images/failes/Failes_632146H_Hitbox.png",
+    "images/failes/Failes_632146H_Finish_Hitbox.png",
+    "images/failes/Failes_632146H_Whiff_Hitbox.png"
+]
 Description="""
 An invincible rising reversal. Fail instantly flies offscreen. If the first hit makes contact with the opponent, he
 comes back down for a finisher. However, if blocked or whiffed, Fail falls down, unable to move and in a guaranteed

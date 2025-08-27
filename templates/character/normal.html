@@ -4,7 +4,16 @@
 <div class=move>
   <div class=move-info>
     <span class=move-input button=%INPUT%>%INPUT%%CONDITION%</span>
-    %IMAGE%
+    <div class=image-container>
+      %IMAGE%
+    </div>
+    <div class=hitbox-container>
+      %HITBOX%
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id=%INPUT%-hitbox-toggle class=hitbox-checkbox hidden>
+      <label for=%INPUT%-hitbox-toggle class=hitbox-btn>Hitbox</label>
+    </div>
   </div>
   <div class=move-details>
     %FRAMEDATA%

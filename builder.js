@@ -4,52 +4,61 @@ const Character = require('./character.js');
 
 let characters = [];
 
-function main() {
+function loadCharacters() {
+    console.log("[Main] Reading character data...");
     fs.readdirSync("data/character").forEach(file => {
         if (file.endsWith(".toml")) {
             const tomlContent = fs.readFileSync("data/character/" + file, "utf8");
             characters.push(new Character(toml.parse(tomlContent).Character));
         }
     });
+}
 
-    // Main Page
+function generateMain() {
     console.log("[Main] Generating main page...");
-    let template = fs.readFileSync("templates/index.html", "utf8");
-    template = template.replace(/%CHARALIST%/g, characters.map(character => character.mainNav).join(""));
-    let characterSelector = characters.map(character => {
-        let template = fs.readFileSync("templates/charselector.html", "utf8");
-        template = template
-            .replace(/%NAME%/g, character.Name.toLowerCase())
-            .replace(/%REALNAME%/g, character.Name)
-            .replace(/%ICONPATH%/g, character.IconPath)
-            .replace(/%TYPE%/g, character.Type);
-        return template;
-    });
+    let mainTemplate = fs.readFileSync("templates/index.html", "utf8");
 
-    template = template.replace(/%CHARACTERS%/g, characterSelector.join(""))
+    mainTemplate = mainTemplate.replace(/%CHARALIST%/g, characters.map(character => character.mainNav).join(""))
+        .replace(/%CHARACTERS%/g, characters.map((chara) => {
+            let charaTemplate = fs.readFileSync("templates/character/selector.html", "utf8");
+            charaTemplate = charaTemplate.replace(/%NAME%/g, chara.Name.toLowerCase())
+                .replace(/%REALNAME%/g, chara.Name)
+                .replace(/%ICONPATH%/g, chara.IconPath)
+                .replace(/%TYPE%/g, chara.Type);
+            return charaTemplate;
+        }).join(""))
         .replace("%DATE%", new Date().toDateString())
         .replace("%TIME%", new Date().toLocaleTimeString())
         .replace("%TZ%", new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2]);
 
-    fs.writeFileSync("docs/index.html", template);
+    fs.writeFileSync("docs/index.html", mainTemplate);
+}
+
+function generateCharacter(character) {
+    console.log(`[${character.Name}] Generating character page...`);
+    if (!fs.existsSync("docs/characters/")) fs.mkdirSync("docs/characters/");
+    let rendered = character.render();
+
+    // Navbar can only be built after the main character content is rendered i think
+    rendered = rendered.replace("%CHARALIST%", characters.map(character => character.characterNav+"\n").join(""));
+    rendered = rendered.replace(character.characterNav, character.characterNavActive);
+
+    // gg
+    fs.writeFileSync("docs/characters/" + character.Name.toLowerCase() + ".html", rendered);
+}
+
+function main() {
+    loadCharacters();
+
+    // Main Page
+    generateMain();
 
     // Character Pages
     characters.forEach(character => {
-        console.log(`[${character.Name}] Generating character page...`);
-        if (!fs.existsSync("docs/characters/")) fs.mkdirSync("docs/characters/");
-        let rendered = character.render();
-
-        // Navbar can only be built after the main character content is rendered i think
-        rendered = rendered.replace("%CHARALIST%", characters.map(character => character.characterNav+"\n").join(""));
-        rendered = rendered.replace(character.characterNav, character.characterNavActive);
-
-        // gg
-        fs.writeFileSync("docs/characters/" + character.Name.toLowerCase() + ".html", rendered);
+        generateCharacter(character);
     });
 
     // todo: System Pages
-
-
     console.log("Done!");
 }
 

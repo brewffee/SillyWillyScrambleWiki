@@ -353,7 +353,10 @@ div.roster a .type {
     min-width: 230px;
     width: 240px;
     padding: 4px 8px;
+    padding-bottom: 28px;
     gap: 4px;
+    text-align: center;
+    position: relative;
 }
 
 a:has(.move-name) {
@@ -397,6 +400,33 @@ em { font-style: normal }
     display: block;
     margin: 0 auto;
     font-size: 12px;
+}
+
+.move-info .hitbox-container {
+    display: none;
+}
+
+.move-info:has(input:checked) {
+    .hitbox-container { display: block }
+    .image-container { display: none }
+}
+
+.hitbox-btn {
+    padding: 2px 16px;
+    background: linear-gradient(0deg, #d4d4d4 0%, white 100%);
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid black;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hitbox-checkbox:checked + .hitbox-btn {
+    background: linear-gradient(0deg, #ebebeb 0%, #b6b6b6 100%);
 }
 
 .move-details {

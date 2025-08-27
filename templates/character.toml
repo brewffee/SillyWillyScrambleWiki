@@ -37,10 +37,12 @@ AirOnly=false       # Can this only be used in the air?
 Condition=""        # Does this move have any special requirements?
 Images=[""]         # Featured move sprites
 ImageNotes=[""]     # Notes for each featured move sprite
+Hitboxes=[""]       # Hitboxes for this move
+HitboxNotes=[""]    # Notes for each hitbox
 Description="""
 """
 
-[[Character.Normals.Data]]
+[[Character.Normals.Data]] # todo: this might get moved into a separate frame data file
 Version=""          # The version of this move to display
 Damage=""           # How much does this move deal?
 Guard=""            # Where the opponent can block this move
@@ -63,6 +65,8 @@ Buttons=[""]        # The button for each input, should match the order of the a
 Condition=""        # Special requirements for the move, displayed after input string
 Images=[""]         # Featured move sprites
 ImageNotes=[""]     # Notes for each featured move sprite
+Hitboxes=[""]       # Hitboxes for this move
+HitboxNotes=[""]    # Notes for each hitbox
 Description="""
 """
 
@@ -76,6 +80,8 @@ Buttons=[""]        # The button for each input, should match the order of the a
 Condition=""        # Will mostly be "with 50% meter" in the case of supers
 Images=[""]         # Featured move sprites
 ImageNotes=[""]     # Notes for each featured move sprite
+Hitboxes=[""]       # Hitboxes for this move
+HitboxNotes=[""]    # Notes for each hitbox
 Description="""
 """
 
