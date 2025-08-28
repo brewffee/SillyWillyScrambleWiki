@@ -4,6 +4,7 @@ const Character = require('./character.js');
 
 let characters = [];
 
+// parses all character data from the data/character directory
 function loadCharacters() {
     console.log("[Main] Reading character data...");
     fs.readdirSync("data/character").forEach(file => {
@@ -27,11 +28,12 @@ function compareVersions(older, newer) { // true if change, false if ok
     return result !== existing;
 }
 
+// updates the main page
 function generateMain() {
     console.log("[Main] Generating main page...");
     let mainTemplate = fs.readFileSync("templates/index.html", "utf8");
 
-    mainTemplate = mainTemplate.replace(/%CHARALIST%/g, characters.map(character => character.mainNav).join(""))
+    mainTemplate = mainTemplate.replace("%CHARALIST%", characters.map(character => character.mainNav).join(""))
         .replace(/%CHARACTERS%/g, characters.map((chara) => {
             let charaTemplate = fs.readFileSync("templates/character/selector.html", "utf8");
             charaTemplate = charaTemplate.replace(/%NAME%/g, chara.Name.toLowerCase())
@@ -52,13 +54,14 @@ function generateMain() {
         }
 }
 
+// updates or creates a character page
 function generateCharacter(character) {
     console.log(`[${character.Name}] Generating character page...`);
     if (!fs.existsSync("docs/characters/")) fs.mkdirSync("docs/characters/");
     let rendered = character.render();
 
     // Navbar can only be built after the main character content is rendered i think
-    rendered = rendered.replace("%CHARALIST%", characters.map(character => character.characterNav+"\n").join(""));
+    rendered = rendered.replace("%CHARALIST%", characters.map(character => character.characterNav).join(""));
     rendered = rendered.replace(character.characterNav, character.characterNavActive);
 
     // Compare the contents

@@ -33,7 +33,6 @@ Input=""            # Input string
 Button=""           # Any of p, k, s, x, or taunt
 AirOK=false         # Can this be used in the air?
 HoldOK=false        # Can this be held?
-AirOnly=false       # Can this only be used in the air?
 Condition=""        # Does this move have any special requirements?
 Images=[""]         # Featured move sprites
 ImageNotes=[""]     # Notes for each featured move sprite

@@ -49,8 +49,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Bet
 Name="Bet"
-Inputs=["236P", "S", "H"]
-AirOnly=true
+Inputs=["j.236P", "S", "H"]
 Buttons=["p", "s", "h"]
 Images=["images/seagull/move/Seagull_Bet.png"]
 Hitboxes=["images/seagull/move/Seagull_Bet_Hitbox.png"]
@@ -87,10 +86,9 @@ OnBlock="-"
 
 [[Character.Specials]] # Skill
 Name="Skill"
-Inputs=["236K"]
+Inputs=["j.236K"]
 Buttons=["k"]
-AirOnly=true
-Images=["images/seagull/move/Seagull_236K.png"]
+Images=["images/seagull/move/Seagull_j236K.png"]
 Description="""
 Seagull shoots himself downwards at a steep angle with no hitbox. He can use this move to quickly cross through the
 opponent for a scary three-way mixup, or to escape a dire situation with low commitment.

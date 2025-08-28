@@ -70,6 +70,7 @@ OnBlock="-"
 Input="3S"
 Button="s"
 Images=["images/guiblo/Guiblo_3S.png"]
+Hitboxes=["images/guiblo/Guiblo_3S_Hitbox.png"]
 Description="""
 Guiblo drops a rake on the ground and steps on it, launching the opponent high into the air.
 """

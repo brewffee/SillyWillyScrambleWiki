@@ -40,6 +40,30 @@ class Character {
         return result;
     }
 
+    // adds Hold or Air OK to qualifying moves
+    renderExtras(move) {
+        if (move.HoldOK && move.AirOK) {
+            return " (Hold, Air OK)";
+        } else if (move.HoldOK) {
+            return " (Hold OK)";
+        } else if (move.AirOK) {
+            return " (Air OK)";
+        }
+
+        return "";
+    }
+
+    // utility for moves with multiple inputs (ex 236P/K/S)
+    renderInputString(inputs, buttons) {
+        let inputStr = inputs[0];
+        for (let i = 1; i < buttons.length; i++) {
+            if (buttons.length !== inputs.length) return; // what are u doing ????
+            inputStr+=`<em button=or>/</em><em button=${buttons[i]}>${inputs[i]}</em>`;
+        }
+        return inputStr;
+    }
+
+    // constructs the table for displaying frame data
     renderFrameData(data) {
         if (!data) return '';
         // create the header and body
@@ -64,6 +88,7 @@ class Character {
         return frameDataTable + "</tbody>\n</table>";
     }
 
+    // additional headers for character specific mechanics
     renderMechanics(mechanics) {
         if (!mechanics) return '';
         const mechanicsHeader = "<h2 id=mechanics><a href=\"#mechanics\">Unique Mechanics</a></h2>\n"
@@ -77,6 +102,7 @@ class Character {
         }).join('');
     }
 
+    // creates the image gallery
     renderImages(images, notes, name) {
         if (!images) return '';
         let imageStr = "";
@@ -96,6 +122,7 @@ class Character {
         return imageStr;
     }
 
+    // command normals (might be renamed if normal moves are also displayed)
     renderNormals(normals) {
         if (!normals) return '';
         return normals.map((normal) => {
@@ -104,6 +131,7 @@ class Character {
             let normalTemplate = fs.readFileSync('templates/character/normal.html', 'utf8');
             normalTemplate = normalTemplate
             .replace(/%INPUT%/g, normal.Input)
+            .replace(/%EXTRA%/g, this.renderExtras(normal))
             .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${normal.Condition}</em>` : '')
             .replace(/%BUTTON%/g, normal.Button)
             .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.ImageNotes, normal.Input))
@@ -111,20 +139,11 @@ class Character {
             .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
 
-            // add Hold or Air OK to the end of the move name if it has those properties
-            if (normal.HoldOK === true && normal.AirOK === true) {
-                normalTemplate = normalTemplate.replace(/%EXTRA%/g, ' (Hold, Air OK)');
-            } else if (normal.HoldOK === true) {
-                normalTemplate = normalTemplate.replace(/%EXTRA%/g, ' (Hold OK)');
-            } else if (normal.AirOK === true) {
-                normalTemplate = normalTemplate.replace(/%EXTRA%/g, ' (Air OK)');
-            } else {
-                normalTemplate = normalTemplate.replace(/%EXTRA%/g, '');
-            }
-
             return normalTemplate;
         }).join('');
     }
+
+    // special moves (attacks that have a name or more complex inputs)
     renderSpecials(specials) {
         if (!specials) return '';
         return specials.map((special) => {
@@ -134,47 +153,31 @@ class Character {
             specialTemplate = specialTemplate
             .replace(/%NAME%/g, special.Name)
             .replace(/%NAMEJ%/g, special.Name.replace(/ /g, '-'))
+            .replace(/%EXTRA%/g, this.renderExtras(special))
+            .replace(/%BUTTON%/g, special.Buttons[0])
+            .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
             .replace(/%CONDITION%/g, special.Condition ? `<em button=x>${special.Condition}</em>` : '')
             .replace(/%IMAGE%/g, this.renderImages(special.Images, special.ImageNotes, special.Name))
             .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.HitboxNotes, special.Name))
             .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
             .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
 
-            // More advanced configuration for this part
-            specialTemplate = specialTemplate.replace(/%BUTTON%/g, special.Buttons[0]);
-
-            let inputStr = "";
-            if (special.AirOnly === true) inputStr += "j.";
-            inputStr += special.Inputs[0];
-
-            for (let i = 1; i < special.Buttons.length; i++) {
-                if (special.Buttons.length !== special.Inputs.length) return; // what are u doing ????
-                // add <em button=x>/</em> <em button=%BUTTON%>%INPUT%</em> for each input
-                inputStr+=`<em button=or>/</em><em button=${special.Buttons[i]}>${special.Inputs[i]}</em>`;
-            }
-            specialTemplate = specialTemplate.replace(/%INPUT%/g, inputStr);
-
-            if (special.HoldOK === true && special.AirOK === true) {
-                specialTemplate = specialTemplate.replace(/%EXTRA%/g, ' (Hold, Air OK)');
-            } else if (special.HoldOK === true) {
-                specialTemplate = specialTemplate.replace(/%EXTRA%/g, ' (Hold OK)');
-            } else if (special.AirOK === true) {
-                specialTemplate = specialTemplate.replace(/%EXTRA%/g, ' (Air OK)');
-            } else {
-                specialTemplate = specialTemplate.replace(/%EXTRA%/g, '');
-            }
-
             return specialTemplate;
         }).join('');
     }
+
+    // supers (just a wrapper for renderSpecials, format is identical)
     renderSupers(supers) {
-        // the format for supers is identical to specials
         return this.renderSpecials(supers);
     }
+
+    // reversals field of the info table
     renderReversals() {
         if (!this.Reversals) return '<em button=x>None</em>';
         return this.Reversals.map(rev => this.resolveReferences(rev)).join("<br>");
     }
+
+    // semi-final page generation before populating navbar and update time
     render() {
         let template = fs.readFileSync("templates/character/page.html", "utf8");
         template = template
