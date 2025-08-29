@@ -2,7 +2,7 @@
 Name="Seagull"
 Description="""
 Seagull is a rushdown character with tight air movement who focuses on air combos and tricky movement to overwhelm
-the opponent. With an astonishing 3 air jumps and incredible mobility, Seagull is able to stay out of reach and
+the opponent. With an astonishing three air jumps and incredible mobility, Seagull is able to stay out of reach and
 take advantage when the opportunity presents itself.
 """
 IconPath=""
@@ -54,10 +54,10 @@ Buttons=["p", "s", "h"]
 Images=["images/seagull/move/Seagull_Bet.png"]
 Hitboxes=["images/seagull/move/Seagull_Bet_Hitbox.png"]
 Description="""
-Seagull quickly dashes through the air, hitting anything in his path. %btn(p,P) version sends Seagull diagonally
-upwards, %btn(s,S) version sends Seagull horizontally, and %btn(h,H) version sends Seagull diagonally downwards.
+Seagull quickly dashes through the air, hitting anything in his path. The %btn(p,P) version sends Seagull diagonally
+upwards, the %btn(s,S) version sends Seagull horizontally, and the %btn(h,H) version sends Seagull diagonally downwards.
 All versions of Bet hit overhead. Using %btn(s,S) or %btn(h,H) <b>Bet</b> close to the ground combined with the
-threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredbly ambiguous overhead.
+threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredibly ambiguous overhead.
 """
 [[Character.Specials.Data]]
 Version="j.236P"
@@ -194,7 +194,7 @@ Hitboxes=["images/seagull/move/Seagull_214214P_Hitbox.png"]
 ImageNotes=["If you can't beat 'em, join 'em"]
 Description="""
 Seagull releases a large amount of energy, transforming himself into GroundOrangeDuck for a short duration. While in
-Duck form, Seagull deals more damage and is able to freely cancel specials into eachother, even if they miss.
+Duck form, Seagull deals more damage and is able to freely cancel specials into each-other, even if they whiff.
 """
 [[Character.Supers.Data]]
 Version="214214P"

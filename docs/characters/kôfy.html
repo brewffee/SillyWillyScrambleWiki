@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kôfy - Silly Willy Scramble Wiki</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../menu.js"></script>
+  </head>
+  <body class=main>
+    <header id=top>
+      <h1>
+        <a href="../index.html">Silly Willy Scramble Wiki</a>
+      </h1>
+    </header>
+
+    <div class="container">
+      <button class=nav-toggle onclick="showMenu()">&ctdot;</button>
+      <div class="sidebar">
+        <nav>
+          <h3>Navigation <input type=checkbox checked="checked"></h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class=header>Characters</li>
+            <li><a href="./berb.html">Berb</a></li><li><a href="./failes.html">failEs</a></li><li><a href="./guiblo.html">Guiblo</a></li><li class=active><a>Kôfy</a></li><li><a href="./seagull.html">Seagull</a></li><li><a href="./tomo.html">Tomo</a></li>
+          </ul>
+        </nav>
+
+        <nav>
+          <h3>Table of Contents <input type=checkbox checked="checked"></h3>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            
+            
+            <li class=header><a href="#command-normals">Command Normals</a></li>
+            <li><a href="#Taunt">Taunt</a></li>
+<li><a href="#j2K">j.2K</a></li>
+
+            <li class=header><a href="#specials">Special Attacks</a></li>
+            <li><a href="#Special1">Special1</a></li>
+<li><a href="#Special2">Special2</a></li>
+<li><a href="#Special3">Special3</a></li>
+<li><a href="#Special4">Special4</a></li>
+<li><a href="#Special5">Special5</a></li>
+<li><a href="#Special6">Special6</a></li>
+
+            <li class=header><a href="#supers">Supers</a></li>
+            <li><a href="#Super1">Super1</a></li>
+<li><a href="#Super2">Super2</a></li>
+
+          </ul>
+        </nav>
+        <a class=nav-top href="#top">Back to Top</a>
+      </div>
+      <main>
+        <h2 id=overview><a href="#overview">Kôfy</a> <a href="../index.html">(Back to Home)</a></h2>
+        <div class=overview>
+          <div class=content>
+            <p></p>
+            <section class=info>
+              <h3>Kôfy</h3>
+              <img src="../images/kofy/Kofy_Portrait.png" alt="Kôfy Portrait">
+              <table>
+                <tr><td>Type</td> <td>All-Arounder</td></tr>
+                <tr><td>Reversals</td> <td><a href="#Special3" class=ref button="p" title="Special3">214P</a><br><a href="#Super2" class=ref button="p" title="Super2">632146P</a></td></tr>
+              </table>
+            </section>
+          </div>
+        </div>
+        <div class=mechanics>
+          
+        </div>
+        <div class=command-normals>
+          <h2 id=command-normals><a href="#command-normals">Command Normals</a></h2>
+          <a href="#Taunt">
+  <h3 id=Taunt class=move-name button=taunt>Taunt</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=Taunt>Taunt</span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_Taunt.png" alt="Taunt Sprite " title="images/kofy/Kofy_Taunt.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_Taunt_Explosion_Hitbox.png" alt="Taunt Sprite " title="images/kofy/Kofy_Taunt_Explosion_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id=Taunt-hitbox-toggle class=hitbox-checkbox hidden>
+      <label for=Taunt-hitbox-toggle class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>Unblockable</td><td>180-Until Released</td><td>3</td><td>-</td><td>-</td><td>180+F Guard Point</td></tr></tbody>
+</table></div>
+    <span>Summons a handheld goopert. After 3 seconds, the goopert gains a guard point. If hit by the opponent, causes an
+explosion that deals damage to both players. Does not beat projectile moves.
+</span>
+  </div>
+</div><a href="#j.2K">
+  <h3 id=j.2K class=move-name button=k>j.2K</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=j.2K>j.2K</span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_j2K.png" alt="j.2K Sprite " title="images/kofy/Kofy_j2K.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_j2K_Hitbox.png" alt="j.2K Sprite " title="images/kofy/Kofy_j2K_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id=j.2K-hitbox-toggle class=hitbox-checkbox hidden>
+      <label for=j.2K-hitbox-toggle class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>High</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>A momentum stalling hop kick that can be used to extend an air combo.
+</span>
+  </div>
+</div>
+        </div>
+        <div class=specials>
+          <h2 id=specials><a href="#specials">Special Attacks</a></h2>
+          <a href="#Special1">
+  <h3 id="Special1" class=move-name>Special1</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=k>
+      214K 
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_214K.png" alt="Special1 Sprite " title="images/kofy/Kofy_214K.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_214K_Hitbox.png" alt="Special1 Sprite " title="images/kofy/Kofy_214K_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special1-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special1-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>214K</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr><tr><td>214K~K</td><td>-</td><td>High</td><td>-</td><td>-</td><td>-</td><td>-</td><td>High Profile</td></tr></tbody>
+</table></div>
+    <span>Kôfy performs a momentum preserving front flip without a hitbox. Pressing <em class=btn button="k">K</em> at any point during the flip will
+send out an attack that hits high. Can be used as combo fodder as it keeps the opponent in the air for some time.
+</span>
+  </div>
+</div><a href="#Special2">
+  <h3 id="Special2" class=move-name>Special2</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=k>
+      41236K 
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_41236K.png" alt="Special2 Sprite " title="images/kofy/Kofy_41236K.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_41236K_Hitbox.png" alt="Special2 Sprite " title="images/kofy/Kofy_41236K_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special2-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special2-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td></td><td></td><td></td><td></td><td>-</td><td></td><td>10-?F Strike, Pass-through</td></tr></tbody>
+</table></div>
+    <span>Command dash that preserves momentum and crosses up the opponent at close range. Can be used to safely access
+follow-up attacks. If on the ground, can be cancelled into itself or from <a href="#Special3" class=ref button="p" title="Special3">214P</a> as a follow-up by
+pressing <em class=btn button="k">K</em>.
+</span>
+  </div>
+</div><a href="#Special3">
+  <h3 id="Special3" class=move-name>Special3 (Air OK)</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=p>
+      214P 
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_214P.png" alt="Special3 Sprite " title="images/kofy/Kofy_214P.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_214P_Hitbox.png" alt="Special3 Sprite " title="images/kofy/Kofy_214P_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special3-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special3-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td></td><td></td><td>1</td><td>30~120</td><td>-</td><td></td><td>1~120F Parry</td></tr></tbody>
+</table></div>
+    <span>Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
+strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into <a href="#Special2" class=ref button="k" title="Special2">41236K</a>
+by pressing <em class=btn button="k">K</em>.
+</span>
+  </div>
+</div><a href="#Special4">
+  <h3 id="Special4" class=move-name>Special4 (Air OK)</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=p>
+      P <em button=x>after 41236K or 214P catch</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_214P~P.png" alt="Special4 Sprite " title="images/kofy/Kofy_214P~P.png">
+<img src="../images/kofy/Kofy_214P~P_Whiff.png" alt="Special4 Sprite 2" title="images/kofy/Kofy_214P~P_Whiff.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_214P~P_Hitbox.png" alt="Special4 Sprite " title="images/kofy/Kofy_214P~P_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special4-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special4-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>Throw</td><td>-</td><td>-</td><td>-</td><td></td><td></td></tr></tbody>
+</table></div>
+    <span>Command grab follow-up. Leaves Kôfy and the opponent back to neutral.
+</span>
+  </div>
+</div><a href="#Special5">
+  <h3 id="Special5" class=move-name>Special5 (Air OK)</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      S<em button=or>/</em><em button=h>H</em> <em button=x>after 41236K or 214P catch</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_214P~S.png" alt="Special5 Sprite " title="images/kofy/Kofy_214P~S.png">
+<img src="../images/kofy/Kofy_214P~H.png" alt="Special5 Sprite 2" title="images/kofy/Kofy_214P~H.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_214P~S_Hitbox.png" alt="Special5 Sprite " title="images/kofy/Kofy_214P~S_Hitbox.png">
+<img src="../images/kofy/Kofy_214P~H_Hitbox.png" alt="Special5 Sprite 2" title="images/kofy/Kofy_214P~H_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special5-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special5-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>S</td><td>-</td><td>All [High]</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>H</td><td>-</td><td>All [High]</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Rising attack that launches the opponent into the air. Recovers at its peak height for more air follow-up. <em class=btn button="s">S</em>
+version causes ground bounce at the end of the attack, <em class=btn button="h">H</em> version causes wall bounce.
+<ul>
+    <li> Data in brackets represent values when the attack is performed in the air</li>
+</ul>
+</span>
+  </div>
+</div><a href="#Special6">
+  <h3 id="Special6" class=move-name>Special6</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      236S<em button=or>/</em><em button=h>H</em> 
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_236S.png" alt="Special6 Sprite " title="images/kofy/Kofy_236S.png">
+<span class=image-note><em class=btn button="s">S</em> version</span><img src="../images/kofy/Kofy_236H.png" alt="Special6 Sprite 2" title="images/kofy/Kofy_236H.png">
+<span class=image-note><em class=btn button="h">H</em> version</span><img src="../images/kofy/Kofy_236S~8S.png" alt="Special6 Sprite 3" title="images/kofy/Kofy_236S~8S.png">
+<span class=image-note><em class=btn button="s">8S</em> follow-up</span><img src="../images/kofy/Kofy_236H~8H.png" alt="Special6 Sprite 4" title="images/kofy/Kofy_236H~8H.png">
+<span class=image-note><em class=btn button="h">8H</em> follow-up</span>
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_236SH_Hitbox.png" alt="Special6 Sprite " title="images/kofy/Kofy_236SH_Hitbox.png">
+<img src="../images/kofy/Kofy_236SH~8X_Hitbox.png" alt="Special6 Sprite 2" title="images/kofy/Kofy_236SH~8X_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Special6-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Special6-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>236S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Above Foot</td></tr><tr><td>236S~8S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>236H~8H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Large poke that covers a section of the screen. Causes enough tumble to combo into a <a href="#Special2" class=ref button="k" title="Special2">41236K</a> followup.
+Kôfy stays in place during <em class=btn button="s">S</em> version. In <em class=btn button="h">H</em> version, Kôfy moves with the opponent, but has much more
+whiff recovery. If <em class=btn button="s">S</em> or <em class=btn button="h">H</em> is pressed again, Kôfy will perform a vertical poke to catch opponents
+jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was
+blocked. Launches the opponent high into the air on counter hit, launches only slightly on other hits. Kôfy stays in
+place during <em class=btn button="s">S</em> follow-up. In the <em class=btn button="h">H</em> follow-up, Kôfy jumps to meet the opponent.</span>
+  </div>
+</div>
+        </div>
+        <div class=supers>
+          <h2 id=supers><a href="#supers">Supers</a></h2>
+          <a href="#Super1">
+  <h3 id="Super1" class=move-name>Super1</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      214214S <em button=x>with 50% meter</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_214214S.png" alt="Super1 Sprite " title="images/kofy/Kofy_214214S.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_214214S_Hitbox.png" alt="Super1 Sprite " title="images/kofy/Kofy_214214S_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Super1-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Super1-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>214214S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214214{S}</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214214[S]</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>A strong super that can serve as a powerful combo starter or a pressure tool with large amounts of Guard Crush. Can be
+charged for a stronger effect, but is interruptible during startup.
+</span>
+  </div>
+</div><a href="#Super2">
+  <h3 id="Super2" class=move-name>Super2 (Air OK)</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=p>
+      632146P <em button=x>with 50% meter</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/kofy/Kofy_632146P.png" alt="Super2 Sprite " title="images/kofy/Kofy_632146P.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/kofy/Kofy_632146P_Hitbox.png" alt="Super2 Sprite " title="images/kofy/Kofy_632146P_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Super2-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Super2-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>632146P</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Full</td></tr><tr><td>236X~632146P</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+    <span>A powerful swing that sends the opponent flying into the wall. Causes ground and wall bounce on hit. Can also be used
+as a followup for 236S/H or 236S~8S/H~8H, but does not retain its invulnerable startup.
+</span>
+  </div>
+</div>
+        </div>
+      </main>
+    </div>
+    <footer>
+      <p>This page was last updated on Thu Aug 28 2025, 8:26:56 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+    </footer>
+  </body>
+</html>

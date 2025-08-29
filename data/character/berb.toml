@@ -1,9 +1,9 @@
 [Character]
 Name="Berb"
 Description="""
-Berb controls the stage through strategic placement of Rift Points, to which he can teleport himself or the opponent
-to with %ref(Time Rift,214P,p) or %ref(Chrono Shift,214K,k). With his ability to manipulate time and reposition on a
-whim, Berd can excellently control the flow of the match (quite literally) to his favor.
+Berb controls the stage through the strategic placement of Rift Points, which he can use to teleport himself or the
+opponent with %ref(Time Rift,214P,p) or %ref(Chrono Shift,214K,k). With his ability to manipulate time and reposition
+on a whim, Berb can expertly control the flow of the match (quite literally) in his favor.
 """
 IconPath=""
 PortraitPath=""
@@ -19,9 +19,9 @@ Reversals=[
 Name="Rifts in Time"
 Description="""
 Berb can use specific attacks (such as %ref(Time Rift,214P,p) or %ref(Time Fault,2141236P,p)) to create Rift Points
-that last until consumed or destroyed. Berd can use these Rift Points to teleport himself using %ref(Chrono
-Shift,214K,k) or to juggle the opponent by teleporting them with %ref(Distortion,236S,s). If Berd tries to create
-a Rift Point when there are already three active, or if he is hit while a Rift is active, the oldest Rift will
+which last until consumed or destroyed. Berb can use these Rift Points to teleport himself using %ref(Chrono Shift,214K,k)
+or to juggle the opponent by teleporting them with %ref(Distortion,236S,s). If Berb tries to create
+a Rift Point when three are already active, or if he is hit while a Rift is active, the oldest Rift Point will
 be destroyed.
 """
 
@@ -94,7 +94,7 @@ Buttons=["s"]
 Images=["images/berb/Berb_236S.png"]
 Hitboxes=["images/berb/Berb_236S_Hitbox.png"]
 Description="""
-Berd attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
+Berb attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
 teleport, instead moving to the next most recent point, or if repeated, the oldest point.
 """
 [[Character.Specials.Data]]
@@ -134,7 +134,7 @@ Buttons=["h"]
 Images=["images/berb/Berb_236H.png"]
 Hitboxes=["images/berb/Berb_236H_Hitbox.png"]
 Description="""
-Berd sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
+Berb sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
 air on hit.
 """
 [[Character.Specials.Data]]
@@ -192,7 +192,7 @@ Buttons=["p"]
 Images=["images/berb/Berb_2141236P.png"]
 Hitboxes=["images/berb/Berb_2141236P_Hitbox.png"]
 Description="""
-Berd jumps backwards and suddenly appears far forwards. If Berd crosses through the opponent, they are hit and a Rift
+Berb jumps backwards and suddenly appears far forwards. If Berb crosses through the opponent, they are hit and a Rift
 Point is created in their place (if there are not already 3 points active)
 """
 [[Character.Supers.Data]]

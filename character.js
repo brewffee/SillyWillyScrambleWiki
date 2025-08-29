@@ -23,12 +23,17 @@ class Character {
         this.mainNav = `<li><a href="characters/${this.Name.toLowerCase()}.html">${this.Name}</a></li>`
     }
 
+    // safely converts a string to a valid HTML ID
+    safeID(input) {
+        return input.replace(/ /g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+    }
+
     // resolve button links and references (todo: external links)
     resolveReferences(input) {
         // specific move reference
         // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
         let result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (match, name, input, button) => {
-            return `<a href="#${name}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`;
+            return `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`;
         });
 
         // weak button reference
@@ -70,7 +75,7 @@ class Character {
         let frameDataTable = "<th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>\n<tbody>";
 
         // if the first item has the version field, the rest must have it too (otherwise you are DUUUUMB !!!)
-        frameDataTable = "<table><thead><tr>" + (data[0].Version ? "<th>Version</th>" : "") + frameDataTable;
+        frameDataTable = "<div class=frame-table><table><thead><tr>" + (data[0].Version ? "<th>Version</th>" : "") + frameDataTable;
         frameDataTable += data.map((d) => {
             let dataRow = "<tr>"
             if (d.Version) dataRow += `<td>${d.Version || ""}</td>`;
@@ -85,7 +90,7 @@ class Character {
             return dataRow;
         }).join('');
 
-        return frameDataTable + "</tbody>\n</table>";
+        return frameDataTable + "</tbody>\n</table></div>";
     }
 
     // additional headers for character specific mechanics
@@ -97,6 +102,7 @@ class Character {
             let mechanicTemplate = fs.readFileSync('templates/character/mechanic.html', 'utf8');
             mechanicTemplate = mechanicTemplate
             .replace(/%MECHANIC%/g, mechanic.Name)
+            .replace(/%MECHANICJ%/g, this.safeID(mechanic.Name))
             .replace(/%MECHANIC_DESCRIPTION%/g, this.resolveReferences(mechanic.Description));
             return mechanicTemplate;
         }).join('');
@@ -152,7 +158,7 @@ class Character {
             let specialTemplate = fs.readFileSync('templates/character/special.html', 'utf8');
             specialTemplate = specialTemplate
             .replace(/%NAME%/g, special.Name)
-            .replace(/%NAMEJ%/g, special.Name.replace(/ /g, '-'))
+            .replace(/%NAMEJ%/g, this.safeID(special.Name))
             .replace(/%EXTRA%/g, this.renderExtras(special))
             .replace(/%BUTTON%/g, special.Buttons[0])
             .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
@@ -194,24 +200,24 @@ class Character {
 
         // Add navigation items
         template = template
-        .replace(/%NAV_MECHANICS%/g, this.Mechanics?.map((mechanic) => `<li><a href="#${mechanic.Name}">${mechanic.Name}</a></li>\n`).join("") || "")
-        .replace(/%NAV_COMMAND_NORMALS%/g, this.Normals?.map((normal) => `<li><a href="#${normal.Input}">${normal.Input}</a></li>\n`).join("") || "")
-        .replace(/%NAV_SPECIALS%/g, this.Specials?.map((special) => `<li><a href="#${special.Name}">${special.Name}</a></li>\n`).join("") || "")
-        .replace(/%NAV_SUPERS%/g, this.Supers?.map((sup) => `<li><a href="#${sup.Name}">${sup.Name}</a></li>\n`).join("") || "");
+        .replace(/%NAV_MECHANICS%/g, this.Mechanics?.map((mechanic) => `<li><a href="#${this.safeID(mechanic.Name)}">${mechanic.Name}</a></li>\n`).join("") || "")
+        .replace(/%NAV_COMMAND_NORMALS%/g, this.Normals?.map((normal) => `<li><a href="#${this.safeID(normal.Input)}">${normal.Input}</a></li>\n`).join("") || "")
+        .replace(/%NAV_SPECIALS%/g, this.Specials?.map((special) => `<li><a href="#${this.safeID(special.Name)}">${special.Name}</a></li>\n`).join("") || "")
+        .replace(/%NAV_SUPERS%/g, this.Supers?.map((sup) => `<li><a href="#${this.safeID(sup.Name)}">${sup.Name}</a></li>\n`).join("") || "");
 
         // Remove nav and section headers if their children are empty
         if (!this.Mechanics) template = template.replace("<li class=header><a href=\"#mechanics\">Unique Mechanics</a></li>", "");
         if (!this.Normals) {
-            template = template.replace("<li class=header><a href=\"#command-normals\">Command Normals</a></li>", "");
-            template = template.replace("<h2 id=command-normals><a href=\"#command-normals\">Command Normals</a></h2>", "");
+            template = template.replace("<li class=header><a href=\"#command-normals\">Command Normals</a></li>", "")
+                .replace("<h2 id=command-normals><a href=\"#command-normals\">Command Normals</a></h2>", "");
         }
         if (!this.Specials) {
-            template = template.replace("<li class=header><a href=\"#specials\">Special Attacks</a></li>", "");
-            template = template.replace("<h2 id=specials><a href=\"#specials\">Special Attacks</a></h2>", "");
+            template = template.replace("<li class=header><a href=\"#specials\">Special Attacks</a></li>", "")
+                .replace("<h2 id=specials><a href=\"#specials\">Special Attacks</a></h2>", "");
         }
         if (!this.Supers) {
-            template = template.replace("<li class=header><a href=\"#supers\">Supers</a></li>", "");
-            template = template.replace("<h2 id=supers><a href=\"#supers\">Supers</a></h2>", "");
+            template = template.replace("<li class=header><a href=\"#supers\">Supers</a></li>", "")
+                .replace("<h2 id=supers><a href=\"#supers\">Supers</a></h2>", "");
         }
 
         return template;

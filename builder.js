@@ -17,6 +17,7 @@ function loadCharacters() {
 
 // Checks if there was a change between the old and new version
 function compareVersions(older, newer) { // true if change, false if ok
+    if (!fs.existsSync(older)) return true;
     let existing = fs.readFileSync(older, "utf8");
     let updateLine = existing.split("\n").find(line =>
         line.startsWith("      <p>This page was last updated on ")

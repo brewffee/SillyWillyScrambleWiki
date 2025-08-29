@@ -5,18 +5,18 @@ Despite his status as a grappler, Guiblo boasts a plethora of tools that help hi
 correctly, Guiblo can very easily capitalize on the opponent's whiff for great reward.
 <br><br>
 Guiblo's strategy mainly revolves around controlling the opponent's position using tools such as
-%ref(Gone Fishin',Gone Fishin',k) or his long range normals. Once Guiblo has secured a position, he can can close in
-to strike %ref(Heavenly Guiblo Buster,the fear of god,_) into the opponent's hearts coupled with his oppressive
+%ref(Gone Fishin',Gone Fishin',k) or his long-range normals. Once Guiblo has secured a position, he can close in
+to strike %ref(Heavenly Guiblo Buster,the fear of god,_) into the opponent's hearts, coupled with his oppressive
 pressure. Boasting incredible air control, terrifying ground control, and a %ref(Parry,powerful parry,_), it will be
 very easy for Guiblo to condition the opponent to act according to his favor.
 <br><br>
 Guiblo's main weakness is that despite his immovable offense, he doesn't hold much in the way of good defensive options.
-He <b>only</b> has command grab supers, both of which could be easily outclassed by a relatively well-placed strike.
+He <b>only</b> has command grab supers, both of which can easily be outclassed by a relatively well-placed strike.
 Additionally, while his meterless %ref(Huebenly Buster,Huebenly Buster,h) has invulnerability on startup, it won't
 serve him well in the face of a regular pressure sequence. Guiblo must instead rely on hard-calling using his backdash
 or his parry to steal back his turn.
 <br><br>
-While he suffers slightly from his imbalanced kit, don't let that cloud your judgement—All Guiblo needs is to land one
+While he suffers slightly from his imbalanced kit, don't let that cloud your judgement—all Guiblo needs is to land one
 good sequence and a beer to thoroughly crush his foe.
 """
 IconPath="images/guiblo.png"
@@ -109,6 +109,7 @@ Inputs=["236P", "S", "H"] # looks weird but would give us 236P/S/H as a desired 
 AirOK=true
 Buttons=["p", "s", "h"]
 Images=["images/guiblo/Guiblo_236PSH.png", "images/guiblo/Guiblo_236PSH_Explosion.png"]
+Hitboxes=["images/guiblo/Guiblo_236PSH_Explosion_Hitbox.png"]
 Description="""
 Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %btn(p,P) version
 launches himself upwards, %btn(s,S) version launches horizontally, and %btn(h,H) sends him diagonally downwards. If
@@ -148,7 +149,7 @@ Images=["images/guiblo/Guiblo_214P.png", "images/guiblo/Guiblo_214P_Hit.png"]
 Hitboxes=["images/guiblo/Guiblo_214P_Hitbox.png"]
 Description="""
 Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact with a strike, the
-opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back torwards the
+opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back towards the
 opponent.
 """
 [[Character.Specials.Data]]

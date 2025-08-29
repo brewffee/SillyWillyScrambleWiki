@@ -1,7 +1,8 @@
 [Character]
 Name="failEs"
 Description="""
-Fail wields a trident, and uses his momentum to speed around the stage. Using Riptide, Channeling and Loyalty, Fail
+Fail wields a trident and uses his momentum to speed around the stage. Using %ref(Riptide,Riptide,_),
+%ref(Channeling,Channeling,_), and %ref(Loyalty,Loyalty,_), Fail
 is able to quickly get wherever he wishes. The ability to take advantage of his momentum is crucial to mastering this
 character.
 """
@@ -33,12 +34,12 @@ HitboxNotes=[
     "%btn(k,K) cancel"
 ]
 Description="""
-Fail throws his trident and hops on, travelling until he hits the opponent or the edge of the screen. At any point
+Fail throws his trident and hops on, traveling until he hits the opponent or the edge of the screen. At any point
 during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. %btn(s,[4]6S) sends
 Fail horizontally, while %btn(h,[2]8H) sends him upwards at a steep angle.
 <ul>
-    <li>%btn(p,P) cancel stops the attack immediately and sends him into a short recovery period.
-    <li>%btn(k,K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.
+    <li>%btn(p,P) cancel stops the attack immediately and sends him into a short recovery period.</li>
+    <li>%btn(k,K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.</li>
 </ul>
 """
 [[Character.Specials.Data]]
@@ -202,7 +203,7 @@ Hitboxes=["images/failes/Failes_632146S_Hitbox.png", "images/failes/Failes_63214
 Description="""
 Fail summons 3 tridents that follow him around. The tridents fly towards the opponent one at a time, with small delays
 between each launch, giving him safe pressure strings or excellent corner carry. On hit, the opponent is launched
-upwards, and on block, the opponent is sent into Guard Crush. In exchange, Fail is in counterhit state for the entie
+upwards, and on block, the opponent is sent into Guard Crush. In exchange, Fail is in counterhit state for the entire
 duration of the move, and the tridents immediately disappear when countered.
 """
 [[Character.Supers.Data]]

@@ -2,22 +2,22 @@
 Name="Tomo"
 Description="""
 Wielding a glaive and tome, Tomo is a master of the midrange who uses his resources to control the ebb and flow
-of the match.
+of battle.
 <br><br>
 Tomo is entirely defined by his unique resource, %ref(Mana,Mana,generic). Tomo uses a portion of his Mana to cast
-any of his special moves (including %ref(6S,6S,s)). If a move costs more mana than he currently has, it will not
+any of his special moves (including %ref(6S,6S,s)). If a move costs more Mana than he currently has, it will not
 trigger and instead will whiff. If his Mana is depleted, he will enter %ref(Exhaustion,Exhaustion,generic)—a
 debilitating state that leaves him highly vulnerable to massive damage.
 <br><br>
 Once he is at a safe range, Tomo can use his specials to expertly control the midrange, forcing the opponent to
-think twice about their approach. With the right momentum he can easily keep up a solid web of denial; once
+think twice about their approach. With the right momentum, he can easily keep up a solid web of denial; once
 his opponent is caught, Tomo is free to close in for a full combo combined with the choice of okizeme or resource
-recovery. When having %ref(Mana Crimen,Mana Crimen,k) and 50% meter on his side, Tomo can skip this choice altogether
+recovery. When he has %ref(Mana Crimen,Mana Crimen,k) and 50% meter on his side, Tomo can skip this choice altogether
 and opt for a much longer and more effective pressure sequence which at worst leaves him at neutral odds with the
 opponent.
 <br><br>
 Tomo's kit gives him the freedom to decide how the game unfolds, provided he has the resources to do so. In the
-right hands, Tomo is a highly versatile and cerebral fighter who rewards patience, precision, and exeuction.
+right hands, Tomo is a highly versatile and cerebral fighter who rewards patience, precision, and execution.
 """
 IconPath="images/tomo/icon/Tomo_Icon.png"
 PortraitPath="images/tomo/portrait/Tomo_Portrait.png"
@@ -32,7 +32,7 @@ Reversals=[
 [[Character.Mechanics]] # Mana
 Name="Mana"
 Description="""
-Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana equal proportionate
+Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana proportional
 to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
 stay on top of his resources. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
 """
@@ -40,8 +40,8 @@ stay on top of his resources. If he is to lose all of his Mana, he enters %ref(E
 [[Character.Mechanics]] # Exhaustion
 Name="Exhaustion"
 Description="""
-When Tomo's mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
-and vulnerable</b>—he cannot input any commands, he takes <b>twice</b> as much damage as normal, and the following hit
+When Tomo's Mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
+and vulnerable</b>—he cannot input any commands, takes <b>twice</b> as much damage as normal, and the following hit
 triggers an <b>automatic counter hit</b>. Exhaustion lasts until a couple seconds have passed or until the
 current combo ends. At the end of this state, Tomo recovers with 100% Mana, and is able to restart his
 offense.
@@ -56,10 +56,17 @@ Button="s"
 Condition="with 5% Mana"
 Images=["images/tomo/move/Tomo_6S.png"]
 Hitboxes=["images/tomo/move/Tomo_6S_Hitbox.png"]
+# TODO: Reflectable projectiles list
 Description="""
-Tomo uses his tome to quickly summon a large wall of magic that reflects any incoming projectiles. In addition to
-its strong defensive capabilities, this move can be cancelled into itself on hit, rewarding Tomo with easy damage in
-corner combos.
+Tomo uses his tome to summon a large wall of magic covering a wide area in front of him.
+<br><br>
+This move serves as both a good spacing tool and an even better anti-zoning tool, reflecting any incoming projectiles
+back from whence they came. Being a command normal, this move can be canceled into any of Tomo's powerful special
+moves or supers. Additionally, this move can be canceled into itself on hit for easy extra damage in the corner.
+<br><br>
+Overall, its low Mana cost and wide array of follow-up options being available both on block and on hit solidifies this
+move as a reliable option as a non-committal 'get-off-me' tool whenever Tomo is low on Mana or needs to escape a less
+than favorable position.
 """
 [[Character.Normals.Data]]
 Damage="-"
@@ -86,7 +93,7 @@ Hitboxes=[
 ]
 HitboxNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,j.S) version", "%btn(h,j.H) version"]
 Description="""
-A chargable fire-based projectile that travels along a set path, exploding into a firery vortex which launches the
+A chargeable fire-based projectile that travels along a set path, exploding into a fiery vortex which launches the
 opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
 can travel before exploding or disappearing.
 <ul>
@@ -131,7 +138,6 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-
 [[Character.Specials]] # Ventus Thrust
 Name="Ventus Thrust"
 Inputs=["214S", "H"]
@@ -155,7 +161,7 @@ Tomo summons blades of wind that can be used to push the opponent.
     <li>In %btn(s,S) <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
     the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing %btn(s,S) again makes
     Tomo perform a forward thrust with his spear, sending the opponent into the winds.</li>
-    <li>In %btn(h,H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the oppponent.
+    <li>In %btn(h,H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the opponent.
     Pressing %btn(h,H) again halts his movement to float upwards, shortly before diving into the ground and hitting
     the opponent high.</li>
 </ul>
