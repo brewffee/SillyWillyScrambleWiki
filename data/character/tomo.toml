@@ -19,8 +19,8 @@ opponent.
 Tomo's kit gives him the freedom to decide how the game unfolds, provided he has the resources to do so. In the
 right hands, Tomo is a highly versatile and cerebral fighter who rewards patience, precision, and execution.
 """
-IconPath="images/tomo/icon/Tomo_Icon.png"
-PortraitPath="images/tomo/portrait/Tomo_Portrait.png"
+IconPath="icon/Tomo_Icon.png"
+PortraitPath="portrait/Tomo_Portrait.png"
 Type="Magic"
 Reversals=[
     "%ref(Tonitru Pirouette,236236S,s)",
@@ -54,8 +54,8 @@ offense.
 Input="6S"
 Button="s"
 Condition="with 5% Mana"
-Images=["images/tomo/move/Tomo_6S.png"]
-Hitboxes=["images/tomo/move/Tomo_6S_Hitbox.png"]
+Images=["move/Tomo_6S.png"]
+Hitboxes=["move/Tomo_6S_Hitbox.png"]
 # TODO: Reflectable projectiles list
 Description="""
 Tomo uses his tome to summon a large wall of magic covering a wide area in front of him.
@@ -86,10 +86,10 @@ HoldOK=true
 AirOK=true
 Buttons=["s", "h"]
 Condition="with 20% Mana"
-Images=["images/tomo/move/Tomo_236X.png", "images/tomo/move/Tomo_j236X.png"]
+Images=["move/Tomo_236X.png", "move/Tomo_j236X.png"]
 Hitboxes=[
-    "images/tomo/move/Tomo_236S_Hitbox.png", "images/tomo/move/Tomo_236H_Hitbox.png",
-    "images/tomo/move/Tomo_j236S_Hitbox.png", "images/tomo/move/Tomo_j236H_Hitbox.png",
+    "move/Tomo_236S_Hitbox.png", "move/Tomo_236H_Hitbox.png",
+    "move/Tomo_j236S_Hitbox.png", "move/Tomo_j236H_Hitbox.png",
 ]
 HitboxNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,j.S) version", "%btn(h,j.H) version"]
 Description="""
@@ -144,15 +144,15 @@ Inputs=["214S", "H"]
 Buttons=["s", "h"]
 Condition="with 10% Mana"
 Images=[
-    "images/tomo/move/Tomo_Ventus_Thrust.png",
-    "images/tomo/move/Tomo_214S~S.png",
-    "images/tomo/move/Tomo_214H~H.png"
+    "move/Tomo_Ventus_Thrust.png",
+    "move/Tomo_214S~S.png",
+    "move/Tomo_214H~H.png"
 ]
 Hitboxes=[
-    "images/tomo/move/Tomo_214S_Hitbox.png",
-    "images/tomo/move/Tomo_214H_Hitbox.png",
-    "images/tomo/move/Tomo_214S~S_Hitbox.png",
-    "images/tomo/move/Tomo_214H~H_Hitbox.png"
+    "move/Tomo_214S_Hitbox.png",
+    "move/Tomo_214H_Hitbox.png",
+    "move/Tomo_214S~S_Hitbox.png",
+    "move/Tomo_214H~H_Hitbox.png"
 ]
 HitboxNotes=["%btn(s,S) version", "%btn(h,H) version"]
 Description="""
@@ -204,8 +204,8 @@ Name="Renovare"
 Inputs=["22P", "K"]
 Buttons=["p", "k"]
 HoldOK=true
-Images=["images/tomo/move/Tomo_22X.png"]
-Hitboxes=["images/tomo/move/Tomo_22X.png"]
+Images=["move/Tomo_22X.png"]
+Hitboxes=["move/Tomo_22X.png"]
 Description="""
 Tomo stands in place and recovers his Mana gauge
 <ul>
@@ -233,8 +233,8 @@ Name="Glacies Pierce"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 Condition="with 15% Mana"
-Images=["images/tomo/move/Tomo_214P.png", "images/tomo/move/Tomo_214K.png"]
-Hitboxes=["images/tomo/move/Tomo_214P_Hitbox.png", "images/tomo/move/Tomo_214K_Hitbox.png"]
+Images=["move/Tomo_214P.png", "move/Tomo_214K.png"]
+Hitboxes=["move/Tomo_214P_Hitbox.png", "move/Tomo_214K_Hitbox.png"]
 Description="""
 Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.
@@ -274,8 +274,8 @@ Name="Mana Crimen"
 Inputs=["214214K"]
 Buttons=["k"]
 Condition="with 50% meter"
-Images=["images/tomo/move/Tomo_214214K.png"]
-Hitboxes=["images/tomo/move/Tomo_214214K_Hitbox.png"]
+Images=["move/Tomo_214214K.png"]
+Hitboxes=["move/Tomo_214214K_Hitbox.png"]
 Description="""
 Tomo instantly charges his Mana gauge to max.
 """
@@ -288,8 +288,8 @@ Name="Tonitru Pirouette"
 Inputs=["236236S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Images=["images/tomo/move/Tomo_236236S.png"]
-Hitboxes=["images/tomo/move/Tomo_236236S_Hitbox.png"]
+Images=["move/Tomo_236236S.png"]
+Hitboxes=["move/Tomo_236236S_Hitbox.png"]
 Description="""
 An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
 of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for

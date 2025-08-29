@@ -6,9 +6,11 @@ const mainTemplate = fs.readFileSync("templates/index.html", "utf8");
 const selectorTemplate = fs.readFileSync("templates/character/selector.html", "utf8");
 
 const characterDir = "data/character/";
-const exportDir = "docs/"; // todo: this dir should be explicitly output-only, move extra css/js/image files elsewhere
+const exportDir = "docs/";
 
-const characters: Character[] = [];
+export const characters: Character[] = [];
+
+// todo: files are looking a little large, might see re-organization
 
 // parses all character data
 function loadCharacters(): void {
@@ -18,7 +20,7 @@ function loadCharacters(): void {
         return;
     }
 
-    fs.readdirSync(characterDir).forEach(file => {
+    fs.readdirSync(characterDir).forEach((file) => {
         if (file.endsWith(".toml")) {
             try {
                 const tomlContent = fs.readFileSync(characterDir + file, "utf8");
@@ -26,11 +28,13 @@ function loadCharacters(): void {
                     console.error("\x1b[31m%s\x1b[0m", `[Main] Could not read character file: ${file}`);
                     return;
                 }
+
                 const data = parse(tomlContent);
                 if (!data.Character) {
                     console.error("\x1b[31m%s\x1b[0m", `[Main] Invalid data structure in character file: ${file}`);
                     return;
                 }
+
                 characters.push(new Character(data.Character));
             } catch (error) {
                 console.error("\x1b[31m%s\x1b[0m", `[Main] Error parsing character file ${file}:`, error);
@@ -44,7 +48,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
     try {
         if (!fs.existsSync(older)) return true;
         const existing = fs.readFileSync(older, "utf8");
-        const updateLine = existing.split("\n").find(line =>
+        const updateLine = existing.split("\n").find((line) =>
             line.startsWith("      <p>This page was last updated on ")
         );
 
@@ -69,20 +73,18 @@ function generateMain(): void {
     console.log("[Main] Generating main page...");
     let rendered = mainTemplate;
 
-    rendered = rendered.replace("%CHARALIST%", characters.map(character => character.mainNav).join(""))
+    rendered = rendered.replace("%CHARALIST%", characters.map((character) => character.mainNav).join(""))
         .replace(/%CHARACTERS%/g, characters.map((chara) => {
-            let selector = selectorTemplate;
-            selector = selector.replace(/%NAME%/g, chara.Name.toLowerCase())
+            return selectorTemplate.replace(/%NAME%/g, chara.Name.toLowerCase())
                 .replace(/%REALNAME%/g, chara.Name)
-                .replace(/%ICONPATH%/g, chara.IconPath)
+                .replace(/%ICONPATH%/g, `images/${chara.Name.toLowerCase()}/${chara.IconPath}`)
                 .replace(/%TYPE%/g, chara.Type);
-            return selector;
         }).join(""));
 
     if (compareVersions(exportDir + "index.html", rendered)) {
         rendered = rendered.replace("%DATE%", new Date().toDateString())
-        .replace("%TIME%", new Date().toLocaleTimeString())
-        .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
+            .replace("%TIME%", new Date().toLocaleTimeString())
+            .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
 
         fs.writeFileSync(exportDir + "index.html", rendered);
     } else {
@@ -93,21 +95,17 @@ function generateMain(): void {
 // updates or creates a character page
 function generateCharacter(character: Character): void {
     console.log(`[${character.Name}] Generating character page...`);
-    if (!fs.existsSync(exportDir + "characters/")) fs.mkdirSync(exportDir + "characters/");
+    if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(exportDir + "characters/");
     let rendered = character.render();
 
-    // Navbar can only be built after the main character content is rendered i think
-    rendered = rendered.replace("%CHARALIST%", characters.map(character => character.characterNav).join(""));
-    rendered = rendered.replace(character.characterNav, character.characterNavActive);
-
     // Compare the contents
-    if (compareVersions(exportDir + "characters/" + character.Name.toLowerCase() + ".html", rendered)) {
+    if (compareVersions(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered)) {
         rendered = rendered.replace("%DATE%", new Date().toDateString())
-        .replace("%TIME%", new Date().toLocaleTimeString())
-        .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
+            .replace("%TIME%", new Date().toLocaleTimeString())
+            .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
 
         // gg
-        fs.writeFileSync(exportDir + "characters/" + character.Name.toLowerCase() + ".html", rendered);
+        fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
     } else {
         console.log(`[${character.Name}] No changes detected, skipping character page generation.`);
     }

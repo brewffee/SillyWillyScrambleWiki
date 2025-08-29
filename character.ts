@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import { characters } from "./index.ts";
 
 interface FrameData {
     Version: string;
@@ -59,6 +60,7 @@ export class Character {
 
     Mechanics: Mechanic[];
     Normals: Normal[];
+    CommandNormals: Normal[];
     Specials: Special[];
     Supers: Super[];
     // ------------ //
@@ -66,6 +68,8 @@ export class Character {
     characterNav: string;
     characterNavActive: string;
     mainNav: string;
+
+    tableOfContents: string;
 
     constructor(data: any) {
         this.Name = data.Name;
@@ -77,6 +81,7 @@ export class Character {
 
         this.Mechanics = data.Mechanics;
         this.Normals = data.Normals;
+        this.CommandNormals = data.CommandNormals;
         this.Specials = data.Specials;
         this.Supers = data.Supers;
 
@@ -87,6 +92,8 @@ export class Character {
 
         // main page navigation bar
         this.mainNav = `<li><a href="characters/${this.Name.toLowerCase()}.html">${this.Name}</a></li>`
+
+        this.tableOfContents = `<li><a href="#Overview">Overview</a></li>`;
     }
 
     // safely converts a string to a valid HTML ID
@@ -94,21 +101,36 @@ export class Character {
         return input.replace(/ /g, "-").replace(/[^a-zA-Z0-9-.]/g, "");
     }
 
+    // adds an item to the table of contents (NOT THE MAIN NAVIGATION PANEL !!!)
+    addNavigable(item: string, header: boolean = false, displayName: string = item): void {
+        if (header) {
+            this.tableOfContents += `<li class=header><a href="#${this.safeID(item)}">${displayName}</a></li>`;
+        } else {
+            this.tableOfContents += `<li><a href="#${this.safeID(item)}">${displayName}</a></li>`;
+        }
+    }
+
     // resolve button links and references (todo: external links)
     resolveReferences(input: string): string {
         // specific move reference
         // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
-        let result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (_, name, input, button) => {
-            return `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`;
-        });
+        let result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (_, name, input, button) =>
+            `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`
+        );
 
         // weak button reference
         // converts instances of %btn(BTN, TEXT) to <em class=btnbutton="BTN">TEXT</em>
-        result = result.replace(/%btn\(([^,]+),([^)]+)\)/g, (_, button, text) => {
-            return `<em class=btn button="${button.toLowerCase()}">${text}</em>`;
-        });
+        result = result.replace(/%btn\(([^,]+),([^)]+)\)/g, (_, button, text) =>
+            `<em class=btn button="${button.toLowerCase()}">${text}</em>`
+        );
 
         return result;
+    }
+
+    // reversals field of the info table
+    renderReversals(): string {
+        if (!this.Reversals) return "<em button=x>None</em>";
+        return this.Reversals.map((rev) => this.resolveReferences(rev)).join("<br>");
     }
 
     // adds Hold or Air OK to qualifying moves
@@ -159,12 +181,32 @@ export class Character {
         return frameDataTable + "</tbody>\n</table></div>";
     }
 
-    // additional headers for character specific mechanics
+    // creates the image gallery
+    renderImages(images: string[], notes: string[], name: string): string {
+        if (!images) return "";
+        let imageStr = "";
+        for (let i = 0; i < images.length; i++) {
+            if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${images[i]}`)) {
+                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested image: ${images[i]}`);
+            }
+
+            imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
+            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`
+        }
+        return imageStr;
+    }
+
+    // character specific mechanics
     renderMechanics(mechanics: Mechanic[]): string {
         if (!mechanics) return "";
-        const mechanicsHeader = "<h2 id=mechanics><a href=\"#mechanics\">Unique Mechanics</a></h2>\n"
+        const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n"
+        this.addNavigable("Mechanics", true);
+
+        // find the <!-- toc end --> end line and insert the mechanics nav before it
+
         return mechanicsHeader + mechanics.map((mechanic) => {
             console.log(`[${this.Name}] Generating documentation for mechanic: ${mechanic.Name}`);
+            this.addNavigable(mechanic.Name);
 
             return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
                 .replace(/%ID%/g, this.safeID(mechanic.Name))
@@ -172,31 +214,14 @@ export class Character {
         }).join("");
     }
 
-    // creates the image gallery
-    renderImages(images: string[], notes: string[], name: string): string {
-        if (!images) return "";
-        let imageStr = "";
-        for (let i = 0; i < images.length; i++) {
-            if (!fs.existsSync("docs/" + images[i])) {
-                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested image: ${images[i]}`);
-            }
-
-            if (!images[i]) {
-                imageStr += `<img src="" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
-            } else {
-                imageStr += `<img src="../${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
-            }
-
-            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`
-        }
-        return imageStr;
-    }
-
-    // command normals (might be renamed if normal moves are also displayed)
-    renderNormals(normals: Normal[]): string {
+    renderCommandNormals(normals: Normal[]): string {
         if (!normals) return "";
-        return normals.map((normal) => {
+        const normalsHeader = "<h2 id=Command-Normals><a href=#Command-Normals>Command Normals</a></h2>\n";
+        this.addNavigable("Command Normals", true);
+
+        return normalsHeader + normals.map((normal) => {
             console.log(`[${this.Name}] Generating documentation for command normal: ${normal.Input}`);
+            this.addNavigable(normal.Input);
 
             return normalTemplate.replace(/%INPUT%/g, normal.Input)
                 .replace(/%EXTRA%/g, this.renderExtras(normal))
@@ -212,8 +237,12 @@ export class Character {
     // special moves (attacks that have a name or more complex inputs)
     renderSpecials(specials: Special[]): string {
         if (!specials) return "";
-        return specials.map((special) => {
-            console.log(`[${this.Name}] Generating documentation for move: ${special.Name}`);
+        const specialsHeader = "<h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2>\n";
+        this.addNavigable("Special Attacks", true);
+
+        return specialsHeader + specials.map((special) => {
+            console.log(`[${this.Name}] Generating documentation for special move: ${special.Name}`);
+            this.addNavigable(special.Name);
 
             return specialTemplate.replace(/%NAME%/g, special.Name)
                 .replace(/%ID%/g, this.safeID(special.Name))
@@ -228,54 +257,45 @@ export class Character {
         }).join("");
     }
 
-    // supers (just a wrapper for renderSpecials, format is identical)
+    // supers
     renderSupers(supers: Super[]): string {
-        return this.renderSpecials(supers);
-    }
+        if (!supers) return "";
+        const supersHeader = "<h2 id=Supers><a href=#Supers>Supers</a></h2>\n";
+        this.addNavigable("Supers", true);
 
-    // reversals field of the info table
-    renderReversals(): string {
-        if (!this.Reversals) return "<em button=x>None</em>";
-        return this.Reversals.map(rev => this.resolveReferences(rev)).join("<br>");
+        return supersHeader + supers.map((sup) => {
+            console.log(`[${this.Name}] Generating documentation for super: ${sup.Name}`);
+            this.addNavigable(sup.Name);
+
+            return specialTemplate.replace(/%NAME%/g, sup.Name)
+                .replace(/%ID%/g, this.safeID(sup.Name))
+                .replace(/%EXTRA%/g, this.renderExtras(sup))
+                .replace(/%BUTTON%/g, sup.Buttons[0])
+                .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))
+                .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${sup.Condition}</em>` : "")
+                .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.ImageNotes, sup.Name))
+                .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.HitboxNotes, sup.Name))
+                .replace(/%FRAMEDATA%/g, this.renderFrameData(sup.Data))
+                .replace(/%DESCRIPTION%/g, this.resolveReferences(sup.Description));
+        }).join("");
     }
 
     // semi-final page generation before populating navbar and update time
     render(): string {
-        let rendered = characterTemplate.replace(/%NAME%/g, this.Name)
-        .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description))
-        .replace(/%PORTRAITPATH%/g, "../" + this.PortraitPath)
-        .replace(/%ICONPATH%/g, "../" + this.IconPath)
-        .replace(/%TYPE%/g, this.Type)
-        .replace(/%REVERSALS%/g, this.renderReversals())
-        .replace(/%MECHANICS%/g, this.renderMechanics(this.Mechanics))
-        .replace(/%COMMAND_NORMALS%/g, this.renderNormals(this.Normals))
-        .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
-        .replace(/%SUPERS%/g, this.renderSupers(this.Supers));
+        return characterTemplate.replace(/%NAME%/g, this.Name)
+            .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description))
+            .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
+            .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
+            .replace(/%TYPE%/g, this.Type)
+            .replace(/%REVERSALS%/g, this.renderReversals())
+            .replace(/%MECHANICS%/g, this.renderMechanics(this.Mechanics))
+            .replace(/%COMMAND_NORMALS%/g, this.renderCommandNormals(this.Normals))
+            .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
+            .replace(/%SUPERS%/g, this.renderSupers(this.Supers))
+            .replace(/%TABLE_OF_CONTENTS%/g, this.tableOfContents)
+            .replace("%CHARALIST%", characters.map((character) =>
+                character === this ? character.characterNavActive : character.characterNav
+            ).join(""));
 
-        // Add navigation items
-        rendered = rendered
-        .replace(/%NAV_MECHANICS%/g, this.Mechanics?.map((mechanic) => `<li><a href="#${this.safeID(mechanic.Name)}">${mechanic.Name}</a></li>\n`).join("") || "")
-        .replace(/%NAV_COMMAND_NORMALS%/g, this.Normals?.map((normal) => `<li><a href="#${this.safeID(normal.Input)}">${normal.Input}</a></li>\n`).join("") || "")
-        .replace(/%NAV_SPECIALS%/g, this.Specials?.map((special) => `<li><a href="#${this.safeID(special.Name)}">${special.Name}</a></li>\n`).join("") || "")
-        .replace(/%NAV_SUPERS%/g, this.Supers?.map((sup) => `<li><a href="#${this.safeID(sup.Name)}">${sup.Name}</a></li>\n`).join("") || "");
-
-        // Remove nav and section headers if their children are empty
-        if (!this.Mechanics) {
-            rendered = rendered.replace("<li class=header><a href=\"#mechanics\">Unique Mechanics</a></li>", "");
-        }
-        if (!this.Normals) {
-            rendered = rendered.replace("<li class=header><a href=\"#command-normals\">Command Normals</a></li>", "")
-                .replace("<h2 id=command-normals><a href=\"#command-normals\">Command Normals</a></h2>", "");
-        }
-        if (!this.Specials) {
-            rendered = rendered.replace("<li class=header><a href=\"#specials\">Special Attacks</a></li>", "")
-                .replace("<h2 id=specials><a href=\"#specials\">Special Attacks</a></h2>", "");
-        }
-        if (!this.Supers) {
-            rendered = rendered.replace("<li class=header><a href=\"#supers\">Supers</a></li>", "")
-                .replace("<h2 id=supers><a href=\"#supers\">Supers</a></h2>", "");
-        }
-
-        return rendered;
     }
 }

@@ -2,8 +2,8 @@
 Name="Kôfy"
 Description="""
 """
-IconPath="images/kofy/Kofy_Icon.png"
-PortraitPath="images/kofy/Kofy_Portrait.png"
+IconPath="icon/Kofy_Icon.png"
+PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Reversals=[
     "%ref(Special3,214P,p)",
@@ -16,8 +16,8 @@ Reversals=[
 [[Character.Normals]]
 Input="Taunt"
 Button="taunt"
-Images=["images/kofy/Kofy_Taunt.png"]
-Hitboxes=["images/kofy/Kofy_Taunt_Explosion_Hitbox.png"]
+Images=["move/Kofy_Taunt.png"]
+Hitboxes=["move/Kofy_Taunt_Explosion_Hitbox.png"]
 Description="""
 Summons a handheld goopert. After 3 seconds, the goopert gains a guard point. If hit by the opponent, causes an
 explosion that deals damage to both players. Does not beat projectile moves.
@@ -35,8 +35,8 @@ Invuln=["180+F Guard Point"]
 [[Character.Normals]]
 Input="j.2K"
 Button="k"
-Images=["images/kofy/Kofy_j2K.png"]
-Hitboxes=["images/kofy/Kofy_j2K_Hitbox.png"]
+Images=["move/Kofy_j2K.png"]
+Hitboxes=["move/Kofy_j2K_Hitbox.png"]
 Description="""
 A momentum stalling hop kick that can be used to extend an air combo.
 """
@@ -55,8 +55,8 @@ OnBlock="-"
 Name="Special1"
 Inputs=["214K"]
 Buttons=["k"]
-Images=["images/kofy/Kofy_214K.png"]
-Hitboxes=["images/kofy/Kofy_214K_Hitbox.png"]
+Images=["move/Kofy_214K.png"]
+Hitboxes=["move/Kofy_214K_Hitbox.png"]
 Description="""
 Kôfy performs a momentum preserving front flip without a hitbox. Pressing %btn(k,K) at any point during the flip will
 send out an attack that hits high. Can be used as combo fodder as it keeps the opponent in the air for some time.
@@ -78,8 +78,8 @@ Invuln=["High Profile"]
 Name="Special2"
 Inputs=["41236K"]
 Buttons=["k"]
-Images=["images/kofy/Kofy_41236K.png"]
-Hitboxes=["images/kofy/Kofy_41236K_Hitbox.png"]
+Images=["move/Kofy_41236K.png"]
+Hitboxes=["move/Kofy_41236K_Hitbox.png"]
 Description="""
 Command dash that preserves momentum and crosses up the opponent at close range. Can be used to safely access
 follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Special3,214P,p) as a follow-up by
@@ -94,8 +94,8 @@ Name="Special3"
 Inputs=["214P"]
 Buttons=["p"]
 AirOK=true
-Images=["images/kofy/Kofy_214P.png"]
-Hitboxes=["images/kofy/Kofy_214P_Hitbox.png"]
+Images=["move/Kofy_214P.png"]
+Hitboxes=["move/Kofy_214P_Hitbox.png"]
 Description="""
 Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
 strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Special2,41236K,k)
@@ -113,8 +113,8 @@ Inputs=["P"]
 Buttons=["p"]
 AirOK=true
 Condition="after 41236K or 214P catch"
-Images=["images/kofy/Kofy_214P~P.png", "images/kofy/Kofy_214P~P_Whiff.png"]
-Hitboxes=["images/kofy/Kofy_214P~P_Hitbox.png"]
+Images=["move/Kofy_214P~P.png", "move/Kofy_214P~P_Whiff.png"]
+Hitboxes=["move/Kofy_214P~P_Hitbox.png"]
 Description="""
 Command grab follow-up. Leaves Kôfy and the opponent back to neutral.
 """
@@ -131,8 +131,8 @@ Inputs=["S", "H"]
 Buttons=["s", "h"]
 AirOK=true
 Condition="after 41236K or 214P catch"
-Images=["images/kofy/Kofy_214P~S.png", "images/kofy/Kofy_214P~H.png"]
-Hitboxes=["images/kofy/Kofy_214P~S_Hitbox.png", "images/kofy/Kofy_214P~H_Hitbox.png"]
+Images=["move/Kofy_214P~S.png", "move/Kofy_214P~H.png"]
+Hitboxes=["move/Kofy_214P~S_Hitbox.png", "move/Kofy_214P~H_Hitbox.png"]
 Description="""
 Rising attack that launches the opponent into the air. Recovers at its peak height for more air follow-up. %btn(s,S)
 version causes ground bounce at the end of the attack, %btn(h,H) version causes wall bounce.
@@ -162,13 +162,13 @@ Name="Special6"
 Inputs=["236S", "H"]
 Buttons=["s", "h"]
 Images=[
-    "images/kofy/Kofy_236S.png",
-    "images/kofy/Kofy_236H.png",
-    "images/kofy/Kofy_236S~8S.png",
-    "images/kofy/Kofy_236H~8H.png"
+    "move/Kofy_236S.png",
+    "move/Kofy_236H.png",
+    "move/Kofy_236S~8S.png",
+    "move/Kofy_236H~8H.png"
 ]
 ImageNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,8S) follow-up", "%btn(h,8H) follow-up"]
-Hitboxes=["images/kofy/Kofy_236SH_Hitbox.png", "images/kofy/Kofy_236SH~8X_Hitbox.png"]
+Hitboxes=["move/Kofy_236SH_Hitbox.png", "move/Kofy_236SH~8X_Hitbox.png"]
 Description="""
 Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Special2,41236K,k) followup.
 Kôfy stays in place during %btn(s,S) version. In %btn(h,H) version, Kôfy moves with the opponent, but has much more
@@ -218,8 +218,8 @@ Name="Super1"
 Inputs=["214214S"]
 Buttons=["s"]
 Condition="with 50% meter"
-Images=["images/kofy/Kofy_214214S.png"]
-Hitboxes=["images/kofy/Kofy_214214S_Hitbox.png"]
+Images=["move/Kofy_214214S.png"]
+Hitboxes=["move/Kofy_214214S_Hitbox.png"]
 Description="""
 A strong super that can serve as a powerful combo starter or a pressure tool with large amounts of Guard Crush. Can be
 charged for a stronger effect, but is interruptible during startup.
@@ -255,8 +255,8 @@ Inputs=["632146P"]
 Buttons=["p"]
 AirOK=true
 Condition="with 50% meter"
-Images=["images/kofy/Kofy_632146P.png"]
-Hitboxes=["images/kofy/Kofy_632146P_Hitbox.png"]
+Images=["move/Kofy_632146P.png"]
+Hitboxes=["move/Kofy_632146P_Hitbox.png"]
 Description="""
 A powerful swing that sends the opponent flying into the wall. Causes ground and wall bounce on hit. Can also be used
 as a followup for 236S/H or 236S~8S/H~8H, but does not retain its invulnerable startup.

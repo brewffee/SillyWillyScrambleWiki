@@ -50,7 +50,7 @@ header a {
     top: 12px;
     z-index: 5;
 
-    @media screen and (max-width: 740px) {
+    @media (max-width: 740px) {
         display: none;
         position: fixed;
         top: 56px;
@@ -78,7 +78,7 @@ header a {
     cursor: pointer;
     z-index: 5;
 
-    @media screen and (max-width: 740px) {
+    @media (max-width: 740px) {
         display: block;
     }
 }
@@ -140,8 +140,6 @@ nav ul {
     padding: 0;
     list-style: none;
 }
-
-
 
 nav li {
     margin: 0;
@@ -264,7 +262,7 @@ div.roster a .type {
 
 .overview .content {
     display: flex;
-    @media screen and (max-width: 500px) {
+    @media (max-width: 500px) {
         .info {
             width: 100%;
             min-width: 100%;
@@ -338,7 +336,7 @@ div.roster a .type {
     overflow: hidden;
 
     /* re-shifts sizing again when the screen is small enough to justify hiding the sidebar */
-    @media screen and (width < 900px) and (width > 740px), screen and (width <= 700px) {
+    @media (width < 900px) and (width > 740px), (width <= 700px) {
         flex-direction: column;
         .move-info {
             width: unset;
@@ -442,13 +440,14 @@ em { font-style: normal }
     margin: 0;
     text-align: center;
     font-size: 12px;
-    min-width: 438px;
+    min-width: fit-content;
 }
 
 .move-details .frame-table {
-    overflow-x: scroll;
+    @media (width < 840px) {
+        overflow-x: scroll;
+    }
 }
-
 
 .move-details th {
     background: #e4e4e4;

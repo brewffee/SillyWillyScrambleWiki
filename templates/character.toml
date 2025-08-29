@@ -12,7 +12,7 @@
 Name=""
 Description="""
 """
-IconPath=""         # Path to icon (relative to docs dir (todo: would prefer loading from the data dir instead))
+IconPath=""         # Path to icon (relative to character's directory)
 PortraitPath=""     # Path to portrait art
 Type=""             # Fighting style
 Reversals=[]        # List of moves with invulnerable startup

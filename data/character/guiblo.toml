@@ -19,8 +19,8 @@ or his parry to steal back his turn.
 While he suffers slightly from his imbalanced kit, don't let that cloud your judgement—all Guiblo needs is to land one
 good sequence and a beer to thoroughly crush his foe.
 """
-IconPath="images/guiblo.png"
-PortraitPath="images/guiblo.png"
+IconPath="icon/Guiblo_Icon.png"
+PortraitPath="portrait/Guiblo_Portrait.png"
 Type="Grappler"
 Reversals=[
     "%ref(Huebenly Buster,623H,h)",
@@ -35,8 +35,8 @@ Reversals=[
 Input="Taunt"
 HoldOK=true
 Button="taunt"
-Images=["images/guiblo/Guiblo_Taunt.png", "images/guiblo/Guiblo_Taunt_Explosion.png"]
-Hitboxes=["images/guiblo/Guiblo_Taunt_Explosion_Hitbox.png"]
+Images=["move/Guiblo_Taunt.png", "move/Guiblo_Taunt_Explosion.png"]
+Hitboxes=["move/Guiblo_Taunt_Explosion_Hitbox.png"]
 Description="""
 Guiblo holds a toaster in his hand. If held for 3 seconds, the toaster sprouts legs and walks out of Guiblo's hand,
 wandering around the stage and turning around when reaching the end of the stage. When reaching the opponent, the
@@ -52,8 +52,8 @@ Active="-"
 [[Character.Normals]] # 6H
 Input="6H"
 Button="h"
-Images=["images/guiblo/Guiblo_6H.png"]
-Hitboxes=["images/guiblo/Guiblo_6H_Hitbox.png"]
+Images=["move/Guiblo_6H.png"]
+Hitboxes=["move/Guiblo_6H_Hitbox.png"]
 Description="""
 Guiblo's arms turn into springs and then coil, shortly before springing forwards with a large and powerful disjointed
 punch. Causes ground and wall bounce on hit, and sends the opponent flying on counter hit.
@@ -69,8 +69,8 @@ OnBlock="-"
 [[Character.Normals]] # 3S
 Input="3S"
 Button="s"
-Images=["images/guiblo/Guiblo_3S.png"]
-Hitboxes=["images/guiblo/Guiblo_3S_Hitbox.png"]
+Images=["move/Guiblo_3S.png"]
+Hitboxes=["move/Guiblo_3S_Hitbox.png"]
 Description="""
 Guiblo drops a rake on the ground and steps on it, launching the opponent high into the air.
 """
@@ -89,8 +89,8 @@ OnBlock="-"
 Name="Huebenly Buster"
 Inputs=["623H"]
 Buttons=["h"]
-Images=["images/guiblo/Guiblo_623H.png", "images/guiblo/Guiblo_623H_2.png", "images/guiblo/Guiblo_623H_Whiff.png"]
-Hitboxes=["images/guiblo/Guiblo_623H_Hitbox.png"]
+Images=["move/Guiblo_623H.png", "move/Guiblo_623H_2.png", "move/Guiblo_623H_Whiff.png"]
+Hitboxes=["move/Guiblo_623H_Hitbox.png"]
 Description="""
 An invincible reversal. Guiblo reaches diagonally for the opponent. On contact, Guiblo rises with the opponent before
 slamming them down into the ground.
@@ -108,8 +108,8 @@ Name="Guiblo Grenade"
 Inputs=["236P", "S", "H"] # looks weird but would give us 236P/S/H as a desired input str
 AirOK=true
 Buttons=["p", "s", "h"]
-Images=["images/guiblo/Guiblo_236PSH.png", "images/guiblo/Guiblo_236PSH_Explosion.png"]
-Hitboxes=["images/guiblo/Guiblo_236PSH_Explosion_Hitbox.png"]
+Images=["move/Guiblo_236PSH.png", "move/Guiblo_236PSH_Explosion.png"]
+Hitboxes=["move/Guiblo_236PSH_Explosion_Hitbox.png"]
 Description="""
 Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %btn(p,P) version
 launches himself upwards, %btn(s,S) version launches horizontally, and %btn(h,H) sends him diagonally downwards. If
@@ -145,8 +145,8 @@ Name="Parry"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
-Images=["images/guiblo/Guiblo_214P.png", "images/guiblo/Guiblo_214P_Hit.png"]
-Hitboxes=["images/guiblo/Guiblo_214P_Hitbox.png"]
+Images=["move/Guiblo_214P.png", "move/Guiblo_214P_Hit.png"]
+Hitboxes=["move/Guiblo_214P_Hitbox.png"]
 Description="""
 Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact with a strike, the
 opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back towards the
@@ -163,8 +163,8 @@ Invuln=["Full"]
 Name="Gone Fishin'"
 Inputs=["236K"]
 Buttons=["k"]
-Images=["images/guiblo/Guiblo_236K.png"]
-Hitboxes=["images/guiblo/Guiblo_236K_Hitbox.png"]
+Images=["move/Guiblo_236K.png"]
+Hitboxes=["move/Guiblo_236K_Hitbox.png"]
 Description="""
 Guiblo equips an angler's hat and throws a fishing hook towards the opponent. When the hook
 reaches the opponent, it pulls them close to Guiblo.
@@ -185,8 +185,8 @@ Name="Heavenly Guiblo Buster"
 Inputs=["632146S"]
 Condition="with 50% meter"
 Buttons=["s"]
-Images=["images/guiblo/Guiblo_632146S.png", "images/guiblo/Guiblo_632146S_2.png"]
-Hitboxes=["images/guiblo/Guiblo_632146S_Hitbox.png"]
+Images=["move/Guiblo_632146S.png", "move/Guiblo_632146S_2.png"]
+Hitboxes=["move/Guiblo_632146S_Hitbox.png"]
 Description="""
 An incredibly fast command grab super.
 """
@@ -203,8 +203,8 @@ Name="Ultimate Sandwich"
 Inputs=["236236P"]
 Condition="with 50% meter"
 Buttons=["p"]
-Images=["images/guiblo/Guiblo_236236P.png", "images/guiblo/Guiblo_236236P_2.png"]
-Hitboxes=["images/guiblo/Guiblo_236236P_Hitbox.png", "images/guiblo/Guiblo_236236P_2_Hitbox.png"]
+Images=["move/Guiblo_236236P.png", "move/Guiblo_236236P_2.png"]
+Hitboxes=["move/Guiblo_236236P_Hitbox.png", "move/Guiblo_236236P_2_Hitbox.png"]
 Description="""
 Invincible at startup. Guiblo grabs the opponent and holds them in front of him. From his
 pocket, a light shines, revealing a sandwich that freezes the game and explodes the opponent

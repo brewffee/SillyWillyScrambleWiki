@@ -5,8 +5,8 @@ Berb controls the stage through the strategic placement of Rift Points, which he
 opponent with %ref(Time Rift,214P,p) or %ref(Chrono Shift,214K,k). With his ability to manipulate time and reposition
 on a whim, Berb can expertly control the flow of the match (quite literally) in his favor.
 """
-IconPath=""
-PortraitPath=""
+IconPath="icon/Berb_Icon.png"
+PortraitPath="portrait/Berb_Portrait.png"
 Type="Freaky"
 Reversals=[
     "%ref(Time Fault,2141236P,p)"
@@ -40,7 +40,7 @@ ability.
 [[Character.Normals]] # Taunt
 Input="Taunt"
 Button="taunt"
-Images=["images/berb/Berb_Taunt.png"]
+Images=["move/Berb_Taunt.png"]
 ImageNotes=["Would you look at the time!"]
 Description="""
 Advances the in-game timer by 3 seconds.
@@ -56,8 +56,8 @@ Name="Time Rift"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
-Images=["images/berb/Berb_214P.png"]
-Hitboxes=["images/berb/Berb_214P_Hitbox.png"]
+Images=["move/Berb_214P.png"]
+Hitboxes=["move/Berb_214P_Hitbox.png"]
 Description="""
 Berb summons a Rift Point to which he can teleport later. Up to three teleport points can be placed at a time,
 overriding the oldest point first.
@@ -74,8 +74,8 @@ Name="Chrono Shift"
 Inputs=["214K"]
 AirOK=true
 Buttons=["k"]
-Images=["images/berb/Berb_214K.png"]
-Hitboxes=["images/berb/Berb_214K_Hitbox.png"]
+Images=["move/Berb_214K.png"]
+Hitboxes=["move/Berb_214K_Hitbox.png"]
 Description="""
 Berb teleports to the most recent Rift Point. Pressing %btn(k,K) again during the animation will prolong the teleport,
 instead moving to the next most recent point, or if repeated, the oldest point.
@@ -91,8 +91,8 @@ Recovery="-"
 Name="Distortion"
 Inputs=["236S"]
 Buttons=["s"]
-Images=["images/berb/Berb_236S.png"]
-Hitboxes=["images/berb/Berb_236S_Hitbox.png"]
+Images=["move/Berb_236S.png"]
+Hitboxes=["move/Berb_236S_Hitbox.png"]
 Description="""
 Berb attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
 teleport, instead moving to the next most recent point, or if repeated, the oldest point.
@@ -113,8 +113,8 @@ Recovery="-"
 Name="Clockwork"
 Inputs=["214S"]
 Buttons=["s"]
-Images=["images/berb/Berb_214S.png", "images/berb/Berb_214S_2.png"]
-Hitboxes=["images/berb/Berb_214S_Hitbox.png", "images/berb/Berb_214S_2_Hitbox.png"]
+Images=["move/Berb_214S.png", "move/Berb_214S_2.png"]
+Hitboxes=["move/Berb_214S_Hitbox.png", "move/Berb_214S_2_Hitbox.png"]
 Description="""
 Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
 on hit, sending the opponent into stagger, or Guard Crush on block.
@@ -131,8 +131,8 @@ OnBlock="+"
 Name="Tempo Synchronization"
 Inputs=["236H"]
 Buttons=["h"]
-Images=["images/berb/Berb_236H.png"]
-Hitboxes=["images/berb/Berb_236H_Hitbox.png"]
+Images=["move/Berb_236H.png"]
+Hitboxes=["move/Berb_236H_Hitbox.png"]
 Description="""
 Berb sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
 air on hit.
@@ -153,9 +153,9 @@ Name="Chrono Stasis"
 Inputs=["632146K"]
 Condition="with 50% meter"
 Buttons=["k"]
-Images=["images/berb/Berb_632146K.png"]
+Images=["move/Berb_632146K.png"]
 ImageNotes=["「ザワールド！」"]
-Hitboxes=["images/berb/Berb_632146K_Hitbox.png"]
+Hitboxes=["move/Berb_632146K_Hitbox.png"]
 Description="""
 A powerful move that freezes time, locking the opponent in place. Although it has slow startup, it hits anywhere on
 the screen and cannot be evaded using invulnerability frames. The opponent is frozen for 2 seconds, allowing Berb an
@@ -175,8 +175,8 @@ Name="Accent Acceleration"
 Inputs=["214214H"]
 Condition="with 50% meter"
 Buttons=["h"]
-Images=["images/berb/Berb_214214H.png"]
-Hitboxes=["images/berb/Berb_214214H_Hitbox.png"]
+Images=["move/Berb_214214H.png"]
+Hitboxes=["move/Berb_214214H_Hitbox.png"]
 Description="""
 Increases the rate of which the in-game timer and mechanic timers advance by 15%
 """
@@ -189,8 +189,8 @@ Name="Time Fault"
 Inputs=["2141236P"] # QCB to QCF motion
 Condition="with 50% meter"
 Buttons=["p"]
-Images=["images/berb/Berb_2141236P.png"]
-Hitboxes=["images/berb/Berb_2141236P_Hitbox.png"]
+Images=["move/Berb_2141236P.png"]
+Hitboxes=["move/Berb_2141236P_Hitbox.png"]
 Description="""
 Berb jumps backwards and suddenly appears far forwards. If Berb crosses through the opponent, they are hit and a Rift
 Point is created in their place (if there are not already 3 points active)

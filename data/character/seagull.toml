@@ -5,16 +5,12 @@ Seagull is a rushdown character with tight air movement who focuses on air combo
 the opponent. With an astonishing three air jumps and incredible mobility, Seagull is able to stay out of reach and
 take advantage when the opportunity presents itself.
 """
-IconPath=""
-PortraitPath=""
+IconPath="icon/Seagull_Icon.png"
+PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
 Reversals=[
     "%ref(Double or Nothing,632146H,h)",
 ]
-
-###################################
-# Command Normals
-###################################
 
 ###################################
 # Special Attacks
@@ -24,8 +20,8 @@ Name="Scam"
 Inputs=["214S"]
 AirOK=true
 Buttons=["s"]
-Images=["images/seagull/move/Seagull_214S.png"]
-Hitboxes=["images/seagull/move/Seagull_214S_Hitbox.png"]
+Images=["move/Seagull_214S.png"]
+Hitboxes=["move/Seagull_214S_Hitbox.png"]
 Description="""
 Seagull lets out a large scream with a cartoon speech bubble appearing behind him and hitting the opponent from afar.
 If used in the air, Seagull retains his previous air momentum.
@@ -51,8 +47,8 @@ OnBlock="-"
 Name="Bet"
 Inputs=["j.236P", "S", "H"]
 Buttons=["p", "s", "h"]
-Images=["images/seagull/move/Seagull_Bet.png"]
-Hitboxes=["images/seagull/move/Seagull_Bet_Hitbox.png"]
+Images=["move/Seagull_Bet.png"]
+Hitboxes=["move/Seagull_Bet_Hitbox.png"]
 Description="""
 Seagull quickly dashes through the air, hitting anything in his path. The %btn(p,P) version sends Seagull diagonally
 upwards, the %btn(s,S) version sends Seagull horizontally, and the %btn(h,H) version sends Seagull diagonally downwards.
@@ -88,7 +84,7 @@ OnBlock="-"
 Name="Skill"
 Inputs=["j.236K"]
 Buttons=["k"]
-Images=["images/seagull/move/Seagull_j236K.png"]
+Images=["move/Seagull_j236K.png"]
 Description="""
 Seagull shoots himself downwards at a steep angle with no hitbox. He can use this move to quickly cross through the
 opponent for a scary three-way mixup, or to escape a dire situation with low commitment.
@@ -102,8 +98,8 @@ Invuln=["Pass-through"]
 Name="Your"
 Inputs=["236S"]
 Buttons=["s"]
-Images=["images/seagull/move/Seagull_236S.png"]
-Hitboxes=["images/seagull/move/Seagull_236S_Hitbox.png"]
+Images=["move/Seagull_236S.png"]
+Hitboxes=["move/Seagull_236S_Hitbox.png"]
 Description="""
 Seagull shoots out a blue fireball from his hands, travelling in a straight line across the screen.
 """
@@ -120,8 +116,8 @@ Name="Bad"
 Inputs=["S"]
 Buttons=["s"]
 Condition="after Your"
-Images=["images/seagull/move/Seagull_236S~S.png"]
-Hitboxes=["images/seagull/move/Seagull_236S~S_Hitbox.png"]
+Images=["move/Seagull_236S~S.png"]
+Hitboxes=["move/Seagull_236S~S_Hitbox.png"]
 Description="""
 Seagull rolls forwards, slamming himself into opponents who are trying to slide past
 the blind spot of the fireball.
@@ -138,8 +134,8 @@ OnBlock="-"
 Name="The King"
 Inputs=["214H"]
 Buttons=["h"]
-Images=["images/seagull/move/Seagull_214H.png"]
-Hitboxes=["images/seagull/move/Seagull_214H_Hitbox.png"]
+Images=["move/Seagull_214H.png"]
+Hitboxes=["move/Seagull_214H_Hitbox.png"]
 Description="""
 Seagull flies into the air and screams at the opponent with a large hitbox. When blocked, leaves Seagull airborne and
 actionable, and places the opponent into Guard Crush.
@@ -159,8 +155,8 @@ OnBlock="+"
 Name="Double or Nothing"
 Inputs=["632146H"]
 Buttons=["h"]
-Images=["images/seagull/move/Seagull_632146H.png", "images/seagull/move/Seagull_632146H_Parry.png"]
-Hitboxes=["images/seagull/move/Seagull_632146H_Hitbox.png", "images/seagull/move/Seagull_632146H_Parry_Hitbox.png"]
+Images=["move/Seagull_632146H.png", "move/Seagull_632146H_Parry.png"]
+Hitboxes=["move/Seagull_632146H_Hitbox.png", "move/Seagull_632146H_Parry_Hitbox.png"]
 Description="""
 An invincible rising reversal that has the ability to loop into itself. Seagull rises up into the air, then divebombs
 downwards, taking the opponent with him. If %btn(h,H) is pressed again after the initial divebomb, Seagull will enter
@@ -189,8 +185,8 @@ Invuln=["Strike"]
 Name="Ground Orange Duck"
 Inputs=["214214P"]
 Buttons=["p"]
-Images=["images/seagull/move/Seagull_214214P.png", "images/seagull/move/Seagull_214214P_Install.png"]
-Hitboxes=["images/seagull/move/Seagull_214214P_Hitbox.png"]
+Images=["move/Seagull_214214P.png", "move/Seagull_214214P_Install.png"]
+Hitboxes=["move/Seagull_214214P_Hitbox.png"]
 ImageNotes=["If you can't beat 'em, join 'em"]
 Description="""
 Seagull releases a large amount of energy, transforming himself into GroundOrangeDuck for a short duration. While in
