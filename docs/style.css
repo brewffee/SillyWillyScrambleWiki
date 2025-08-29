@@ -355,8 +355,7 @@ div.roster a .type {
     border-right: 1px solid black;
     min-width: 230px;
     width: 240px;
-    padding: 4px 8px;
-    padding-bottom: 28px;
+    padding: 4px 8px 28px;
     gap: 4px;
     text-align: center;
     position: relative;
