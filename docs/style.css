@@ -230,6 +230,7 @@ div.roster {
     padding: 12px;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
 }
 
 div.roster a {
@@ -249,14 +250,12 @@ div.roster a .name {
     background: #e4e4e4;
     font-size: 14px;
     font-weight: bold;
-    text-align: center;
 }
 
 div.roster a .type {
     padding: 4px 8px;
     box-sizing: border-box;
     font-size: 12px;
-    text-align: center;
     border-top: 1px solid black;
 }
 
@@ -268,6 +267,7 @@ div.roster a .type {
             min-width: 100%;
             margin: 0 0 12px;
         }
+
         flex-direction: column-reverse;
     }
 }
@@ -435,6 +435,7 @@ em { font-style: normal }
 }
 
 .move-details table {
+    table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
     margin: 0;

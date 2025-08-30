@@ -59,8 +59,10 @@ Buttons=["p"]
 Images=["move/Berb_214P.png"]
 Hitboxes=["move/Berb_214P_Hitbox.png"]
 Description="""
-Berb summons a Rift Point to which he can teleport later. Up to three teleport points can be placed at a time,
-overriding the oldest point first.
+Berb summons a new Rift Point at his current position. Setting these points in strategic locations is key to
+maximizing his potential, as they can serve as both rewarding offensive tools and reliable escape routes.
+Up to three teleport points can be placed at a time. If a fourth point is created, the oldest point will disappear
+to make room for the new one.
 """
 [[Character.Specials.Data]]
 Version="214P"
@@ -77,14 +79,19 @@ Buttons=["k"]
 Images=["move/Berb_214K.png"]
 Hitboxes=["move/Berb_214K_Hitbox.png"]
 Description="""
-Berb teleports to the most recent Rift Point. Pressing %btn(k,K) again during the animation will prolong the teleport,
-instead moving to the next most recent point, or if repeated, the oldest point.
+Berb teleports to the most recent Rift Point. If %btn(k,K) is pressed again during the animation, Berb will instead
+move to the next point in line. This can be repeated an additional time to move to the oldest point. Choosing a
+different point to teleport to can help trip up opponents who are trying to predict Berb's movement, creating
+easy openings for counterattacks.
 """
 [[Character.Specials.Data]]
 Version="214K"
 Recovery="-"
 [[Character.Specials.Data]]
 Version="214K~K"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="214K~K~K"
 Recovery="-"
 
 [[Character.Specials]] # Distortion
@@ -94,8 +101,12 @@ Buttons=["s"]
 Images=["move/Berb_236S.png"]
 Hitboxes=["move/Berb_236S_Hitbox.png"]
 Description="""
-Berb attacks the opponent, teleporting them to the most recent Rift Point. Pressing %btn(s,S) again will prolong the
-teleport, instead moving to the next most recent point, or if repeated, the oldest point.
+Berb attacks the opponent, creating a distortion in space-time that teleports them to the most recent Rift Point. Like
+%ref(Chrono Shift,214K,k), pressing %btn(s,S) teleports the opponent to the next available point, or again for the
+oldest point. This move is a great way to extend combos or to reposition opponents into more unfavorable situations.
+<ul>
+    <li>Forces the opponent into airborne state regardless of how close to the ground the Rift Point is</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="236S"
@@ -108,14 +119,20 @@ OnBlock="-"
 [[Character.Specials.Data]]
 Version="236S~S"
 Recovery="-"
+[[Character.Specials.Data]]
+Version="236S~S~S"
+Recovery="-"
 
 [[Character.Specials]] # Clockwork
 Name="Clockwork"
 Inputs=["214S"]
 Buttons=["s"]
 Images=["move/Berb_214S.png", "move/Berb_214S_2.png"]
+ImageNotes=["", "GONG!"]
 Hitboxes=["move/Berb_214S_Hitbox.png", "move/Berb_214S_2_Hitbox.png"]
 Description="""
+A slow, yet highly rewarding overhead attack.
+<br><br>
 Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
 on hit, sending the opponent into stagger, or Guard Crush on block.
 """
@@ -158,9 +175,12 @@ ImageNotes=["「ザワールド！」"]
 Hitboxes=["move/Berb_632146K_Hitbox.png"]
 Description="""
 A powerful move that freezes time, locking the opponent in place. Although it has slow startup, it hits anywhere on
-the screen and cannot be evaded using invulnerability frames. The opponent is frozen for 2 seconds, allowing Berb an
-opportunity to set up a high-power combo. If the opponent was hit while frozen, they will be launched when time
-unfreezes.
+the screen and cannot be evaded using invulnerability frames. The timestop effect lasts for 2 seconds (or 120 frames).
+If blocked, the effect will not trigger and Berb will be left vulnerable.
+<ul>
+    <li>After the timestop ends, the opponent is launched with the momentum of the last attack that hit them. If they
+    were not hit, they will simply fall to the ground or automatically recover</li>
+</ul>
 """
 [[Character.Supers.Data]]
 Damage="-"
@@ -192,8 +212,9 @@ Buttons=["p"]
 Images=["move/Berb_2141236P.png"]
 Hitboxes=["move/Berb_2141236P_Hitbox.png"]
 Description="""
-Berb jumps backwards and suddenly appears far forwards. If Berb crosses through the opponent, they are hit and a Rift
-Point is created in their place (if there are not already 3 points active)
+Berb leaps backwards before suddenly appearing a far distance forwards. When hitting the opponent, a Rift Point is
+created in their place, replacing the oldest point if 3 are already active. With invincibility on startup and cross-up
+properties, this is easily Berb's safest option for creating Rift Points.
 """
 [[Character.Supers.Data]]
 Damage="-"

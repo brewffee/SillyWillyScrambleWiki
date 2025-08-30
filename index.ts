@@ -58,7 +58,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
         }
 
         // compare the contents using the old update time
-        const updateString = (updateLine.split(",")[0].split("on")[1].trim() + "," + updateLine.split(",")[1]).split(".")[0]
+        const updateString = (updateLine.split(",")[0].split("on")[1].trim() + "," + updateLine.split(",")[1]).split(".")[0];
         const result = newer.replace("%DATE%, ", updateString).replace("%TIME% ", "").replace("(%TZ%)", "");
 
         return result !== existing;

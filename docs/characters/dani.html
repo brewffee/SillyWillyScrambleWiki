@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dani - Silly Willy Scramble Wiki</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../menu.js"></script>
+  </head>
+  <body class=main>
+    <header id=top>
+      <h1>
+        <a href="../index.html">Silly Willy Scramble Wiki</a>
+      </h1>
+    </header>
+
+    <div class="container">
+      <button class=nav-toggle onclick="showMenu()">&ctdot;</button>
+      <div class="sidebar">
+        <nav>
+          <h3>Navigation <input type=checkbox checked="checked"></h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class=header>Characters</li>
+            <li><a href="./berb.html">Berb</a></li><li class=active><a>Dani</a></li><li><a href="./failes.html">failEs</a></li><li><a href="./guiblo.html">Guiblo</a></li><li><a href="./kôfy.html">Kôfy</a></li><li><a href="./seagull.html">Seagull</a></li><li><a href="./tomo.html">Tomo</a></li>
+          </ul>
+        </nav>
+
+        <nav>
+          <h3>Table of Contents <input type=checkbox checked="checked"></h3>
+          <ul>
+            <li><a href="#Overview">Overview</a></li><li class=header><a href="#Mechanics">Mechanics</a></li><li><a href="#Exhilaration">Exhilaration</a></li><li><a href="#Ammo">Ammo</a></li><li class=header><a href="#Special-Attacks">Special Attacks</a></li><li><a href="#Ace">Ace</a></li><li><a href="#Ricochet">Ricochet</a></li><li><a href="#Movement-Control">Movement Control</a></li><li><a href="#Trigger-Happy">Trigger Happy</a></li><li><a href="#Cross-Fire">Cross Fire</a></li><li><a href="#Backstab">Backstab</a></li><li><a href="#Bait">Bait</a></li><li><a href="#Bunnyhop">Bunnyhop</a></li>
+          </ul>
+        </nav>
+        <a class=nav-top href="#top">Back to Top</a>
+      </div>
+      <main>
+        <h2 id=Overview><a href="#Overview">Dani</a> <a href="../index.html">(Back to Home)</a></h2>
+        <div class=overview>
+          <div class=content>
+            <p>Dani wields both a pistol and a knife at separate times.
+</p>
+            <section class=info>
+              <h3>Dani</h3>
+              <img src="../images/dani/portrait/Dani_Portrait.png" alt="Dani Portrait">
+              <table>
+                <tr><td>Type</td> <td>Bnnuy</td></tr>
+                <tr><td>Reversals</td> <td><a href="#Bait" class=ref button="s" title="Bait">ex.623S</a></td></tr>
+              </table>
+            </section>
+          </div>
+        </div>
+        <div class=mechanics>
+          <h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>
+<a href="#Exhilaration">
+  <h3 id="Exhilaration" class=move-name>Exhilaration</h3>
+</a>
+<p>Dani starts the round with 0% <b>Exhilaration Meter</b>. The Exhilaration Meter can be filled by dealing damage to the
+opponent. <b>Exhilaration</b> is a state that greatly enhances Dani's movement speed, damage output, and changes her
+moveset—making her no longer reliant on her limited resource, <a href="#Ammo" class=ref button="_" title="Ammo">Ammo</a>. Exhilaration is entered automatically
+when the Exhilaration Meter maxes out, or manually by using <a href="#Ace" class=ref button="p" title="Ace">Ace</a>. While in Exhilaration, the Exhilaration
+Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using <a href="#Ace" class=ref button="p" title="Ace">Ace</a>,
+she will instead be forced out of Exhilaration and into a brief vulnerable period of recovery.
+</p><a href="#Ammo">
+  <h3 id="Ammo" class=move-name>Ammo</h3>
+</a>
+<p>Dani's normal state gives her great tools to open up the opponent, but not without its limitations. Dani is limited to
+only 8 bullets of <a href="#Ammo" class=ref button="_" title="Ammo">Ammo</a>, which are consumed by using certain special moves. Once out of ammo, Dani is unable
+to use these special moves until she enters Exhilaration, which fully restocks her ammo on exit.
+</p>
+        </div>
+        <div class=command-normals>
+          
+        </div>
+        <div class=specials>
+          <h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2>
+<a href="#Ace">
+  <h3 id="Ace" class=move-name>Ace</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=p>
+      63214P 
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_63214P.png" alt="Ace Sprite " title="move/Dani_63214P.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_63214P_Hitbox.png" alt="Ace Sprite " title="move/Dani_63214P_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Ace-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Ace-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
+</table></div>
+    <span>Allows Dani to swap manually to or from Exhilaration if she has enough. Dani is in counterhit state for the entire
+duration of this move, so use carefully—preferably during hard knockdown situations or where the opponent is a far
+enough distance away.
+</span>
+  </div>
+</div><a href="#Ricochet">
+  <h3 id="Ricochet" class=move-name>Ricochet</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      214S<em button=or>/</em><em button=h>H</em> <em button=x>with 1 bullet</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_214X.png" alt="Ricochet Sprite " title="move/Dani_214X.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_214S_Hitbox.png" alt="Ricochet Sprite " title="move/Dani_214S_Hitbox.png">
+<img src="../images/dani/move/Dani_214H_Hitbox.png" alt="Ricochet Sprite 2" title="move/Dani_214H_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Ricochet-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Ricochet-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>214S</td><td>-</td><td>All&rightarrow;High</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>214H</td><td>-</td><td>All&rightarrow;Low</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Dani spends 1 bullet to shoot off of either the ceiling or the floor. Bullet goes to the opponent's current position
+after ricocheting. S version hits the ceiling, and hits high after ricocheting. Is slower the HS version. HS version
+hits the ground and hits low after ricocheting.
+</span>
+  </div>
+</div><a href="#Movement-Control">
+  <h3 id="Movement-Control" class=move-name>Movement Control</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=k>
+      236K 
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_236K.png" alt="Movement Control Sprite " title="move/Dani_236K.png">
+<img src="../images/dani/move/Dani_236K~K.png" alt="Movement Control Sprite 2" title="move/Dani_236K~K.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_236K_Hitbox.png" alt="Movement Control Sprite " title="move/Dani_236K_Hitbox.png">
+<img src="../images/dani/move/Dani_236K~K_Hitbox.png" alt="Movement Control Sprite 2" title="move/Dani_236K~K_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Movement-Control-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Movement-Control-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>214K</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td>Pass-through<br>Low Profile</td></tr><tr><td>214K~K</td><td>-</td><td>Low</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Dani rolls along the ground without a hitbox, able to cross up opponents. Pressing K again instantly stops movement,
+but provides a hitbox that hits low. Move is also good for low profiling.
+</span>
+  </div>
+</div><a href="#Trigger-Happy">
+  <h3 id="Trigger-Happy" class=move-name>Trigger Happy</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      236S <em button=x>with 3 bullets</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_236S.png" alt="Trigger Happy Sprite " title="move/Dani_236S.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_236S_Hitbox.png" alt="Trigger Happy Sprite " title="move/Dani_236S_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Trigger-Happy-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Trigger-Happy-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Dani spends 3 bullets to shoot 3 shots. One horizontal, one slightly diagonal upwards, and another shot aimed much
+higher off. Final shot launches the opponent upwards, allowing for it to be used up close in combos.
+</span>
+  </div>
+</div><a href="#Cross-Fire">
+  <h3 id="Cross-Fire" class=move-name>Cross Fire</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      ex.236S<em button=or>/</em><em button=h>H</em> <em button=x>during Exhilaration</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_ex236S.png" alt="Cross Fire Sprite " title="move/Dani_ex236S.png">
+<img src="../images/dani/move/Dani_ex236H.png" alt="Cross Fire Sprite 2" title="move/Dani_ex236H.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_ex236S_Hitbox.png" alt="Cross Fire Sprite " title="move/Dani_ex236S_Hitbox.png">
+<img src="../images/dani/move/Dani_ex236H_Hitbox.png" alt="Cross Fire Sprite 2" title="move/Dani_ex236H_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Cross-Fire-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Cross-Fire-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>ex.236S</td><td>-</td><td>High</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Above Waist<br>Low Profile</td></tr><tr><td>ex.236H</td><td>-</td><td>Low</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Low Profile</td></tr></tbody>
+</table></div>
+    <span>Dani charges towards the opponent, and mixes them up. S version has Dani rise up into the air with a hitbox, before
+diving downwards with a high attack that ground bounces on hit.  HS has Dani dive downwards onto the ground, low
+profiling, before shooting upwards into the air with a low attack that sends upwards.
+</span>
+  </div>
+</div><a href="#Backstab">
+  <h3 id="Backstab" class=move-name>Backstab</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=p>
+      ex.236P <em button=x>during Exhilaration</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_ex236P.png" alt="Backstab Sprite " title="move/Dani_ex236P.png">
+<img src="../images/dani/move/Dani_ex236P_Whiff.png" alt="Backstab Sprite 2" title="move/Dani_ex236P_Whiff.png">
+<span class=image-note>Don't get too greedy</span>
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_ex236P_Hitbox.png" alt="Backstab Sprite " title="move/Dani_ex236P_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Backstab-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Backstab-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>Throw</td><td>-</td><td>-</td><td>-</td><td></td><td></td></tr></tbody>
+</table></div>
+    <span>Dani grabs the opponent and slashes through them as she dashes to the other side of the opponent, and stabs them in the
+back, before throwing them upwards.
+</span>
+  </div>
+</div><a href="#Bait">
+  <h3 id="Bait" class=move-name>Bait</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      ex.623S <em button=x>during Exhilaration</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_ex623S.png" alt="Bait Sprite " title="move/Dani_ex623S.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_ex623S_Hitbox.png" alt="Bait Sprite " title="move/Dani_ex623S_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Bait-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Bait-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Full</td></tr></tbody>
+</table></div>
+    <span>Invincible startup. Dani quickly cuts upwards into the air.
+</span>
+  </div>
+</div><a href="#Bunnyhop">
+  <h3 id="Bunnyhop" class=move-name>Bunnyhop</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=k>
+      ex.214K <em button=x>during Exhilaration</em>
+    </span>
+    <div class=image-container>
+      <img src="../images/dani/move/Dani_ex214K.png" alt="Bunnyhop Sprite " title="move/Dani_ex214K.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/dani/move/Dani_ex214K_Hitbox.png" alt="Bunnyhop Sprite " title="move/Dani_ex214K_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="Bunnyhop-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Bunnyhop-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+</table></div>
+    <span>Dani jumps into the air, slashing in front of them. Can be linked into itself during its late recovery period. If timed
+correctly, gives a boost to Dani's horizontal momentum.
+</span>
+  </div>
+</div>
+        </div>
+        <div class=supers>
+          
+        </div>
+      </main>
+    </div>
+    <footer>
+      <p>This page was last updated on Fri Aug 29 2025, 9:35:11 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+    </footer>
+  </body>
+</html>

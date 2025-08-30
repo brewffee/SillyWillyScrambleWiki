@@ -87,11 +87,11 @@ export class Character {
 
         // this can probably be done better but i don't care for now
         // for use in navigation bar on character pages
-        this.characterNav = `<li><a href="./${this.Name.toLowerCase()}.html">${this.Name}</a></li>`
-        this.characterNavActive = `<li class=active><a>${this.Name}</a></li>`
+        this.characterNav = `<li><a href="./${this.Name.toLowerCase()}.html">${this.Name}</a></li>`;
+        this.characterNavActive = `<li class=active><a>${this.Name}</a></li>`;
 
         // main page navigation bar
-        this.mainNav = `<li><a href="characters/${this.Name.toLowerCase()}.html">${this.Name}</a></li>`
+        this.mainNav = `<li><a href="characters/${this.Name.toLowerCase()}.html">${this.Name}</a></li>`;
 
         this.tableOfContents = `<li><a href="#Overview">Overview</a></li>`;
     }
@@ -135,15 +135,11 @@ export class Character {
 
     // adds Hold or Air OK to qualifying moves
     renderExtras(move: Move): string {
-        if (move.HoldOK && move.AirOK) {
-            return " (Hold, Air OK)";
-        } else if (move.HoldOK) {
-            return " (Hold OK)";
-        } else if (move.AirOK) {
-            return " (Air OK)";
-        }
+        const extras: string[] = [];
+        if (move.HoldOK) extras.push("Hold");
+        if (move.AirOK) extras.push("Air");
 
-        return "";
+        return extras.length > 0 ? ` (${extras.join(", ")} OK)` : "";
     }
 
     // utility for moves with multiple inputs (ex 236P/K/S)
@@ -151,7 +147,7 @@ export class Character {
         let inputStr = inputs[0];
         for (let i = 1; i < buttons.length; i++) {
             if (buttons.length !== inputs.length) return ""; // what are u doing ????
-            inputStr+=`<em button=or>/</em><em button=${buttons[i]}>${inputs[i]}</em>`;
+            inputStr += `<em button=or>/</em><em button=${buttons[i]}>${inputs[i]}</em>`;
         }
         return inputStr;
     }
@@ -165,7 +161,7 @@ export class Character {
         // if the first item has the version field, the rest must have it too (otherwise you are DUUUUMB !!!)
         frameDataTable = "<div class=frame-table><table><thead><tr>" + (data[0].Version ? "<th>Version</th>" : "") + frameDataTable;
         frameDataTable += data.map((d) => {
-            let dataRow = "<tr>"
+            let dataRow = "<tr>";
             if (d.Version) dataRow += `<td>${d.Version || ""}</td>`;
             dataRow += `<td>${d.Damage || ""}</td>`;
             dataRow += `<td>${d.Guard || ""}</td>`;
@@ -190,8 +186,8 @@ export class Character {
                 console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested image: ${images[i]}`);
             }
 
-            imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`
-            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`
+            imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`;
+            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`;
         }
         return imageStr;
     }

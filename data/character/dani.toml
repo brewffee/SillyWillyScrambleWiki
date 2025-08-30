@@ -1,0 +1,209 @@
+[Character]
+Name="Dani"
+Description="""
+Dani wields both a pistol and a knife at separate times.
+"""
+IconPath="icon/Dani_Icon.png"
+PortraitPath="portrait/Dani_Portrait.png"
+Type="Bnnuy"
+Reversals=[
+    "%ref(Bait,ex.623S,s)"
+]
+
+###################################
+# Unique Mechanics
+###################################
+[[Character.Mechanics]] # Exhilaration
+Name="Exhilaration"
+Description="""
+Dani starts the round with 0% <b>Exhilaration Meter</b>. The Exhilaration Meter can be filled by dealing damage to the
+opponent. <b>Exhilaration</b> is a state that greatly enhances Dani's movement speed, damage output, and changes her
+moveset—making her no longer reliant on her limited resource, %ref(Ammo,Ammo,_). Exhilaration is entered automatically
+when the Exhilaration Meter maxes out, or manually by using %ref(Ace,Ace,p). While in Exhilaration, the Exhilaration
+Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using %ref(Ace,Ace,p),
+she will instead be forced out of Exhilaration and into a brief vulnerable period of recovery.
+"""
+
+[[Character.Mechanics]] # Ammo
+Name="Ammo"
+Description="""
+Dani's normal state gives her great tools to open up the opponent, but not without its limitations. Dani is limited to
+only 8 bullets of %ref(Ammo,Ammo,_), which are consumed by using certain special moves. Once out of ammo, Dani is unable
+to use these special moves until she enters Exhilaration, which fully restocks her ammo on exit.
+"""
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]] # Ace
+Name="Ace"
+Inputs=["63214P"]
+Buttons=["p"]
+Images=["move/Dani_63214P.png"]
+Hitboxes=["move/Dani_63214P_Hitbox.png"]
+Description="""
+Allows Dani to swap manually to or from Exhilaration if she has enough. Dani is in counterhit state for the entire
+duration of this move, so use carefully—preferably during hard knockdown situations or where the opponent is a far
+enough distance away.
+"""
+[[Character.Specials.Data]]
+Recovery="-"
+
+[[Character.Specials]] # Ricochet
+Name="Ricochet"
+Inputs=["214S", "H"]
+Buttons=["s", "h"]
+Condition="with 1 bullet"
+Images=["move/Dani_214X.png"]
+Hitboxes=["move/Dani_214S_Hitbox.png", "move/Dani_214H_Hitbox.png"]
+Description="""
+Dani spends 1 bullet to shoot off of either the ceiling or the floor. Bullet goes to the opponent's current position
+after ricocheting. S version hits the ceiling, and hits high after ricocheting. Is slower the HS version. HS version
+hits the ground and hits low after ricocheting.
+"""
+[[Character.Specials.Data]]
+Version="214S"
+Damage="-"
+Guard="All&rightarrow;High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214H"
+Damage="-"
+Guard="All&rightarrow;Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Movement Control
+Name="Movement Control"
+Inputs=["236K"]
+Buttons=["k"]
+Images=["move/Dani_236K.png", "move/Dani_236K~K.png"]
+Hitboxes=["move/Dani_236K_Hitbox.png", "move/Dani_236K~K_Hitbox.png"]
+Description="""
+Dani rolls along the ground without a hitbox, able to cross up opponents. Pressing K again instantly stops movement,
+but provides a hitbox that hits low. Move is also good for low profiling.
+"""
+[[Character.Specials.Data]]
+Version="214K"
+Recovery="-"
+Invuln=["Pass-through", "Low Profile"]
+[[Character.Specials.Data]]
+Version="214K~K"
+Damage="-"
+Guard="Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Trigger Happy
+Name="Trigger Happy"
+Inputs=["236S"]
+Buttons=["s"]
+Condition="with 3 bullets"
+Images=["move/Dani_236S.png"]
+Hitboxes=["move/Dani_236S_Hitbox.png"]
+Description="""
+Dani spends 3 bullets to shoot 3 shots. One horizontal, one slightly diagonal upwards, and another shot aimed much
+higher off. Final shot launches the opponent upwards, allowing for it to be used up close in combos.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Cross Fire
+Name="Cross Fire"
+Inputs=["ex.236S", "H"]
+Buttons=["s", "h"]
+Condition="during Exhilaration"
+Images=["move/Dani_ex236S.png", "move/Dani_ex236H.png"]
+Hitboxes=["move/Dani_ex236S_Hitbox.png", "move/Dani_ex236H_Hitbox.png"]
+Description="""
+Dani charges towards the opponent, and mixes them up. S version has Dani rise up into the air with a hitbox, before
+diving downwards with a high attack that ground bounces on hit.  HS has Dani dive downwards onto the ground, low
+profiling, before shooting upwards into the air with a low attack that sends upwards.
+"""
+[[Character.Specials.Data]]
+Version="ex.236S"
+Damage="-"
+Guard="High" # ?
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Above Waist", "Low Profile"]
+[[Character.Specials.Data]]
+Version="ex.236H"
+Damage="-"
+Guard="Low" # ?
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Low Profile"]
+
+[[Character.Specials]] # Backstab
+Name="Backstab"
+Inputs=["ex.236P"]
+Buttons=["p"]
+Condition="during Exhilaration"
+Images=["move/Dani_ex236P.png", "move/Dani_ex236P_Whiff.png"]
+ImageNotes=["", "Don't get too greedy"]
+Hitboxes=["move/Dani_ex236P_Hitbox.png"]
+Description="""
+Dani grabs the opponent and slashes through them as she dashes to the other side of the opponent, and stabs them in the
+back, before throwing them upwards.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+
+[[Character.Specials]] # Bait
+Name="Bait"
+Inputs=["ex.623S"]
+Buttons=["s"]
+Condition="during Exhilaration"
+Images=["move/Dani_ex623S.png"]
+Hitboxes=["move/Dani_ex623S_Hitbox.png"]
+Description="""
+Invincible startup. Dani quickly cuts upwards into the air.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+
+[[Character.Specials]] # Bunnyhop
+Name="Bunnyhop"
+Inputs=["ex.214K"]
+Buttons=["k"]
+Condition="during Exhilaration"
+Images=["move/Dani_ex214K.png"]
+Hitboxes=["move/Dani_ex214K_Hitbox.png"]
+Description="""
+Dani jumps into the air, slashing in front of them. Can be linked into itself during its late recovery period. If timed
+correctly, gives a boost to Dani's horizontal momentum.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
