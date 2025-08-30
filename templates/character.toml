@@ -1,12 +1,28 @@
-# Descriptions support linking to other moves using the
-# macro %ref(<move name>, <input string>, <button>). For
-# example, %ref(Chrono Shift, 214K, k) will link to the
-# Chrono Shift move and display as "214K" in the description.
-# Descriptions also support coloring text according to
-# button with %btn(<button>, <text>). For example, %btn(k, K)
-# will display as "K" in the associated color (blue for Kick).
-# You can also use raw HTML to create lists, make text bold or
-# italic, and so on.
+####################################
+# Macros
+####################################
+# There are several provided macros to help with formatting.
+# These macros are usable in the "Description" and "*Notes" fields
+# Raw HTML is also supported in all fields, but is only recommended
+# for use in the aforementioned fields.
+#
+# Valid buttons are p, k, s, h, taunt, and additionally, x (gray), or (black), and generic (inherit)
+# Invalid buttons will be rendered as a generic button.
+#
+# %ref(<move name>, <display>, <button>) - Creates a link to another move
+#   Outputs: <a href="#movename" class="ref" button="button" title="movename">display</a>
+#
+# %btn(<button>, <text>) - Colors <text> to match the color of <button>
+#   Outputs: <em class="btn" button="button">text</em>
+#
+# %img(<path>, <notes>) - Inserts an image with a caption where <path> is the path to the image relative to the
+#   character's directory, and <notes> is any notes to display underneath the image
+#   TODO: maybe an alt parameter would be good
+#   Outputs: <div class=embed><img src="../images/???/path" alt="notes"><p>notes</p></div>
+#
+# %link(<url>, <text>) - Creates a hyperlink to <url> with the display text <text>, where <url> is the link URL
+#   relative to the root of the site
+#   Outputs: <a href="../url">text</a>
 
 [Character]
 Name=""
@@ -14,7 +30,10 @@ Description="""
 """
 IconPath=""         # Path to icon (relative to character's directory)
 PortraitPath=""     # Path to portrait art
+#Health=""           # The amount of health the character has
+#DamageMod=""        # The amount of damage this character takes
 Type=""             # Fighting style
+#FastestAttacks=[]   # The fastest moves this character has
 Reversals=[]        # List of moves with invulnerable startup
 
 ###################################

@@ -272,7 +272,7 @@ div.roster a .type {
     }
 }
 
-.overview p {
+.overview span {
     margin-top: 0;
     width: 100%;
     font-size: 14px;
@@ -492,6 +492,23 @@ em { font-style: normal }
 .btn {
     font-weight: bold;
 }
+
+.embed {
+    border: 1px solid black;
+    margin: 0 auto;
+    padding : 12px 32px;
+    width: fit-content;
+    background: #e4e4e4;
+}
+
+.embed p {
+    margin-bottom: 0;
+    margin-top: 4px;
+    font-size: 12px;
+    text-align: center;
+    color: dimgray;
+}
+
 
 footer {
     padding: 12px;

@@ -15,9 +15,9 @@ Then, create a pull request with the newly built files.
 | **[Kôfy](https://brewffee.github.io/SillyWillyScrambleWiki/characters/kôfy.html)**       | All-Arounder |
 | **[FailEs](https://brewffee.github.io/SillyWillyScrambleWiki/characters/failes.html)**   | Gooner       |
 | **Max**                                                                                  |              |
-| **Dani**                                                                                 |              |
+| **[Dani](https://brewffee.github.io/SillyWillyScrambleWiki/characters/dani.html)**       | Bnnuy        |
 | **[Berb](https://brewffee.github.io/SillyWillyScrambleWiki/characters/berb.html)**       | _Freaky_     |
-| **Osi**                                                                                  |              |
+| **[Osi](https://brewffee.github.io/SillyWillyScrambleWiki/characters/osi.html)**         | Cloudy       |
 | **[Guiblo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/guiblo.html)**   | Grappler     |
 | **Percebe**                                                                              |              |
 

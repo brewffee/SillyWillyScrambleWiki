@@ -1,0 +1,240 @@
+[Character]
+Name="Osi"
+Description="""
+Osi is a shapeshifting fighter who uses flames to get in close and smoke to disorient the opponent. With powerful mixup
+tools, and the ability to impair the opponents vision, clever setup of smoke is essential to playing this character.
+With access to Burning Resolve, Osi gains access to high damage combos and fast approaches as well. Make sure to use
+this all together to thoroughly beat down your opponent.
+"""
+IconPath="icon/Osi_Icon.png"
+PortraitPath="portrait/Osi_Portrait.png"
+Type="Cloudy"
+Reversals=[]
+
+###################################
+# Unique Mechanics
+###################################
+[[Character.Mechanics]] # Mist
+Name="Mist"
+Description="""
+Mist is a field that covers part of the stage. With [insert moves that deploy mist], Osi can deploy the mist around him.
+While in the mist, Osi is obscured, with only his faint outline appearing. However, while Osi is in the mist, they take
+1.5x damage from attacks, and the mist fades after being hit with a combo of 3, or after some time. Mist takes a bit of
+time to take action after being deployed. Osi’s VFX can still be seen from the mist.
+"""
+
+####################################
+# Special Attacks
+####################################
+[[Character.Specials]] # Flame Driver
+Name="Flame Driver"
+Inputs=["236S"]
+Buttons=["s"]
+Images=["move/Osi_236S.png"]
+Hitboxes=["move/Osi_236S_Hitbox.png"]
+Description="""
+Osi dashes forward to attack the opponent. On hit, Osi automatically follows up with two additional attacks that launch
+the opponent into the air. Pressing %btn(s,S) before the initial hit connects will cancel the attack and instead
+teleport Osi behind the opponent.
+"""
+[[Character.Specials.Data]]
+Version="236S"
+Damage="-, -, -"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="236S~S"
+Recovery="-"
+
+[[Character.Specials]] # Smoke Wheel
+Name="Smoke Wheel"
+Inputs=["214H"]
+Buttons=["h"]
+Images=["move/Osi_214H.png"]
+Hitboxes=["move/Osi_214H_Hitbox.png"]
+Description="""
+Osi creates a wheel of smoke using his hands. Applies hard knockdown and immediately ends active frames on hit.
+Mist is deployed around Osi when he enters recovery.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Ignited Blade
+Name="Ignited Blade"
+Inputs=["236P"]
+Buttons=["p"]
+Images=["move/Osi_236P.png"]
+Hitboxes=["move/Osi_236P_Hitbox.png"]
+Description="""
+Osi transforms his hand into a flaming blade and slashes forward.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Ignited Reap
+Name="Ignited Reap"
+Inputs=["P"]
+Buttons=["p"]
+Condition="after Ignited Blade"
+Images=["move/Osi_236P_P.png"]
+Hitboxes=["move/Osi_236P_P_Hitbox.png"]
+Description="""
+The %btn(p,P) follow-up to %ref(Ignited Blade,Ignited Blade,p). Osi transforms his sword hand into a flaming scythe and
+spins around, raising his scythe high before bringing it down in a wide arc. Hits the opponent overhead.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Ignited Sweep
+Name="Ignited Sweep"
+Inputs=["K"]
+Buttons=["k"]
+Condition="after Ignited Blade"
+Images=["move/Osi_236P_K.png"]
+Hitboxes=["move/Osi_236P_K_Hitbox.png"]
+Description="""
+The %btn(k,K) follow-up to %ref(Ignited Blade,Ignited Blade,p). Osi reverts his hand back to normal and drops to the
+ground, where he ignites his leg and sweeps it along the ground. Hits low.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Billowing Backoff
+Name="Billowing Backoff"
+Inputs=["S"]
+Buttons=["s"]
+Condition="after Ignited Blade"
+Images=["move/Osi_236P_S.png"]
+Hitboxes=["move/Osi_236P_S_Hitbox.png"]
+Description="""
+The %btn(s,S) follow-up to %ref(Ignited Blade,Ignited Blade,p). Osi reverts his hand back to normal and
+leaps backwards, creating a cloud of smoke around him as he does so.
+"""
+[[Character.Specials.Data]]
+Recovery="-"
+
+[[Character.Specials]] # Enkindled Spikes
+Name="Enkindled Spikes"
+Inputs=["623K"]
+Buttons=["k"]
+Images=["move/Osi_623K.png"]
+Hitboxes=["move/Osi_623K_Hitbox.png"]
+Description="""
+Osi conjures a series of flaming spikes that erupt from his chest, pushing the opponent away. Invincible on startup.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+
+[[Character.Specials]] # Flickering Flash
+Name="Flickering Flash"
+Inputs=["214K"]
+Buttons=["k"]
+Images=["move/Osi_214K.png"]
+Hitboxes=["move/Osi_214K_Hitbox.png"]
+Description="""
+Osi slides along the ground, erupting a pillar of flame from his original position.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+####################################
+# Supers
+####################################
+[[Character.Supers]] # Burning Resolve
+Name="Burning Resolve"
+Inputs=["214214S"]
+Buttons=["s"]
+Condition="with 50% meter"
+Images=["move/Osi_214214S.png"]
+Hitboxes=["move/Osi_214214S_Hitbox.png"]
+Description="""
+Osi takes a moment to gather himself, before engulfing himself in flame. In this state, Osi's movement speed
+is greatly increased, and every attack now keeps the opponent on fire, dealing bonus damage over time. This state
+lasts for a limited time.
+"""
+[[Character.Supers.Data]]
+Version="Activation"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Supers.Data]]
+Version="Deactivation"
+Recovery="-"
+
+[[Character.Supers]] # Shrouded in Mist
+Name="Shrouded in Mist"
+Inputs=["632146P"]
+Buttons=["p"]
+Condition="with 50% meter"
+Images=["move/Osi_632146P.png"]
+ImageNotes=["The fog is coming..."]
+Hitboxes=["move/Osi_632146P_Hitbox.png"]
+Description="""
+Osi lets out a powerful burst of smoke that fills the screen. Unlike other moves that deploy Mist, the Mist created
+from this move lasts indefinitely until Osi is hit three times.
+"""
+[[Character.Supers.Data]]
+Startup="-"
+Active="-"
+Recovery="-"
+
+[[Character.Supers]] # Blazing Onslaught
+Name="Blazing Onslaught"
+Inputs=["2141236H"]
+Buttons=["h"]
+Condition="with 50% meter"
+Images=["move/Osi_2141236H.png"]
+Hitboxes=["move/Osi_2141236H_Hitbox.png"]
+Description="""
+An invincible, high-speed dash where Osi rushes forward to grab the opponent. If connected, Osi enters a cinematic
+where he deploys Mist around the opponent, before slashing them multiple times with his flaming blade. Finally, he
+finishes by launching the opponent high into the air, jumping up after them to deliver a powerful downward strike.
+"""
+[[Character.Supers.Data]]
+Version="2141236H"
+Damage="-"
+Guard="Unblockable"
+Startup="-"
+Active="-"
+Recovery="-"
+Invuln=["Full"]
+[[Character.Supers.Data]]
+Version="Whiff"
+Recovery="-"

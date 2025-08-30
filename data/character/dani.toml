@@ -51,18 +51,18 @@ Recovery="-"
 
 [[Character.Specials]] # Ricochet
 Name="Ricochet"
-Inputs=["214S", "H"]
+Inputs=["nm.214S", "H"]
 Buttons=["s", "h"]
 Condition="with 1 bullet"
-Images=["move/Dani_214X.png"]
-Hitboxes=["move/Dani_214S_Hitbox.png", "move/Dani_214H_Hitbox.png"]
+Images=["move/Dani_nm214X.png"]
+Hitboxes=["move/Dani_nm214S_Hitbox.png", "move/Dani_nm214H_Hitbox.png"]
 Description="""
 Dani spends 1 bullet to shoot off of either the ceiling or the floor. Bullet goes to the opponent's current position
 after ricocheting. S version hits the ceiling, and hits high after ricocheting. Is slower the HS version. HS version
 hits the ground and hits low after ricocheting.
 """
 [[Character.Specials.Data]]
-Version="214S"
+Version="nm.214S"
 Damage="-"
 Guard="All&rightarrow;High"
 Startup="-"
@@ -70,7 +70,7 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 [[Character.Specials.Data]]
-Version="214H"
+Version="nm.214H"
 Damage="-"
 Guard="All&rightarrow;Low"
 Startup="-"
@@ -80,20 +80,20 @@ OnBlock="-"
 
 [[Character.Specials]] # Movement Control
 Name="Movement Control"
-Inputs=["236K"]
+Inputs=["nm.236K"]
 Buttons=["k"]
-Images=["move/Dani_236K.png", "move/Dani_236K~K.png"]
-Hitboxes=["move/Dani_236K_Hitbox.png", "move/Dani_236K~K_Hitbox.png"]
+Images=["move/Dani_nm236K.png", "move/Dani_nm236K~K.png"]
+Hitboxes=["move/Dani_nm236K_Hitbox.png", "move/Dani_nm236K~K_Hitbox.png"]
 Description="""
 Dani rolls along the ground without a hitbox, able to cross up opponents. Pressing K again instantly stops movement,
 but provides a hitbox that hits low. Move is also good for low profiling.
 """
 [[Character.Specials.Data]]
-Version="214K"
+Version="nm.214K"
 Recovery="-"
 Invuln=["Pass-through", "Low Profile"]
 [[Character.Specials.Data]]
-Version="214K~K"
+Version="nm.214K~K"
 Damage="-"
 Guard="Low"
 Startup="-"
@@ -103,11 +103,11 @@ OnBlock="-"
 
 [[Character.Specials]] # Trigger Happy
 Name="Trigger Happy"
-Inputs=["236S"]
+Inputs=["nm.236S"]
 Buttons=["s"]
 Condition="with 3 bullets"
-Images=["move/Dani_236S.png"]
-Hitboxes=["move/Dani_236S_Hitbox.png"]
+Images=["move/Dani_nm236S.png"]
+Hitboxes=["move/Dani_nm236S_Hitbox.png"]
 Description="""
 Dani spends 3 bullets to shoot 3 shots. One horizontal, one slightly diagonal upwards, and another shot aimed much
 higher off. Final shot launches the opponent upwards, allowing for it to be used up close in combos.
@@ -207,3 +207,64 @@ Startup="-"
 Active="-"
 Recovery="-"
 OnBlock="-"
+
+####################################
+# Supers
+####################################
+[[Character.Supers]] # Clutch
+Name="Clutch"
+Inputs=["632146S"]
+Buttons=["s"]
+Condition="with 50% meter"
+Images=["move/Dani_632146S.png"]
+Hitboxes=["move/Dani_632146S_Hitbox.png"]
+Description="""
+Dani dashes forwards with a knife in hand. The amount of hits depends on the amount of remaining Exhilaration Meter.
+"""
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Supers]] # Snipe
+Name="Snipe"
+Inputs=["nm.632146K"]
+Buttons=["k"]
+Condition="with 50% meter"
+Images=["move/Dani_nm632146K.png"]
+Hitboxes=["move/Dani_nm632146K_Hitbox.png"]
+Description="""
+Dani jumps up into the a air, and takes a moment to aim before spending all of her remaining bullets to fire a barrage of
+hitscan shots that track the opponent. After firing, she immediately enters Exhilaration.
+"""
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Airborne"]
+
+[[Character.Supers]] # Anchor
+Name="Anchor"
+Inputs=["ex.632146K"]
+Buttons=["k"]
+Condition="during Exhilaration, with 50% meter"
+Images=["move/Dani_ex632146K.png"]
+Hitboxes=["move/Dani_ex632146K_Hitbox.png"]
+Description="""
+Dani throws a knife forwards. Upon hitting the opponent with it, the opponent is stunned while Dani flashes forwards
+and slices right through the opponent.
+"""
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+

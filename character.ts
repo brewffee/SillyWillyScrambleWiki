@@ -110,7 +110,7 @@ export class Character {
         }
     }
 
-    // resolve button links and references (todo: external links)
+    // resolve macros into HTML elements
     resolveReferences(input: string): string {
         // specific move reference
         // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
@@ -123,6 +123,23 @@ export class Character {
         result = result.replace(/%btn\(([^,]+),([^)]+)\)/g, (_, button, text) =>
             `<em class=btn button="${button.toLowerCase()}">${text}</em>`
         );
+
+        // external link reference
+        // converts instances of %link(URL, TEXT) to <a href="URL" target="_blank" rel="noopener">TEXT</a>
+        result = result.replace(/%link\(([^,]+),([^)]+)\)/g, (_, url, text) =>
+            `<a href="../${url}">${text}</a>`
+        );
+
+        // image embed
+        // converts instances of %img(PATH, NOTE) to:
+        // <div class=embed><img src="../images/CHARACTER/PATH" alt="NOTE"><p>NOTE</p></div>
+        result = result.replace(/%img\(([^,]+),([^)]+)\)/g, (_, path, note) => {
+            if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${path}`)) {
+                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not embed requested image: ${path}`);
+            }
+            return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${note}"><p>${note}</p></div>`;
+        });
+
 
         return result;
     }
@@ -195,7 +212,7 @@ export class Character {
     // character specific mechanics
     renderMechanics(mechanics: Mechanic[]): string {
         if (!mechanics) return "";
-        const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n"
+        const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n";
         this.addNavigable("Mechanics", true);
 
         // find the <!-- toc end --> end line and insert the mechanics nav before it
