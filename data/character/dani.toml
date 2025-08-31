@@ -231,13 +231,13 @@ OnBlock="-"
 
 [[Character.Supers]] # Snipe
 Name="Snipe"
-Inputs=["nm.632146K"]
-Buttons=["k"]
+Inputs=["nm.632146H"]
+Buttons=["h"]
 Condition="with 50% meter"
-Images=["move/Dani_nm632146K.png"]
-Hitboxes=["move/Dani_nm632146K_Hitbox.png"]
+Images=["move/Dani_nm632146H.png"]
+Hitboxes=["move/Dani_nm632146H_Hitbox.png"]
 Description="""
-Dani jumps up into the a air, and takes a moment to aim before spending all of her remaining bullets to fire a barrage of
+Dani jumps up into the air, and takes a moment to aim before spending all of her remaining bullets to fire a barrage of
 hitscan shots that track the opponent. After firing, she immediately enters Exhilaration.
 """
 [[Character.Supers.Data]]
@@ -251,11 +251,11 @@ Invuln=["Airborne"]
 
 [[Character.Supers]] # Anchor
 Name="Anchor"
-Inputs=["ex.632146K"]
-Buttons=["k"]
+Inputs=["ex.632146H"]
+Buttons=["h"]
 Condition="during Exhilaration, with 50% meter"
-Images=["move/Dani_ex632146K.png"]
-Hitboxes=["move/Dani_ex632146K_Hitbox.png"]
+Images=["move/Dani_ex632146H.png"]
+Hitboxes=["move/Dani_ex632146H_Hitbox.png"]
 Description="""
 Dani throws a knife forwards. Upon hitting the opponent with it, the opponent is stunned while Dani flashes forwards
 and slices right through the opponent.

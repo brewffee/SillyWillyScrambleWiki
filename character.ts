@@ -238,7 +238,7 @@ export class Character {
 
             return normalTemplate.replace(/%INPUT%/g, normal.Input)
                 .replace(/%EXTRA%/g, this.renderExtras(normal))
-                .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${normal.Condition}</em>` : "")
+                .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${this.resolveReferences(normal.Condition)}</em>` : "")
                 .replace(/%BUTTON%/g, normal.Button)
                 .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.ImageNotes, normal.Input))
                 .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.HitboxNotes, normal.Input))
