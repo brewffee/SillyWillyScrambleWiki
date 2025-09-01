@@ -10,6 +10,7 @@ PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
 Reversals=[
     "%ref(Double or Nothing,632146H,h)",
+    "%ref(Double or Nothing,632146H~H,h)"
 ]
 
 ###################################
@@ -115,7 +116,7 @@ OnBlock="-"
 Name="Bad"
 Inputs=["S"]
 Buttons=["s"]
-Condition="after Your"
+Condition="after %btn(s,Your)"
 Images=["move/Seagull_236S~S.png"]
 Hitboxes=["move/Seagull_236S~S_Hitbox.png"]
 Description="""
@@ -176,7 +177,7 @@ Invuln=["Full"]
 [[Character.Supers.Data]]
 Version="Parry"
 Damage="-"
-Startup="-"
+Startup="1"
 Active="-"
 Recovery="-"
 Invuln=["Strike"]

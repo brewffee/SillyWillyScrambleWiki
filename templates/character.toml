@@ -4,7 +4,8 @@
 # There are several provided macros to help with formatting.
 # These macros are usable in the "Description" and "*Notes" fields
 # Raw HTML is also supported in all fields, but is only recommended
-# for use in the aforementioned fields.
+# for use in the aforementioned fields. (Commas or parenthesis
+# within macro arguments can be escaped with a backslash)
 #
 # Valid buttons are p, k, s, h, taunt, and additionally, x (gray), or (black), and generic (inherit)
 # Invalid buttons will be rendered as a generic button.
@@ -15,14 +16,13 @@
 # %btn(<button>, <text>) - Colors <text> to match the color of <button>
 #   Outputs: <em class="btn" button="button">text</em>
 #
-# %img(<path>, <notes>) - Inserts an image with a caption where <path> is the path to the image relative to the
+# %img(<path>, <alt>, <notes>) - Inserts an image with a caption where <path> is the path to the image relative to the
 #   character's directory, and <notes> is any notes to display underneath the image
-#   TODO: maybe an alt parameter would be good
-#   Outputs: <div class=embed><img src="../images/???/path" alt="notes"><p>notes</p></div>
+#   Outputs: <div class=embed><img src="../images/???/path" alt="alt" title="path"><p>notes</p></div>
 #
-# %link(<url>, <text>) - Creates a hyperlink to <url> with the display text <text>, where <url> is the link URL
+# %link(<url>, <alt>, <text>) - Creates a hyperlink to <url> with the display text <text>, where <url> is the link URL
 #   relative to the root of the site
-#   Outputs: <a href="../url">text</a>
+#   Outputs: <a href="../url" totle="alt">text</a>
 
 [Character]
 Name=""

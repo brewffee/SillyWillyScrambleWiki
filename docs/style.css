@@ -495,15 +495,23 @@ em { font-style: normal }
 
 .embed {
     border: 1px solid black;
-    margin: 0 auto;
+    margin: 12px auto;
     padding : 12px 32px;
     width: fit-content;
+    max-width: 90%;
     background: #e4e4e4;
+}
+
+.embed img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .embed p {
     margin-bottom: 0;
-    margin-top: 4px;
+    margin-top: 10px;
     font-size: 12px;
     text-align: center;
     color: dimgray;

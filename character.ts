@@ -112,32 +112,103 @@ export class Character {
 
     // resolve macros into HTML elements
     resolveReferences(input: string): string {
+        // todo: this and other utility functions might be moved outside into a separate utils file
+        // utility to parse macro arguments while respecting escaped special chars
+        function parseArgs(args: string[], amt: number): string[] {
+            const parsed: string[] = [];
+            const str = args.slice(0, amt).join(",");
+
+            let current = "", escaped = false;
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                if (escaped) {
+                    current += char;
+                    escaped = false;
+                } else if (char === "\\") {
+                    escaped = true;
+                } else if (char === ",") {
+                    parsed.push(current);
+                    current = "";
+                } else {
+                    current += char;
+                }
+            }
+
+            parsed.push(current);
+            return parsed;
+        }
+
+        // creates macros for me because man i dont like looking at those regexes
+        function macroRegex(name: string, amt: number): RegExp {
+            // %name(...) (?:[^\\)]|\\.)*
+            const pattern = "((?:[^\\\\)]|\\\\.)*)"; // do you like backslashes ?? i dont
+            const params = Array(amt).fill(pattern).join(",");
+            return new RegExp(`%${name}\\(${params}\\)`, "g");
+        }
+
+        // colors an input string with multiple colors
+        function multicolor(rawInput: string, buttonsArg: string, sep: string) {
+            const buttons = buttonsArg.split("");
+            const inputs = rawInput.split(sep);
+
+            for (let i = 0; i < buttons.length; i++) {
+                inputs[i] = `<em button=${buttons[i].toLowerCase()}>${inputs[i]}</em>`;
+            }
+
+            return inputs.join(`<em button=or>${sep}</em>`);
+        }
+
         // specific move reference
         // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
-        let result = input.replace(/%ref\(([^,]+),([^,]+),([^)]+)\)/g, (_, name, input, button) =>
-            `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${input}</a>`
-        );
+        let result = input.replace(macroRegex("ref", 3), (_, ...args) => {
+            const [name, inputStr, button] = parseArgs(args, 3);
+            return `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${inputStr}</a>`;
+        });
+
+        // specific move reference with multi-colored input, useful for followup moves
+        // colors the initial move with BTN1, colors the separator SEP black, and the rest with BTN<N>
+        // converts instances of %mref(NAME,INPUT,BTN1BTN2,SEP) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
+        result = result.replace(macroRegex("mref", 4), (_, ...args) => {
+            const [name, rawInput, buttons, sep] = parseArgs(args, 4);
+            const inputStr = multicolor(rawInput, buttons, sep);
+
+            return `<a href="#${this.safeID(name)}" class=ref button="${buttons[0].toLowerCase()}" title="${name}">${inputStr}</a>`;
+        });
 
         // weak button reference
         // converts instances of %btn(BTN, TEXT) to <em class=btnbutton="BTN">TEXT</em>
-        result = result.replace(/%btn\(([^,]+),([^)]+)\)/g, (_, button, text) =>
-            `<em class=btn button="${button.toLowerCase()}">${text}</em>`
-        );
+        result = result.replace(macroRegex("btn", 2), (_, ...args) => {
+            const [button, text] = parseArgs(args, 2);
+            return `<em class=btn button="${button.toLowerCase()}">${text}</em>`;
+        });
+
+        // weak button reference, similar to mref
+        // converts instances of %mbtn(TEXT,BTN1BTN2,SEP) to <em class=btnbutton="BTN">TEXT</em>
+        result = result.replace(macroRegex("mbtn", 3), (_, ...args) => {
+            const [rawText, buttons, sep] = parseArgs(args, 3);
+            const text = multicolor(rawText, buttons, sep);
+            return `<em class=btn button="${buttons[0].toLowerCase()}">${text}</em>`;
+        });
 
         // external link reference
-        // converts instances of %link(URL, TEXT) to <a href="URL" target="_blank" rel="noopener">TEXT</a>
-        result = result.replace(/%link\(([^,]+),([^)]+)\)/g, (_, url, text) =>
-            `<a href="../${url}">${text}</a>`
-        );
+        // converts instances of %link(URL, ALT, TEXT) to <a href="URL" title="ALT">TEXT</a>
+        result = result.replace(macroRegex("link", 3), (_, ...args) => {
+            const [url, alt, text] = parseArgs(args, 3);
+            if (!fs.existsSync(`docs/${url}`)) {
+                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested link target: ${url}`);
+            }
+            return `<a href="../${url}" title="${alt}">${text}</a>`;
+        });
 
         // image embed
-        // converts instances of %img(PATH, NOTE) to:
-        // <div class=embed><img src="../images/CHARACTER/PATH" alt="NOTE"><p>NOTE</p></div>
-        result = result.replace(/%img\(([^,]+),([^)]+)\)/g, (_, path, note) => {
+        // converts instances of %img(PATH, ALT, NOTE) to:
+        // <div class=embed><img src="../images/CHARACTER/PATH" alt="ALT"><p>NOTE</p></div>
+        result = result.replace(macroRegex("img", 3), (_, ...args) => {
+            const [path, alt, note] = parseArgs(args, 3);
             if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${path}`)) {
                 console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not embed requested image: ${path}`);
             }
-            return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${note}"><p>${note}</p></div>`;
+            return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
         });
 
 
@@ -215,8 +286,6 @@ export class Character {
         const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n";
         this.addNavigable("Mechanics", true);
 
-        // find the <!-- toc end --> end line and insert the mechanics nav before it
-
         return mechanicsHeader + mechanics.map((mechanic) => {
             console.log(`[${this.Name}] Generating documentation for mechanic: ${mechanic.Name}`);
             this.addNavigable(mechanic.Name);
@@ -262,7 +331,7 @@ export class Character {
                 .replace(/%EXTRA%/g, this.renderExtras(special))
                 .replace(/%BUTTON%/g, special.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
-                .replace(/%CONDITION%/g, special.Condition ? `<em button=x>${special.Condition}</em>` : "")
+                .replace(/%CONDITION%/g, special.Condition ? ` <em button=x>${this.resolveReferences(special.Condition)}</em>` : "")
                 .replace(/%IMAGE%/g, this.renderImages(special.Images, special.ImageNotes, special.Name))
                 .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.HitboxNotes, special.Name))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
@@ -285,7 +354,7 @@ export class Character {
                 .replace(/%EXTRA%/g, this.renderExtras(sup))
                 .replace(/%BUTTON%/g, sup.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))
-                .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${sup.Condition}</em>` : "")
+                .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${this.resolveReferences(sup.Condition)}</em>` : "")
                 .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.ImageNotes, sup.Name))
                 .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.HitboxNotes, sup.Name))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(sup.Data))

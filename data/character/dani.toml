@@ -22,6 +22,9 @@ moveset—making her no longer reliant on her limited resource, %ref(Ammo,Ammo,_
 when the Exhilaration Meter maxes out, or manually by using %ref(Ace,Ace,p). While in Exhilaration, the Exhilaration
 Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using %ref(Ace,Ace,p),
 she will instead be forced out of Exhilaration and into a brief vulnerable period of recovery.
+
+%img(Dani_Exhilaration_Meters.png,Exhilaration Meters,Exhilaration Meter when in normal mode (left\\)\\, compared to
+Exhilaration mode (right\\))
 """
 
 [[Character.Mechanics]] # Ammo
@@ -30,6 +33,7 @@ Description="""
 Dani's normal state gives her great tools to open up the opponent, but not without its limitations. Dani is limited to
 only 8 bullets of %ref(Ammo,Ammo,_), which are consumed by using certain special moves. Once out of ammo, Dani is unable
 to use these special moves until she enters Exhilaration, which fully restocks her ammo on exit.
+%img(Dani_Ammo_Gauge.png,Ammo Gauge,Ammo Gauge showing 5 out of 8 bullets remaining)
 """
 
 ###################################
@@ -57,9 +61,12 @@ Condition="with 1 bullet"
 Images=["move/Dani_nm214X.png"]
 Hitboxes=["move/Dani_nm214S_Hitbox.png", "move/Dani_nm214H_Hitbox.png"]
 Description="""
-Dani spends 1 bullet to shoot off of either the ceiling or the floor. Bullet goes to the opponent's current position
-after ricocheting. S version hits the ceiling, and hits high after ricocheting. Is slower the HS version. HS version
-hits the ground and hits low after ricocheting.
+Dani fires one bullet aimed at either the ceiling or the floor. Both versions track to the opponent's position after
+ricocheting.
+<ul>
+    <li>%btn(s,S) version ricochets off the ceiling and hits the opponent high.</li>
+    <li>%btn(h,H) version ricochets off the floor and hits the opponent low, although at a much slower speed.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="nm.214S"
@@ -105,14 +112,36 @@ OnBlock="-"
 Name="Trigger Happy"
 Inputs=["nm.236S"]
 Buttons=["s"]
+HoldOK=true
 Condition="with 3 bullets"
 Images=["move/Dani_nm236S.png"]
 Hitboxes=["move/Dani_nm236S_Hitbox.png"]
 Description="""
-Dani spends 3 bullets to shoot 3 shots. One horizontal, one slightly diagonal upwards, and another shot aimed much
-higher off. Final shot launches the opponent upwards, allowing for it to be used up close in combos.
+Dani fires up to three bullets in a row. A fairly weak move on its one, but when fully held can be used to juggle the
+opponent in combos. First shot is aimed horizontally, the second shot at a slightly diagonal angle, and the final shot
+is aimed much higher up.
+<ul>
+    <li>Third shot launches the opponent upwards</li>
+</ul>
 """
 [[Character.Specials.Data]]
+Version="nm.236S"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="nm.236{S}"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="nm.236[S]"
 Damage="-"
 Guard="All"
 Startup="-"
@@ -128,14 +157,14 @@ Condition="during Exhilaration"
 Images=["move/Dani_ex236S.png", "move/Dani_ex236H.png"]
 Hitboxes=["move/Dani_ex236S_Hitbox.png", "move/Dani_ex236H_Hitbox.png"]
 Description="""
-Dani charges towards the opponent, and mixes them up. S version has Dani rise up into the air with a hitbox, before
-diving downwards with a high attack that ground bounces on hit.  HS has Dani dive downwards onto the ground, low
-profiling, before shooting upwards into the air with a low attack that sends upwards.
+Dani charges towards the opponent, and mixes them up. %btn(s,S) version has Dani rise up into the air with a hitbox,
+before diving downwards with a high attack that ground bounces on hit. %btn(h,H) version has Dani dive downwards onto
+the ground, low profiling, before shooting upwards into the air with a launching low attack.
 """
 [[Character.Specials.Data]]
 Version="ex.236S"
 Damage="-"
-Guard="High" # ?
+Guard="High"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -144,7 +173,7 @@ Invuln=["Above Waist", "Low Profile"]
 [[Character.Specials.Data]]
 Version="ex.236H"
 Damage="-"
-Guard="Low" # ?
+Guard="Low"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -229,8 +258,8 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Supers]] # Snipe
-Name="Snipe"
+[[Character.Supers]] # Trickshot
+Name="Trickshot"
 Inputs=["nm.632146H"]
 Buttons=["h"]
 Condition="with 50% meter"
