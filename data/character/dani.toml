@@ -113,7 +113,7 @@ Name="Trigger Happy"
 Inputs=["nm.236S"]
 Buttons=["s"]
 HoldOK=true
-Condition="with 3 bullets"
+Condition="with up to 3 bullets"
 Images=["move/Dani_nm236S.png"]
 Hitboxes=["move/Dani_nm236S_Hitbox.png"]
 Description="""
@@ -122,6 +122,7 @@ opponent in combos. First shot is aimed horizontally, the second shot at a sligh
 is aimed much higher up.
 <ul>
     <li>Third shot launches the opponent upwards</li>
+    <li>Dani will whiff during this move if she runs out of ammo</li>
 </ul>
 """
 [[Character.Specials.Data]]

@@ -29,7 +29,7 @@
         <nav>
           <h3>Table of Contents <input type=checkbox checked="checked"></h3>
           <ul>
-            <li><a href="#Overview">Overview</a></li><li class=header><a href="#Mechanics">Mechanics</a></li><li><a href="#Exhilaration">Exhilaration</a></li><li><a href="#Ammo">Ammo</a></li><li class=header><a href="#Special-Attacks">Special Attacks</a></li><li><a href="#Ace">Ace</a></li><li><a href="#Ricochet">Ricochet</a></li><li><a href="#Movement-Control">Movement Control</a></li><li><a href="#Trigger-Happy">Trigger Happy</a></li><li><a href="#Cross-Fire">Cross Fire</a></li><li><a href="#Backstab">Backstab</a></li><li><a href="#Bait">Bait</a></li><li><a href="#Bunnyhop">Bunnyhop</a></li><li class=header><a href="#Supers">Supers</a></li><li><a href="#Clutch">Clutch</a></li><li><a href="#Snipe">Snipe</a></li><li><a href="#Anchor">Anchor</a></li>
+            <li><a href="#Overview">Overview</a></li><li class=header><a href="#Mechanics">Mechanics</a></li><li><a href="#Exhilaration">Exhilaration</a></li><li><a href="#Ammo">Ammo</a></li><li class=header><a href="#Special-Attacks">Special Attacks</a></li><li><a href="#Ace">Ace</a></li><li><a href="#Ricochet">Ricochet</a></li><li><a href="#Movement-Control">Movement Control</a></li><li><a href="#Trigger-Happy">Trigger Happy</a></li><li><a href="#Cross-Fire">Cross Fire</a></li><li><a href="#Backstab">Backstab</a></li><li><a href="#Bait">Bait</a></li><li><a href="#Bunnyhop">Bunnyhop</a></li><li class=header><a href="#Supers">Supers</a></li><li><a href="#Clutch">Clutch</a></li><li><a href="#Trickshot">Trickshot</a></li><li><a href="#Anchor">Anchor</a></li>
           </ul>
         </nav>
         <a class=nav-top href="#top">Back to Top</a>
@@ -174,12 +174,12 @@ but provides a hitbox that hits low. Move is also good for low profiling.
 </span>
   </div>
 </div><a href="#Trigger-Happy">
-  <h3 id="Trigger-Happy" class=move-name>Trigger Happy</h3>
+  <h3 id="Trigger-Happy" class=move-name>Trigger Happy (Hold OK)</h3>
 </a>
 <div class=move>
   <div class=move-info>
     <span class=move-input button=s>
-      nm.236S  <em button=x>with 3 bullets</em>
+      nm.236S  <em button=x>with up to 3 bullets</em>
     </span>
     <div class=image-container>
       <img src="../images/dani/move/Dani_nm236S.png" alt="Trigger Happy Sprite " title="move/Dani_nm236S.png">
@@ -195,11 +195,16 @@ but provides a hitbox that hits low. Move is also good for low profiling.
     </div>
   </div>
   <div class=move-details>
-    <div class=frame-table><table><thead><tr><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
-<tbody><tr><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>nm.236S</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>nm.236{S}</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr><tr><td>nm.236[S]</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr></tbody>
 </table></div>
-    <span>Dani spends 3 bullets to shoot 3 shots. One horizontal, one slightly diagonal upwards, and another shot aimed much
-higher off. Final shot launches the opponent upwards, allowing for it to be used up close in combos.
+    <span>Dani fires up to three bullets in a row. A fairly weak move on its one, but when fully held can be used to juggle the
+opponent in combos. First shot is aimed horizontally, the second shot at a slightly diagonal angle, and the final shot
+is aimed much higher up.
+<ul>
+    <li>Third shot launches the opponent upwards</li>
+    <li>Dani will whiff during this move if she runs out of ammo</li>
+</ul>
 </span>
   </div>
 </div><a href="#Cross-Fire">
@@ -229,9 +234,9 @@ higher off. Final shot launches the opponent upwards, allowing for it to be used
     <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
 <tbody><tr><td>ex.236S</td><td>-</td><td>High</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Above Waist<br>Low Profile</td></tr><tr><td>ex.236H</td><td>-</td><td>Low</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Low Profile</td></tr></tbody>
 </table></div>
-    <span>Dani charges towards the opponent, and mixes them up. S version has Dani rise up into the air with a hitbox, before
-diving downwards with a high attack that ground bounces on hit.  HS has Dani dive downwards onto the ground, low
-profiling, before shooting upwards into the air with a low attack that sends upwards.
+    <span>Dani charges towards the opponent, and mixes them up. <em class=btn button="s">S</em> version has Dani rise up into the air with a hitbox,
+before diving downwards with a high attack that ground bounces on hit. <em class=btn button="h">H</em> version has Dani dive downwards onto
+the ground, low profiling, before shooting upwards into the air with a launching low attack.
 </span>
   </div>
 </div><a href="#Backstab">
@@ -353,8 +358,8 @@ correctly, gives a boost to Dani's horizontal momentum.
     <span>Dani dashes forwards with a knife in hand. The amount of hits depends on the amount of remaining Exhilaration Meter.
 </span>
   </div>
-</div><a href="#Snipe">
-  <h3 id="Snipe" class=move-name>Snipe</h3>
+</div><a href="#Trickshot">
+  <h3 id="Trickshot" class=move-name>Trickshot</h3>
 </a>
 <div class=move>
   <div class=move-info>
@@ -362,16 +367,16 @@ correctly, gives a boost to Dani's horizontal momentum.
       nm.632146H <em button=x>with 50% meter</em>
     </span>
     <div class=image-container>
-      <img src="../images/dani/move/Dani_nm632146H.png" alt="Snipe Sprite " title="move/Dani_nm632146H.png">
+      <img src="../images/dani/move/Dani_nm632146H.png" alt="Trickshot Sprite " title="move/Dani_nm632146H.png">
 
     </div>
     <div class=hitbox-container>
-      <img src="../images/dani/move/Dani_nm632146H_Hitbox.png" alt="Snipe Sprite " title="move/Dani_nm632146H_Hitbox.png">
+      <img src="../images/dani/move/Dani_nm632146H_Hitbox.png" alt="Trickshot Sprite " title="move/Dani_nm632146H_Hitbox.png">
 
     </div>
     <div class=hitbox-toggle>
-      <input type=checkbox id="Snipe-hitbox-toggle" class=hitbox-checkbox hidden>
-      <label for="Snipe-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+      <input type=checkbox id="Trickshot-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="Trickshot-hitbox-toggle" class=hitbox-btn>Hitbox</label>
     </div>
   </div>
   <div class=move-details>
@@ -416,7 +421,7 @@ and slices right through the opponent.
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Sun Aug 31 2025, 9:49:47 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Mon Sep 01 2025, 1:56:41 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

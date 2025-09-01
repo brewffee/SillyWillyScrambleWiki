@@ -200,6 +200,7 @@ Startup="-"
 Active="-"
 Recovery="-"
 OnBlock="-"
+Invuln=["Pass-through"]
 
 ####################################
 # Supers

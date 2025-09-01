@@ -35,6 +35,8 @@ Description="""
 Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana proportional
 to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
 stay on top of his resources. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
+%img(Tomo_Mana_Meters.png,Mana Meters,Mana meter when full (left\\)\\, compared to Mana meter when in Exhaustion
+(right\\))
 """
 
 [[Character.Mechanics]] # Exhaustion
@@ -260,6 +262,7 @@ Recovery="-"
 OnBlock="-"
 [[Character.Specials.Data]]
 Version="214K"
+Damage="-"
 Guard="High"
 Startup="-"
 Active="-"
