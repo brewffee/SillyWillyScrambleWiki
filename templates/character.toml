@@ -72,6 +72,7 @@ OnHit=""            # The advantage or disadvantage on hit
 Invuln=[""]         # Where and how is this move invulnerable?
 SpecialFrames=[""]  # Is there something of note for a specific frame?
 SpecialNote=""      # What's so special about them?
+# todo: Attributes section, displays projectile status, knockdown type, etc.
 
 ###################################
 # Special Attacks

@@ -1,0 +1,272 @@
+[Character]
+Name="Max"
+Description="""
+"""
+IconPath="icon/Max_Icon.png"
+PortraitPath="portrait/Max_Portrait.png"
+Type=""
+Reversals=[
+    "%ref(Maxsmash,632146P,p)"
+]
+
+###################################
+# Mechanics
+###################################
+[[Character.Mechanics]]
+Name="Caffeine Gauge"
+Description="""
+Max uses their Caffeine Gauge to perform enhanced versions of their special moves. Max starts the round with 0 out of
+three Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are
+significantly more powerful, deal more damage, and have more launch power, allowing for more combo potential when
+managed correctly.
+"""
+
+###################################
+# Command Normals
+###################################
+[[Character.Normals]] # Taunts
+Input="Taunt"
+Button="taunt"
+Images=[""]
+Hitboxes=[""]
+# TODO: needs external linking for taunt 3 - https://www.youtube.com/watch?v=nyqmwLd8rXU
+Description="""
+Max performs one out of the three possible taunts:
+<ul>
+    <li>Max morphs into an unmoving .jpeg of a random cat</li>
+    <li>Max performs the Lunar Party fortnite emote with a badly-recreated version of the audio</li>
+    <li>Max hits the Yeet by Lil Cashew pose</li>
+</ul>
+"""
+[[Character.Normals.Data]]
+Version=".jpeg"
+[[Character.Normals.Data]]
+Version="Lunar Party"
+[[Character.Normals.Data]]
+Version="Yeet by Lil Cashew"
+
+[[Character.Normals]] # 6H
+Input="6H"
+Button="h"
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max holds out an angry cat that scratches the opponent. A pretty weak move when performed raw, but a great option for
+keeping an opponent in the air for combo extensions.
+"""
+[[Character.Normals.Data]]
+Damage="-xN"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Normals]] # 3K
+Input="3K"
+Button="k"
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max covers themselves in a blanket, sending the opponent away into a tumble.
+"""
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]] # Special1
+Name="Special1"
+Inputs=["214K"]
+Buttons=["k"]
+HoldOK=true
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max starts stirring up a cup of coffee. At the end of the move, Max spills its contents on the opponent. The size,
+damage, and launch of the splash depends on how long the input was held.
+"""
+[[Character.Specials.Data]]
+Version="214K"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214{K}"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="214[K]"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Special2
+Name="Special2"
+Inputs=["22K"]
+Buttons=["k"]
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max takes a sip of coffee which refills their caffeine gauge. Also heals Max for a small amount (not enough to make a
+significant difference).
+<ul>
+    <li>Cannot be enhanced</li>
+</ul>
+"""
+[[Character.Specials.Data]]
+Recovery="-"
+
+[[Character.Specials]] # Special3
+Name="Special3"
+Inputs=["214P"]
+Buttons=["p"]
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max pours a bottle water on themselves and shakes it off like a Freakinge dog. In the enhanced version, Max pours a
+bucket of water and deals more damage.
+"""
+[[Character.Specials.Data]]
+Version="214P"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="en.214P"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Special4
+Name="Special4"
+Inputs=["236S"]
+Buttons=["s"]
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max pulls out a massive gun and physically hits the opponent with it. Enhanced version causes hard knockdown on hit and
+Guard Crush on block.
+"""
+[[Character.Specials.Data]]
+Version="236S"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="en.236S"
+Guard="All (Guard Crush)"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Special5
+Name="Special5"
+Inputs=["214H"]
+Buttons=["h"]
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max conjures up a minecraft anvil above the opponent's head and hurls it down at them. Hits overhead. The enhanced
+version causes a large ground bounce, allowing for a more damaging combo extension.
+"""
+[[Character.Specials.Data]]
+Version="214H"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Specials.Data]]
+Version="en.214H"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Specials]] # Special6
+Name="Special6"
+Inputs=["623H"]
+Buttons=["h"]
+AirOK=true
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max pulls out a sweater and wraps the opponent up before lighting it on fire. Enhanced version has better reach and
+launch.
+"""
+[[Character.Specials.Data]]
+Version="623H"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="en.623H"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+
+###################################
+# Supers
+###################################
+[[Character.Supers]] # Maxsmash
+Name="Maxsmash"
+Inputs=["632146P"]
+Buttons=["p"]
+Condition="with 50% meter"
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max prepares a large punch. On contact with the opponent, their fist moves towards the screen and smashes the camera.
+This shakes the whole window and reverses the opponent’s inputs for a short duration. Invincible on startup.
+"""
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+
+[[Character.Supers]] # Super2
+Name="Super2"
+Inputs=["236236K"]
+Buttons=["k"]
+Condition="with 50% meter"
+Images=[""]
+Hitboxes=[""]
+Description="""
+Max jumps really high into the air and takes off their glasses, reflecting the sun through their lenses to create a
+powerful beam of light that incinerates the opponent.
+"""
+[[Character.Supers.Data]]
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Airborne"]
