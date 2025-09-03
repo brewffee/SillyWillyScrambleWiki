@@ -14,14 +14,10 @@ Then, create a pull request with the newly built files.
 | **[Seagull](https://brewffee.github.io/SillyWillyScrambleWiki/characters/seagull.html)** | Avian        |
 | **[Kôfy](https://brewffee.github.io/SillyWillyScrambleWiki/characters/kôfy.html)**       | All-Arounder |
 | **[FailEs](https://brewffee.github.io/SillyWillyScrambleWiki/characters/failes.html)**   | Gooner       |
-| **Max**                                                                                  |              |
+| **[Max](https://brewffee.github.io/SillyWillyScrambleWiki/characters/max.html)**         | Sleepy       |
 | **[Dani](https://brewffee.github.io/SillyWillyScrambleWiki/characters/dani.html)**       | Bnnuy        |
 | **[Berb](https://brewffee.github.io/SillyWillyScrambleWiki/characters/berb.html)**       | _Freaky_     |
 | **[Osi](https://brewffee.github.io/SillyWillyScrambleWiki/characters/osi.html)**         | Cloudy       |
 | **[Guiblo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/guiblo.html)**   | Grappler     |
 | **Percebe**                                                                              |              |
 
-## System Information
-| Page | Progress                         |
-|------|----------------------------------|
-|      | ![](https://geps.dev/progress/0) |
