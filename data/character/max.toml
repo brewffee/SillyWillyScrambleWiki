@@ -35,9 +35,8 @@ Reversals=[
 Name="Caffeine Gauge"
 Description="""
 Max uses their Caffeine Gauge to perform enhanced versions of their special moves. Max starts the round with 0 out of
-three Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are
-significantly more powerful, deal more damage, and have more launch power, allowing for more combo potential when
-managed correctly.
+3 Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are significantly
+more powerful, deal more damage, and have more launch power, allowing for more combo potential when managed correctly.
 %img(Max_Caffeine_Gauge.png,Caffeine Gauge, Max's Caffeine Gauge when full)
 """
 
@@ -201,9 +200,9 @@ Buttons=["s"]
 Images=["move/Max_236S.png", "move/Max_en236S.png"]
 Hitboxes=["move/Max_236S_Hitbox.png", "move/Max_en236S_Hitbox.png"]
 Description="""
-Max pulls out a massive gun and physically hits the opponent with it.
+Max pulls out a Deagle and physically hits the opponent with it.
 <ul>
-    <li>In the enhanced version, Max pulls out the gun much more enthusiastically, delivering a more powerful impact.
+    <li>In the enhanced version, Max pulls out an AWP with much more enthusiasm, delivering a more powerful impact.
     Causes hard knockdown on hit, and Guard Crush on block.</li>
 </ul>
 """

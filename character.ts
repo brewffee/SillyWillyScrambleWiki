@@ -3,16 +3,27 @@ import { characters } from "./index.ts";
 
 interface FrameData {
     Version?: string;
-    Damage?: string;
-    Guard?: string;
-    Startup?: string;
-    Active?: string;
+    Damage: string;
+    Guard: string;
+    Startup: string;
+    Active: string;
     Recovery: string;
-    OnBlock?: string;
-    Invuln?: string[];
+    OnBlock: string;
+    Invuln: string[];
     SpecialFrames?: number[];
     SpecialNote?: string;
 }
+
+const FrameDataDefaults: FrameData = {
+    Version: undefined,
+    Damage: "",
+    Guard: "",
+    Startup: "",
+    Active: "",
+    Recovery: "",
+    OnBlock: "",
+    Invuln: [],
+};
 
 interface Normal {
     Input: string;
@@ -252,29 +263,34 @@ export class Character {
         return inputStr;
     }
 
-    // constructs the table for displaying frame data
     renderFrameData(data: FrameData[]): string {
+        // ass specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
+        const filled: FrameData[] = data.map((frame) => {
+            const res: FrameData = {...FrameDataDefaults, ...frame};
+            if (res.Version === undefined) delete res.Version;
+            return res;
+        });
+
+        return `<div class=frame-table>${this.renderTable(filled)}</div>`;
+    }
+
+    renderTable(data: any[]): string {
         if (!data) return "";
-        // create the header and body
-        let frameDataTable = "<th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>\n<tbody>";
+        let table = "<table>\n";
 
-        // if the first item has the version field, the rest must have it too (otherwise you are DUUUUMB !!!)
-        frameDataTable = "<div class=frame-table><table><thead><tr>" + (data[0].Version ? "<th>Version</th>" : "") + frameDataTable;
-        frameDataTable += data.map((d) => {
-            let dataRow = "<tr>";
-            if (d.Version) dataRow += `<td>${d.Version || ""}</td>`;
-            dataRow += `<td>${d.Damage || ""}</td>`;
-            dataRow += `<td>${d.Guard || ""}</td>`;
-            dataRow += `<td>${d.Startup || ""}</td>`;
-            dataRow += `<td>${d.Active || ""}</td>`;
-            dataRow += `<td>${d.Recovery || ""}</td>`;
-            dataRow += `<td>${d.OnBlock || ""}</td>`;
-            dataRow += `<td>${d.Invuln?.join("<br>") || ""}</td>`;
-            dataRow += "</tr>";
-            return dataRow;
-        }).join("");
+        // thead
+        const keys = Object.keys(data[0]);
+        table += "<thead><tr>" + keys.map((key) => `<th>${key}</th>`).join("\n") + "</tr></thead>\n";
 
-        return frameDataTable + "</tbody>\n</table></div>";
+        // tbody
+        table += "<tbody>\n" + data.map((item) => {
+            return "<tr>" + keys.map((key) => {
+                const value = item[key];
+                return Array.isArray(value) ? `<td>${value.join("<br>")}</td>` : `<td>${value}</td>`;
+            }).join("\n") + "</tr>\n";
+        }).join("") + "</tbody>\n</table>";
+
+        return table;
     }
 
     // creates the image gallery

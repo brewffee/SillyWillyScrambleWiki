@@ -68,11 +68,20 @@ Startup=""          # How many frames it takes to start the move
 Active=""           # How many frames the move is active
 Recovery=""         # How many frames it takes to recover from the move
 OnBlock=""          # The advantage or disadvantage on block
-OnHit=""            # The advantage or disadvantage on hit
 Invuln=[""]         # Where and how is this move invulnerable?
 SpecialFrames=[""]  # Is there something of note for a specific frame?
 SpecialNote=""      # What's so special about them?
+
 # todo: Attributes section, displays projectile status, knockdown type, etc.
+#Proration=""       # The combo damage scaling if this move is used as a starter
+#AttackType=""      # Is this a projectile, strike, command throw, or grab?
+#Reflectable=false  # Can this move be interrupted by reflector moves?
+#Armor=""           # What kind of armor does this move have, if applicable?
+#CounterType=""     # What is the reward for counterhitting with this move?
+#OnHit=""           # The advantage or disadvantage on hit
+#ChipPercent=""     # The percentage of damage dealt on block
+#Extra="""          # Any other notes or information that doesn't need to be displayed upfront?
+#"""
 
 ###################################
 # Special Attacks
