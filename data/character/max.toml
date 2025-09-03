@@ -1,10 +1,29 @@
 [Character]
 Name="Max"
 Description="""
+Running entirely off of coffee, Max is a patient character, taking great advantage of opponents who may be asleep at the
+wheel.
+<br><br>
+Max's premier mechanic is their Caffeine Gauge, giving them access to enhanced versions of their special moves.
+While the Caffeine Gauge serves as a powerful tool for Max, it doesn't come for free. Max must use %ref(Energizzze,22K,k)
+to recharge their levels, often having to give up powerful %note(Attacking an opponent after a knockdown with an attack
+that lands on wakeup,okizeme) to keep their momentum going.
+<br><br>
+Once fueled up, Max's combo game becomes much more potent and versatile, scoring massive corner carry off of small
+hits. With a great overhead in %ref(Anvil Mantle,en.214H,h) and the threat of %ref(Sweater Weather,623H,h)'s range and
+launch, Max has plenty of opportunities to open up the opponent and take them wherever they please.
+<br><br>
+Without Caffeine on their side, Max's moves are still nothing to scoff about—they still serve good utility when used
+correctly. Most of their moves still allow them ample time to route into a knockdown and recharge their gauge. In
+exchange for their great offense, Max lacks a meterless reversal, making it more difficult to escape pressure. Max will
+need to play passively until they can find a moment to strike.
+<br><br>
+Max excels at keeping their opponent exactly where they want when they have Caffeine on their side, greatly rewarding
+those who can keep up with their resource management.
 """
 IconPath="icon/Max_Icon.png"
 PortraitPath="portrait/Max_Portrait.png"
-Type=""
+Type="Sleepy"
 Reversals=[
     "%ref(Maxsmash,632146P,p)"
 ]
@@ -19,6 +38,7 @@ Max uses their Caffeine Gauge to perform enhanced versions of their special move
 three Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are
 significantly more powerful, deal more damage, and have more launch power, allowing for more combo potential when
 managed correctly.
+%img(Max_Caffeine_Gauge.png,Caffeine Gauge, Max's Caffeine Gauge when full)
 """
 
 ###################################
@@ -27,15 +47,14 @@ managed correctly.
 [[Character.Normals]] # Taunts
 Input="Taunt"
 Button="taunt"
-Images=[""]
-Hitboxes=[""]
-# TODO: needs external linking for taunt 3 - https://www.youtube.com/watch?v=nyqmwLd8rXU
+Images=["move/Max_Taunt_1.png","move/Max_Taunt_2.png","move/Max_Taunt_3.png"]
+Hitboxes=["move/Max_Taunt_1_Hitbox.png","move/Max_Taunt_2_Hitbox.png","move/Max_Taunt_3_Hitbox.png"]
 Description="""
 Max performs one out of the three possible taunts:
 <ul>
     <li>Max morphs into an unmoving .jpeg of a random cat</li>
     <li>Max performs the Lunar Party fortnite emote with a badly-recreated version of the audio</li>
-    <li>Max hits the Yeet by Lil Cashew pose</li>
+    <li>Max hits the %url(https://www.youtube.com/watch?v=nyqmwLd8rXU,Yeet by Lil Cashew,Yeet by Lil Cashew) pose</li>
 </ul>
 """
 [[Character.Normals.Data]]
@@ -48,8 +67,8 @@ Version="Yeet by Lil Cashew"
 [[Character.Normals]] # 6H
 Input="6H"
 Button="h"
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_6H.png"]
+Hitboxes=["move/Max_6H_Hitbox.png"]
 Description="""
 Max holds out an angry cat that scratches the opponent. A pretty weak move when performed raw, but a great option for
 keeping an opponent in the air for combo extensions.
@@ -65,10 +84,11 @@ OnBlock="-"
 [[Character.Normals]] # 3K
 Input="3K"
 Button="k"
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_3K.png"]
+Hitboxes=["move/Max_3K_Hitbox.png"]
 Description="""
-Max covers themselves in a blanket, sending the opponent away into a tumble.
+Max covers themselves in a blanket, sending the opponent away into a tumble. Has a very small wall bounce when used
+in the corner.
 """
 [[Character.Normals.Data]]
 Damage="-"
@@ -81,64 +101,83 @@ OnBlock="-"
 ###################################
 # Special Attacks
 ###################################
-[[Character.Specials]] # Special1
-Name="Special1"
+[[Character.Specials]] # Stirprise
+Name="Stirprise"
 Inputs=["214K"]
 Buttons=["k"]
 HoldOK=true
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_214K.png", "move/Max_214K_2.png"]
+Hitboxes=["move/Max_214K_Hitbox.png", "move/Max_214K_2_Hitbox.png"]
 Description="""
 Max starts stirring up a cup of coffee. At the end of the move, Max spills its contents on the opponent. The size,
 damage, and launch of the splash depends on how long the input was held.
+<ul>
+    <li>On grounded hit, the opponent is sent into stagger. On airborne hit, the opponent stays suspended in the air
+    for a short time. Fully charged version launches the opponent regardless if they are grounded or airborne.</li>
+    <li>The enhanced version of this move has more hits. Data in brackets represents the impact of extra hits when
+    enhanced.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="214K"
+Damage="- [-]"
 Guard="All"
 Startup="-"
-Active="-"
+Active="- [-]"
 Recovery="-"
-OnBlock="-"
+OnBlock="- [-]"
 [[Character.Specials.Data]]
 Version="214{K}"
+Damage="- [-]"
 Guard="All"
 Startup="-"
-Active="-"
+Active="- [-]"
 Recovery="-"
-OnBlock="-"
+OnBlock="- [-]"
 [[Character.Specials.Data]]
 Version="214[K]"
+Damage="- [-]"
 Guard="All"
 Startup="-"
-Active="-"
+Active="- [-]"
 Recovery="-"
-OnBlock="-"
+OnBlock="- [-]"
 
-[[Character.Specials]] # Special2
-Name="Special2"
+[[Character.Specials]] # Energizzze
+Name="Energizzze"
 Inputs=["22K"]
 Buttons=["k"]
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_22K.png"]
+Hitboxes=["move/Max_22K_Hitbox.png"]
 Description="""
 Max takes a sip of coffee which refills their caffeine gauge. Also heals Max for a small amount (not enough to make a
 significant difference).
 <ul>
     <li>Cannot be enhanced</li>
+    <li>If interrupted, the amount of caffeine regenerated will be equal to the duration of the move. For example, if
+    the move was interrupted 50% of the way through, Max will only regenerate 1 Caffeine (one third of the full amount).</li>
 </ul>
 """
 [[Character.Specials.Data]]
 Recovery="-"
 
-[[Character.Specials]] # Special3
-Name="Special3"
+[[Character.Specials]] # Raining Dogs and Dogs
+Name="Raining Dogs and Dogs"
 Inputs=["214P"]
 Buttons=["p"]
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_214P.png", "move/Max_214P_2.png", "move/Max_en214P.png", "move/Max_en214P_2.png"]
+Hitboxes=[
+    "move/Max_214P_Hitbox.png",
+    "move/Max_214P_2_Hitbox.png",
+    "move/Max_en214P_Hitbox.png",
+    "move/Max_en214P_2_Hitbox.png"
+]
 Description="""
-Max pours a bottle water on themselves and shakes it off like a Freakinge dog. In the enhanced version, Max pours a
-bucket of water and deals more damage.
+Max pours a bottle water on themselves and shakes it off like a Freakinge dog.
+<ul>
+    <li>In the enhanced version, Max pours an entire bucket of water on themselves, creating a much larger splash
+    and dealing more damage after shaking it off.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="214P"
@@ -155,15 +194,18 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Specials]] # Special4
-Name="Special4"
+[[Character.Specials]] # Trigger Discipline
+Name="Trigger Discipline"
 Inputs=["236S"]
 Buttons=["s"]
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_236S.png", "move/Max_en236S.png"]
+Hitboxes=["move/Max_236S_Hitbox.png", "move/Max_en236S_Hitbox.png"]
 Description="""
-Max pulls out a massive gun and physically hits the opponent with it. Enhanced version causes hard knockdown on hit and
-Guard Crush on block.
+Max pulls out a massive gun and physically hits the opponent with it.
+<ul>
+    <li>In the enhanced version, Max pulls out the gun much more enthusiastically, delivering a more powerful impact.
+    Causes hard knockdown on hit, and Guard Crush on block.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="236S"
@@ -180,15 +222,18 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Specials]] # Special5
-Name="Special5"
+[[Character.Specials]] # Anvil Mantle
+Name="Anvil Mantle"
 Inputs=["214H"]
 Buttons=["h"]
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_214H.png", "move/Max_en214H.png"]
+Hitboxes=["move/Max_214H_Hitbox.png", "move/Max_en214H_Hitbox.png"]
 Description="""
-Max conjures up a minecraft anvil above the opponent's head and hurls it down at them. Hits overhead. The enhanced
-version causes a large ground bounce, allowing for a more damaging combo extension.
+Max conjures up a minecraft anvil above the opponent's head and hurls it down at them. Hits overhead.
+<ul>
+    <li>In the enhanced version, the anvil gains a large amount of ground bounce, allowing Max to start a large combo
+    or continue the current one.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="214H"
@@ -205,16 +250,19 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Specials]] # Special6
-Name="Special6"
+[[Character.Specials]] # Sweater Weather
+Name="Sweater Weather"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_623H.png", "move/Max_623H_2.png", "move/Max_623H_Whif.png"]
+ImageNotes=["You look a little cold, try wearing this!"]
+Hitboxes=["move/Max_623H_Hitbox.png"]
 Description="""
-Max pulls out a sweater and wraps the opponent up before lighting it on fire. Enhanced version has better reach and
-launch.
+Max pulls out a sweater and wraps the opponent up before lighting it on fire.
+<ul>
+    <li>The enhanced version of this move has significantly increased reach and launch power.
+</ul>
 """
 [[Character.Specials.Data]]
 Version="623H"
@@ -237,7 +285,7 @@ Name="Maxsmash"
 Inputs=["632146P"]
 Buttons=["p"]
 Condition="with 50% meter"
-Images=[""]
+Images=["move/Max_632146P.png", "move/Max_632146P_2.png", "move/Max_632146P_Whiff.png"]
 Hitboxes=[""]
 Description="""
 Max prepares a large punch. On contact with the opponent, their fist moves towards the screen and smashes the camera.
@@ -252,13 +300,13 @@ Recovery="-"
 OnBlock="-"
 Invuln=["Full"]
 
-[[Character.Supers]] # Super2
-Name="Super2"
+[[Character.Supers]] # Lens Flare
+Name="Lens Flare"
 Inputs=["236236K"]
 Buttons=["k"]
 Condition="with 50% meter"
-Images=[""]
-Hitboxes=[""]
+Images=["move/Max_236236K.png", "move/Max_236236K_2.png", "move/Max_236236K_3.png"]
+Hitboxes=["move/Max_236236K_Hitbox.png"]
 Description="""
 Max jumps really high into the air and takes off their glasses, reflecting the sun through their lenses to create a
 powerful beam of light that incinerates the opponent.

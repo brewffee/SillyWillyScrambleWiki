@@ -27,6 +27,34 @@ and two buttons pressed simultaneously. Modern Controls can be enabled at the ch
 """
 
 ###################################
+# Command Normals
+###################################
+[[Character.Normals]] # Taunt
+Input="Taunt"
+Button="taunt"
+Condition="using Modern Controls"
+Images=["move/Seagull_Up_Taunt.png", "move/Seagull_Down_Taunt.png", "move/Seagull_Side_Taunt.png"]
+Hitboxes=["move/Seagull_Up_Taunt_Hitbox.png", "move/Seagull_Down_Taunt_Hitbox.png", "move/Seagull_Side_Taunt_Hitbox.png"]
+Description="""
+Seagull can choose the taunt he performs when using Modern Controls. To select a taunt, press either <b>up</b>,
+<b>down</b>, or <b>left/right</b> when hitting the taunt button.
+<ul>
+    <li><b>&uparrow; + Taunt:</b> Seagull</li>
+    <li><b>&downarrow; + Taunt:</b> Seagull</li>
+    <li><b>&leftarrow;/&rightarrow; + Taunt:</b> Seagull</li>
+</ul>
+"""
+[[Character.Normals.Data]]
+Version="&uparrow; + Taunt"
+Recovery="-"
+[[Character.Normals.Data]]
+Version="&downarrow; + Taunt"
+Recovery="-"
+[[Character.Normals.Data]]
+Version="&leftarrow;/&rightarrow; + Taunt"
+Recovery="-"
+
+###################################
 # Special Attacks
 ###################################
 [[Character.Specials]] # Scam
@@ -186,10 +214,14 @@ downwards, taking the opponent with him. If %btn(h,H) is pressed again after the
 a parry stance that catches strike attacks. If the parry makes contact, Double or Nothing will loop back into itself
 and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing %btn(h,H). If the parry
 misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
+<ul>
+    <li>For every time the rising attack hits, an additional attack is added, and the height traveled is increased.</li>
+    <li>Data in parenthesis represents damage when the attack is repeated</li>
+</ul>
 """
 [[Character.Supers.Data]]
 Version="632146H"
-Damage="-"
+Damage="- (-, -xN)"
 Guard="All"
 Startup="-"
 Active="-"

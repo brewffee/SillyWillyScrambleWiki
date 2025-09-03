@@ -2,28 +2,28 @@ import * as fs from "fs";
 import { characters } from "./index.ts";
 
 interface FrameData {
-    Version: string;
-    Damage: string;
-    Guard: string;
-    Startup: string;
-    Active: string;
+    Version?: string;
+    Damage?: string;
+    Guard?: string;
+    Startup?: string;
+    Active?: string;
     Recovery: string;
-    OnBlock: string;
-    Invuln: string[];
-    SpecialFrames: number[];
-    SpecialNote: string;
+    OnBlock?: string;
+    Invuln?: string[];
+    SpecialFrames?: number[];
+    SpecialNote?: string;
 }
 
 interface Normal {
     Input: string;
     Button: string;
-    AirOK: boolean;
-    HoldOK: boolean;
-    Condition: string;
+    AirOK?: boolean;
+    HoldOK?: boolean;
+    Condition?: string;
     Images: string[];
-    ImageNotes: string[];
+    ImageNotes?: string[];
     Hitboxes: string[];
-    HitboxNotes: string[];
+    HitboxNotes?: string[];
     Description: string;
 
     Data: FrameData[];
@@ -119,8 +119,7 @@ export class Character {
             const str = args.slice(0, amt).join(",");
 
             let current = "", escaped = false;
-            for (let i = 0; i < str.length; i++) {
-                const char = str[i];
+            for (const char of str) {
                 if (escaped) {
                     current += char;
                     escaped = false;
@@ -211,6 +210,19 @@ export class Character {
             return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
         });
 
+        // note, briefly explains a term
+        // converts instances of %note(TEXT, DISPLAY) to <span class=note title="TEXT">DISPLAY</span>
+        result = result.replace(macroRegex("note", 2), (_, ...args) => {
+            const [text, display] = parseArgs(args, 2);
+            return `<span class=note title="${text}">${display}</span>`;
+        });
+
+        // url, links to an external source and opens in new tab
+        // converts instances of %url(URL, ALT, TEXT) to <a href="URL" title="ALT" target="_blank" rel="noreferrer">TEXT</a>
+        result = result.replace(macroRegex("url", 3), (_, ...args) => {
+            const [url, alt, text] = parseArgs(args, 3);
+            return `<a href="${url}" title="${alt}" target="_blank" rel="noreferrer">${text}</a>`;
+        });
 
         return result;
     }
@@ -266,7 +278,7 @@ export class Character {
     }
 
     // creates the image gallery
-    renderImages(images: string[], notes: string[], name: string): string {
+    renderImages(images: string[], name: string, notes?: string[]): string {
         if (!images) return "";
         let imageStr = "";
         for (let i = 0; i < images.length; i++) {
@@ -309,8 +321,8 @@ export class Character {
                 .replace(/%EXTRA%/g, this.renderExtras(normal))
                 .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${this.resolveReferences(normal.Condition)}</em>` : "")
                 .replace(/%BUTTON%/g, normal.Button)
-                .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.ImageNotes, normal.Input))
-                .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.HitboxNotes, normal.Input))
+                .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.Input, normal.ImageNotes))
+                .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.Input, normal.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
         }).join("");
@@ -332,8 +344,8 @@ export class Character {
                 .replace(/%BUTTON%/g, special.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
                 .replace(/%CONDITION%/g, special.Condition ? ` <em button=x>${this.resolveReferences(special.Condition)}</em>` : "")
-                .replace(/%IMAGE%/g, this.renderImages(special.Images, special.ImageNotes, special.Name))
-                .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.HitboxNotes, special.Name))
+                .replace(/%IMAGE%/g, this.renderImages(special.Images, special.Name, special.ImageNotes))
+                .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.Name, special.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
         }).join("");
@@ -355,8 +367,8 @@ export class Character {
                 .replace(/%BUTTON%/g, sup.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))
                 .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${this.resolveReferences(sup.Condition)}</em>` : "")
-                .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.ImageNotes, sup.Name))
-                .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.HitboxNotes, sup.Name))
+                .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.Name, sup.ImageNotes))
+                .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.Name, sup.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(sup.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(sup.Description));
         }).join("");

@@ -6,14 +6,14 @@ IconPath="icon/Kofy_Icon.png"
 PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Reversals=[
-    "%ref(Special3,214P,p)",
-    "%ref(Super2,632146P,p)"
+    "%ref(Ristretto,214P,p)",
+    "%ref(Chiaroscuro Omega,632146P,p)"
 ]
 
 ###################################
 # Command Normals
 ###################################
-[[Character.Normals]]
+[[Character.Normals]] # Taunt
 Input="Taunt"
 Button="taunt"
 Images=["move/Kofy_Taunt.png"]
@@ -32,7 +32,7 @@ OnBlock="-"
 OnHit="0"
 Invuln=["180+F Guard Point"]
 
-[[Character.Normals]]
+[[Character.Normals]] # j.2K
 Input="j.2K"
 Button="k"
 Images=["move/Kofy_j2K.png"]
@@ -74,23 +74,23 @@ Recovery="-"
 OnBlock="-"
 Invuln=["High Profile"]
 
-[[Character.Specials]] # Special2
-Name="Special2"
+[[Character.Specials]] # Espresso
+Name="Espresso"
 Inputs=["41236K"]
 Buttons=["k"]
 Images=["move/Kofy_41236K.png"]
 Hitboxes=["move/Kofy_41236K_Hitbox.png"]
 Description="""
 Command dash that preserves momentum and crosses up the opponent at close range. Can be used to safely access
-follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Special3,214P,p) as a follow-up by
+follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Ristretto,214P,p) as a follow-up by
 pressing %btn(k,K).
 """
 [[Character.Specials.Data]]
 Recovery="-"
 Invuln=["10-?F Strike, Pass-through"]
 
-[[Character.Specials]] # Special3
-Name="Special3"
+[[Character.Specials]] # Ristretto
+Name="Ristretto"
 Inputs=["214P"]
 Buttons=["p"]
 AirOK=true
@@ -98,7 +98,7 @@ Images=["move/Kofy_214P.png"]
 Hitboxes=["move/Kofy_214P_Hitbox.png"]
 Description="""
 Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
-strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Special2,41236K,k)
+strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Espresso,41236K,k)
 by pressing %btn(k,K).
 """
 [[Character.Specials.Data]]
@@ -112,7 +112,7 @@ Name="Special4"
 Inputs=["P"]
 Buttons=["p"]
 AirOK=true
-Condition="after 41236K or 214P catch"
+Condition="after %btn(k,41236K) or %btn(p,214P) catch"
 Images=["move/Kofy_214P~P.png", "move/Kofy_214P~P_Whiff.png"]
 Hitboxes=["move/Kofy_214P~P_Hitbox.png"]
 Description="""
@@ -130,7 +130,7 @@ Name="Special5"
 Inputs=["S", "H"]
 Buttons=["s", "h"]
 AirOK=true
-Condition="after 41236K or 214P catch"
+Condition="after %btn(k,41236K) or %btn(p,214P) catch"
 Images=["move/Kofy_214P~S.png", "move/Kofy_214P~H.png"]
 Hitboxes=["move/Kofy_214P~S_Hitbox.png", "move/Kofy_214P~H_Hitbox.png"]
 Description="""
@@ -157,8 +157,9 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Specials]] # Special6
-Name="Special6"
+[[Character.Specials]] # Chiaroscuro ver.β
+# todo: allow specifying an id field for moves that use non-alphanumeric symbols in their names
+Name="Chiaroscuro ver.β"
 Inputs=["236S", "H"]
 Buttons=["s", "h"]
 Images=[
@@ -170,7 +171,7 @@ Images=[
 ImageNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,8S) follow-up", "%btn(h,8H) follow-up"]
 Hitboxes=["move/Kofy_236SH_Hitbox.png", "move/Kofy_236SH~8X_Hitbox.png"]
 Description="""
-Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Special2,41236K,k) followup.
+Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Espresso,41236K,k) followup.
 Kôfy stays in place during %btn(s,S) version. In %btn(h,H) version, Kôfy moves with the opponent, but has much more
 whiff recovery. If %btn(s,S) or %btn(h,H) is pressed again, Kôfy will perform a vertical poke to catch opponents
 jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was
@@ -213,8 +214,8 @@ OnBlock="-"
 ###################################
 # Supers
 ###################################
-[[Character.Supers]] # Super1
-Name="Super1"
+[[Character.Supers]] # Grisaille
+Name="Grisaille"
 Inputs=["214214S"]
 Buttons=["s"]
 Condition="with 50% meter"
@@ -249,8 +250,8 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Supers]] # Super2
-Name="Super2"
+[[Character.Supers]] # Chiaroscuro ver.Ω
+Name="Chiaroscuro ver.Ω"
 Inputs=["632146P"]
 Buttons=["p"]
 AirOK=true

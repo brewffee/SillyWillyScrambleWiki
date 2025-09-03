@@ -29,7 +29,7 @@
         <nav>
           <h3>Table of Contents <input type=checkbox checked="checked"></h3>
           <ul>
-            <li><a href="#Overview">Overview</a></li><li class=header><a href="#Mechanics">Mechanics</a></li><li><a href="#Modern-Control-Scheme">Modern Control Scheme</a></li><li class=header><a href="#Special-Attacks">Special Attacks</a></li><li><a href="#Scam">Scam</a></li><li><a href="#Bet">Bet</a></li><li><a href="#Skill">Skill</a></li><li><a href="#Your">Your</a></li><li><a href="#Bad">Bad</a></li><li><a href="#The-King">The King</a></li><li class=header><a href="#Supers">Supers</a></li><li><a href="#Double-or-Nothing">Double or Nothing</a></li><li><a href="#Ground-Orange-Duck">Ground Orange Duck</a></li>
+            <li><a href="#Overview">Overview</a></li><li class=header><a href="#Mechanics">Mechanics</a></li><li><a href="#Modern-Control-Scheme">Modern Control Scheme</a></li><li class=header><a href="#Command-Normals">Command Normals</a></li><li><a href="#Taunt">Taunt</a></li><li class=header><a href="#Special-Attacks">Special Attacks</a></li><li><a href="#Scam">Scam</a></li><li><a href="#Bet">Bet</a></li><li><a href="#Skill">Skill</a></li><li><a href="#Your">Your</a></li><li><a href="#Bad">Bad</a></li><li><a href="#The-King">The King</a></li><li class=header><a href="#Supers">Supers</a></li><li><a href="#Double-or-Nothing">Double or Nothing</a></li><li><a href="#Ground-Orange-Duck">Ground Orange Duck</a></li>
           </ul>
         </nav>
         <a class=nav-top href="#top">Back to Top</a>
@@ -65,7 +65,44 @@ and two buttons pressed simultaneously. Modern Controls can be enabled at the ch
 </p>
         </div>
         <div class=command-normals>
-          
+          <h2 id=Command-Normals><a href=#Command-Normals>Command Normals</a></h2>
+<a href="#Taunt">
+  <h3 id=Taunt class=move-name button=taunt>Taunt</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=taunt>Taunt <em button=x>using Modern Controls</em></span>
+    <div class=image-container>
+      <img src="../images/seagull/move/Seagull_Up_Taunt.png" alt="Taunt Sprite " title="move/Seagull_Up_Taunt.png">
+<img src="../images/seagull/move/Seagull_Down_Taunt.png" alt="Taunt Sprite 2" title="move/Seagull_Down_Taunt.png">
+<img src="../images/seagull/move/Seagull_Side_Taunt.png" alt="Taunt Sprite 3" title="move/Seagull_Side_Taunt.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/seagull/move/Seagull_Up_Taunt_Hitbox.png" alt="Taunt Sprite " title="move/Seagull_Up_Taunt_Hitbox.png">
+<img src="../images/seagull/move/Seagull_Down_Taunt_Hitbox.png" alt="Taunt Sprite 2" title="move/Seagull_Down_Taunt_Hitbox.png">
+<img src="../images/seagull/move/Seagull_Side_Taunt_Hitbox.png" alt="Taunt Sprite 3" title="move/Seagull_Side_Taunt_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id=Taunt-hitbox-toggle class=hitbox-checkbox hidden>
+      <label for=Taunt-hitbox-toggle class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
+<tbody><tr><td>&uparrow; + Taunt</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr><tr><td>&downarrow; + Taunt</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr><tr><td>&leftarrow;/&rightarrow; + Taunt</td><td></td><td></td><td></td><td></td><td>-</td><td></td><td></td></tr></tbody>
+</table></div>
+    <span>Seagull can choose the taunt he performs when using Modern Controls. To select a taunt, press either <b>up</b>,
+<b>down</b>, or <b>left/right</b> when hitting the taunt button.
+<ul>
+    <li><b>&uparrow; + Taunt:</b> Seagull</li>
+    <li><b>&downarrow; + Taunt:</b> Seagull</li>
+    <li><b>&leftarrow;/&rightarrow; + Taunt:</b> Seagull</li>
+</ul>
+</span>
+  </div>
+</div>
         </div>
         <div class=specials>
           <h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2>
@@ -275,13 +312,17 @@ actionable, and places the opponent into Guard Crush.
   </div>
   <div class=move-details>
     <div class=frame-table><table><thead><tr><th>Version</th><th>Damage</th><th>Guard</th><th>Startup</th><th>Active</th><th>Recovery</th><th>On Block</th><th>Invuln</th></tr></thead>
-<tbody><tr><td>632146H</td><td>-</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Full</td></tr><tr><td>Parry</td><td>-</td><td></td><td>1</td><td>-</td><td>-</td><td></td><td>Strike</td></tr></tbody>
+<tbody><tr><td>632146H</td><td>- (-, -xN)</td><td>All</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Full</td></tr><tr><td>Parry</td><td>-</td><td></td><td>1</td><td>-</td><td>-</td><td></td><td>Strike</td></tr></tbody>
 </table></div>
     <span>An invincible rising reversal that has the ability to loop into itself. Seagull rises up into the air, then divebombs
 downwards, taking the opponent with him. If <em class=btn button="h">H</em> is pressed again after the initial divebomb, Seagull will enter
 a parry stance that catches strike attacks. If the parry makes contact, Double or Nothing will loop back into itself
 and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing <em class=btn button="h">H</em>. If the parry
 misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
+<ul>
+    <li>For every time the rising attack hits, an additional attack is added, and the height traveled is increased.</li>
+    <li>Data in parenthesis represents damage when the attack is repeated</li>
+</ul>
 </span>
   </div>
 </div><a href="#Ground-Orange-Duck">
@@ -319,7 +360,7 @@ Duck form, Seagull deals more damage and is able to freely cancel specials into 
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Tue Sep 02 2025, 4:08:35 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Tue Sep 02 2025, 4:58:14 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

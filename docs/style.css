@@ -276,6 +276,7 @@ div.roster a .type {
     margin-top: 0;
     width: 100%;
     font-size: 14px;
+    margin-bottom: 12px;
 }
 
 .info {
@@ -491,6 +492,17 @@ em { font-style: normal }
 
 .btn {
     font-weight: bold;
+}
+
+.note {
+    display: inline !important;
+    padding: 0 !important;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.note:hover {
+    text-decoration-style: solid;
 }
 
 .embed {
