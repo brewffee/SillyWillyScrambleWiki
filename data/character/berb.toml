@@ -1,9 +1,23 @@
 [Character]
 Name="Berb"
 Description="""
-Berb controls the stage through the strategic placement of Rift Points, which he can use to teleport himself or the
-opponent with %ref(Time Rift,214P,p) or %ref(Chrono Shift,214K,k). With his ability to manipulate time and reposition
-on a whim, Berb can expertly control the flow of the match (quite literally) in his favor.
+A master of forces beyond this world's comprehension, Berb bends reality itself to disorient and open up his opponent.
+<br><br>
+Berb posesses a wide range of tools for repositioning himself and his opponent. Placing %ref(Rifts in Time,Rift Points,g)
+across the stage using his %ref(Time Rift,Time Rift,p) or %ref(Time Fault,Time Fault,p) allows Berb to teleport himself
+back to any of these points using %ref(Chrono Shift,Chrono Shift,k). With well placement of these Points, Berb can
+instead use %ref(Distortion,Distortion,s) to keep the opponent in the air or to set up a reset with great mix-up
+potential. Expert use of these Points is key to mastering Berb's power.
+<br><br>
+However, Berb is not only limited to his teleportation abilities. With access to his full-screen hitting super
+%ref(Chrono Stasis,Chrono Stasis,k), Berb can freeze time itself, allowing him to lock down the opponent and deliver
+devastating follow-ups. If Berb is feeling more extravagant, he can instead use %ref(Accent Acceleration,Accent Acceleration,h)
+to speed up the rate of the match <i>and every mechanic timer</i> for him and his opponent—forcing them to play at his
+tempo.
+<br><br>
+Berb remains a nightmare for any match-up, as his grasp over the field forces opponents to respect his every move. A
+well-played Berb is unpredictable and oppressive, but poor execution can leave him more vulnerable than most. Having
+strong fundamentals and execution is key to unleashing his full potential.
 """
 IconPath="icon/Berb_Icon.png"
 PortraitPath="portrait/Berb_Portrait.png"
