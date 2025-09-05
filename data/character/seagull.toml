@@ -34,14 +34,16 @@ Input="Taunt"
 Button="taunt"
 Condition="using Modern Controls"
 Images=["move/Seagull_Up_Taunt.png", "move/Seagull_Down_Taunt.png", "move/Seagull_Side_Taunt.png"]
+ImageNotes=["Up Taunt", "Down Taunt", "Side Taunt"]
 Hitboxes=["move/Seagull_Up_Taunt_Hitbox.png", "move/Seagull_Down_Taunt_Hitbox.png", "move/Seagull_Side_Taunt_Hitbox.png"]
 Description="""
-Seagull can choose the taunt he performs when using Modern Controls. To select a taunt, press either <b>up</b>,
-<b>down</b>, or <b>left/right</b> when hitting the taunt button.
+Unlike other characters, when Seagull is using Modern Controls, he can choose to perform a specific taunt instead of
+the usual random taunt. To select a taunt, press either <b>up</b>, <b>down</b>, or <b>left/right</b> while
+hitting the taunt button.
 <ul>
-    <li><b>&uparrow; + Taunt:</b> Seagull</li>
-    <li><b>&downarrow; + Taunt:</b> Seagull</li>
-    <li><b>&leftarrow;/&rightarrow; + Taunt:</b> Seagull</li>
+    <li><b>&uparrow; + Taunt:</b> Seagull gives a huge thumbs up to his opponent.</li>
+    <li><b>&downarrow; + Taunt:</b> Seagull lowers his head and angrily shouts at his opponent.</li>
+    <li><b>&leftarrow;/&rightarrow; + Taunt:</b> Seagull cries out in anguish.</li>
 </ul>
 """
 [[Character.Normals.Data]]
