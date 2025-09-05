@@ -1,45 +1,32 @@
 import * as fs from "fs";
-import { parse } from "@iarna/toml";
 import { Character } from "./character.ts";
-
-const mainTemplate = fs.readFileSync("templates/index.html", "utf8");
-const selectorTemplate = fs.readFileSync("templates/character/selector.html", "utf8");
+import * as util from "./util/util.ts";
 
 const characterDir = "data/character/";
 const exportDir = "docs/";
+export const templateDir = "templates/";
+
+const mainTemplate = util.loadTemplate("index");
+const selectorTemplate = util.loadTemplate("character", "selector");
 
 export const characters: Character[] = [];
+export const logger = console; // todo: custom
 
 // todo: files are looking a little large, might see re-organization
 
 // parses all character data
 function loadCharacters(): void {
-    console.log("[Main] Reading character data...");
+    logger.log("[Main] Reading character data...");
     if (!fs.existsSync(characterDir)) {
-        console.error("\x1b[31m%s\x1b[0m", "[Main] Character data directory is missing or invalid!");
+        logger.error("\x1b[31m%s\x1b[0m", "[Main] Character data directory is missing or invalid!");
         return;
     }
 
     fs.readdirSync(characterDir).forEach((file) => {
-        if (file.endsWith(".toml")) {
-            try {
-                const tomlContent = fs.readFileSync(characterDir + file, "utf8");
-                if (!tomlContent) {
-                    console.error("\x1b[31m%s\x1b[0m", `[Main] Could not read character file: ${file}`);
-                    return;
-                }
+        if (!file.endsWith(".toml")) return;
 
-                const data = parse(tomlContent);
-                if (!data.Character) {
-                    console.error("\x1b[31m%s\x1b[0m", `[Main] Invalid data structure in character file: ${file}`);
-                    return;
-                }
-
-                characters.push(new Character(data.Character));
-            } catch (error) {
-                console.error("\x1b[31m%s\x1b[0m", `[Main] Error parsing character file ${file}:`, error);
-            }
-        }
+        const data = util.loadToml(characterDir + file, (data) => !!data["Character"]);
+        if (data) characters.push(new Character(data["Character"]));
     });
 }
 
@@ -53,7 +40,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
         );
 
         if (!updateLine) {
-            console.error("\x1b[31m%s\x1b[0m", "[Main] Could not find update line in existing file. Is the template file correct?");
+            logger.error("\x1b[31m%s\x1b[0m", "[Main] Could not find update line in existing file. Is the template file correct?");
             return true;
         }
 
@@ -63,22 +50,26 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
 
         return result !== existing;
     } catch (error) {
-        console.error("\x1b[31m%s\x1b[0m", "[Main] Error comparing versions:", error);
+        logger.error("\x1b[31m%s\x1b[0m", "[Main] Error comparing versions:", error);
         return true; // not my problem :P
     }
 }
 
 // updates the main page
 function generateMain(): void {
-    console.log("[Main] Generating main page...");
+    logger.log("[Main] Generating main page...");
+    if (!mainTemplate) {
+        logger.error("\x1b[31m%s\x1b[0m", "[Main] No template availabie! Exiting...");
+        return process.exit(1);
+    }
     let rendered = mainTemplate;
 
     rendered = rendered.replace("%CHARALIST%", characters.map((character) => character.mainNav).join(""))
         .replace(/%CHARACTERS%/g, characters.map((chara) => {
-            return selectorTemplate.replace(/%NAME%/g, chara.Name.toLowerCase())
+            return selectorTemplate?.replace(/%NAME%/g, chara.Name.toLowerCase())
                 .replace(/%REALNAME%/g, chara.Name)
                 .replace(/%ICONPATH%/g, `images/${chara.Name.toLowerCase()}/${chara.IconPath}`)
-                .replace(/%TYPE%/g, chara.Type);
+                .replace(/%TYPE%/g, chara.Type) || "";
         }).join(""));
 
     if (compareVersions(exportDir + "index.html", rendered)) {
@@ -88,14 +79,14 @@ function generateMain(): void {
 
         fs.writeFileSync(exportDir + "index.html", rendered);
     } else {
-        console.log("[Main] No changes detected, skipping main page generation.");
+        logger.log("[Main] No changes detected, skipping main page generation.");
     }
 }
 
 // updates or creates a character page
 function generateCharacter(character: Character): void {
-    console.log(`[${character.Name}] Generating character page...`);
-    if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(exportDir + "characters/");
+    logger.log(`[${character.Name}] Generating character page...`);
+    if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(`${exportDir}characters/`);
     let rendered = character.render();
 
     // Compare the contents
@@ -107,7 +98,7 @@ function generateCharacter(character: Character): void {
         // gg
         fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
     } else {
-        console.log(`[${character.Name}] No changes detected, skipping character page generation.`);
+        logger.log(`[${character.Name}] No changes detected, skipping character page generation.`);
     }
 }
 
@@ -123,7 +114,7 @@ function main() {
     });
 
     // todo: System Pages
-    console.log("Done!");
+    logger.log("Done!");
 }
 
 main();
