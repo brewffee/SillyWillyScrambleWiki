@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { Character } from "./character.ts";
 import * as util from "./util/util.ts";
+import {Logger} from "./util/Logger.ts";
 
 const characterDir = "data/character/";
 const exportDir = "docs/";
@@ -10,15 +11,15 @@ const mainTemplate = util.loadTemplate("index");
 const selectorTemplate = util.loadTemplate("character", "selector");
 
 export const characters: Character[] = [];
-export const logger = console; // todo: custom
+export const logger = new Logger("Main");
 
 // todo: files are looking a little large, might see re-organization
 
 // parses all character data
 function loadCharacters(): void {
-    logger.log("[Main] Reading character data...");
+    logger.log("Reading character data...");
     if (!fs.existsSync(characterDir)) {
-        logger.error("\x1b[31m%s\x1b[0m", "[Main] Character data directory is missing or invalid!");
+        logger.error("Character data directory is missing or invalid!");
         return;
     }
 
@@ -40,7 +41,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
         );
 
         if (!updateLine) {
-            logger.error("\x1b[31m%s\x1b[0m", "[Main] Could not find update line in existing file. Is the template file correct?");
+            logger.error("Could not find update line in existing file. Is the template file correct?");
             return true;
         }
 
@@ -50,16 +51,16 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
 
         return result !== existing;
     } catch (error) {
-        logger.error("\x1b[31m%s\x1b[0m", "[Main] Error comparing versions:", error);
+        logger.error("Error comparing versions:", error);
         return true; // not my problem :P
     }
 }
 
 // updates the main page
 function generateMain(): void {
-    logger.log("[Main] Generating main page...");
+    logger.log("Generating main page...");
     if (!mainTemplate) {
-        logger.error("\x1b[31m%s\x1b[0m", "[Main] No template availabie! Exiting...");
+        logger.error("No template availabie! Exiting...");
         return process.exit(1);
     }
     let rendered = mainTemplate;
@@ -79,27 +80,32 @@ function generateMain(): void {
 
         fs.writeFileSync(exportDir + "index.html", rendered);
     } else {
-        logger.log("[Main] No changes detected, skipping main page generation.");
+        logger.log("No changes detected, skipping main page generation.");
     }
 }
 
 // updates or creates a character page
 function generateCharacter(character: Character): void {
-    logger.log(`[${character.Name}] Generating character page...`);
+    // todo: the character should be responsible for its own logger
+    const charaLog = new Logger(character.Name);
+    charaLog.log(`Generating character page...`);
+    // todo: validate directories at initialization plelase and thank you
     if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(`${exportDir}characters/`);
     let rendered = character.render();
 
     // Compare the contents
-    if (compareVersions(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered)) {
-        rendered = rendered.replace("%DATE%", new Date().toDateString())
-            .replace("%TIME%", new Date().toLocaleTimeString())
-            .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
-
-        // gg
-        fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
-    } else {
-        logger.log(`[${character.Name}] No changes detected, skipping character page generation.`);
+    // todo: this can also be done in render if we isolate compareVersions
+    if (!compareVersions(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered)) {
+        return charaLog.log(`No changes detected, skipping character page generation.`);
     }
+
+    // ggz
+    rendered = rendered.replace("%DATE%", new Date().toDateString())
+        .replace("%TIME%", new Date().toLocaleTimeString())
+        .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
+
+    // todo: safety on ALL file operations please, files can be mean like that
+    fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
 }
 
 function main() {
