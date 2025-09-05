@@ -7,7 +7,7 @@ PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Reversals=[
     "%ref(Ristretto,214P,p)",
-    "%ref(Chiaroscuro Omega,632146P,p)"
+    "%ref(Chiaroscuro ver.Omega,632146P,p)"
 ]
 
 ###################################
@@ -29,7 +29,6 @@ Startup="180-Until Released"
 Active="3"
 Recovery="-"
 OnBlock="-"
-OnHit="0"
 Invuln=["180+F Guard Point"]
 
 [[Character.Normals]] # j.2K
@@ -158,8 +157,8 @@ Recovery="-"
 OnBlock="-"
 
 [[Character.Specials]] # Chiaroscuro ver.β
-# todo: allow specifying an id field for moves that use non-alphanumeric symbols in their names
 Name="Chiaroscuro ver.β"
+ID="Chiaroscuro ver.Beta"
 Inputs=["236S", "H"]
 Buttons=["s", "h"]
 Images=[
@@ -252,6 +251,7 @@ OnBlock="-"
 
 [[Character.Supers]] # Chiaroscuro ver.Ω
 Name="Chiaroscuro ver.Ω"
+ID="Chiaroscuro ver.Omega"
 Inputs=["632146P"]
 Buttons=["p"]
 AirOK=true

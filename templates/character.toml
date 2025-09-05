@@ -88,6 +88,7 @@ SpecialNote=""      # What's so special about them?
 ###################################
 [[Character.Specials]]
 Name=""
+ID=""               # A unique identifier if a move is to somehow conflict with a nexisting one
 Inputs=[""]         # The input strings. A value of ["236P", "K"] will display as "236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Special requirements for the move, displayed after input string
@@ -103,6 +104,7 @@ Description="""
 ###################################
 [[Character.Supers]]
 Name=""
+ID=""               # Ynique identifier
 Inputs=[""]         # The input strings. A value of ["236236P", "K"] will display as "236236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Will mostly be "with 50% meter" in the case of supers

@@ -26,6 +26,7 @@ const FrameDataDefaults: FrameData = {
 };
 
 interface Normal {
+    ID?: string;
     Input: string;
     Button: string;
     AirOK?: boolean;
@@ -52,6 +53,7 @@ type Move = Normal | Special | Super;
 interface Mechanic {
     Name: string;
     Description: string;
+    ID?: string;
 }
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
@@ -319,7 +321,7 @@ export class Character {
             this.addNavigable(mechanic.Name);
 
             return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
-                .replace(/%ID%/g, this.safeID(mechanic.Name))
+                .replace(/%ID%/g, this.safeID(mechanic.ID ?? mechanic.Name))
                 .replace(/%MECHANIC_DESCRIPTION%/g, this.resolveReferences(mechanic.Description));
         }).join("");
     }
@@ -331,9 +333,10 @@ export class Character {
 
         return normalsHeader + normals.map((normal) => {
             console.log(`[${this.Name}] Generating documentation for command normal: ${normal.Input}`);
-            this.addNavigable(normal.Input);
+            this.addNavigable(normal.ID ?? normal.Input);
 
             return normalTemplate.replace(/%INPUT%/g, normal.Input)
+                .replace(/%ID%/g, this.safeID(normal.ID ?? normal.Input))
                 .replace(/%EXTRA%/g, this.renderExtras(normal))
                 .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${this.resolveReferences(normal.Condition)}</em>` : "")
                 .replace(/%BUTTON%/g, normal.Button)
@@ -352,10 +355,10 @@ export class Character {
 
         return specialsHeader + specials.map((special) => {
             console.log(`[${this.Name}] Generating documentation for special move: ${special.Name}`);
-            this.addNavigable(special.Name);
+            this.addNavigable(special.ID ?? special.Name);
 
             return specialTemplate.replace(/%NAME%/g, special.Name)
-                .replace(/%ID%/g, this.safeID(special.Name))
+                .replace(/%ID%/g, this.safeID(special.ID ?? special.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(special))
                 .replace(/%BUTTON%/g, special.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
@@ -375,10 +378,10 @@ export class Character {
 
         return supersHeader + supers.map((sup) => {
             console.log(`[${this.Name}] Generating documentation for super: ${sup.Name}`);
-            this.addNavigable(sup.Name);
+            this.addNavigable(sup.ID ?? sup.Name);
 
             return specialTemplate.replace(/%NAME%/g, sup.Name)
-                .replace(/%ID%/g, this.safeID(sup.Name))
+                .replace(/%ID%/g, this.safeID(sup.ID ?? sup.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(sup))
                 .replace(/%BUTTON%/g, sup.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))

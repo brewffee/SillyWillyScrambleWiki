@@ -362,6 +362,8 @@ div.roster a .type {
 
 a:has(.move-name) {
     text-decoration: none;
+    width: fit-content;
+    display: block;
 }
 
 .move-name {
