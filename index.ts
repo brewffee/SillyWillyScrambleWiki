@@ -35,9 +35,10 @@ function loadCharacters(): void {
 function compareVersions(older: string, newer: string): boolean { // true if change, false if ok
     try {
         if (!fs.existsSync(older)) return true;
+        const searchString = "      <p>This page was last updated on ";
         const existing = fs.readFileSync(older, "utf8");
         const updateLine = existing.split("\n").find((line) =>
-            line.startsWith("      <p>This page was last updated on ")
+            line.startsWith(searchString)
         );
 
         if (!updateLine) {
@@ -46,7 +47,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
         }
 
         // compare the contents using the old update time
-        const updateString = (updateLine.split(",")[0].split("on")[1].trim() + "," + updateLine.split(",")[1]).split(".")[0];
+        const updateString = (updateLine.split(",")[0].split(searchString)[1].trim() + "," + updateLine.split(",")[1]).split(".")[0];
         const result = newer.replace("%DATE%, ", updateString).replace("%TIME% ", "").replace("(%TZ%)", "");
 
         return result !== existing;
@@ -63,8 +64,8 @@ function generateMain(): void {
         logger.error("No template available! Exiting...");
         return process.exit(1);
     }
+    
     let rendered = mainTemplate;
-
     rendered = rendered.replace("%CHARALIST%", characters.map((character) => character.mainNav).join(""))
         .replace(/%CHARACTERS%/g, characters.map((chara) => {
             return selectorTemplate?.replace(/%NAME%/g, chara.Name.toLowerCase())
