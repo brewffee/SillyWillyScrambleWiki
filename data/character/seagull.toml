@@ -149,9 +149,10 @@ Condition="or %btn(s,6S) (Modern)"
 Images=["move/Seagull_236S.png"]
 Hitboxes=["move/Seagull_236S_Hitbox.png"]
 Description="""
-Seagull produces a slow moving fireball that travels in a straight line across the screen. While its slow speed
-makes it dangerous up close, it allows for great okizeme and helps keep Seagull out of reach from the opponent.
-During the late recovery of Your, Seagull can cancel into %ref(Bad,Bad,s).
+Seagull produces a slow moving fireball that travels in a straight line across the screen. While its slow speed makes it
+dangerous up close, it allows for great %note(When your opponent is knocked down and you are able to attack them as soon
+as they wake up,okizeme) and helps keep Seagull out of reach from the opponent. During the late recovery of Your, Seagull
+can cancel into %ref(Bad,Bad,s).
 """
 [[Character.Specials.Data]]
 Damage="-"

@@ -6,8 +6,8 @@ wheel.
 <br><br>
 Max's premier mechanic is their Caffeine Gauge, giving them access to enhanced versions of their special moves.
 While the Caffeine Gauge serves as a powerful tool for Max, it doesn't come for free. Max must use %ref(Energizzze,22K,k)
-to recharge their levels, often having to give up powerful %note(Attacking an opponent after a knockdown with an attack
-that lands on wakeup,okizeme) to keep their momentum going.
+to recharge their levels, often having to give up powerful %note(When your opponent is knocked down and you are able to
+attack them as soon as they wake up,okizeme) to keep their momentum going.
 <br><br>
 Once fueled up, Max's combo game becomes much more potent and versatile, scoring massive corner carry off of small
 hits. With a great overhead in %ref(Anvil Mantle,en.214H,h) and the threat of %ref(Sweater Weather,623H,h)'s range and
@@ -254,7 +254,7 @@ Name="Sweater Weather"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
-Images=["move/Max_623H.png", "move/Max_623H_2.png", "move/Max_623H_Whif.png"]
+Images=["move/Max_623H.png", "move/Max_623H_2.png", "move/Max_623H_Whiff.png"]
 ImageNotes=["You look a little cold, try wearing this!"]
 Hitboxes=["move/Max_623H_Hitbox.png"]
 Description="""

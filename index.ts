@@ -60,7 +60,7 @@ function compareVersions(older: string, newer: string): boolean { // true if cha
 function generateMain(): void {
     logger.log("Generating main page...");
     if (!mainTemplate) {
-        logger.error("No template availabie! Exiting...");
+        logger.error("No template available! Exiting...");
         return process.exit(1);
     }
     let rendered = mainTemplate;
@@ -89,7 +89,7 @@ function generateCharacter(character: Character): void {
     // todo: the character should be responsible for its own logger
     const charaLog = new Logger(character.Name);
     charaLog.log(`Generating character page...`);
-    // todo: validate directories at initialization plelase and thank you
+    // todo: validate directories at initialization please and thank you
     if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(`${exportDir}characters/`);
     let rendered = character.render();
 
