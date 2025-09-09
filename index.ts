@@ -1,7 +1,8 @@
 import * as fs from "fs";
-import { Character } from "./character.ts";
 import * as util from "./util/util.ts";
-import {Logger} from "./util/Logger.ts";
+
+import { Character } from "./character.ts";
+import { Logger } from "./util/Logger.ts";
 
 const characterDir = "data/character/";
 const exportDir = "docs/";
@@ -64,7 +65,7 @@ function generateMain(): void {
         logger.error("No template available! Exiting...");
         return process.exit(1);
     }
-    
+
     let rendered = mainTemplate;
     rendered = rendered.replace("%CHARALIST%", characters.map((character) => character.mainNav).join(""))
         .replace(/%CHARACTERS%/g, characters.map((chara) => {

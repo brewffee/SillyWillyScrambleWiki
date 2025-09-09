@@ -1,60 +1,10 @@
 import * as fs from "fs";
+
+import { Macro, multicolor } from "./util/Macros.ts";
+import { safeID } from "./util/util.ts";
+import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
+import type { Mechanic, Move, Normal, Special, Super } from "./types/Move.ts";
 import { characters } from "./index.ts";
-
-interface FrameData {
-    Version?: string;
-    Damage: string;
-    Guard: string;
-    Startup: string;
-    Active: string;
-    Recovery: string;
-    OnBlock: string;
-    Invuln: string[];
-    SpecialFrames?: number[];
-    SpecialNote?: string;
-}
-
-const FrameDataDefaults: FrameData = {
-    Version: undefined,
-    Damage: "",
-    Guard: "",
-    Startup: "",
-    Active: "",
-    Recovery: "",
-    OnBlock: "",
-    Invuln: [],
-};
-
-interface Normal {
-    ID?: string;
-    Input: string;
-    Button: string;
-    AirOK?: boolean;
-    HoldOK?: boolean;
-    Condition?: string;
-    Images: string[];
-    ImageNotes?: string[];
-    Hitboxes: string[];
-    HitboxNotes?: string[];
-    Description: string;
-
-    Data: FrameData[];
-}
-
-interface Special extends Omit<Normal, "Input" | "Button"> {
-    Name: string;
-    Inputs: string[];
-    Buttons: string[];
-}
-
-type Super = Special;
-type Move = Normal | Special | Super;
-
-interface Mechanic {
-    Name: string;
-    Description: string;
-    ID?: string;
-}
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
 const mechanicTemplate = fs.readFileSync("templates/character/mechanic.html", "utf8");
@@ -109,131 +59,73 @@ export class Character {
         this.tableOfContents = `<li><a href="#Overview">Overview</a></li>`;
     }
 
-    // safely converts a string to a valid HTML ID
-    safeID(input: string): string {
-        return input.replace(/ /g, "-").replace(/[^a-zA-Z0-9-.]/g, "");
-    }
-
     // adds an item to the table of contents (NOT THE MAIN NAVIGATION PANEL !!!)
     addNavigable(item: string, header: boolean = false, displayName: string = item): void {
         if (header) {
-            this.tableOfContents += `<li class=header><a href="#${this.safeID(item)}">${displayName}</a></li>`;
+            this.tableOfContents += `<li class=header><a href="#${safeID(item)}">${displayName}</a></li>\n`;
         } else {
-            this.tableOfContents += `<li><a href="#${this.safeID(item)}">${displayName}</a></li>`;
+            this.tableOfContents += `<li><a href="#${safeID(item)}">${displayName}</a></li>\n`;
         }
     }
 
     // resolve macros into HTML elements
     resolveReferences(input: string): string {
-        // todo: this and other utility functions might be moved outside into a separate utils file
-        // utility to parse macro arguments while respecting escaped special chars
-        function parseArgs(args: string[], amt: number): string[] {
-            const parsed: string[] = [];
-            const str = args.slice(0, amt).join(",");
-
-            let current = "", escaped = false;
-            for (const char of str) {
-                if (escaped) {
-                    current += char;
-                    escaped = false;
-                } else if (char === "\\") {
-                    escaped = true;
-                } else if (char === ",") {
-                    parsed.push(current);
-                    current = "";
-                } else {
-                    current += char;
-                }
-            }
-
-            parsed.push(current);
-            return parsed;
-        }
-
-        // creates macros for me because man i dont like looking at those regexes
-        function macroRegex(name: string, amt: number): RegExp {
-            // %name(...) (?:[^\\)]|\\.)*
-            const pattern = "((?:[^\\\\)]|\\\\.)*)"; // do you like backslashes ?? i dont
-            const params = Array(amt).fill(pattern).join(",");
-            return new RegExp(`%${name}\\(${params}\\)`, "g");
-        }
-
-        // colors an input string with multiple colors
-        function multicolor(rawInput: string, buttonsArg: string, sep: string) {
-            const buttons = buttonsArg.split("");
-            const inputs = rawInput.split(sep);
-
-            for (let i = 0; i < buttons.length; i++) {
-                inputs[i] = `<em button=${buttons[i].toLowerCase()}>${inputs[i]}</em>`;
-            }
-
-            return inputs.join(`<em button=or>${sep}</em>`);
-        }
-
-        // specific move reference
-        // converts instances of %ref(NAME,INPUT,BTN) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
-        let result = input.replace(macroRegex("ref", 3), (_, ...args) => {
-            const [name, inputStr, button] = parseArgs(args, 3);
-            return `<a href="#${this.safeID(name)}" class=ref button="${button.toLowerCase()}" title="${name}">${inputStr}</a>`;
+        // reference to move
+        // converts `%ref(NAME,INPUT,BTN)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
+        let result = new Macro("ref", 3).execute(input, ([name, input, btn]) => {
+            return `<a href="#${safeID(name)}" class=ref button="${btn.toLowerCase()}" title="${name}">${input}</a>`;
         });
 
-        // specific move reference with multi-colored input, useful for followup moves
+        // multicolored reference
         // colors the initial move with BTN1, colors the separator SEP black, and the rest with BTN<N>
-        // converts instances of %mref(NAME,INPUT,BTN1BTN2,SEP) to <a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>
-        result = result.replace(macroRegex("mref", 4), (_, ...args) => {
-            const [name, rawInput, buttons, sep] = parseArgs(args, 4);
-            const inputStr = multicolor(rawInput, buttons, sep);
-
-            return `<a href="#${this.safeID(name)}" class=ref button="${buttons[0].toLowerCase()}" title="${name}">${inputStr}</a>`;
+        // converts `%mref(NAME,INPUT,BTN1BTN2...,SEP)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
+        result = new Macro("mref", 4).execute(result, ([name, input, btns, sep]) => {
+            const inputStr = multicolor(input, btns, sep);
+            return `<a href="#${safeID(name)}" class=ref button="${btns[0].toLowerCase()}" title="${name}">${inputStr}</a>`;
         });
 
-        // weak button reference
-        // converts instances of %btn(BTN, TEXT) to <em class=btnbutton="BTN">TEXT</em>
-        result = result.replace(macroRegex("btn", 2), (_, ...args) => {
-            const [button, text] = parseArgs(args, 2);
-            return `<em class=btn button="${button.toLowerCase()}">${text}</em>`;
+        // button colored text
+        // converts `%btn(BTN,TEXT)` to `<em class=btn button="BTN">TEXT</em>`
+        result = new Macro("btn", 2).execute(result, ([btn, text]) => {
+            return `<em class=btn button="${btn.toLowerCase()}">${text}</em>`;
         });
 
-        // weak button reference, similar to mref
-        // converts instances of %mbtn(TEXT,BTN1BTN2,SEP) to <em class=btnbutton="BTN">TEXT</em>
-        result = result.replace(macroRegex("mbtn", 3), (_, ...args) => {
-            const [rawText, buttons, sep] = parseArgs(args, 3);
-            const text = multicolor(rawText, buttons, sep);
+        // multi button culored text
+        // converts `%mbtn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
+        result = new Macro("mbtn", 3).execute(result, ([raw, buttons, sep]) => {
+            const text = multicolor(raw, buttons, sep);
             return `<em class=btn button="${buttons[0].toLowerCase()}">${text}</em>`;
         });
 
-        // external link reference
-        // converts instances of %link(URL, ALT, TEXT) to <a href="URL" title="ALT">TEXT</a>
-        result = result.replace(macroRegex("link", 3), (_, ...args) => {
-            const [url, alt, text] = parseArgs(args, 3);
+        // site link reference
+        // converts `%link(URL,ALT,TEXT)` to `<a href="URL" title="ALT">TEXT</a>`
+        result = new Macro("link", 3).execute(result, ([url, alt, text]) => {
             if (!fs.existsSync(`docs/${url}`)) {
                 console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested link target: ${url}`);
             }
+
             return `<a href="../${url}" title="${alt}">${text}</a>`;
         });
 
-        // image embed
-        // converts instances of %img(PATH, ALT, NOTE) to:
-        // <div class=embed><img src="../images/CHARACTER/PATH" alt="ALT"><p>NOTE</p></div>
-        result = result.replace(macroRegex("img", 3), (_, ...args) => {
-            const [path, alt, note] = parseArgs(args, 3);
+        // character image embed
+        // converts `%img(PATH,ALT,NOTE)` to `<div class=embed><img src="../images/CHARACTER/PATH" alt="ALT"><p>NOTE</p></div>`
+        result = new Macro("img", 3).execute(result, ([path, alt, note]) => {
             if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${path}`)) {
                 console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not embed requested image: ${path}`);
             }
+
             return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
         });
 
-        // note, briefly explains a term
-        // converts instances of %note(TEXT, DISPLAY) to <span class=note title="TEXT">DISPLAY</span>
-        result = result.replace(macroRegex("note", 2), (_, ...args) => {
-            const [text, display] = parseArgs(args, 2);
+        // note definition tooltip
+        // converts `%note(TEXT,DISPLAY)` to `<span class=note title="TEXT">DISPLAY</span>`
+        result = new Macro("note", 2).execute(result, ([text, display]) => {
             return `<span class=note title="${text}">${display}</span>`;
         });
 
-        // url, links to an external source and opens in new tab
-        // converts instances of %url(URL, ALT, TEXT) to <a href="URL" title="ALT" target="_blank" rel="noreferrer">TEXT</a>
-        result = result.replace(macroRegex("url", 3), (_, ...args) => {
-            const [url, alt, text] = parseArgs(args, 3);
+        // external url
+        // converts `%url(URL,ALT,TEXT)` to `<a href="URL" title="ALT" target="_blank" rel="noreferrer">TEXT</a>`
+        result = new Macro("url", 3).execute(result, ([url, alt, text]) => {
             return `<a href="${url}" title="${alt}" target="_blank" rel="noreferrer">${text}</a>`;
         });
 
@@ -321,7 +213,7 @@ export class Character {
             this.addNavigable(mechanic.Name);
 
             return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
-                .replace(/%ID%/g, this.safeID(mechanic.ID ?? mechanic.Name))
+                .replace(/%ID%/g, safeID(mechanic.ID ?? mechanic.Name))
                 .replace(/%MECHANIC_DESCRIPTION%/g, this.resolveReferences(mechanic.Description));
         }).join("");
     }
@@ -336,7 +228,7 @@ export class Character {
             this.addNavigable(normal.ID ?? normal.Input);
 
             return normalTemplate.replace(/%INPUT%/g, normal.Input)
-                .replace(/%ID%/g, this.safeID(normal.ID ?? normal.Input))
+                .replace(/%ID%/g, safeID(normal.ID ?? normal.Input))
                 .replace(/%EXTRA%/g, this.renderExtras(normal))
                 .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${this.resolveReferences(normal.Condition)}</em>` : "")
                 .replace(/%BUTTON%/g, normal.Button)
@@ -358,7 +250,7 @@ export class Character {
             this.addNavigable(special.ID ?? special.Name);
 
             return specialTemplate.replace(/%NAME%/g, special.Name)
-                .replace(/%ID%/g, this.safeID(special.ID ?? special.Name))
+                .replace(/%ID%/g, safeID(special.ID ?? special.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(special))
                 .replace(/%BUTTON%/g, special.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
@@ -381,7 +273,7 @@ export class Character {
             this.addNavigable(sup.ID ?? sup.Name);
 
             return specialTemplate.replace(/%NAME%/g, sup.Name)
-                .replace(/%ID%/g, this.safeID(sup.ID ?? sup.Name))
+                .replace(/%ID%/g, safeID(sup.ID ?? sup.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(sup))
                 .replace(/%BUTTON%/g, sup.Buttons[0])
                 .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))

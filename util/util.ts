@@ -1,8 +1,7 @@
-// general util
-
 import * as TOML from "@iarna/toml";
 import fs from "node:fs";
 import path from "node:path";
+
 import { logger, templateDir } from "../index.ts";
 
 export const loadToml = (path: string, validator: (data: TOML.JsonMap) => boolean): TOML.JsonMap | undefined => {
@@ -42,4 +41,9 @@ export const appendLast = (arr: string[], str: string): string[] => {
     ...arr.slice(0, arr.length - 1),
     arr[arr.length - 1] + str,
   ];
+};
+
+// safely converts a string to a valid HTML ID
+export const safeID = (input: string): string => {
+    return input.replace(/ /g, "-").replace(/[^a-zA-Z0-9-.]/g, "");
 };
