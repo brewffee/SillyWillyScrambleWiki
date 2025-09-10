@@ -28,6 +28,10 @@ export class Character {
     Supers: Super[];
     // ------------ //
 
+    // section order and unique data
+    sections: string[] = [];
+    sectionData: { [key: string]: any } = {}; // todo: me when i use any type because im lazee
+
     characterNav: string;
     characterNavActive: string;
     mainNav: string;
@@ -35,6 +39,23 @@ export class Character {
     tableOfContents: string;
 
     constructor(data: any) {
+        // key order now hinges on toml
+        for (const key of Object.keys(data) as (keyof Character)[]) {
+            const ignored: (keyof Character)[] = ["Name", "Description", "IconPath", "PortraitPath", "Type", "Reversals"];
+            if (ignored.includes(key)) continue;
+
+            // preserves section order
+            const standard: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
+            this.sections.push(key);
+
+            if (standard.includes(key as keyof Character)) {
+                this[key] = data[key];
+            } else {
+                this.sectionData[key] = data[key];
+            }
+
+        }
+
         this.Name = data.Name;
         this.Description = data.Description;
         this.IconPath = data.IconPath;
@@ -148,7 +169,8 @@ export class Character {
     }
 
     // utility for moves with multiple inputs (ex 236P/K/S)
-    renderInputString(inputs: string[], buttons: string[]): string {
+    renderInputString(inputs: string[] | undefined, buttons: string[] | undefined): string {
+        if (!buttons || !inputs) return inputs?.[0] ?? "";
         let inputStr = inputs[0];
         for (let i = 1; i < buttons.length; i++) {
             if (buttons.length !== inputs.length) return ""; // what are u doing ????
@@ -158,6 +180,7 @@ export class Character {
     }
 
     renderFrameData(data: FrameData[]): string {
+        if (!data) return "";
         // ass specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
         const filled: FrameData[] = data.map((frame) => {
             const res: FrameData = {...FrameDataDefaults, ...frame};
@@ -188,6 +211,8 @@ export class Character {
     }
 
     // creates the image gallery
+    // todo: if there are no hitboxes, the button should be removed here
+    //   in other words, automatically add the hitbox button inside this func
     renderImages(images: string[], name: string, notes?: string[]): string {
         if (!images) return "";
         let imageStr = "";
@@ -208,14 +233,14 @@ export class Character {
         const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n";
         this.addNavigable("Mechanics", true);
 
-        return mechanicsHeader + mechanics.map((mechanic) => {
+        return "<div class=mechanics>" + mechanicsHeader + mechanics.map((mechanic) => {
             console.log(`[${this.Name}] Generating documentation for mechanic: ${mechanic.Name}`);
             this.addNavigable(mechanic.Name);
 
             return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
                 .replace(/%ID%/g, safeID(mechanic.ID ?? mechanic.Name))
                 .replace(/%MECHANIC_DESCRIPTION%/g, this.resolveReferences(mechanic.Description));
-        }).join("");
+        }).join("") + "</div>";
     }
 
     renderCommandNormals(normals: Normal[]): string {
@@ -223,7 +248,7 @@ export class Character {
         const normalsHeader = "<h2 id=Command-Normals><a href=#Command-Normals>Command Normals</a></h2>\n";
         this.addNavigable("Command Normals", true);
 
-        return normalsHeader + normals.map((normal) => {
+        return "<div class=command-normals>" + normalsHeader + normals.map((normal) => {
             console.log(`[${this.Name}] Generating documentation for command normal: ${normal.Input}`);
             this.addNavigable(normal.ID ?? normal.Input);
 
@@ -236,7 +261,7 @@ export class Character {
                 .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.Input, normal.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
-        }).join("");
+        }).join("") + "</div>";
     }
 
     // special moves (attacks that have a name or more complex inputs)
@@ -245,21 +270,21 @@ export class Character {
         const specialsHeader = "<h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2>\n";
         this.addNavigable("Special Attacks", true);
 
-        return specialsHeader + specials.map((special) => {
+        return "<div class=specials>" + specialsHeader + specials.map((special) => {
             console.log(`[${this.Name}] Generating documentation for special move: ${special.Name}`);
             this.addNavigable(special.ID ?? special.Name);
 
             return specialTemplate.replace(/%NAME%/g, special.Name)
                 .replace(/%ID%/g, safeID(special.ID ?? special.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(special))
-                .replace(/%BUTTON%/g, special.Buttons[0])
+                .replace(/%BUTTON%/g, special.Buttons ? special.Buttons[0] : "")
                 .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
                 .replace(/%CONDITION%/g, special.Condition ? ` <em button=x>${this.resolveReferences(special.Condition)}</em>` : "")
                 .replace(/%IMAGE%/g, this.renderImages(special.Images, special.Name, special.ImageNotes))
                 .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.Name, special.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
-        }).join("");
+        }).join("") + "</div>";
     }
 
     // supers
@@ -268,21 +293,49 @@ export class Character {
         const supersHeader = "<h2 id=Supers><a href=#Supers>Supers</a></h2>\n";
         this.addNavigable("Supers", true);
 
-        return supersHeader + supers.map((sup) => {
+        return "<div class=supers>" + supersHeader + supers.map((sup) => {
             console.log(`[${this.Name}] Generating documentation for super: ${sup.Name}`);
             this.addNavigable(sup.ID ?? sup.Name);
 
             return specialTemplate.replace(/%NAME%/g, sup.Name)
                 .replace(/%ID%/g, safeID(sup.ID ?? sup.Name))
                 .replace(/%EXTRA%/g, this.renderExtras(sup))
-                .replace(/%BUTTON%/g, sup.Buttons[0])
+                .replace(/%BUTTON%/g, sup.Buttons ? sup.Buttons[0] : "")
                 .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))
                 .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${this.resolveReferences(sup.Condition)}</em>` : "")
                 .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.Name, sup.ImageNotes))
                 .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.Name, sup.HitboxNotes))
                 .replace(/%FRAMEDATA%/g, this.renderFrameData(sup.Data))
                 .replace(/%DESCRIPTION%/g, this.resolveReferences(sup.Description));
-        }).join("");
+        }).join("") + "</div>";
+    }
+
+    // rendering a custom section
+    renderSection(data: any[], name: string): string {
+        if (!data) return "";
+
+        const sectionHeader = `<h2 id=${safeID(name)}><a href=#${safeID(name)}>${name}</a></h2>`;
+        this.addNavigable(name, true);
+
+        return "<div class=custom>" + sectionHeader + data.map((item) => {
+            switch (item["Type"]) {
+                case "Description":
+                    return `<p>${this.resolveReferences(item["Description"])}</p>`;
+                case "Move":
+                    this.addNavigable(item["ID"] ?? item["Name"]);
+                    return specialTemplate.replace(/%NAME%/g, item["Name"])
+                        .replace(/%ID%/g, safeID(item["ID"] ?? item["Name"]))
+                        .replace(/%EXTRA%/g, this.renderExtras(item))
+                        .replace(/%BUTTON%/g, item["Buttons"]?.[0] ?? "")
+                        .replace(/%INPUT%/g, this.renderInputString(item["Inputs"], item["Buttons"]?.[0] ?? ""))
+                        .replace(/%CONDITION%/g, item["Condition"] ? `<em button=x>${this.resolveReferences(item["Condition"])}</em>` : "")
+                        .replace(/%IMAGE%/g, this.renderImages(item["Images"], item["Name"], item["ImageNotes"]))
+                        .replace(/%HITBOX%/g, this.renderImages(item["Hitboxes"], item["Name"], item["HitboxNotes"]))
+                        .replace(/%FRAMEDATA%/g, this.renderFrameData(item["Data"]))
+                        .replace(/%DESCRIPTION%/g, this.resolveReferences(item["Description"]));
+
+            }
+        }).join("") + "</div>";
     }
 
     // semi-final page generation before populating navbar and update time
@@ -293,14 +346,18 @@ export class Character {
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
             .replace(/%TYPE%/g, this.Type)
             .replace(/%REVERSALS%/g, this.renderReversals())
-            .replace(/%MECHANICS%/g, this.renderMechanics(this.Mechanics))
-            .replace(/%COMMAND_NORMALS%/g, this.renderCommandNormals(this.Normals))
-            .replace(/%SPECIALS%/g, this.renderSpecials(this.Specials))
-            .replace(/%SUPERS%/g, this.renderSupers(this.Supers))
+            .replace(/%BODY%/g, this.sections.map((section) => {
+                switch (section) {
+                    case "Mechanics":   return this.renderMechanics(this.Mechanics);
+                    case "Normals":     return this.renderCommandNormals(this.Normals);
+                    case "Specials":    return this.renderSpecials(this.Specials);
+                    case "Supers":      return this.renderSupers(this.Supers);
+                    default:            return this.renderSection(this.sectionData[section], section);
+                }
+            }).join(""))
             .replace(/%TABLE_OF_CONTENTS%/g, this.tableOfContents)
             .replace("%CHARALIST%", characters.map((character) =>
                 character === this ? character.characterNavActive : character.characterNav
             ).join(""));
-
     }
 }

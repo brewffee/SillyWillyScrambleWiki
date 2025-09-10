@@ -39,6 +39,7 @@ export class Macro {
 
     // sends the parsed args to an array in the callback fn, returns the string result
     execute(input: string, callback: (args: string[]) => string) {
+        if (!input) return "";
         return input.replace(this.regex(), (_, ...args) => {
             return callback(this.parse(args));
         });

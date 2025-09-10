@@ -18,8 +18,8 @@ export interface Normal {
 
 export interface Special extends Omit<Normal, "Input" | "Button"> {
     Name: string;
-    Inputs: string[];
-    Buttons: string[];
+    Inputs?: string[];
+    Buttons?: string[];
 }
 
 export type Super = Special;
