@@ -19,5 +19,5 @@ Then, create a pull request with the newly built files.
 | **[Berb](https://brewffee.github.io/SillyWillyScrambleWiki/characters/berb.html)**       | _Freaky_     |
 | **[Osi](https://brewffee.github.io/SillyWillyScrambleWiki/characters/osi.html)**         | Cloudy       |
 | **[Guiblo](https://brewffee.github.io/SillyWillyScrambleWiki/characters/guiblo.html)**   | Grappler     |
-| **Percebe**                                                                              |              |
+| **[Goopert](https://brewffee.github.io/SillyWillyScrambleWiki/characters/goopert.html)** |              |
 

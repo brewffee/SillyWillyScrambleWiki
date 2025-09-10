@@ -1,0 +1,300 @@
+[Character]
+Name="Goopert"
+Description="""
+so goop
+"""
+IconPath="icon/Goopert_Icon.png"
+PortraitPath="portrait/Goopert_Portrait.png"
+Type=""
+Reversals=[]
+
+###################################
+# Unique Mechanics
+###################################
+[[Character.Mechanics]] # Cursor State
+Name="Cursor State"
+Description="""
+A state that the opponent can be placed in when hit by %ref(wii aim,41236S,s). While in this state, all items that
+perform attacks such as Funny Fork, Blue Bird, and Fishing Rod all home into the opponent's current position.
+Additionally, when drawing an item with %ref(behold!,236P,p), Goopert can influence the direction of the falling item
+using 6 or 4 to pull the item forwards or backwards respectively. This state lasts for a set amount of time or until
+Goopert is hit.
+"""
+
+###################################
+# Command Normals
+###################################
+[[Character.Normals]] # Taunt
+Input="Taunt"
+Button="taunt"
+Images=["move/Goopert_Taunt.png"]
+Hitboxes=["move/Goopert_Taunt_Hitbox.png"]
+Description="""
+Goopert assumes the gooper-fied form of his opponent. If this move is used in a mirror match, Goopert will become
+unstable and will instead explode.
+"""
+[[Character.Normals.Data]]
+Version="Taunt"
+Startup="-"
+Recovery="-"
+[[Character.Normals.Data]]
+Version="Taunt (Mirror)"
+Damage="-"
+Guard="All"
+Startup="-"
+Recovery="-"
+OnBlock="-"
+
+###################################
+# Special Attacks
+###################################
+[[Character.Specials]] # wii aim
+Name="wii aim"
+Inputs=["41236S"]
+Buttons=["s"]
+Images=["move/Goopert_41236S.png", "move/Goopert_41236S_2.png", "move/Goopert_41236S_Whiff.png"]
+Hitboxes=["move/Goopert_41236S_Hitbox.png", "move/Goopert_41236S_Whiff_Hitbox.png"]
+Description="""
+A command grab. Goopert wraps the opponent up using a Wii Remote and Nunchuck, before chucking them away. This move puts
+the opponent in Cursor State.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+
+[[Character.Specials]] # the silly !!!
+Name="the silly !!!"
+Inputs=["214K"]
+Buttons=["k"]
+Images=["move/Goopert_214K.png", "move/Goopert_214K_2.png"]
+Hitboxes=["move/Goopert_214K_Hitbox.png", "move/Goopert_214K_2_Hitbox.png"]
+Description="""
+Goopert jumps backwards quickly. When %btn(k,K) is pressed again, Goopert jumps forwards, moving past his original
+position.
+"""
+[[Character.Specials.Data]]
+Version="214K"
+Startup="-"
+Recovery="-"
+[[Character.Specials.Data]]
+Version="214K~K"
+Startup="-"
+Recovery="-"
+
+[[Character.Specials]] # behold!
+Name="behold!"
+Inputs=["236P"]
+Buttons=["p"]
+HoldOK=true
+Images=["move/Goopert_236P.png"]
+Hitboxes=["move/Goopert_236P_Hitbox.png"]
+Description="""
+Goopert pulls an item from the abyss and holds it above his head. After a brief period, the item is thrown into the
+middle of the screen. If %btn(p,P) is held during the pause, the item will instead be discarded.
+"""
+[[Character.Specials.Data]]
+Version="236P"
+Startup="-"
+Recovery="-"
+[[Characters.Specials.Data]]
+Version="236[P]"
+Recovery="-"
+
+###################################
+# Items
+###################################
+[[Character.Items]]
+Type="Description"
+Description="""
+Goopert's items come out in random order, but the next three will always be displayed on the HUD.
+"""
+
+[[Character.Items]] # AK-47
+Type="Move"
+Name="AK-47"
+Inputs=["5P"]
+Buttons=["p"]
+HoldOK=true
+Images=["items/Goopert_AK47.png", "move/Goopert_AK47_Fire.png"]
+Hitboxes=["move/Goopert_AK47_Fire_Hitbox.png"]
+Description="""
+When Goopert grabs this item, his %btn(p,5P) is replaced with a hitscan bullet shot aimed directly at the oppomnent.
+Goopert is given a limited amount of ammo, and must fire a minimum of three bullets per use. Goopert can continue
+fire by holding down %btn(p,P) either until the button is released or the gun is out of ammo. Goopert is free to
+move around while shooting. If picked up by the opponent, they will instead gain 50% meter.
+<ul>
+    <li>The AK-47's magazine contains 30 rounds of ammunition.</li>
+</ul>
+"""
+[[Character.Items.Data]]
+Damage="-xN"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Items]] # Smoke Bomb
+Type="Move"
+Name="Smoke Bomb"
+Images=["items/Goopert_SmokeBomb.png", "items/Goopert_SmokeBomb_Smoke.png"]
+Description="""
+When this item hits the ground, a smoke cloud will appear and cover a set area. Neither the opponent nor Goopert is
+visible in this smoke, allowing unseen mix-ups from Goopert or the opponent.
+"""
+
+[[Character.Items]] # Coffee Cup
+Type="Move"
+Name="Coffee Cup"
+Images=["items/Goopert_CoffeeCup.png"]
+Hitboxes=["items/Goopert_CoffeeCup_Hitbox.png"]
+Description="""
+When Goopert or the opponent grabs this item, their speed is raised by 15% and they get a passive meter gain over time.
+If this item is picked up by Max specifically, they will gain 1 Caffeine.
+"""
+
+[[Character.Items]] # Funny Fork
+Type="Move"
+Name="Funny Fork"
+Images=["items/Goopert_FunnyFork.png", "items/Goopert_FunnyFork_Attack.png"]
+Hitboxes=["items/Goopert_FunnyFork_Hitbox.png"]
+Description="""
+When this item is drawn, it immediately flies horizontally across the screen to hit the opponent. Inflicts Guard Crush
+on block.
+"""
+[[Character.Items.Data]]
+Damage="-"
+Guard="All (Guard Crush)"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Items]] # Blue Bird
+Type="Move"
+Name="Blue Bird"
+Images=["items/Goopert_BlueBird.png", "items/Goopert_BlueBird_Attack.png"]
+Hitboxes=["items/Goopert_BlueBird_Hitbox.png"]
+Description="""
+When this item is drawn, it immediately flies diagonally upwards, comes to a stop, then suddenly dives downwards. Hits
+as an overhead.
+"""
+[[Character.Items.Data]]
+Damage="-"
+Guard="High"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Items]] # Broken Clock
+Type="Move"
+Name="Broken Clock"
+Images=["items/Goopert_BrokenClock.png"]
+Hitboxes=["items/Goopert_BrokenClock_Hitbox.png"]
+Description="""
+When this item is drawn, Goopert can only block. After 10 frames, time freezes, hitting anyone who wasn't blocking
+at that moment. Time resumes after a couple seconds.
+<ul>
+    <li>This item <b>cannot</b> be discarded with %btn(p,236[P]).</li>
+</ul>
+"""
+[[Character.Items.Data]]
+Damage="0"
+Guard="All"
+Startup="10"
+Active="120"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Items]] # Fishing Rod
+Type="Move"
+Name="Fishing Rod"
+Images=[
+    "items/Goopert_FishingRod.png",
+    "move/Goopert_FishingRod_Cast.png",
+    "move/Goopert_FishingRod_Reel.png",
+    "move/Goopert_FishingRod_Explode.png"
+]
+ImageNotes=["", "Hook...", "... line...", "... and sinker!"]
+Hitboxes=[
+    "move/Goopert_FishingRod_Cast_Hitbox.png",
+    "move/Goopert_FishingRod_Reel_Hitbox.png",
+    "move/Goopert_FishingRod_Explode_Hitbox.png"
+]
+Description="""
+When this item is drawn, Goopert equips an angler's hat and casts a fishing line with his rod. The fishing hook
+travels the length of the full screen. On contact with an opponent or at the max length of the line, Goopert reels
+it in. At any point in this attack, Goopert can explode the hook using %btn(p,P), even if the attack whiffs.
+<ul>
+    <li>The hook can be deflected with any strike or projectile attack, delaying the final reel-in.</li>
+</ul>
+"""
+[[Character.Items.Data]]
+Version="Cast"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Items.Data]]
+Version="Reel"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Items.Data]]
+Version="Explosion"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Items]] # Goopert²
+Type="Move"
+Name="Goopert²"
+Images=["items/Goopert_Goopert2.png"]
+Description="""
+When this item is drawn, a secondary Goopert appears from the top of the screen, landing in a random position. Once
+landed, this Goopert randomly performs one of Goopert's specials (including an additional %ref(behold!,behold!,p)).
+Disappears after a few seconds or if behold! was used, when the drawn item's duration is over.
+"""
+
+[[Character.Items]] # O-Tome
+Type="Move"
+Name="O-Tome"
+Images=["items/Goopert_OTome.png", "move/Goopert_OTome_Attack.png", "move/Goopert_OTome_Wall.png"]
+Hitboxes=["items/Goopert_OTome_Hitbox.png", "move/Goopert_OTome_Attack_Hitbox.png", "move/Goopert_OTome_Wall_Hitbox.png"]
+Description="""
+When Goopert or the opponent grabs this item, they immediately perform Tomo's 6S. At the end of the reflect attack,
+the wall transforms into a wall of ice. This wall only disappears when hit by the opponent, and Goopert is able to
+pass through it.
+"""
+[[Character.Items.Data]]
+Version="Reflector"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+[[Character.Items.Data]]
+Version="Ice Wall"
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+###################################
+# Supers
+###################################
