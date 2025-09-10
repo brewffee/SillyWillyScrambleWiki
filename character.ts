@@ -1,10 +1,12 @@
 import * as fs from "fs";
 
 import { Macro, multicolor } from "./util/Macros.ts";
-import { safeID } from "./util/util.ts";
+import { compareVersions, safeID } from "./util/util.ts";
 import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move, Normal, Special, Super } from "./types/Move.ts";
-import { characters } from "./index.ts";
+import { characters, exportDir } from "./index.ts";
+import type { MoveSection, SectionType } from "./types/Section.ts";
+import { Logger } from "./util/Logger.ts";
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
 const mechanicTemplate = fs.readFileSync("templates/character/mechanic.html", "utf8");
@@ -28,9 +30,11 @@ export class Character {
     Supers: Super[];
     // ------------ //
 
+    logger: Logger;
+
     // section order and unique data
     sections: string[] = [];
-    sectionData: { [key: string]: any } = {}; // todo: me when i use any type because im lazee
+    sectionData: { [key: string]: SectionType[] } = {}; // todo: me when i use any type because im lazee
 
     characterNav: string;
     characterNavActive: string;
@@ -68,6 +72,8 @@ export class Character {
         this.CommandNormals = data.CommandNormals;
         this.Specials = data.Specials;
         this.Supers = data.Supers;
+
+        this.logger = new Logger(this.Name);
 
         // this can probably be done better but i don't care for now
         // for use in navigation bar on character pages
@@ -234,7 +240,7 @@ export class Character {
         this.addNavigable("Mechanics", true);
 
         return "<div class=mechanics>" + mechanicsHeader + mechanics.map((mechanic) => {
-            console.log(`[${this.Name}] Generating documentation for mechanic: ${mechanic.Name}`);
+            this.logger.log(`Generating documentation for mechanic: ${mechanic.Name}`);
             this.addNavigable(mechanic.Name);
 
             return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
@@ -249,7 +255,7 @@ export class Character {
         this.addNavigable("Command Normals", true);
 
         return "<div class=command-normals>" + normalsHeader + normals.map((normal) => {
-            console.log(`[${this.Name}] Generating documentation for command normal: ${normal.Input}`);
+            this.logger.log(`Generating documentation for command normal: ${normal.Input}`);
             this.addNavigable(normal.ID ?? normal.Input);
 
             return normalTemplate.replace(/%INPUT%/g, normal.Input)
@@ -271,7 +277,7 @@ export class Character {
         this.addNavigable("Special Attacks", true);
 
         return "<div class=specials>" + specialsHeader + specials.map((special) => {
-            console.log(`[${this.Name}] Generating documentation for special move: ${special.Name}`);
+            this.logger.log(`Generating documentation for special move: ${special.Name}`);
             this.addNavigable(special.ID ?? special.Name);
 
             return specialTemplate.replace(/%NAME%/g, special.Name)
@@ -294,7 +300,7 @@ export class Character {
         this.addNavigable("Supers", true);
 
         return "<div class=supers>" + supersHeader + supers.map((sup) => {
-            console.log(`[${this.Name}] Generating documentation for super: ${sup.Name}`);
+            this.logger.log(`Generating documentation for super: ${sup.Name}`);
             this.addNavigable(sup.ID ?? sup.Name);
 
             return specialTemplate.replace(/%NAME%/g, sup.Name)
@@ -311,36 +317,44 @@ export class Character {
     }
 
     // rendering a custom section
-    renderSection(data: any[], name: string): string {
+    // todo: sections aren't a character-specific feature, will be moved to a different
+    //   class once finalized
+    renderSection(data: SectionType[], name: string): string {
         if (!data) return "";
 
         const sectionHeader = `<h2 id=${safeID(name)}><a href=#${safeID(name)}>${name}</a></h2>`;
         this.addNavigable(name, true);
 
-        return "<div class=custom>" + sectionHeader + data.map((item) => {
-            switch (item["Type"]) {
-                case "Description":
-                    return `<p>${this.resolveReferences(item["Description"])}</p>`;
-                case "Move":
-                    this.addNavigable(item["ID"] ?? item["Name"]);
-                    return specialTemplate.replace(/%NAME%/g, item["Name"])
-                        .replace(/%ID%/g, safeID(item["ID"] ?? item["Name"]))
-                        .replace(/%EXTRA%/g, this.renderExtras(item))
-                        .replace(/%BUTTON%/g, item["Buttons"]?.[0] ?? "")
-                        .replace(/%INPUT%/g, this.renderInputString(item["Inputs"], item["Buttons"]?.[0] ?? ""))
-                        .replace(/%CONDITION%/g, item["Condition"] ? `<em button=x>${this.resolveReferences(item["Condition"])}</em>` : "")
-                        .replace(/%IMAGE%/g, this.renderImages(item["Images"], item["Name"], item["ImageNotes"]))
-                        .replace(/%HITBOX%/g, this.renderImages(item["Hitboxes"], item["Name"], item["HitboxNotes"]))
-                        .replace(/%FRAMEDATA%/g, this.renderFrameData(item["Data"]))
-                        .replace(/%DESCRIPTION%/g, this.resolveReferences(item["Description"]));
+        return "<div class=custom>" + sectionHeader + data.map((i) => {
+            this.logger.log(`Generating documentation for custom item: ${i["Name" as keyof SectionType] ?? name}`);
 
+            switch (i.Type) {
+                case "Description":
+                    return `<p>${this.resolveReferences(i.Description)}</p>`;
+                case "Move": {
+                    const item = i as MoveSection;
+                    this.addNavigable(item.ID ?? item.Name);
+
+                    return specialTemplate.replace(/%NAME%/g, item.Name)
+                        .replace(/%ID%/g, safeID(item.ID ?? item.Name))
+                        .replace(/%EXTRA%/g, this.renderExtras(item))
+                        .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
+                        .replace(/%INPUT%/g, this.renderInputString(item.Inputs, item.Buttons))
+                        .replace(/%CONDITION%/g, item.Condition ? `<em button=x>${this.resolveReferences(item.Condition)}</em>` : "")
+                        .replace(/%IMAGE%/g, this.renderImages(item.Images, item.Name, item.ImageNotes))
+                        .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, item.Name, item.HitboxNotes))
+                        .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))
+                        .replace(/%DESCRIPTION%/g, this.resolveReferences(item.Description));
+                }
             }
         }).join("") + "</div>";
     }
 
     // semi-final page generation before populating navbar and update time
     render(): string {
-        return characterTemplate.replace(/%NAME%/g, this.Name)
+        this.logger.log("Generating character page...");
+
+        const rendered = characterTemplate.replace(/%NAME%/g, this.Name)
             .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
@@ -359,5 +373,15 @@ export class Character {
             .replace("%CHARALIST%", characters.map((character) =>
                 character === this ? character.characterNavActive : character.characterNav
             ).join(""));
+
+        // pages should only update if there are chhaanges in content
+        if (!compareVersions(`${exportDir}characters/${this.Name.toLowerCase()}.html`, rendered)) {
+            this.logger.log("No changes detected, skipping character page generation.");
+            return "";
+        }
+
+        return rendered.replace("%DATE%", new Date().toDateString())
+            .replace("%TIME%", new Date().toLocaleTimeString())
+            .replace("%TZ%", new Date().toLocaleTimeString("en-us", { timeZoneName: "short" }).split(" ")[2]);
     }
 }

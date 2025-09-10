@@ -4,6 +4,8 @@ import path from "node:path";
 
 import { logger, templateDir } from "../index.ts";
 
+// todo: move functions to appropriate files
+
 export const loadToml = (path: string, validator: (data: TOML.JsonMap) => boolean): TOML.JsonMap | undefined => {
     let data: TOML.JsonMap;
     try {
@@ -35,7 +37,32 @@ export const loadTemplate = (...paths: string[]): string | undefined => {
     return template;
 };
 
-// todo: you don't belong here
+// Checks if there was a change between the old and new version
+export const compareVersions = (older: string, newer: string): boolean => { // true if changed, false if not
+    try {
+        if (!fs.existsSync(older)) return true;
+        const searchString = "      <p>This page was last updated on ";
+        const existing = fs.readFileSync(older, "utf8");
+        const updateLine = existing.split("\n").find((line) =>
+            line.startsWith(searchString)
+        );
+
+        if (!updateLine) {
+            logger.error("Could not find update line in existing file. Is the template file correct?");
+            return true;
+        }
+
+        // compare the contents using the old update time
+        const updateString = (updateLine.split(",")[0].split(searchString)[1].trim() + "," + updateLine.split(",")[1]).split(".")[0];
+        const result = newer.replace("%DATE%, ", updateString).replace("%TIME% ", "").replace("(%TZ%)", "");
+
+        return result !== existing;
+    } catch (error) {
+        logger.error("Error comparing versions:", error);
+        return true; // not my problem :P
+    }
+};
+
 export const appendLast = (arr: string[], str: string): string[] => {
   return [
     ...arr.slice(0, arr.length - 1),
