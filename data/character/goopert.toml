@@ -121,7 +121,7 @@ HoldOK=true
 Images=["items/Goopert_AK47.png", "move/Goopert_AK47_Fire.png"]
 Hitboxes=["move/Goopert_AK47_Fire_Hitbox.png"]
 Description="""
-When Goopert grabs this item, his %btn(p,5P) is replaced with a hitscan bullet shot aimed directly at the oppomnent.
+When Goopert grabs this item, his %btn(p,5P) is replaced with a hitscan bullet shot aimed directly at the opponent.
 Goopert is given a limited amount of ammo, and must fire a minimum of three bullets per use. Goopert can continue
 fire by holding down %btn(p,P) either until the button is released or the gun is out of ammo. Goopert is free to
 move around while shooting. If picked up by the opponent, they will instead gain 50% meter.
@@ -152,7 +152,7 @@ Name="Coffee Cup"
 Images=["items/Goopert_CoffeeCup.png"]
 Hitboxes=["items/Goopert_CoffeeCup_Hitbox.png"]
 Description="""
-When Goopert or the opponent grabs this item, their speed is raised by 15% and they get a passive meter gain over time.
+When Goopert or the opponent grabs this item, their speed is raised by 15%, and they get a passive meter gain over time.
 If this item is picked up by Max specifically, they will gain 1 Caffeine.
 """
 
@@ -274,7 +274,7 @@ Name="O-Tome"
 Images=["items/Goopert_OTome.png", "move/Goopert_OTome_Attack.png", "move/Goopert_OTome_Wall.png"]
 Hitboxes=["items/Goopert_OTome_Hitbox.png", "move/Goopert_OTome_Attack_Hitbox.png", "move/Goopert_OTome_Wall_Hitbox.png"]
 Description="""
-When Goopert or the opponent grabs this item, they immediately perform Tomo's 6S. At the end of the reflect attack,
+When Goopert or the opponent grabs this item, they immediately perform Tomo's 6S. At the end of the initial reflection,
 the wall transforms into a wall of ice. This wall only disappears when hit by the opponent, and Goopert is able to
 pass through it.
 """

@@ -219,7 +219,7 @@ and will be able to repeat the sequence until the parry whiffs or until Seagull 
 misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
 <ul>
     <li>For every time the rising attack hits, an additional attack is added, and the height traveled is increased.</li>
-    <li>Data in parenthesis represents damage when the attack is repeated</li>
+    <li>Data in parentheses represents damage when the attack is repeated</li>
 </ul>
 """
 [[Character.Supers.Data]]
