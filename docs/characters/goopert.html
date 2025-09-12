@@ -37,6 +37,7 @@
 <li><a href="#wii-aim">wii aim</a></li>
 <li><a href="#the-silly-">the silly !!!</a></li>
 <li><a href="#behold">behold!</a></li>
+<li><a href="#lava-snake">lava snake</a></li>
 <li class=header><a href="#Items">Items</a></li>
 <li><a href="#AK-47">AK-47</a></li>
 <li><a href="#Smoke-Bomb">Smoke Bomb</a></li>
@@ -72,11 +73,12 @@
 <a href="#Cursor-State">
   <h3 id="Cursor-State" class=move-name>Cursor State</h3>
 </a>
-<p>A state that the opponent can be placed in when hit by <a href="#wii-aim" class=ref button="s" title="wii aim">41236S</a>. While in this state, all items that
-perform attacks such as Funny Fork, Blue Bird, and Fishing Rod all home into the opponent's current position.
-Additionally, when drawing an item with <a href="#behold" class=ref button="p" title="behold!">236P</a>, Goopert can influence the direction of the falling item
-using 6 or 4 to pull the item forwards or backwards respectively. This state lasts for a set amount of time or until
-Goopert is hit.
+<p>In Cursor State, a Wii pointer tracks to the opponent at all times. The opponent can be placed in Cursor State by
+landing <a href="#wii-aim" class=ref button="s" title="wii aim">wii aim</a> or by using ???. This state lasts for a set amount of time or until Goopert is hit. All
+items that perform attachs such as <a href="#Funny-Fork" class=ref button="_" title="Funny Fork">Funny Fork</a>, <a href="#Blue-Bird" class=ref button="_" title="Blue Bird">Blue Bird</a>, and
+<a href="#Fishing-Rod" class=ref button="_" title="Fishing Rod">Fishing Rod</a> will home into the opponent's current position. Additionally, when drawing an item
+with <a href="#behold" class=ref button="p" title="behold!">behold!</a>, Goopert can influence the direction of the falling item using 6 or 4 to pull the item
+forwards or backwards respectively.
 </p></div><div class=command-normals><h2 id=Command-Normals><a href=#Command-Normals>Command Normals</a></h2>
 <a href="#Taunt">
   <h3 id=Taunt class=move-name button=taunt>Taunt</h3>
@@ -277,10 +279,119 @@ position.
 </tbody>
 </table></div>
     <span>Goopert pulls an item from the abyss and holds it above his head. After a brief period, the item is thrown into the
-middle of the screen. If <em class=btn button="p">P</em> is held during the pause, the item will instead be discarded.
+middle of the screen. Certain items are activated immediately upon drawing, others require someone to pick them up
+before they can be used. Thrown items are launched in a huge upward arc, landing about a half-screen's length
+in front of Goopert.
+<ul>
+    <li>If <em class=btn button="p">P</em> is held during the pause, the item will instead be discarded. The only exception is
+        <a href="#Broken-Clock" class=ref button="_" title="Broken Clock">Broken Clock</a>, which cannot be discarded.</li>
+    <li>During <a href="#Cursor-State" class=ref button="_" title="Cursor State">Cursor State</a>, the item will be attached to the opponent's current position.</li>
+</ul>
 </span>
   </div>
-</div></div><div class=custom><h2 id=Items><a href=#Items>Items</a></h2><p>Goopert's items come out in random order, but the next three will always be displayed on the HUD.
+</div><a href="#lava-snake">
+  <h3 id="lava-snake" class=move-name>lava snake (Air OK)</h3>
+</a>
+<div class=move>
+  <div class=move-info>
+    <span class=move-input button=s>
+      623S<em button=or>/</em><em button=h>H</em> 
+    </span>
+    <div class=image-container>
+      <img src="../images/goopert/move/Goopert_623S.png" alt="lava snake Sprite " title="move/Goopert_623S.png">
+
+    </div>
+    <div class=hitbox-container>
+      <img src="../images/goopert/move/Goopert_623S_Hitbox.png" alt="lava snake Sprite " title="move/Goopert_623S_Hitbox.png">
+<img src="../images/goopert/move/Goopert_623S_1_Hitbox.png" alt="lava snake Sprite 2" title="move/Goopert_623S_1_Hitbox.png">
+<img src="../images/goopert/move/Goopert_623H_Hitbox.png" alt="lava snake Sprite 3" title="move/Goopert_623H_Hitbox.png">
+<img src="../images/goopert/move/Goopert_623H_1_Hitbox.png" alt="lava snake Sprite 4" title="move/Goopert_623H_1_Hitbox.png">
+
+    </div>
+    <div class=hitbox-toggle>
+      <input type=checkbox id="lava-snake-hitbox-toggle" class=hitbox-checkbox hidden>
+      <label for="lava-snake-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+    </div>
+  </div>
+  <div class=move-details>
+    <div class=frame-table><table>
+<thead><tr><th>Version</th>
+<th>Damage</th>
+<th>Guard</th>
+<th>Startup</th>
+<th>Active</th>
+<th>Recovery</th>
+<th>OnBlock</th>
+<th>Invuln</th></tr></thead>
+<tbody>
+<tr><td>623S</td>
+<td>-</td>
+<td>All</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Full</td></tr>
+<tr><td>623H</td>
+<td>- [-]</td>
+<td>All</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td></td></tr>
+<tr><td>j.623S</td>
+<td>-</td>
+<td>All</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Full</td></tr>
+<tr><td>j.623H</td>
+<td>- [-]</td>
+<td>All</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td></td></tr>
+</tbody>
+</table></div>
+    <span>Goopert cloaks himself in fire before jumping and letting out a massive burst of flame.
+<ul>
+    <li>The <em class=btn button="s">S</em> version of lava snake is an invincible rising reversal. Goopert is in counterhit state for the
+    entirety of this version.</li>
+    <li>The <em class=btn button="h">H</em> version of lava snake lacks invulnerability, but is much more powerful when used as a combo tool.
+    It's launch is greatly increased and deals a large amount of damage. Additionally, when hit at point-blank range,
+    this move deals even larger amounts of damage with more launch.</li>
+    <li>Data in brackets represents damage when hit at point-blank range.</li>
+</ul>
+</span>
+  </div>
+</div></div><div class=custom><h2 id=Items><a href=#Items>Items</a></h2><p>Goopert is able to summon a wide variety of items at any point. These items can be created using <a href="#behold" class=ref button="p" title="behold!">behold!</a>,
+???. The pool of items that can be summoned are in random order, but the next three will always be displayed on the HUD,
+giving Goopert or the opponent a chance to strategize their next moves. Some items are activated immediately upon
+drawing, some are activated once they land, and others require someone to pick them up before they can be used.
+Items that are thrown on the ground stay there until they are used.
+
+<h4>Random Item Chances</h4>
+<table>
+    <thead>
+        <tr><th>Item</th> <th>Chance</th> <th>Condition</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><a href="#AK-47" class=ref button="_" title="AK-47">AK-47</a></td>                <td>?%</td>     <td>Pick-up</td></tr>
+        <tr><td><a href="#Smoke-Bomb" class=ref button="_" title="Smoke Bomb">Smoke Bomb</a></td>      <td>?%</td>     <td>Landing</td></tr>
+        <tr><td><a href="#Coffee-Cup" class=ref button="_" title="Coffee Cup">Coffee Cup</a></td>      <td>?%</td>     <td>Pick-up</td></tr>
+        <tr><td><a href="#Funny-Fork" class=ref button="_" title="Funny Fork">Funny Fork</a></td>      <td>?%</td>     <td>Immediate</td></tr>
+        <tr><td><a href="#Blue-Bird" class=ref button="_" title="Blue Bird">Blue Bird</a></td>        <td>?%</td>     <td>Immediate</td></tr>
+        <tr><td><a href="#Broken-Clock" class=ref button="_" title="Broken Clock">Broken Clock</a></td>  <td>?%</td>     <td>Immediate</td></tr>
+        <tr><td><a href="#Fishing-Rod" class=ref button="_" title="Fishing Rod">Fishing Rod</a></td>    <td>?%</td>     <td>Immediate</td></tr>
+        <tr><td><a href="#Goopert" class=ref button="_" title="Goopert">Goopert²</a></td>           <td>?%</td>     <td>Landing</td></tr>
+        <tr><td><a href="#O-Tome" class=ref button="_" title="O-Tome">O-Tome</a></td>              <td>?%</td>     <td>Pick-up</td></tr>
+    </tbody>
+</table>
 </p><a href="#AK-47">
   <h3 id="AK-47" class=move-name>AK-47 (Hold OK)</h3>
 </a>
@@ -683,7 +794,7 @@ pass through it.
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Wed Sep 10 2025, 1:57:35 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Fri Sep 12 2025, 12:06:04 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>
