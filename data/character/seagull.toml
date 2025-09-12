@@ -18,6 +18,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]]
 Name="Modern Control Scheme"
+Type="Text"
 Description="""
 Seagull specifically has the option to enable a more modern control scheme that enables simpler inputs for his specials
 and supers. As a result, Seagull lacks some command normals that other characters would usually have. Special attacks
@@ -30,8 +31,9 @@ and two buttons pressed simultaneously. Modern Controls can be enabled at the ch
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunt
-Input="Taunt"
-Button="taunt"
+Inputs=["Taunt"]
+Buttons=["taunt"]
+Type="Move"
 Condition="using Modern Controls"
 Images=["move/Seagull_Up_Taunt.png", "move/Seagull_Down_Taunt.png", "move/Seagull_Side_Taunt.png"]
 ImageNotes=["Up Taunt", "Down Taunt", "Side Taunt"]
@@ -61,6 +63,7 @@ Recovery="-"
 ###################################
 [[Character.Specials]] # Scam
 Name="Scam"
+Type="Move"
 Inputs=["214S"]
 Condition="or %btn(s,4S) (Modern)"
 AirOK=true
@@ -90,6 +93,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Bet
 Name="Bet"
+Type="Move"
 Inputs=["j.236P", "S", "H"]
 Buttons=["p", "s", "h"]
 Condition="or %mbtn(j.6P/S/H,psh,/) (Modern)"
@@ -128,6 +132,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Skill
 Name="Skill"
+Type="Move"
 Inputs=["j.236K"]
 Buttons=["k"]
 Condition="or %btn(k,j.6K) (Modern)"
@@ -143,6 +148,7 @@ Invuln=["Pass-through"]
 
 [[Character.Specials]] # Your
 Name="Your"
+Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
 Condition="or %btn(s,6S) (Modern)"
@@ -164,6 +170,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Bad
 Name="Bad"
+Type="Move"
 Inputs=["S"]
 Buttons=["s"]
 Condition="after %btn(s,Your)"
@@ -184,6 +191,7 @@ OnBlock="-"
 
 [[Character.Specials]] # The King
 Name="The King"
+Type="Move"
 Inputs=["214H"]
 Buttons=["h"]
 Condition="or %btn(h,4H) (Modern)"
@@ -206,6 +214,7 @@ OnBlock="+"
 ###################################
 [[Character.Supers]] # Double or Nothing
 Name="Double or Nothing"
+Type="Move"
 Inputs=["632146H"]
 Buttons=["h"]
 Condition="or %mbtn(6S+H,sh,+) (Modern) with 50% meter"
@@ -241,6 +250,7 @@ Invuln=["Strike"]
 
 [[Character.Supers]] # Ground Orange Duck
 Name="Ground Orange Duck"
+Type="Move"
 Inputs=["214214P"]
 Buttons=["p"]
 Condition="or %mbtn(4P+K,pk,+) (Modern) with 50% meter"

@@ -19,6 +19,7 @@ Reversals=[
 ###################################
 [[Character.Specials]] # Riptide
 Name="Riptide"
+Type="Move"
 Inputs=["[4]6S", "[2]8H"]
 Buttons=["s", "h"]
 Images=[
@@ -67,6 +68,7 @@ Recovery="-"
 
 [[Character.Specials]] # Channeling
 Name="Channeling"
+Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
 AirOK=true
@@ -96,6 +98,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Impaling
 Name="Impaling"
+Type="Move"
 Inputs=["236K"]
 Buttons=["k"]
 Images=["move/Failes_236K.png", "move/Failes_236K_2.png"]
@@ -116,6 +119,7 @@ Invuln=["Low Profile"]
 
 [[Character.Specials]] # Loyalty
 Name="Loyalty"
+Type="Move"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 AirOK=true
@@ -162,6 +166,7 @@ Startup="-"
 
 [[Character.Specials]] # Mending
 Name="Mending"
+Type="Move"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
@@ -195,6 +200,7 @@ Invuln=["Full"]
 ###################################
 [[Character.Supers]] # Trident Tornado
 Name="Trident Tornado"
+Type="Move"
 Inputs=["632146S"]
 Buttons=["s"]
 Condition="with 50% meter"
@@ -216,6 +222,7 @@ OnBlock="-"
 
 [[Character.Supers]] # failEs Friday
 Name="failEs Friday"
+Type="Move"
 Inputs=["632146H"]
 Buttons=["h"]
 Condition="with 50% meter"

@@ -15,6 +15,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]] # Exhilaration
 Name="Exhilaration"
+Type="Text"
 Description="""
 Dani starts the round with 0% <b>Exhilaration Meter</b>. The Exhilaration Meter can be filled by dealing damage to the
 opponent. <b>Exhilaration</b> is a state that greatly enhances Dani's movement speed, damage output, and changes her
@@ -29,6 +30,7 @@ Exhilaration mode (right\\))
 
 [[Character.Mechanics]] # Ammo
 Name="Ammo"
+Type="Text"
 Description="""
 Dani's normal state gives her great tools to open up the opponent, but not without its limitations. Dani is limited to
 only 8 bullets of %ref(Ammo,Ammo,_), which are consumed by using certain special moves. Once out of ammo, Dani is unable
@@ -41,6 +43,7 @@ to use these special moves until she enters Exhilaration, which fully restocks h
 ###################################
 [[Character.Specials]] # Ace
 Name="Ace"
+Type="Move"
 Inputs=["63214P"]
 Buttons=["p"]
 Images=["move/Dani_63214P.png"]
@@ -55,6 +58,7 @@ Recovery="-"
 
 [[Character.Specials]] # Ricochet
 Name="Ricochet"
+Type="Move"
 Inputs=["nm.214S", "H"]
 Buttons=["s", "h"]
 Condition="with 1 bullet"
@@ -87,6 +91,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Movement Control
 Name="Movement Control"
+Type="Move"
 Inputs=["nm.236K"]
 Buttons=["k"]
 Images=["move/Dani_nm236K.png", "move/Dani_nm236K~K.png"]
@@ -110,6 +115,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Trigger Happy
 Name="Trigger Happy"
+Type="Move"
 Inputs=["nm.236S"]
 Buttons=["s"]
 HoldOK=true
@@ -152,6 +158,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Cross Fire
 Name="Cross Fire"
+Type="Move"
 Inputs=["ex.236S", "H"]
 Buttons=["s", "h"]
 Condition="during Exhilaration"
@@ -190,6 +197,7 @@ Invuln=["Low Profile"]
 
 [[Character.Specials]] # Backstab
 Name="Backstab"
+Type="Move"
 Inputs=["ex.236P"]
 Buttons=["p"]
 Condition="during Exhilaration"
@@ -209,6 +217,7 @@ Recovery="-"
 
 [[Character.Specials]] # Bait
 Name="Bait"
+Type="Move"
 Inputs=["ex.623S"]
 Buttons=["s"]
 Condition="during Exhilaration"
@@ -233,6 +242,7 @@ Invuln=["Full"]
 
 [[Character.Specials]] # Bunnyhop
 Name="Bunnyhop"
+Type="Move"
 Inputs=["ex.214K"]
 Buttons=["k"]
 Condition="during Exhilaration"
@@ -256,6 +266,7 @@ OnBlock="-"
 ####################################
 [[Character.Supers]] # Clutch
 Name="Clutch"
+Type="Move"
 Inputs=["632146S"]
 Buttons=["s"]
 Condition="with 50% meter"
@@ -280,6 +291,7 @@ OnBlock="-"
 
 [[Character.Supers]] # Trickshot
 Name="Trickshot"
+Type="Move"
 Inputs=["nm.632146H"]
 Buttons=["h"]
 Condition="with 50% meter"
@@ -302,6 +314,7 @@ Invuln=["Airborne"]
 
 [[Character.Supers]] # Anchor
 Name="Anchor"
+Type="Move"
 Inputs=["ex.632146H"]
 Buttons=["h"]
 Condition="during Exhilaration, with 50% meter"

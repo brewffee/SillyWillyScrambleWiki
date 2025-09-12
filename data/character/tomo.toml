@@ -31,6 +31,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]] # Mana
 Name="Mana"
+Type="Text"
 Description="""
 Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana proportional
 to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
@@ -41,6 +42,7 @@ stay on top of his resources. If he is to lose all of his Mana, he enters %ref(E
 
 [[Character.Mechanics]] # Exhaustion
 Name="Exhaustion"
+Type="Text"
 Description="""
 When Tomo's Mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
 and vulnerable</b>—he cannot input any commands, takes <b>twice</b> as much damage as normal, and the following hit
@@ -53,8 +55,9 @@ offense.
 # Command Normals
 ###################################
 [[Character.Normals]] # 6S Magia Wall
-Input="6S"
-Button="s"
+Inputs=["6S"]
+Buttons=["s"]
+Type="Move"
 Condition="with 5% Mana"
 Images=["move/Tomo_6S.png"]
 Hitboxes=["move/Tomo_6S_Hitbox.png"]
@@ -83,6 +86,7 @@ OnBlock="-"
 ###################################
 [[Character.Specials]] # Ignis Rush
 Name="Ignis Rush"
+Type="Move"
 Inputs=["236S", "H"]
 HoldOK=true
 AirOK=true
@@ -142,6 +146,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Ventus Thrust
 Name="Ventus Thrust"
+Type="Move"
 Inputs=["214S", "H"]
 Buttons=["s", "h"]
 Condition="with 10% Mana"
@@ -203,6 +208,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Renovare
 Name="Renovare"
+Type="Move"
 Inputs=["22P", "K"]
 Buttons=["p", "k"]
 HoldOK=true
@@ -232,6 +238,7 @@ Recovery="-"
 
 [[Character.Specials]] # Glacies Pierce
 Name="Glacies Pierce"
+Type="Move"
 Inputs=["214P", "K"]
 Buttons=["p", "k"]
 Condition="with 15% Mana"
@@ -274,6 +281,7 @@ OnBlock="-"
 ###################################
 [[Character.Supers]] # Mana Crimen
 Name="Mana Crimen"
+Type="Move"
 Inputs=["214214K"]
 Buttons=["k"]
 Condition="with 50% meter"
@@ -288,6 +296,7 @@ Recovery="-"
 
 [[Character.Supers]] # Tonitru Pirouette
 Name="Tonitru Pirouette"
+Type="Move"
 Inputs=["236236S"]
 Buttons=["s"]
 Condition="with 50% meter"

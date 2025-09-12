@@ -1,9 +1,11 @@
 import type { FrameData } from "./FrameData.ts";
 
-export interface Normal {
+export interface Move {
+    Name: string;
     ID?: string;
-    Input: string;
-    Button: string;
+    Inputs?: string[];
+    Buttons?: string[];
+    Separator?: string;
     AirOK?: boolean;
     HoldOK?: boolean;
     Condition?: string;
@@ -15,15 +17,6 @@ export interface Normal {
 
     Data: FrameData[];
 }
-
-export interface Special extends Omit<Normal, "Input" | "Button"> {
-    Name: string;
-    Inputs?: string[];
-    Buttons?: string[];
-}
-
-export type Super = Special;
-export type Move = Normal | Special | Super;
 
 // this isn't really a 'move', but it's kinda relevant ?
 export interface Mechanic {

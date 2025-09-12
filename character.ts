@@ -3,31 +3,34 @@ import * as fs from "fs";
 import { Macro, multicolor } from "./util/Macros.ts";
 import { compareVersions, safeID } from "./util/util.ts";
 import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
-import type { Mechanic, Move, Normal, Special, Super } from "./types/Move.ts";
+import type { Mechanic, Move } from "./types/Move.ts";
 import { characters, exportDir } from "./index.ts";
-import type { MoveSection, SectionType } from "./types/Section.ts";
+import type { MoveSection, SectionType, TextSection } from "./types/Section.ts";
 import { Logger } from "./util/Logger.ts";
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
-const mechanicTemplate = fs.readFileSync("templates/character/mechanic.html", "utf8");
-const normalTemplate = fs.readFileSync("templates/character/normal.html", "utf8");
-const specialTemplate = fs.readFileSync("templates/character/special.html", "utf8");
+const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
 
+// todo: a lot of functionality is now based on a standard page component system
+//    this class should instead extend a base Page class as we'll need these
+//    components for other pages soon
 // noinspection HtmlUnknownAnchorTarget
 export class Character {
+    private static readonly OVERVIEW_FIELDS: (keyof Character)[] = ["Name", "Description", "IconPath", "PortraitPath", "Type", "Reversals"];
+    private static readonly STANDARD_SECTIONS: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
+
     // TOML fields //
     Name: string;
-    Description: string;
-    IconPath: string;
-    PortraitPath: string;
-    Type: string;
-    Reversals: string[];
+    Description?: string;
+    IconPath?: string;
+    PortraitPath?: string;
+    Type?: string;
+    Reversals?: string[];
 
-    Mechanics: Mechanic[];
-    Normals: Normal[];
-    CommandNormals: Normal[];
-    Specials: Special[];
-    Supers: Super[];
+    Mechanics?: Mechanic[];
+    Normals?: Move[];
+    Specials?: Move[];
+    Supers?: Move[];
     // ------------ //
 
     logger: Logger;
@@ -40,50 +43,37 @@ export class Character {
     characterNavActive: string;
     mainNav: string;
 
-    tableOfContents: string;
+    tableOfContents: string = `<li><a href="#Overview">Overview</a></li>`;
 
     constructor(data: any) {
-        // key order now hinges on toml
-        for (const key of Object.keys(data) as (keyof Character)[]) {
-            const ignored: (keyof Character)[] = ["Name", "Description", "IconPath", "PortraitPath", "Type", "Reversals"];
-            if (ignored.includes(key)) continue;
-
-            // preserves section order
-            const standard: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
-            this.sections.push(key);
-
-            if (standard.includes(key as keyof Character)) {
-                this[key] = data[key];
-            } else {
-                this.sectionData[key] = data[key];
-            }
-
-        }
-
         this.Name = data.Name;
         this.Description = data.Description;
         this.IconPath = data.IconPath;
         this.PortraitPath = data.PortraitPath;
         this.Type = data.Type;
-        this.Reversals = data.Reversals;
+        this.Reversals = data.Reversals || [];
 
-        this.Mechanics = data.Mechanics;
-        this.Normals = data.Normals;
-        this.CommandNormals = data.CommandNormals;
-        this.Specials = data.Specials;
-        this.Supers = data.Supers;
+        // determine the section order based on how things appear in toml
+        for (const [key, value] of Object.entries(data) as [keyof Character, any][]) {
+            if (Character.OVERVIEW_FIELDS.includes(key as keyof Character)) continue;
 
-        this.logger = new Logger(this.Name);
+            this.sections.push(key);
+            if (Character.STANDARD_SECTIONS.includes(key as keyof Character)) {
+                this[key] = value;
+            } else {
+                this.sectionData[key] = value;
+            }
+        }
+
+        this.logger = new Logger(data.Name);
 
         // this can probably be done better but i don't care for now
         // for use in navigation bar on character pages
-        this.characterNav = `<li><a href="./${this.Name.toLowerCase()}.html">${this.Name}</a></li>`;
-        this.characterNavActive = `<li class=active><a>${this.Name}</a></li>`;
+        this.characterNav = `<li><a href="./${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
+        this.characterNavActive = `<li class=active><a>${data.Name}</a></li>`;
 
         // main page navigation bar
-        this.mainNav = `<li><a href="characters/${this.Name.toLowerCase()}.html">${this.Name}</a></li>`;
-
-        this.tableOfContents = `<li><a href="#Overview">Overview</a></li>`;
+        this.mainNav = `<li><a href="characters/${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
     }
 
     // adds an item to the table of contents (NOT THE MAIN NAVIGATION PANEL !!!)
@@ -117,7 +107,7 @@ export class Character {
             return `<em class=btn button="${btn.toLowerCase()}">${text}</em>`;
         });
 
-        // multi button culored text
+        // multi button colored text
         // converts `%mbtn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
         result = new Macro("mbtn", 3).execute(result, ([raw, buttons, sep]) => {
             const text = multicolor(raw, buttons, sep);
@@ -159,7 +149,7 @@ export class Character {
         return result;
     }
 
-    // reversals field of the info table
+    // reversals field of the info table7
     renderReversals(): string {
         if (!this.Reversals) return "<em button=x>None</em>";
         return this.Reversals.map((rev) => this.resolveReferences(rev)).join("<br>");
@@ -171,23 +161,24 @@ export class Character {
         if (move.HoldOK) extras.push("Hold");
         if (move.AirOK) extras.push("Air");
 
-        return extras.length > 0 ? ` (${extras.join(", ")} OK)` : "";
+        return extras.length > 0 ? `(${extras.join(", ")} OK)` : "";
     }
 
-    // utility for moves with multiple inputs (ex 236P/K/S)
-    renderInputString(inputs: string[] | undefined, buttons: string[] | undefined): string {
-        if (!buttons || !inputs) return inputs?.[0] ?? "";
-        let inputStr = inputs[0];
-        for (let i = 1; i < buttons.length; i++) {
-            if (buttons.length !== inputs.length) return ""; // what are u doing ????
-            inputStr += `<em button=or>/</em><em button=${buttons[i]}>${inputs[i]}</em>`;
-        }
-        return inputStr;
+    // creates an input string with appropriate coloring
+    renderInputString(inputs?: string[], buttons?: string[], sep: string = "/", clean: boolean = false): string {
+        if (!inputs) return inputs?.[0] ?? "";
+
+        return inputs.flatMap((input, index, arr) => {
+            let separator;
+            if (index < arr.length - 1 && sep) separator = clean ? sep : `<em button=or>${sep}</em>`;
+
+            return [ clean ? input : `<em button=${buttons?.[index] ?? "x"}>${input}</em>`, separator ];
+        }).join("");
     }
 
     renderFrameData(data: FrameData[]): string {
         if (!data) return "";
-        // ass specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
+        // as specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
         const filled: FrameData[] = data.map((frame) => {
             const res: FrameData = { ...FrameDataDefaults, ...frame };
             if (res.Version === undefined) delete res.Version;
@@ -233,90 +224,7 @@ export class Character {
         return imageStr;
     }
 
-    // character specific mechanics
-    renderMechanics(mechanics: Mechanic[]): string {
-        if (!mechanics) return "";
-        const mechanicsHeader = "<h2 id=Mechanics><a href=#Mechanics>Unique Mechanics</a></h2>\n";
-        this.addNavigable("Mechanics", true);
-
-        return "<div class=mechanics>" + mechanicsHeader + mechanics.map((mechanic) => {
-            this.logger.log(`Generating documentation for mechanic: ${mechanic.Name}`);
-            this.addNavigable(mechanic.Name);
-
-            return mechanicTemplate.replace(/%MECHANIC%/g, mechanic.Name)
-                .replace(/%ID%/g, safeID(mechanic.ID ?? mechanic.Name))
-                .replace(/%MECHANIC_DESCRIPTION%/g, this.resolveReferences(mechanic.Description));
-        }).join("") + "</div>";
-    }
-
-    renderCommandNormals(normals: Normal[]): string {
-        if (!normals) return "";
-        const normalsHeader = "<h2 id=Command-Normals><a href=#Command-Normals>Command Normals</a></h2>\n";
-        this.addNavigable("Command Normals", true);
-
-        return "<div class=command-normals>" + normalsHeader + normals.map((normal) => {
-            this.logger.log(`Generating documentation for command normal: ${normal.Input}`);
-            this.addNavigable(normal.ID ?? normal.Input);
-
-            return normalTemplate.replace(/%INPUT%/g, normal.Input)
-                .replace(/%ID%/g, safeID(normal.ID ?? normal.Input))
-                .replace(/%EXTRA%/g, this.renderExtras(normal))
-                .replace(/%CONDITION%/g, normal.Condition ? ` <em button=x>${this.resolveReferences(normal.Condition)}</em>` : "")
-                .replace(/%BUTTON%/g, normal.Button)
-                .replace(/%IMAGE%/g, this.renderImages(normal.Images, normal.Input, normal.ImageNotes))
-                .replace(/%HITBOX%/g, this.renderImages(normal.Hitboxes, normal.Input, normal.HitboxNotes))
-                .replace(/%FRAMEDATA%/g, this.renderFrameData(normal.Data))
-                .replace(/%DESCRIPTION%/g, this.resolveReferences(normal.Description));
-        }).join("") + "</div>";
-    }
-
-    // special moves (attacks that have a name or more complex inputs)
-    renderSpecials(specials: Special[]): string {
-        if (!specials) return "";
-        const specialsHeader = "<h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2>\n";
-        this.addNavigable("Special Attacks", true);
-
-        return "<div class=specials>" + specialsHeader + specials.map((special) => {
-            this.logger.log(`Generating documentation for special move: ${special.Name}`);
-            this.addNavigable(special.ID ?? special.Name);
-
-            return specialTemplate.replace(/%NAME%/g, special.Name)
-                .replace(/%ID%/g, safeID(special.ID ?? special.Name))
-                .replace(/%EXTRA%/g, this.renderExtras(special))
-                .replace(/%BUTTON%/g, special.Buttons ? special.Buttons[0] : "")
-                .replace(/%INPUT%/g, this.renderInputString(special.Inputs, special.Buttons))
-                .replace(/%CONDITION%/g, special.Condition ? ` <em button=x>${this.resolveReferences(special.Condition)}</em>` : "")
-                .replace(/%IMAGE%/g, this.renderImages(special.Images, special.Name, special.ImageNotes))
-                .replace(/%HITBOX%/g, this.renderImages(special.Hitboxes, special.Name, special.HitboxNotes))
-                .replace(/%FRAMEDATA%/g, this.renderFrameData(special.Data))
-                .replace(/%DESCRIPTION%/g, this.resolveReferences(special.Description));
-        }).join("") + "</div>";
-    }
-
-    // supers
-    renderSupers(supers: Super[]): string {
-        if (!supers) return "";
-        const supersHeader = "<h2 id=Supers><a href=#Supers>Supers</a></h2>\n";
-        this.addNavigable("Supers", true);
-
-        return "<div class=supers>" + supersHeader + supers.map((sup) => {
-            this.logger.log(`Generating documentation for super: ${sup.Name}`);
-            this.addNavigable(sup.ID ?? sup.Name);
-
-            return specialTemplate.replace(/%NAME%/g, sup.Name)
-                .replace(/%ID%/g, safeID(sup.ID ?? sup.Name))
-                .replace(/%EXTRA%/g, this.renderExtras(sup))
-                .replace(/%BUTTON%/g, sup.Buttons ? sup.Buttons[0] : "")
-                .replace(/%INPUT%/g, this.renderInputString(sup.Inputs, sup.Buttons))
-                .replace(/%CONDITION%/g, sup.Condition ? `<em button=x>${this.resolveReferences(sup.Condition)}</em>` : "")
-                .replace(/%IMAGE%/g, this.renderImages(sup.Images, sup.Name, sup.ImageNotes))
-                .replace(/%HITBOX%/g, this.renderImages(sup.Hitboxes, sup.Name, sup.HitboxNotes))
-                .replace(/%FRAMEDATA%/g, this.renderFrameData(sup.Data))
-                .replace(/%DESCRIPTION%/g, this.resolveReferences(sup.Description));
-        }).join("") + "</div>";
-    }
-
-    // rendering a custom section
+    // rendering a section
     // todo: sections aren't a character-specific feature, will be moved to a different
     //   class once finalized
     renderSection(data: SectionType[], name: string): string {
@@ -325,27 +233,40 @@ export class Character {
         const sectionHeader = `<h2 id=${safeID(name)}><a href=#${safeID(name)}>${name}</a></h2>`;
         this.addNavigable(name, true);
 
-        return "<div class=custom>" + sectionHeader + data.map((i) => {
+        return "<div class=section>" + sectionHeader + data.map((i) => {
             this.logger.log(`Generating documentation for custom item: ${i["Name" as keyof SectionType] ?? name}`);
 
             switch (i.Type) {
-                case "Description":
-                    return `<p>${this.resolveReferences(i.Description)}</p>`;
+                case "Summary":
+                    return `<span class=section-text>${this.resolveReferences(i.Description)}</span>`;
+                case "Text": {
+                    const item = i as TextSection;
+                    const id = item.ID ?? item.Name;
+                    this.addNavigable(id);
+
+                    return `<a href=#${safeID(id)}><h3 id=${safeID(id)} class=move-name>${item.Name}</h3></a>\n` +
+                        `<span class=section-text>${this.resolveReferences(i.Description)}</span>`;
+                }
                 case "Move": {
                     const item = i as MoveSection;
-                    this.addNavigable(item.ID ?? item.Name);
+                    const name = item.Name ?? this.renderInputString(item.Inputs, item.Buttons, item.Separator) ?? "";
+                    const id = item.ID ?? item.Name ??this.renderInputString(item.Inputs, item.Buttons, item.Separator, true) ?? "";
+                    this.addNavigable(id);
 
-                    return specialTemplate.replace(/%NAME%/g, item.Name)
-                        .replace(/%ID%/g, safeID(item.ID ?? item.Name))
+                    return moveTemplate.replace(/%NAME%/g, name)
+                        .replace(/%ID%/g, safeID(id))
                         .replace(/%EXTRA%/g, this.renderExtras(item))
+                        .replace(/%INPUT%/g, this.renderInputString(item.Inputs, item.Buttons, item.Separator))
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
-                        .replace(/%INPUT%/g, this.renderInputString(item.Inputs, item.Buttons))
                         .replace(/%CONDITION%/g, item.Condition ? `<em button=x>${this.resolveReferences(item.Condition)}</em>` : "")
-                        .replace(/%IMAGE%/g, this.renderImages(item.Images, item.Name, item.ImageNotes))
-                        .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, item.Name, item.HitboxNotes))
+                        .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))
+                        .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes))
                         .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))
                         .replace(/%DESCRIPTION%/g, this.resolveReferences(item.Description));
                 }
+                default:
+                    this.logger.error(`Unknown section type: ${i.Type}`);
+                    return "";
             }
         }).join("") + "</div>";
     }
@@ -355,17 +276,17 @@ export class Character {
         this.logger.log("Generating character page...");
 
         const rendered = characterTemplate.replace(/%NAME%/g, this.Name)
-            .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description))
+            .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description || ""))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
-            .replace(/%TYPE%/g, this.Type)
+            .replace(/%TYPE%/g, this.Type || "")
             .replace(/%REVERSALS%/g, this.renderReversals())
             .replace(/%BODY%/g, this.sections.map((section) => {
                 switch (section) {
-                    case "Mechanics":   return this.renderMechanics(this.Mechanics);
-                    case "Normals":     return this.renderCommandNormals(this.Normals);
-                    case "Specials":    return this.renderSpecials(this.Specials);
-                    case "Supers":      return this.renderSupers(this.Supers);
+                    case "Mechanics":   return this.renderSection(this.Mechanics as TextSection[], "Mechanics");
+                    case "Normals":     return this.renderSection(this.Normals as MoveSection[], "Command Normals");
+                    case "Specials":    return this.renderSection(this.Specials as MoveSection[], "Special Attacks");
+                    case "Supers":      return this.renderSection(this.Supers as MoveSection[], "Supers");
                     default:            return this.renderSection(this.sectionData[section], section);
                 }
             }).join(""))
@@ -374,7 +295,7 @@ export class Character {
                 character === this ? character.characterNavActive : character.characterNav
             ).join(""));
 
-        // pages should only update if there are chhaanges in content
+        // pages should only update if there are changes in content
         if (!compareVersions(`${exportDir}characters/${this.Name.toLowerCase()}.html`, rendered)) {
             this.logger.log("No changes detected, skipping character page generation.");
             return "";

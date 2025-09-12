@@ -19,6 +19,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]] # Mist
 Name="Mist"
+Type="Text"
 Description="""
 Osi's signature mechanic is <b>Mist</b>. Certain moves like  %ref(Smoke Wheel,Smoke Wheel,h) deploy clouds of Mist,
 which Osi can use to obscure himself from the opponent, only showing a faint outline of his form. This makes it much
@@ -34,6 +35,7 @@ if he wishes to conceal himself effectively.
 ####################################
 [[Character.Specials]] # Flame Driver
 Name="Flame Driver"
+Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
 Images=["move/Osi_236S.png", "move/Osi_236S_2.png", "move/Osi_236S_3.png", "move/Osi_236S~S.png"]
@@ -62,6 +64,7 @@ Recovery="-"
 
 [[Character.Specials]] # Smoke Wheel
 Name="Smoke Wheel"
+Type="Move"
 Inputs=["214H"]
 Buttons=["h"]
 Images=["move/Osi_214H.png", "move/Osi_214H_2.png"]
@@ -83,6 +86,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Ignited Blade
 Name="Ignited Blade"
+Type="Move"
 Inputs=["236P"]
 Buttons=["p"]
 Images=["move/Osi_236P.png"]
@@ -104,6 +108,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Ignited Reap
 Name="Ignited Reap"
+Type="Move"
 Inputs=["P"]
 Buttons=["p"]
 Condition="after %btn(p,Ignited Blade)"
@@ -124,6 +129,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Ignited Sweep
 Name="Ignited Sweep"
+Type="Move"
 Inputs=["K"]
 Buttons=["k"]
 Condition="after %btn(p,Ignited Blade)"
@@ -148,6 +154,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Billowing Backoff
 Name="Billowing Backoff"
+Type="Move"
 Inputs=["S"]
 Buttons=["s"]
 Condition="after %btn(p,Ignited Blade)"
@@ -163,6 +170,7 @@ Recovery="-"
 
 [[Character.Specials]] # Enkindled Spikes
 Name="Enkindled Spikes"
+Type="Move"
 Inputs=["623K"]
 Buttons=["k"]
 Images=["move/Osi_623K.png"]
@@ -186,6 +194,7 @@ Invuln=["Full"]
 
 [[Character.Specials]] # Flickering Flash
 Name="Flickering Flash"
+Type="Move"
 Inputs=["214K"]
 Buttons=["k"]
 Images=["move/Osi_214K.png"]
@@ -207,6 +216,7 @@ Invuln=["Pass-through"]
 ####################################
 [[Character.Supers]] # Burning Resolve
 Name="Burning Resolve"
+Type="Move"
 Inputs=["214214S"]
 Buttons=["s"]
 Condition="with 50% meter"
@@ -235,6 +245,7 @@ Recovery="-"
 
 [[Character.Supers]] # Shrouded in Mist
 Name="Shrouded in Mist"
+Type="Move"
 Inputs=["632146P"]
 Buttons=["p"]
 Condition="with 50% meter"
@@ -259,6 +270,7 @@ Recovery="-"
 
 [[Character.Supers]] # Blazing Onslaught
 Name="Blazing Onslaught"
+Type="Move"
 Inputs=["2141236H"]
 Buttons=["h"]
 Condition="with 50% meter"

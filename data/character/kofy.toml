@@ -14,8 +14,9 @@ Reversals=[
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunt
-Input="Taunt"
-Button="taunt"
+Inputs=["Taunt"]
+Buttons=["taunt"]
+Type="Move"
 Images=["move/Kofy_Taunt.png"]
 Hitboxes=["move/Kofy_Taunt_Explosion_Hitbox.png"]
 Description="""
@@ -32,8 +33,9 @@ OnBlock="-"
 Invuln=["180+F Guard Point"]
 
 [[Character.Normals]] # j.2K
-Input="j.2K"
-Button="k"
+Inputs=["j.2K"]
+Buttons=["k"]
+Type="Move"
 Images=["move/Kofy_j2K.png"]
 Hitboxes=["move/Kofy_j2K_Hitbox.png"]
 Description="""
@@ -52,6 +54,7 @@ OnBlock="-"
 ###################################
 [[Character.Specials]] # Special1
 Name="Special1"
+Type="Move"
 Inputs=["214K"]
 Buttons=["k"]
 Images=["move/Kofy_214K.png"]
@@ -75,6 +78,7 @@ Invuln=["High Profile"]
 
 [[Character.Specials]] # Espresso
 Name="Espresso"
+Type="Move"
 Inputs=["41236K"]
 Buttons=["k"]
 Images=["move/Kofy_41236K.png"]
@@ -90,10 +94,11 @@ Invuln=["10-?F Strike, Pass-through"]
 
 [[Character.Specials]] # Ristretto
 Name="Ristretto"
+Type="Move"
 Inputs=["214P"]
 Buttons=["p"]
 AirOK=true
-Images=["move/Kofy_214P.png"]
+Images=["move/Kofy_attach214P.png"]
 Hitboxes=["move/Kofy_214P_Hitbox.png"]
 Description="""
 Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
@@ -108,6 +113,7 @@ Invuln=["1~120F Parry"]
 
 [[Character.Specials]] # Special4
 Name="Special4"
+Type="Move"
 Inputs=["P"]
 Buttons=["p"]
 AirOK=true
@@ -126,6 +132,7 @@ Recovery="-"
 
 [[Character.Specials]] # Special5
 Name="Special5"
+Type="Move"
 Inputs=["S", "H"]
 Buttons=["s", "h"]
 AirOK=true
@@ -159,6 +166,7 @@ OnBlock="-"
 [[Character.Specials]] # Chiaroscuro ver.β
 Name="Chiaroscuro ver.β"
 ID="Chiaroscuro ver.Beta"
+Type="Move"
 Inputs=["236S", "H"]
 Buttons=["s", "h"]
 Images=[
@@ -215,6 +223,7 @@ OnBlock="-"
 ###################################
 [[Character.Supers]] # Grisaille
 Name="Grisaille"
+Type="Move"
 Inputs=["214214S"]
 Buttons=["s"]
 Condition="with 50% meter"
@@ -252,6 +261,7 @@ OnBlock="-"
 [[Character.Supers]] # Chiaroscuro ver.Ω
 Name="Chiaroscuro ver.Ω"
 ID="Chiaroscuro ver.Omega"
+Type="Move"
 Inputs=["632146P"]
 Buttons=["p"]
 AirOK=true

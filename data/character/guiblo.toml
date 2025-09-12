@@ -32,9 +32,10 @@ Reversals=[
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunt
-Input="Taunt"
+Inputs=["Taunt"]
+Buttons=["taunt"]
+Type="Move"
 HoldOK=true
-Button="taunt"
 Images=["move/Guiblo_Taunt.png", "move/Guiblo_Taunt_Explosion.png"]
 Hitboxes=["move/Guiblo_Taunt_Explosion_Hitbox.png"]
 Description="""
@@ -50,8 +51,9 @@ Startup="+"
 Active="-"
 
 [[Character.Normals]] # 6H
-Input="6H"
-Button="h"
+Inputs=["6H"]
+Buttons=["h"]
+Type="Move"
 Images=["move/Guiblo_6H.png"]
 Hitboxes=["move/Guiblo_6H_Hitbox.png"]
 Description="""
@@ -67,8 +69,9 @@ Recovery="-"
 OnBlock="-"
 
 [[Character.Normals]] # 3S
-Input="3S"
-Button="s"
+Inputs=["3S"]
+Buttons=["s"]
+Type="Move"
 Images=["move/Guiblo_3S.png"]
 Hitboxes=["move/Guiblo_3S_Hitbox.png"]
 Description="""
@@ -87,6 +90,7 @@ OnBlock="-"
 ###################################
 [[Character.Specials]] # Huebenly Buster
 Name="Huebenly Buster"
+Type="Move"
 Inputs=["623H"]
 Buttons=["h"]
 Images=["move/Guiblo_623H.png", "move/Guiblo_623H_2.png", "move/Guiblo_623H_Whiff.png"]
@@ -105,6 +109,7 @@ Invuln=["Full"]
 
 [[Character.Specials]] # Guiblo Grenade
 Name="Guiblo Grenade"
+Type="Move"
 Inputs=["236P", "S", "H"] # looks weird but would give us 236P/S/H as a desired input str
 AirOK=true
 Buttons=["p", "s", "h"]
@@ -142,6 +147,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Parry
 Name="Parry"
+Type="Move"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
@@ -161,6 +167,7 @@ Invuln=["Full"]
 
 [[Character.Specials]] # Gone Fishin'
 Name="Gone Fishin'"
+Type="Move"
 Inputs=["236K"]
 Buttons=["k"]
 Images=["move/Guiblo_236K.png"]
@@ -182,6 +189,7 @@ OnBlock="-"
 ###################################
 [[Character.Supers]] # Heavenly Guiblo Buster
 Name="Heavenly Guiblo Buster"
+Type="Move"
 Inputs=["632146S"]
 Condition="with 50% meter"
 Buttons=["s"]
@@ -200,6 +208,7 @@ OnBlock="-"
 
 [[Character.Supers]] # Ultimate Sandwich
 Name="Ultimate Sandwich"
+Type="Move"
 Inputs=["236236P"]
 Condition="with 50% meter"
 Buttons=["p"]

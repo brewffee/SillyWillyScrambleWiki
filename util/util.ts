@@ -63,6 +63,7 @@ export const compareVersions = (older: string, newer: string): boolean => { // t
     }
 };
 
+// appends a string to the last element of an array
 export const appendLast = (arr: string[], str: string): string[] => {
   return [
     ...arr.slice(0, arr.length - 1),

@@ -1,16 +1,22 @@
-import type { Special } from "./Move.ts";
+import type { Move } from "./Move.ts";
 
 export interface Section {
     Type: string;
     Description: string;
 }
 
-export interface DescriptionSection extends Section {
-    Type: "Description";
+export interface SummarySection extends Section {
+    Type: "Summary";
 }
 
-export interface MoveSection extends Section, Special {
+export interface TextSection extends Section {
+    Type: "Text";
+    Name: string;
+    ID?: string;
+}
+
+export interface MoveSection extends Section, Move {
     Type: "Move";
 }
 
-export type SectionType = Section | DescriptionSection | MoveSection
+export type SectionType = Section | SummarySection | TextSection | MoveSection;

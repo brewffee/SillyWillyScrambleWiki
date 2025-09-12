@@ -45,7 +45,7 @@ function generateMain(): void {
             return selectorTemplate?.replace(/%NAME%/g, chara.Name.toLowerCase())
                 .replace(/%REALNAME%/g, chara.Name)
                 .replace(/%ICONPATH%/g, `images/${chara.Name.toLowerCase()}/${chara.IconPath}`)
-                .replace(/%TYPE%/g, chara.Type) || "";
+                .replace(/%TYPE%/g, chara.Type || "") || "";
         }).join(""));
 
     if (compareVersions(exportDir + "index.html", rendered)) {
@@ -83,7 +83,7 @@ function main() {
     });
 
     // todo: System Pages
-    logger.log("Done!");
+    logger.ok("Done!");
 }
 
 main();

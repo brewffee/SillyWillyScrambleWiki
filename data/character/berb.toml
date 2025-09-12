@@ -31,6 +31,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]] # Rifts in Time
 Name="Rifts in Time"
+Type="Text"
 Description="""
 Berb can use specific attacks (such as %ref(Time Rift,214P,p) or %ref(Time Fault,2141236P,p)) to create Rift Points
 which last until consumed or destroyed. Berb can use these Rift Points to teleport himself using %ref(Chrono Shift,214K,k)
@@ -41,6 +42,7 @@ be destroyed.
 
 [[Character.Mechanics]] # Time Machine
 Name="Time Machine"
+Type="Text"
 Description="""
 With his supers %ref(Chrono Stasis,Chrono Stasis,k) and %ref(Accent Acceleration,Accent Acceleration,h) (and even
 his %ref(Taunt,taunt,taunt) to a degree), Berb can manipulate time to lock down or pressure the opponent. Combined
@@ -52,8 +54,9 @@ ability.
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunt
-Input="Taunt"
-Button="taunt"
+Inputs=["Taunt"]
+Buttons=["taunt"]
+Type="Move"
 Images=["move/Berb_Taunt.png"]
 ImageNotes=["Would you look at the time!"]
 Description="""
@@ -67,6 +70,7 @@ Recovery="-"
 ###################################
 [[Character.Specials]] # Time Rift
 Name="Time Rift"
+Type="Move"
 Inputs=["214P"]
 AirOK=true
 Buttons=["p"]
@@ -87,6 +91,7 @@ Recovery="-"
 
 [[Character.Specials]] # Chrono Shift
 Name="Chrono Shift"
+Type="Move"
 Inputs=["214K"]
 AirOK=true
 Buttons=["k"]
@@ -110,6 +115,7 @@ Recovery="-"
 
 [[Character.Specials]] # Distortion
 Name="Distortion"
+Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
 Images=["move/Berb_236S.png"]
@@ -139,6 +145,7 @@ Recovery="-"
 
 [[Character.Specials]] # Clockwork
 Name="Clockwork"
+Type="Move"
 Inputs=["214S"]
 Buttons=["s"]
 Images=["move/Berb_214S.png", "move/Berb_214S_2.png"]
@@ -160,6 +167,7 @@ OnBlock="+"
 
 [[Character.Specials]] # Tempo Synchronization
 Name="Tempo Synchronization"
+Type="Move"
 Inputs=["236H"]
 Buttons=["h"]
 Images=["move/Berb_236H.png"]
@@ -181,6 +189,7 @@ OnBlock="-"
 ###################################
 [[Character.Supers]] # Chrono Stasis
 Name="Chrono Stasis"
+Type="Move"
 Inputs=["632146K"]
 Condition="with 50% meter"
 Buttons=["k"]
@@ -206,6 +215,7 @@ OnBlock="-"
 
 [[Character.Supers]] # Accent Acceleration
 Name="Accent Acceleration"
+Type="Move"
 Inputs=["214214H"]
 Condition="with 50% meter"
 Buttons=["h"]
@@ -220,6 +230,7 @@ Recovery="-"
 
 [[Character.Supers]] # Time Fault
 Name="Time Fault"
+Type="Move"
 Inputs=["2141236P"] # QCB to QCF motion
 Condition="with 50% meter"
 Buttons=["p"]

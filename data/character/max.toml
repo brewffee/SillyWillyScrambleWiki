@@ -33,6 +33,7 @@ Reversals=[
 ###################################
 [[Character.Mechanics]]
 Name="Caffeine Gauge"
+Type="Text"
 Description="""
 Max uses their Caffeine Gauge to perform enhanced versions of their special moves. Max starts the round with 0 out of
 3 Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are significantly
@@ -44,8 +45,9 @@ more powerful, deal more damage, and have more launch power, allowing for more c
 # Command Normals
 ###################################
 [[Character.Normals]] # Taunts
-Input="Taunt"
-Button="taunt"
+Inputs=["Taunt"]
+Buttons=["taunt"]
+Type="Move"
 Images=["move/Max_Taunt_1.png","move/Max_Taunt_2.png","move/Max_Taunt_3.png"]
 Hitboxes=["move/Max_Taunt_1_Hitbox.png","move/Max_Taunt_2_Hitbox.png","move/Max_Taunt_3_Hitbox.png"]
 Description="""
@@ -64,8 +66,9 @@ Version="Lunar Party"
 Version="Yeet by Lil Cashew"
 
 [[Character.Normals]] # 6H
-Input="6H"
-Button="h"
+Inputs=["6H"]
+Buttons=["h"]
+Type="Move"
 Images=["move/Max_6H.png"]
 Hitboxes=["move/Max_6H_Hitbox.png"]
 Description="""
@@ -81,8 +84,9 @@ Recovery="-"
 OnBlock="-"
 
 [[Character.Normals]] # 3K
-Input="3K"
-Button="k"
+Inputs=["3K"]
+Buttons=["k"]
+Type="Move"
 Images=["move/Max_3K.png"]
 Hitboxes=["move/Max_3K_Hitbox.png"]
 Description="""
@@ -102,6 +106,7 @@ OnBlock="-"
 ###################################
 [[Character.Specials]] # Stirprise
 Name="Stirprise"
+Type="Move"
 Inputs=["214K"]
 Buttons=["k"]
 HoldOK=true
@@ -144,6 +149,7 @@ OnBlock="- [-]"
 
 [[Character.Specials]] # Energizzze
 Name="Energizzze"
+Type="Move"
 Inputs=["22K"]
 Buttons=["k"]
 Images=["move/Max_22K.png"]
@@ -162,6 +168,7 @@ Recovery="-"
 
 [[Character.Specials]] # Raining Dogs and Dogs
 Name="Raining Dogs and Dogs"
+Type="Move"
 Inputs=["214P"]
 Buttons=["p"]
 Images=["move/Max_214P.png", "move/Max_214P_2.png", "move/Max_en214P.png", "move/Max_en214P_2.png"]
@@ -195,6 +202,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Trigger Discipline
 Name="Trigger Discipline"
+Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
 Images=["move/Max_236S.png", "move/Max_en236S.png"]
@@ -223,6 +231,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Anvil Mantle
 Name="Anvil Mantle"
+Type="Move"
 Inputs=["214H"]
 Buttons=["h"]
 Images=["move/Max_214H.png", "move/Max_en214H.png"]
@@ -251,6 +260,7 @@ OnBlock="-"
 
 [[Character.Specials]] # Sweater Weather
 Name="Sweater Weather"
+Type="Move"
 Inputs=["623H"]
 Buttons=["h"]
 AirOK=true
@@ -281,6 +291,7 @@ Recovery="-"
 ###################################
 [[Character.Supers]] # Maxsmash
 Name="Maxsmash"
+Type="Move"
 Inputs=["632146P"]
 Buttons=["p"]
 Condition="with 50% meter"
@@ -301,6 +312,7 @@ Invuln=["Full"]
 
 [[Character.Supers]] # Lens Flare
 Name="Lens Flare"
+Type="Move"
 Inputs=["236236K"]
 Buttons=["k"]
 Condition="with 50% meter"

@@ -53,12 +53,12 @@ Description="""
 # member being a Type="Description" with a Description key, and the rest
 # being Type="Move" children.
 [[Character.CustomSectionNameHere]] # The key will be used as the name in the heading and the TOC
-Type="Description"      # As of now, can only be of types Description or Move
+Type="Description"      # As of now, can only be of types Description, Move, or NormalMove
 Description="""
 """
 [[Character.CustomSectionNameHere]]
 Type="Move"         # Move type items use the same format as a special/super would
-Name=""
+Name=""             # The name of this move or move section
 Inputs=[""]         # Inputs/Buttons can also be left as undefined if unneeded
 Buttons=[""]
 AirOK=false
@@ -70,15 +70,16 @@ Hitboxes=[""]
 HitboxNotes=[""]
 Description="""
 """
-# Since Move type items use the same format as a special/super, it can also be
-# supplied with frame data if desired.
 
 ###################################
 # Command Normals
 ###################################
 [[Character.Normals]]
-Input=""            # Input string
-Button=""           # Any of p, k, s, x, or taunt
+Name=""             # The name of this move. In the case of normals, will almost always be the input
+ID=""               # A unique identifier if a move is to somehow conflict with an existing one
+Inputs=[""]         # The input strings. A value of ["S", "H"] will display as "S/H"
+Buttons=[""]        # The button for each input (p/k/s/h/taunt), should match the order of the above list
+Separator="/"       # The default separator for multiple inputs is always /. Can be made blank/ommitted
 AirOK=false         # Can this be used in the air?
 HoldOK=false        # Can this be held?
 Condition=""        # Does this move have any special requirements?
@@ -116,8 +117,8 @@ SpecialNote=""      # What's so special about them?
 # Special Attacks
 ###################################
 [[Character.Specials]]
-Name=""
-ID=""               # A unique identifier if a move is to somehow conflict with a nexisting one
+Name=""             # The name of this move
+ID=""               # A unique identifier if a move is to somehow conflict with an existing one
 Inputs=[""]         # The input strings. A value of ["236P", "K"] will display as "236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Special requirements for the move, displayed after input string
@@ -132,8 +133,8 @@ Description="""
 # Supers
 ###################################
 [[Character.Supers]]
-Name=""
-ID=""               # Ynique identifier
+Name=""             # The name for this super
+ID=""               # Unique identifier
 Inputs=[""]         # The input strings. A value of ["236236P", "K"] will display as "236236P/K"
 Buttons=[""]        # The button for each input, should match the order of the above list
 Condition=""        # Will mostly be "with 50% meter" in the case of supers
