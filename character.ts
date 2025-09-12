@@ -13,7 +13,7 @@ const mechanicTemplate = fs.readFileSync("templates/character/mechanic.html", "u
 const normalTemplate = fs.readFileSync("templates/character/normal.html", "utf8");
 const specialTemplate = fs.readFileSync("templates/character/special.html", "utf8");
 
-//noinspection HtmlUnknownAnchorTarget
+// noinspection HtmlUnknownAnchorTarget
 export class Character {
     // TOML fields //
     Name: string;
@@ -34,7 +34,7 @@ export class Character {
 
     // section order and unique data
     sections: string[] = [];
-    sectionData: { [key: string]: SectionType[] } = {}; // todo: me when i use any type because im lazee
+    sectionData: { [key: string]: SectionType[] } = {};
 
     characterNav: string;
     characterNavActive: string;
@@ -189,7 +189,7 @@ export class Character {
         if (!data) return "";
         // ass specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
         const filled: FrameData[] = data.map((frame) => {
-            const res: FrameData = {...FrameDataDefaults, ...frame};
+            const res: FrameData = { ...FrameDataDefaults, ...frame };
             if (res.Version === undefined) delete res.Version;
             return res;
         });

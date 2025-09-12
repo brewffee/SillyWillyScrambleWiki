@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(180deg, white 0%, #eaeaea 128px);
+    background: linear-gradient(180deg, #fff 0%, #eaeaea 128px);
 }
 
 header {
@@ -20,11 +20,11 @@ header {
 
 header h1 {
     margin: 12px 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000;
 }
 
 header a {
-    color: black;
+    color: #000;
     display: inline-block;
     font-weight: normal;
     text-decoration: none;
@@ -54,9 +54,9 @@ header a {
         display: none;
         position: fixed;
         top: 56px;
-        background: lightgray;
+        background: #d3d3d3;
         padding: 12px;
-        border: 1px solid black;
+        border: 1px solid #000;
         max-height: calc(100vh - 123px - 48px);
         overflow-y: scroll;
     }
@@ -71,7 +71,7 @@ header a {
     position: fixed;
     top: 16px;
     border-radius: 0;
-    border: 1px solid black;
+    border: 1px solid #000;
     font-size: 20px;
     height: 32px;
     width: 32px;
@@ -85,13 +85,13 @@ header a {
 
 .nav-top {
     border-radius: 0;
-    border: 1px solid black;
+    border: 1px solid #000;
     text-decoration: none;
-    color: black;
+    color: #000;
     font-weight: bold;
     font-size: 12px;
     padding: 3px;
-    background: linear-gradient(0deg, #d4d4d4 0%, white 100%);
+    background: linear-gradient(0deg, #d4d4d4 0%, #fff 100%);
     text-align: center;
 }
 
@@ -104,8 +104,8 @@ header a {
 }
 
 nav {
-    background: white;
-    border: 1px solid black;
+    background: #fff;
+    border: 1px solid #000;
     box-sizing: border-box;
 }
 
@@ -113,8 +113,8 @@ nav h3 {
     margin: 0;
     font-size: 12px;
     padding: 6px 12px;
-    border-bottom: 1px solid gray;
-    background: linear-gradient(0deg, #d4d4d4 0%, white 100%);
+    border-bottom: 1px solid #808080;
+    background: linear-gradient(0deg, #d4d4d4 0%, #fff 100%);
 }
 
 nav h3 input {
@@ -159,7 +159,7 @@ nav li a:hover {
 
 nav li.active a {
     background: #3d3d3d;
-    color: white;
+    color: #fff;
     font-weight: bold;
     cursor: default;
     text-decoration: none !important;
@@ -170,14 +170,14 @@ nav li.header {
     margin: 0;
     background: #d4d4d4;
     cursor: default;
-    border: 1px solid gray;
+    border: 1px solid #808080;
     border-left: none;
     border-right: none;
 }
 
 main {
-    background: white;
-    border: 1px solid black;
+    background: #fff;
+    border: 1px solid #000;
     flex: 1;
     box-sizing: border-box;
     padding: 12px;
@@ -188,12 +188,12 @@ main {
 main h2 {
     margin: 0 0 12px 0;
     padding-bottom: 6px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #808080;
 }
 
 main h2 a:nth-child(1) {
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
 main h2 a:nth-child(2) {
@@ -208,19 +208,23 @@ main h2 a:nth-child(2):hover {
 }
 
 section {
-    background: white;
+    background: #fff;
     width: 90%;
     max-width: 720px;
     margin: 12px auto;
-    border: 1px solid black;
+    border: 1px solid #000;
 }
 
 section h3 {
     margin: 0;
     font-size: 14px;
     padding: 6px 12px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #808080;
     background: linear-gradient(0deg, #d4d4d4 0%, transparent 100%);
+}
+
+h4 {
+    margin-bottom: 4px;
 }
 
 div.roster {
@@ -237,7 +241,7 @@ div.roster a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid black;
+    border: 1px solid #000;
     width: 96px;
     min-height: 150px;
     text-decoration: none;
@@ -246,7 +250,7 @@ div.roster a {
 div.roster a .name {
     padding: 4px 8px;
     box-sizing: border-box;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000;
     background: #e4e4e4;
     font-size: 14px;
     font-weight: bold;
@@ -256,7 +260,7 @@ div.roster a .type {
     padding: 4px 8px;
     box-sizing: border-box;
     font-size: 12px;
-    border-top: 1px solid black;
+    border-top: 1px solid #000;
 }
 
 .overview .content {
@@ -296,20 +300,21 @@ div.roster a .type {
 
 .info table {
     width: 100%;
-    border-collapse: collapse;
     margin: 0;
-    border-top: 1px solid black;
+    border-left: none;
+    text-align: left;
 }
 
 .info td {
     padding: 4px 8px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000;
+    border-right: none;
     font-size: 11px;
 }
 
 .info td:nth-child(odd) {
     background: #e4e4e4;
-    border-right: 1px solid black;
+    border-right: 1px solid #000;
     font-weight: bold;
     width: 50%;
     vertical-align: top;
@@ -329,7 +334,7 @@ div.roster a .type {
 }
 
 .move {
-    border: 1px solid black;
+    border: 1px solid #000;
     display: flex;
     margin: 0 0 12px;
     width: 100%;
@@ -342,7 +347,7 @@ div.roster a .type {
         .move-info {
             width: unset;
             border-right: none;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #000;
         }
     }
 }
@@ -351,7 +356,7 @@ div.roster a .type {
     display: flex;
     flex-direction: column;
     background: #e4e4e4;
-    border-right: 1px solid black;
+    border-right: 1px solid #000;
     min-width: 230px;
     width: 240px;
     padding: 4px 8px 28px;
@@ -369,7 +374,7 @@ a:has(.move-name) {
 .move-name {
     width: 100%;
     margin-bottom: 4px;
-    color: black;
+    color: #000;
 }
 
 .move-info .move-input {
@@ -382,19 +387,19 @@ a:has(.move-name) {
 
 .image-note {
     font-size: 12px;
-    color: dimgray;
+    color: #696969;
     text-align: center;
     font-style: italic;
 }
 
 em { font-style: normal }
-[button=taunt] { color: darkgoldenrod }
-[button=h] { color: crimson }
-[button=s] { color: forestgreen }
-[button=k] { color: steelblue }
+[button=taunt] { color: #b8860b }
+[button=h] { color: #dc143c }
+[button=s] { color: #228b22 }
+[button=k] { color: #4682b4 }
 [button=p] { color: #b22ea1 }
-[button=x] { color: dimgray }
-[button=or] { color: black }
+[button=x] { color: #696969 }
+[button=or] { color: #000 }
 [button=generic] { /* inherit from browser default */ }
 
 .move-info img {
@@ -416,10 +421,10 @@ em { font-style: normal }
 
 .hitbox-btn {
     padding: 2px 16px;
-    background: linear-gradient(0deg, #d4d4d4 0%, white 100%);
+    background: linear-gradient(0deg, #d4d4d4 0%, #fff 100%);
     cursor: pointer;
     user-select: none;
-    border: 1px solid black;
+    border: 1px solid #000;
     font-size: 12px;
     font-weight: bold;
     position: absolute;
@@ -437,7 +442,7 @@ em { font-style: normal }
     width: 100%;
 }
 
-.move-details table {
+table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
@@ -445,29 +450,37 @@ em { font-style: normal }
     text-align: center;
     font-size: 12px;
     min-width: fit-content;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
 }
 
-.move-details .frame-table {
+.frame-table {
+    table {
+        border-left: none;
+        border-top: none;
+    }
+
+
     @media (width < 840px) {
         overflow-x: scroll;
     }
 }
 
-.move-details th {
+th {
     background: #e4e4e4;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
-.move-details th:last-child, .move-details td:last-child {
+.frame-table th:last-child, .frame-table td:last-child {
     border-right: none;
 }
 
-.move-details td {
+td {
     padding: 4px 0;
     font-size: 10px;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
 .move-details span {
@@ -508,7 +521,7 @@ em { font-style: normal }
 }
 
 .embed {
-    border: 1px solid black;
+    border: 1px solid #000;
     margin: 12px auto;
     padding : 12px 32px;
     width: fit-content;
@@ -528,7 +541,7 @@ em { font-style: normal }
     margin-top: 10px;
     font-size: 12px;
     text-align: center;
-    color: dimgray;
+    color: #696969;
 }
 
 
@@ -537,7 +550,7 @@ footer {
     font-size: 12px;
     text-align: center;
     width: 100%;
-    border-top: 1px solid gray;
+    border-top: 1px solid #808080;
     box-sizing: border-box;
     margin-top: auto;
 }
