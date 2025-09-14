@@ -392,3 +392,30 @@ OnBlock="-"
 ###################################
 # Supers
 ###################################
+[[Character.Supers]] # item waterfall !!!
+Name="item waterfall !!!"
+Type="Move"
+Inputs=["632146H"]
+Buttons=["h"]
+Condition="with 50% meter"
+Images=["move/Goopert_632146H.png", "move/Goopert_632146H_Items.png"]
+ImageNotes=["", "Chaos, chaos!"]
+Hitboxes=["move/Goopert_632146H_Hitbox.png"]
+Description="""
+Time freezes as Goopert's meter slowly drains. While item waterfall !!! is active, Goopert has 3 options available.
+Pressing %btn(p,P) will activate the next item in Goopert's item line up, %btn(s,S) will discard the next item, and
+%btn(k,K) will terminate the super early. After time unfreezes, all the items that were activated will come out at
+once. The super will end after Goopert runs out of meter or if the super is terminated early.
+<ul>
+    <li>When pulling an item that locks Goopert into an attack animation (such as %ref(Broken Clock,Broken Clock,_)) or
+    %ref(Fishing Rod,Fishing Rod,_), the super will automatically terminate to allow Goopert to perform the attack.</li>
+    <li>If performed with more than 50% meter, the super will continue to drain meter until it runs out or the super is
+    terminated early.</li>
+</ul>
+"""
+[[Character.Supers.Data]]
+Version="632146H"
+Startup="-"
+Active="-"
+Recovery="-"
+
