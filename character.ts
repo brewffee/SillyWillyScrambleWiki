@@ -16,15 +16,17 @@ const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
 //    components for other pages soon
 // noinspection HtmlUnknownAnchorTarget
 export class Character {
-    private static readonly OVERVIEW_FIELDS: (keyof Character)[] = ["Name", "Description", "IconPath", "PortraitPath", "Type", "Reversals"];
+    private static readonly OVERVIEW_FIELDS: (keyof Character)[] = [
+        "Name", "Description", "IconPath", "PortraitPath", "Type", "Stage", "Reversals"
+    ];
     private static readonly STANDARD_SECTIONS: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
-
     // TOML fields //
     Name: string;
     Description?: string;
     IconPath?: string;
     PortraitPath?: string;
     Type?: string;
+    Stage?: string;
     Reversals?: string[];
 
     Mechanics?: Mechanic[];
@@ -51,6 +53,7 @@ export class Character {
         this.IconPath = data.IconPath;
         this.PortraitPath = data.PortraitPath;
         this.Type = data.Type;
+        this.Stage = data.Stage;
         this.Reversals = data.Reversals || [];
 
         // determine the section order based on how things appear in toml
@@ -86,6 +89,7 @@ export class Character {
     }
 
     // resolve macros into HTML elements
+    // todo: move elsewhere + ad optional arcs and merge macros
     resolveReferences(input: string): string {
         // reference to move
         // converts `%ref(NAME,INPUT,BTN)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
@@ -280,6 +284,7 @@ export class Character {
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
             .replace(/%TYPE%/g, this.Type || "")
+            .replace(/%STAGE%/g, this.Stage || "")
             .replace(/%REVERSALS%/g, this.renderReversals())
             .replace(/%BODY%/g, this.sections.map((section) => {
                 switch (section) {

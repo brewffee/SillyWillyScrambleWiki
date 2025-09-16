@@ -6,6 +6,7 @@ Dani wields both a pistol and a knife at separate times.
 IconPath="icon/Dani_Icon.png"
 PortraitPath="portrait/Dani_Portrait.png"
 Type="Bnnuy"
+Stage=""
 Reversals=[
     "%ref(Bait,ex.623S,s)"
 ]

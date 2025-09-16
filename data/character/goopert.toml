@@ -6,6 +6,7 @@ so goop
 IconPath="icon/Goopert_Icon.png"
 PortraitPath="portrait/Goopert_Portrait.png"
 Type="Silly"
+Stage="Throne Room"
 Reversals=[
     "%ref(lava snake,623S,s)"
 ]
@@ -288,6 +289,7 @@ OnBlock="-"
 Type="Move"
 Name="Broken Clock"
 Images=["items/Goopert_BrokenClock.png"]
+ImageNotes=["I've seen this somewhere before..."]
 Hitboxes=["items/Goopert_BrokenClock_Hitbox.png"]
 Description="""
 When this item is drawn, Goopert can only block. After 10 frames, time freezes, hitting anyone who wasn't blocking

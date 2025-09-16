@@ -22,6 +22,7 @@ strong fundamentals and execution is key to unleashing his full potential.
 IconPath="icon/Berb_Icon.png"
 PortraitPath="portrait/Berb_Portrait.png"
 Type="Freaky"
+Stage=""
 Reversals=[
     "%ref(Time Fault,2141236P,p)"
 ]

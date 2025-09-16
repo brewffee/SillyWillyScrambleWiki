@@ -8,6 +8,7 @@ take advantage when the opportunity presents itself.
 IconPath="icon/Seagull_Icon.png"
 PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
+Stage="Seagull Corp Building"
 Reversals=[
     "%ref(Double or Nothing,632146H,h)",
     "%ref(Double or Nothing,632146H~H,h)"

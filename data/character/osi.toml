@@ -9,6 +9,7 @@ this all together to thoroughly beat down your opponent.
 IconPath="icon/Osi_Icon.png"
 PortraitPath="portrait/Osi_Portrait.png"
 Type="Cloudy"
+Stage=""
 Reversals=[
     "%ref(Enkindled Spikes,623K,k)",
     "%ref(Blazing Onslaught,2141236H,h)"

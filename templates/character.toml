@@ -33,6 +33,7 @@ PortraitPath=""     # Path to portrait art
 #Health=""           # The amount of health the character has
 #DamageMod=""        # The amount of damage this character takes
 Type=""             # Fighting style
+Stage=""            # The default stage associated with this character
 #FastestAttacks=[]   # The fastest moves this character has
 Reversals=[]        # List of moves with invulnerable startup
 
