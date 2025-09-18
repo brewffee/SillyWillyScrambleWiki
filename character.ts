@@ -49,11 +49,11 @@ export class Character {
 
     constructor(data: any) {
         this.Name = data.Name;
-        this.Description = data.Description;
-        this.IconPath = data.IconPath;
-        this.PortraitPath = data.PortraitPath;
-        this.Type = data.Type;
-        this.Stage = data.Stage;
+        this.Description = data.Description || "";
+        this.IconPath = data.IconPath || "";
+        this.PortraitPath = data.PortraitPath || "";
+        this.Type = data.Type || "";
+        this.Stage = data.Stage || "";
         this.Reversals = data.Reversals || [];
 
         // determine the section order based on how things appear in toml
@@ -89,7 +89,7 @@ export class Character {
     }
 
     // resolve macros into HTML elements
-    // todo: move elsewhere + ad optional arcs and merge macros
+    // todo: move elsewhere + add optional args and merge macros
     resolveReferences(input: string): string {
         // reference to move
         // converts `%ref(NAME,INPUT,BTN)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
@@ -153,7 +153,7 @@ export class Character {
         return result;
     }
 
-    // reversals field of the info table7
+    // reversals field of the info table
     renderReversals(): string {
         if (!this.Reversals) return "<em button=x>None</em>";
         return this.Reversals.map((rev) => this.resolveReferences(rev)).join("<br>");
@@ -189,26 +189,40 @@ export class Character {
             return res;
         });
 
-        return `<div class=frame-table>${this.renderTable(filled)}</div>`;
+        return this.renderTable(filled);
     }
 
-    renderTable(data: any[]): string {
+    renderTable(data: any[], orientation: "horizontal" | "vertical" = "horizontal"): string {
         if (!data) return "";
-        let table = "<table>\n";
-
-        // thead
+        let table = `<table orientation="${orientation}">\n`;
         const keys = Object.keys(data[0]);
-        table += "<thead><tr>" + keys.map((key) => `<th>${key}</th>`).join("\n") + "</tr></thead>\n";
 
-        // tbody
-        table += "<tbody>\n" + data.map((item) => {
-            return "<tr>" + keys.map((key) => {
-                const value = item[key];
-                return Array.isArray(value) ? `<td>${value.join("<br>")}</td>` : `<td>${value}</td>`;
-            }).join("\n") + "</tr>\n";
-        }).join("") + "</tbody>\n</table>";
+        switch (orientation) {
+            case "horizontal":
+                // thead and tbody for header and body
+                table += `<thead>\n<tr>\n${keys.map((key) => `<th>${key}</th>`).join("\n")}\n</tr>\n</thead>`;
 
-        return table;
+                // tbody
+                return table + "<tbody>\n" + data.map((item) => {
+
+                    return "<tr>\n" + keys.map((key) => {
+                        const value = item[key];
+                        return `<td>${Array.isArray(value) ? value.join("<br>") : value}</td>`;
+                    }).join("\n") + "\n</tr>\n";
+
+                }).join("") + "</tbody>\n</table>";
+            case "vertical":
+                // single tbody with th and td
+                return table + "<tbody>\n" + data.map((item) => {
+                    return keys.map((key) => {
+                        const value = item[key];
+                        return `<tr><th>${key}</th><td>${Array.isArray(value) ? value.join("<br>") : value}</td></tr>`;
+                    }).join("\n");
+                }).join("\n") + "\n</tbody>\n</table>";
+            default:
+                this.logger.error(`Unknown table orientation: ${orientation}`);
+                return "";
+        }
     }
 
     // creates the image gallery
@@ -275,6 +289,7 @@ export class Character {
         }).join("") + "</div>";
     }
 
+    // todo: in replacement lists, add the amount of whitespace before the placeholder ( i like neatness !! )
     // semi-final page generation before populating navbar and update time
     render(): string {
         this.logger.log("Generating character page...");
@@ -285,7 +300,11 @@ export class Character {
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
             .replace(/%TYPE%/g, this.Type || "")
             .replace(/%STAGE%/g, this.Stage || "")
-            .replace(/%REVERSALS%/g, this.renderReversals())
+            .replace(/%INFO%/g, this.renderTable([{
+                "Type": this.Type,
+                "Stage": this.Stage,
+                "Reversals": this.renderReversals(),
+            }], "vertical"))
             .replace(/%BODY%/g, this.sections.map((section) => {
                 switch (section) {
                     case "Mechanics":   return this.renderSection(this.Mechanics as TextSection[], "Mechanics");

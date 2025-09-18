@@ -51,10 +51,10 @@ Description="""
 # If the default section types are not enough, you can specify custom sections
 # to display in the character page. For each entry in the list, you are required
 # to specify a type. Custom sections should usually start out with its first
-# member being a Type="Description" with a Description key, and the rest
+# member being a Type="Summary" with a Description key, and the rest
 # being Type="Move" children.
 [[Character.CustomSectionNameHere]] # The key will be used as the name in the heading and the TOC
-Type="Description"      # As of now, can only be of types Description, Move, or NormalMove
+Type="Summary"      # As of now, can only be of types Summary or Move
 Description="""
 """
 [[Character.CustomSectionNameHere]]
