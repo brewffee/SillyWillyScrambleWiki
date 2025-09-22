@@ -24,6 +24,8 @@ those who can keep up with their resource management.
 IconPath="icon/Max_Icon.png"
 PortraitPath="portrait/Max_Portrait.png"
 Type="Sleepy"
+Health=""
+MoveSpeed="1x"
 Stage="Floating Island"
 Reversals=[
     "%ref(Maxsmash,632146P,p)"

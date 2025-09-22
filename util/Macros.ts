@@ -130,7 +130,7 @@ export class RefOtherMacro extends Macro {
 }
 
 // todo: i wonder, can we create a utility to automatically extract buttons? this would be omega useful
-// converts `%btn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
+// converts `%btn(BTN1BTN2...,TEXT,SEP)` to `<em class=btn button="BTN">TEXT</em>`
 @MacroFor("btn")
 export class BtnMacro extends Macro {
     static Args: [

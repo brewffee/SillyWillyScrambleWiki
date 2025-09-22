@@ -22,6 +22,8 @@ good sequence and a beer to thoroughly crush his foe.
 IconPath="icon/Guiblo_Icon.png"
 PortraitPath="portrait/Guiblo_Portrait.png"
 Type="Grappler"
+Health=""
+MoveSpeed="1x"
 Stage="Sandwicheimer Destruction Site"
 Reversals=[
     "%ref(Huebenly Buster,623H,h)",

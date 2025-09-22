@@ -8,6 +8,9 @@ take advantage when the opportunity presents itself.
 IconPath="icon/Seagull_Icon.png"
 PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
+Health=""
+MoveSpeed="1x"
+UniqueMovement=["Quadruple Jump"]
 Stage="Seagull Corp Building"
 Reversals=[
     "%ref(Double or Nothing,632146H,h)",

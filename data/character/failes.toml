@@ -9,6 +9,8 @@ character.
 IconPath="icon/Failes_Icon.png"
 PortraitPath="portrait/Failes_Portrait.png"
 Type="Gooner"
+Health=""
+MoveSpeed="1x"
 Stage="Creative Server Lava Pit"
 Reversals=[
     "%ref(Mending,623H,h)",

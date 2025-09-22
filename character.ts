@@ -17,7 +17,8 @@ const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
 // noinspection HtmlUnknownAnchorTarget
 export class Character {
     private static readonly OVERVIEW_FIELDS: (keyof Character)[] = [
-        "Name", "Description", "IconPath", "PortraitPath", "Type", "Stage", "Reversals"
+        "Name", "Description", "IconPath", "PortraitPath", "Type",
+        "Health", "MoveSpeed", "UniqueMovement", "Stage", "Reversals"
     ];
     private static readonly STANDARD_SECTIONS: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
     // TOML fields //
@@ -26,6 +27,9 @@ export class Character {
     IconPath?: string;
     PortraitPath?: string;
     Type?: string;
+    Health?: string;
+    MoveSpeed?: string;
+    UniqueMovement?: string[];
     Stage?: string;
     Reversals?: string[];
 
@@ -53,6 +57,9 @@ export class Character {
         this.IconPath = data.IconPath || "";
         this.PortraitPath = data.PortraitPath || "";
         this.Type = data.Type || "";
+        this.Health = data.Health;
+        this.MoveSpeed = data.MoveSpeed;
+        this.UniqueMovement = data.UniqueMovement;
         this.Stage = data.Stage || "";
         this.Reversals = data.Reversals || [];
 
@@ -89,7 +96,6 @@ export class Character {
     }
 
     // resolve macros into HTML elements
-    // todo: move elsewhere + add optional args and merge macros
     resolveReferences(input: string): string {
         let result = new RefMacro().execute(input);                       // References to moves
         result = new RefOtherMacro().execute(result);                     // References to other characters' moves
@@ -104,6 +110,12 @@ export class Character {
     renderReversals(): string {
         if (!this.Reversals) return "<em button=x>None</em>";
         return this.Reversals.map((rev) => this.resolveReferences(rev)).join("<br>");
+    }
+
+    // unique movement field of the info table
+    renderUniqueMovement(): string {
+        if (!this.UniqueMovement) return "<em button=x>-</em>";
+        return this.UniqueMovement.map((opt) => this.resolveReferences(opt)).join("<br>");
     }
 
     // adds Hold or Air OK to qualifying moves
@@ -135,7 +147,7 @@ export class Character {
         switch (orientation) {
             case "horizontal":
                 // thead and tbody for header and body
-                table += `<thead>\n<tr>\n${keys.map((key) => `<th>${key}</th>`).join("\n")}\n</tr>\n</thead>`;
+                table += `<thead>\n<tr>\n${keys.map((key) => `<th>${this.resolveReferences(key)}</th>`).join("\n")}\n</tr>\n</thead>`;
 
                 // tbody
                 return table + "<tbody>\n" + data.map((item) => {
@@ -237,11 +249,12 @@ export class Character {
             .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description || ""))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
-            .replace(/%TYPE%/g, this.Type || "")
-            .replace(/%STAGE%/g, this.Stage || "")
             .replace(/%INFO%/g, this.renderTable([{
-                "Type": this.Type,
-                "Stage": this.Stage,
+                "Type": this.Type || "<em button=x>-</em>",
+                "Health": this.Health || "<em button=x>-</em>",
+                "Movement Speed": this.MoveSpeed || "<em button=x>-</em>",
+                "Unique Movement": this.renderUniqueMovement(),
+                "Stage": this.Stage || "<em button=x>-</em>",
                 "Reversals": this.renderReversals(),
             }], "vertical"))
             .replace(/%BODY%/g, this.sections.map((section) => {

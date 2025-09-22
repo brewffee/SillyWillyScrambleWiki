@@ -22,6 +22,9 @@ strong fundamentals and execution is key to unleashing his full potential.
 IconPath="icon/Berb_Icon.png"
 PortraitPath="portrait/Berb_Portrait.png"
 Type="Freaky"
+Health=""
+MoveSpeed="1x"
+UniqueMovement=["%ref(Rifts in Time,Rifts in Time,p)"]
 Stage=""
 Reversals=[
     "%ref(Time Fault,2141236P,p)"

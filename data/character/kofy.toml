@@ -5,6 +5,9 @@ Description="""
 IconPath="icon/Kofy_Icon.png"
 PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
+Health=""
+MoveSpeed="1x"
+UniqueMovement=["%ref(Special1,Special1,k)"]
 Stage=""
 Reversals=[
     "%ref(Ristretto,214P,p)",
