@@ -108,13 +108,13 @@ export class RefMacro extends Macro {
 @MacroFor("btn")
 export class BtnMacro extends Macro {
     static Args: [
-        text: string,               // The raw input string (e.g. "236S")
         btns: string[] | string,    // The button or buttons to color this input with
+        text: string,               // The raw input string (e.g. "236S")
         sep?: string                // If there are many buttons, what separates them?
     ];
 
     execute(input: string): string {
-        return super.doExecute(input, ([text, btns, sep]: typeof BtnMacro.Args) => {
+        return super.doExecute(input, ([btns, text, sep]: typeof BtnMacro.Args) => {
             return renderInputString(text, btns, sep).replace("em", "em class=btn");
         });
     }

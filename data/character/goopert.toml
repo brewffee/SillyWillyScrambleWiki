@@ -421,3 +421,26 @@ Startup="-"
 Active="-"
 Recovery="-"
 
+[[Character.Supers]] # let's go gambling !!!
+Name="let's go gambling !!!"
+Type="Move"
+Inputs=["236236S"]
+Buttons=["s"]
+Condition="with 50% meter"
+Images=["move/Goopert_236236S.png", "move/Goopert_236236S_Wheel.png"]
+Hitboxes=["move/Goopert_236236S_Hitbox.png"]
+Description="""
+Goopert runs forwards and traps the enemy. To escape they must spin a roulette wheel. Depending on the number that is
+landed on, the opponent will either take damage or heal. The damage taken can vary between standard amounts of damage
+up to near-half health, making this move a top contender for the most damaging super in the game. Once the wheel has
+spun and its effects have been applied, Goopert smacks the opponent away with a Wii Remote, placing the opponent in
+Cursor State.
+"""
+[[Character.Supers.Data]]
+Version="236236S"
+Damage="- ~ -"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"

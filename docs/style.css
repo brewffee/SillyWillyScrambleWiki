@@ -1,4 +1,14 @@
 /* todo: css reorganization !!! woohoo !!! */
+:root {
+    --color-taunt: #b8860b;
+    --color-h: #dc143c;
+    --color-s: #228b22;
+    --color-k: #4682b4;
+    --color-p: #b22ea1;
+
+    --color-x: #696969;
+    --color-or: #000;
+}
 
 html {
     scroll-behavior: smooth;
@@ -416,14 +426,22 @@ a:has(.move-name) {
 }
 
 em { font-style: normal }
-[button=taunt] { color: #b8860b }
-[button=h] { color: #dc143c }
-[button=s] { color: #228b22 }
-[button=k] { color: #4682b4 }
-[button=p] { color: #b22ea1 }
-[button=x] { color: #696969 }
-[button=or] { color: #000 }
-[button=generic] { /* inherit from browser default */ }
+[button=taunt] { color: var(--color-taunt) }
+[button=h] { color: var(--color-h) }
+[button=s] { color: var(--color-s) }
+[button=k] { color: var(--color-k) }
+[button=p] { color: var(--color-p) }
+[button=x] { color: var(--color-x) }
+[button=or] { color: var(--color-or) }
+[button=_]{ /* inherit from browser default */ }
+
+.ref:has([button=taunt]) { text-decoration-color: var(--color-taunt) }
+.ref:has([button=h]) { text-decoration-color: var(--color-h) }
+.ref:has([button=s]) { text-decoration-color: var(--color-s) }
+.ref:has([button=k]) { text-decoration-color: var(--color-k) }
+.ref:has([button=p]) { text-decoration-color: var(--color-p) }
+.ref:has([button=x]) { text-decoration-color: var(--color-x) }
+.ref:has([button=or]) { text-decoration-color: var(--color-or) }
 
 .move-info img {
     max-width: 230px;
