@@ -182,11 +182,11 @@ OnBlock="-"
 [[Character.Items]]
 Type="Summary"
 Description="""
-Goopert is able to summon a wide variety of items at any point. These items can be created using %ref(behold!,behold!,p),
-???. The pool of items that can be summoned are in random order, but the next three will always be displayed on the HUD,
-giving Goopert or the opponent a chance to strategize their next moves. Some items are activated immediately upon
-drawing, some are activated once they land, and others require someone to pick them up before they can be used.
-Items that are thrown on the ground stay there until they are used.
+Goopert is able to summon a wide variety of items at any point. These items can be created using %ref(behold!,behold!,p)
+or %ref(item waterfall,"item waterfall !!!",h). The pool of items that can be summoned are in random order, but the next
+three will always be displayed on the HUD, giving Goopert or the opponent a chance to strategize their next moves. Some
+items are activated immediately upon drawing, some are activated once they land, and others require someone to pick them
+up before they can be used. Items that are thrown on the ground stay there until they are used.
 
 <h4>Random Item Chances</h4>
 <table>
