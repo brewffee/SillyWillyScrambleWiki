@@ -194,21 +194,25 @@ export class Character {
                 case "Text": {
                     const item = i as TextSection;
                     const id = item.ID ?? item.Name;
-                    this.addNavigable(id);
+                    this.addNavigable(id, false, item.Name);
 
                     return `<a href=#${safeID(id)}><h3 id=${safeID(id)} class=move-name>${item.Name}</h3></a>\n` +
                         `<span class=section-text>${this.resolveReferences(i.Description)}</span>`;
                 }
                 case "Move": {
                     const item = i as MoveSection;
-                    const name = item.Name ?? renderInputString(item.Inputs, item.Buttons, item.Separator) ?? "";
-                    const id = item.ID ?? item.Name ?? renderInputString(item.Inputs, item.Buttons, item.Separator, true) ?? "";
-                    this.addNavigable(id);
+                    const inputString = renderInputString(item.Inputs, item.Buttons, item.Separator);
+                    const rawInputString = renderInputString(item.Inputs, item.Buttons, item.Separator, true);
+
+                    const name = item.Name ?? inputString ?? "";
+                    const rawName = item.Name ?? rawInputString ?? "";
+                    const id = item.ID ?? item.Name ?? rawInputString ?? "";
+                    this.addNavigable(id, false, rawName);
 
                     return moveTemplate.replace(/%NAME%/g, name)
                         .replace(/%ID%/g, safeID(id))
                         .replace(/%EXTRA%/g, this.renderExtras(item))
-                        .replace(/%INPUT%/g, renderInputString(item.Inputs, item.Buttons, item.Separator))
+                        .replace(/%INPUT%/g, inputString)
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
                         .replace(/%CONDITION%/g, item.Condition ? `<em button=x>${this.resolveReferences(item.Condition)}</em>` : "")
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))

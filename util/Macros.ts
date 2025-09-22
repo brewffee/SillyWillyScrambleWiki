@@ -67,6 +67,7 @@ export class Macro {
         //    \\([^()]*\\)   = escaped ()
         //  )*
         //  \)               = rparen
+        // todo: to nobody's surprise i fucked up quotes, " ' " is an invalid string; this is probably an error inside of parseArgs
         return input.replace(new RegExp(`%${this.name}\\((?:[^()"']|"[^"]*"|'[^']*'|\\([^()]*\\))*\\)`, "g"), (match) => {
             // the other one is just to taje the shiiit out
             return callback(this.parseArgs(match.replace(new RegExp(`^%${this.name}\\(|\\)$`, "g"), "")));

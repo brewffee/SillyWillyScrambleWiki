@@ -19,11 +19,11 @@ Name="Cursor State"
 Type="Text"
 Description="""
 In Cursor State, a Wii pointer tracks to the opponent at all times. The opponent can be placed in Cursor State by
-landing %ref(wii aim,wii aim,s) or by using ???. This state lasts for a set amount of time or until Goopert is hit. All
-items that perform attacks such as %ref(Funny Fork,Funny Fork,_), %ref(Blue Bird,Blue Bird,_), and
-%ref(Fishing Rod,Fishing Rod,_) will home into the opponent's current position. Additionally, when drawing an item
-with %ref(behold!,behold!,p), Goopert can influence the direction of the falling item using 6 or 4 to pull the item
-forwards or backwards respectively.
+landing %ref(wii aim,wii aim,s) or by using %ref("lets go gambling","let\\'s go gambling !!!",s). This state lasts for a set
+amount of time or until Goopert is hit. All items that perform attacks such as %ref(Funny Fork,Funny Fork,_),
+%ref(Blue Bird,Blue Bird,_), and %ref(Fishing Rod,Fishing Rod,_) will home into the opponent's current position.
+Additionally, when drawing an item with %ref(behold!,behold!,p), Goopert can influence the direction of the falling item
+using 6 or 4 to pull the item forwards or backwards respectively.
 """
 
 ###################################
@@ -396,6 +396,7 @@ OnBlock="-"
 ###################################
 [[Character.Supers]] # item waterfall !!!
 Name="item waterfall !!!"
+ID="item waterfall"
 Type="Move"
 Inputs=["632146H"]
 Buttons=["h"]
@@ -423,6 +424,7 @@ Recovery="-"
 
 [[Character.Supers]] # let's go gambling !!!
 Name="let's go gambling !!!"
+ID="lets go gambling"
 Type="Move"
 Inputs=["236236S"]
 Buttons=["s"]
