@@ -370,9 +370,12 @@ Name="O-Tome"
 Images=["items/Goopert_OTome.png", "move/Goopert_OTome_Attack.png", "move/Goopert_OTome_Wall.png"]
 Hitboxes=["items/Goopert_OTome_Hitbox.png", "move/Goopert_OTome_Attack_Hitbox.png", "move/Goopert_OTome_Wall_Hitbox.png"]
 Description="""
-When Goopert or the opponent grabs this item, they immediately perform Tomo's 6S. At the end of the initial reflection,
-the wall transforms into a wall of ice. This wall only disappears when hit by the opponent, and Goopert is able to
-pass through it.
+When Goopert or the opponent grabs this item, they immediately perform %refOther(Tomo,6S,"Tomo\\'s",6S,s). At the end of
+the initial reflection, the wall transforms into a wall of ice. This wall only disappears when hit by the opponent, and
+Goopert is able to pass through it.
+<ul>
+    <li>When picked up by Tomo, this move will cost 5% Mana as if performed normally.</li>
+</ul>
 """
 [[Character.Items.Data]]
 Version="Reflector"

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-import { BtnMacro, ImgMacro, NoteMacro, RefMacro, UrlMacro } from "./util/Macros.ts";
+import { BtnMacro, ImgMacro, NoteMacro, RefMacro, RefOtherMacro, UrlMacro } from "./util/Macros.ts";
 import { compareVersions, safeID, renderInputString } from "./util/util.ts";
 import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move } from "./types/Move.ts";
@@ -92,6 +92,7 @@ export class Character {
     // todo: move elsewhere + add optional args and merge macros
     resolveReferences(input: string): string {
         let result = new RefMacro().execute(input);                       // References to moves
+        result = new RefOtherMacro().execute(result);                     // References to other characters' moves
         result = new BtnMacro().execute(result);                          // Button colored text
         result = new UrlMacro().execute(result, this.logger);             // Links to other pages
         result = new ImgMacro().execute(result, this.logger, this.Name);  // Character image embed

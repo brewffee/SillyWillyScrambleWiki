@@ -87,7 +87,7 @@ function MacroFor(name: string) {
     };
 }
 
-// converts `%mref(NAME,TEXT,BTNS,SEP)` to `<a href="#NAME" class=ref title="NAME">INPUT</a>`
+// converts `%ref(NAME,TEXT,BTNS,SEP)` to `<a href="#NAME" class=ref title="NAME">INPUT</a>`
 @MacroFor("ref")
 export class RefMacro extends Macro {
     static Args: [
@@ -105,7 +105,32 @@ export class RefMacro extends Macro {
     }
 }
 
-// converts `%mbtn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
+// todo: reference should automatically gather text btns, etc from the move object that we store on init
+// converts `%refOther(CHARACTER,NAME,CHARATEXT,MOVETEXT,BTNS,SEP)` to two <a.ref>s with character and move pages
+@MacroFor("refOther")
+export class RefOtherMacro extends Macro {
+    static Args: [
+        character: string,          // Who does this move belong to?
+        name: string,               // What is this a reference to?
+        charaText: string,          // The text to display for the character
+        moveText: string,           // The raw input string (e.g. "236S")
+        btns: string[] | string,    // The button or buttons to color this input with
+        sep?: string                // If there are many buttons, what separates them?
+    ];
+
+    execute(input: string): string {
+        return super.doExecute(input, ([chara, name, ctext, mtext, btns, sep]: typeof RefOtherMacro.Args) => {
+            const inputStr = renderInputString(mtext, btns, sep);
+            return `
+                <a class="ref" href="../characters/${chara.toLowerCase()}.html" title="${chara}">${ctext}</a>
+                <a class="ref" href="../characters/${chara.toLowerCase()}.html#${safeID(name)}" title="${name}">${inputStr}</a>
+            `;
+        });
+    }
+}
+
+// todo: i wonder, can we create a utility to automatically extract buttons? this would be omega useful
+// converts `%btn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
 @MacroFor("btn")
 export class BtnMacro extends Macro {
     static Args: [
@@ -137,7 +162,7 @@ export class UrlMacro extends Macro {
             if (external) return `<a href="${url}" title="${alt}" target="_blank" rel="noreferrer">${text}</a>`;
 
             if (!fs.existsSync(`docs/${url}`)) logger.warn(`Could not find requested link target: ${url}`);
-            return `<a href="${url}" title="${alt}">${text}</a>`;
+            return `<a href="../${url}" title="${alt}">${text}</a>`;
         });
     }
 }

@@ -56,7 +56,7 @@ Max performs one out of the three possible taunts:
 <ul>
     <li>Max morphs into an unmoving .jpeg of a random cat</li>
     <li>Max performs the Lunar Party fortnite emote with a badly-recreated version of the audio</li>
-    <li>Max hits the %url(https://www.youtube.com/watch?v=nyqmwLd8rXU,Yeet by Lil Cashew,Yeet by Lil Cashew) pose</li>
+    <li>Max hits the %url(https://www.youtube.com/watch?v=nyqmwLd8rXU,Yeet by Lil Cashew,Yeet by Lil Cashew,true) pose</li>
 </ul>
 """
 [[Character.Normals.Data]]
