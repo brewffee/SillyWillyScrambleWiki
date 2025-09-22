@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
-import { Macro, multicolor } from "./util/Macros.ts";
-import { compareVersions, safeID } from "./util/util.ts";
+import { BtnMacro, ImgMacro, NoteMacro, RefMacro, UrlMacro } from "./util/Macros.ts";
+import { compareVersions, safeID, renderInputString } from "./util/util.ts";
 import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move } from "./types/Move.ts";
 import { characters, exportDir } from "./index.ts";
@@ -91,65 +91,11 @@ export class Character {
     // resolve macros into HTML elements
     // todo: move elsewhere + add optional args and merge macros
     resolveReferences(input: string): string {
-        // reference to move
-        // converts `%ref(NAME,INPUT,BTN)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
-        let result = new Macro("ref", 3).execute(input, ([name, input, btn]) => {
-            return `<a href="#${safeID(name)}" class=ref button="${btn.toLowerCase()}" title="${name}">${input}</a>`;
-        });
-
-        // multicolored reference
-        // colors the initial move with BTN1, colors the separator SEP black, and the rest with BTN<N>
-        // converts `%mref(NAME,INPUT,BTN1BTN2...,SEP)` to `<a href="#NAME" class=ref button="BTN" title="NAME">INPUT</a>`
-        result = new Macro("mref", 4).execute(result, ([name, input, btns, sep]) => {
-            const inputStr = multicolor(input, btns, sep);
-            return `<a href="#${safeID(name)}" class=ref button="${btns[0].toLowerCase()}" title="${name}">${inputStr}</a>`;
-        });
-
-        // button colored text
-        // converts `%btn(BTN,TEXT)` to `<em class=btn button="BTN">TEXT</em>`
-        result = new Macro("btn", 2).execute(result, ([btn, text]) => {
-            return `<em class=btn button="${btn.toLowerCase()}">${text}</em>`;
-        });
-
-        // multi button colored text
-        // converts `%mbtn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
-        result = new Macro("mbtn", 3).execute(result, ([raw, buttons, sep]) => {
-            const text = multicolor(raw, buttons, sep);
-            return `<em class=btn button="${buttons[0].toLowerCase()}">${text}</em>`;
-        });
-
-        // site link reference
-        // converts `%link(URL,ALT,TEXT)` to `<a href="URL" title="ALT">TEXT</a>`
-        result = new Macro("link", 3).execute(result, ([url, alt, text]) => {
-            if (!fs.existsSync(`docs/${url}`)) {
-                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested link target: ${url}`);
-            }
-
-            return `<a href="../${url}" title="${alt}">${text}</a>`;
-        });
-
-        // character image embed
-        // converts `%img(PATH,ALT,NOTE)` to `<div class=embed><img src="../images/CHARACTER/PATH" alt="ALT"><p>NOTE</p></div>`
-        result = new Macro("img", 3).execute(result, ([path, alt, note]) => {
-            if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${path}`)) {
-                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not embed requested image: ${path}`);
-            }
-
-            return `<div class=embed><img src="../images/${this.Name.toLowerCase()}/${path}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
-        });
-
-        // note definition tooltip
-        // converts `%note(TEXT,DISPLAY)` to `<span class=note title="TEXT">DISPLAY</span>`
-        result = new Macro("note", 2).execute(result, ([text, display]) => {
-            return `<span class=note title="${text}">${display}</span>`;
-        });
-
-        // external url
-        // converts `%url(URL,ALT,TEXT)` to `<a href="URL" title="ALT" target="_blank" rel="noreferrer">TEXT</a>`
-        result = new Macro("url", 3).execute(result, ([url, alt, text]) => {
-            return `<a href="${url}" title="${alt}" target="_blank" rel="noreferrer">${text}</a>`;
-        });
-
+        let result = new RefMacro().execute(input);                       // References to moves
+        result = new BtnMacro().execute(result);                          // Button colored text
+        result = new UrlMacro().execute(result, this.logger);             // Links to other pages
+        result = new ImgMacro().execute(result, this.logger, this.Name);  // Character image embed
+        result = new NoteMacro().execute(result);                         // Context tooltip
         return result;
     }
 
@@ -166,18 +112,6 @@ export class Character {
         if (move.AirOK) extras.push("Air");
 
         return extras.length > 0 ? `(${extras.join(", ")} OK)` : "";
-    }
-
-    // creates an input string with appropriate coloring
-    renderInputString(inputs?: string[], buttons?: string[], sep: string = "/", clean: boolean = false): string {
-        if (!inputs) return inputs?.[0] ?? "";
-
-        return inputs.flatMap((input, index, arr) => {
-            let separator;
-            if (index < arr.length - 1 && sep) separator = clean ? sep : `<em button=or>${sep}</em>`;
-
-            return [ clean ? input : `<em button=${buttons?.[index] ?? "x"}>${input}</em>`, separator ];
-        }).join("");
     }
 
     renderFrameData(data: FrameData[]): string {
@@ -267,14 +201,14 @@ export class Character {
                 }
                 case "Move": {
                     const item = i as MoveSection;
-                    const name = item.Name ?? this.renderInputString(item.Inputs, item.Buttons, item.Separator) ?? "";
-                    const id = item.ID ?? item.Name ??this.renderInputString(item.Inputs, item.Buttons, item.Separator, true) ?? "";
+                    const name = item.Name ?? renderInputString(item.Inputs, item.Buttons, item.Separator) ?? "";
+                    const id = item.ID ?? item.Name ?? renderInputString(item.Inputs, item.Buttons, item.Separator, true) ?? "";
                     this.addNavigable(id);
 
                     return moveTemplate.replace(/%NAME%/g, name)
                         .replace(/%ID%/g, safeID(id))
                         .replace(/%EXTRA%/g, this.renderExtras(item))
-                        .replace(/%INPUT%/g, this.renderInputString(item.Inputs, item.Buttons, item.Separator))
+                        .replace(/%INPUT%/g, renderInputString(item.Inputs, item.Buttons, item.Separator))
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
                         .replace(/%CONDITION%/g, item.Condition ? `<em button=x>${this.resolveReferences(item.Condition)}</em>` : "")
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))

@@ -1,11 +1,10 @@
 import * as TOML from "@iarna/toml";
-import fs from "node:fs";
-import path from "node:path";
+import * as fs from "fs";
+import path from "path";
 
 import { logger, templateDir } from "../index.ts";
 
 // todo: move functions to appropriate files
-
 export const loadToml = (path: string, validator: (data: TOML.JsonMap) => boolean): TOML.JsonMap | undefined => {
     let data: TOML.JsonMap;
     try {
@@ -74,4 +73,32 @@ export const appendLast = (arr: string[], str: string): string[] => {
 // safely converts a string to a valid HTML ID
 export const safeID = (input: string): string => {
     return input.replace(/ /g, "-").replace(/[^a-zA-Z0-9-.]/g, "");
+};
+
+// creates an input string with appropriate coloring
+// todo: we might encounter some weird strings like "236S~P/K", sep should become an array
+export const renderInputString = (inputs?: string[] | string, buttons?: string[] | string, sep: string = "/", clean: boolean = false): string => {
+    if (!inputs) return inputs?.[0] ?? "";
+    if (typeof inputs === "string") inputs = [inputs];
+    if (typeof buttons === "string") buttons = [buttons];
+
+    return inputs.flatMap((input, index, arr) => {
+        let separator;
+        if (index < arr.length - 1 && sep) separator = clean ? sep : `<em button=or>${sep}</em>`;
+
+        return [ clean ? input : `<em button=${buttons?.[index] ?? "x"}>${input}</em>`, separator ];
+    }).join("");
+};
+
+// is this string contained by something?
+export const isContained = (text: string, host: string): boolean => {
+    let end = host;
+
+    switch (host) {
+        case "[": end = "]"; break;
+        case "(": end = ")"; break;
+        case "{" : end = "}"; break;
+    }
+
+    return text.startsWith(host) && text.endsWith(end);
 };

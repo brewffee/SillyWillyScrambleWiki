@@ -25,8 +25,8 @@ when the Exhilaration Meter maxes out, or manually by using %ref(Ace,Ace,p). Whi
 Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using %ref(Ace,Ace,p),
 she will instead be forced out of Exhilaration and into a brief vulnerable period of recovery.
 
-%img(Dani_Exhilaration_Meters.png,Exhilaration Meters,Exhilaration Meter when in normal mode (left\\)\\, compared to
-Exhilaration mode (right\\))
+%img(Dani_Exhilaration_Meters.png,Exhilaration Meters,"Exhilaration Meter when in normal mode (left), compared to
+Exhilaration mode (right)")
 """
 
 [[Character.Mechanics]] # Ammo
