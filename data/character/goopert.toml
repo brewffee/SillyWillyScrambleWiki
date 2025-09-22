@@ -80,8 +80,9 @@ Buttons=["k"]
 Images=["move/Goopert_214K.png", "move/Goopert_214K_2.png"]
 Hitboxes=["move/Goopert_214K_Hitbox.png", "move/Goopert_214K_2_Hitbox.png"]
 Description="""
-Goopert jumps backwards quickly. When %btn(k,K) is pressed again, Goopert jumps forwards, moving past his original
-position.
+Goopert jumps backwards quickly and attacks the opponent with his body. When %btn(k,K) is pressed again, Goopert jumps
+forwards, moving past his original position. If the opponent or Goopert makes contact with the wall at any point, they
+will wallbounce.
 """
 [[Character.Specials.Data]]
 Version="214K"

@@ -39,7 +39,7 @@ Description="""
 Max uses their Caffeine Gauge to perform enhanced versions of their special moves. Max starts the round with 0 out of
 3 Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are significantly
 more powerful, deal more damage, and have more launch power, allowing for more combo potential when managed correctly.
-%img(Max_Caffeine_Gauge.png,Caffeine Gauge, Max's Caffeine Gauge when full)
+%img(Max_Caffeine_Gauge.png,Caffeine Gauge,"Max\\'s Caffeine Gauge when full")
 """
 
 ###################################

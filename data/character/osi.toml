@@ -118,7 +118,7 @@ Hitboxes=["move/Osi_236P_P_Hitbox.png"]
 Description="""
 The high follow-up to %ref(Ignited Blade,Ignited Blade,p). Osi transforms his sword hand into a flaming scythe and
 spins around, raising his scythe high before bringing it down in a wide arc. A rather slow overhead, but a great
-option for catching opponents who are instead expecting %mref(Ignited Sweep,236P~K,pk,~) or %mref(Billowing Backoff,236P~S,ps,~).
+option for catching opponents who are instead expecting %ref(Ignited Sweep,236P~K,pk,~) or %ref(Billowing Backoff,236P~S,psy,~).
 """
 [[Character.Specials.Data]]
 Damage="-"
@@ -139,8 +139,8 @@ Hitboxes=["move/Osi_236P_K_Hitbox.png"]
 Description="""
 The low follow-up to %ref(Ignited Blade,Ignited Blade,p). Osi reverts his hand back to normal and ignites his leg,
 sweeping it along the ground. Generally safer and faster than its overhead counterpart, but for less in return.
-Effective at catching opponents who are mashing expecting to hit the startup of %ref(Ignited Reap,236P~P,p) or trying
-to hard-punish %mref(Billowing Backoff,236P~S,ps,~).
+Effective at catching opponents who are mashing expecting to hit the startup of %ref(Ignited Reap,236P~P,pp,~) or trying
+to hard-punish %ref(Billowing Backoff,236P~S,ps,~).
 <ul>
     <li>Causes hard knockdown on hit</li>
 </ul>

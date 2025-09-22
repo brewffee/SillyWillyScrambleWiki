@@ -78,9 +78,13 @@ export const safeID = (input: string): string => {
 // creates an input string with appropriate coloring
 // todo: we might encounter some weird strings like "236S~P/K", sep should become an array
 export const renderInputString = (inputs?: string[] | string, buttons?: string[] | string, sep: string = "/", clean: boolean = false): string => {
-    if (!inputs) return inputs?.[0] ?? "";
-    if (typeof inputs === "string") inputs = [inputs];
-    if (typeof buttons === "string") buttons = [buttons];
+    if (!inputs) return "";
+
+    if (typeof inputs === "string") inputs = inputs.split(sep);
+    if (typeof buttons === "string") {
+        if (!["generic", "or", "taunt"].includes(buttons)) buttons = buttons.split("");
+        else buttons = [buttons];
+    }
 
     return inputs.flatMap((input, index, arr) => {
         let separator;

@@ -441,7 +441,6 @@ em { font-style: normal }
 .ref:has([button=k]) { text-decoration-color: var(--color-k) }
 .ref:has([button=p]) { text-decoration-color: var(--color-p) }
 .ref:has([button=x]) { text-decoration-color: var(--color-x) }
-.ref:has([button=or]) { text-decoration-color: var(--color-or) }
 
 .move-info img {
     max-width: 230px;
