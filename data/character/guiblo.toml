@@ -23,7 +23,7 @@ IconPath="icon/Guiblo_Icon.png"
 PortraitPath="portrait/Guiblo_Portrait.png"
 Type="Grappler"
 Health=""
-MoveSpeed="1x"
+MoveSpeed="0.7x"
 Stage="Sandwicheimer Destruction Site"
 Reversals=[
     "%ref(Huebenly Buster,623H,h)",

@@ -22,8 +22,8 @@ right hands, Tomo is a highly versatile and cerebral fighter who rewards patienc
 IconPath="icon/Tomo_Icon.png"
 PortraitPath="portrait/Tomo_Portrait.png"
 Type="Magic"
-Health=""
-MoveSpeed="1x"
+Health="550"
+MoveSpeed="0.9x"
 Stage=""
 Reversals=[
     "%ref(Tonitru Pirouette,236236S,s)",

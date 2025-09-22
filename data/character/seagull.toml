@@ -8,8 +8,8 @@ take advantage when the opportunity presents itself.
 IconPath="icon/Seagull_Icon.png"
 PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
-Health=""
-MoveSpeed="1x"
+Health="375"
+MoveSpeed="1.1x (1.6x Airdash)"
 UniqueMovement=["Quadruple Jump"]
 Stage="Seagull Corp Building"
 Reversals=[
@@ -277,3 +277,8 @@ OnBlock="-"
 Version="Install"
 Active="-"
 Recovery="-"
+
+###################################
+# Instant Kills
+###################################
+# Seagull breaks the opponent's bed

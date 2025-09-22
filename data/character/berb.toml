@@ -253,3 +253,8 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 Invuln=["Full", "Pass-through"]
+
+###################################
+# Instant Kills
+###################################
+# Berb goes back in time to when the opponent was a baby and kills them

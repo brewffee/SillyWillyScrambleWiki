@@ -147,3 +147,8 @@ HitboxNotes=[""]    # Notes for each hitbox
 Description="""
 """
 
+###################################
+# Instant Kills
+###################################
+# Instant kills are purely conceptual and may or may not be implemented into the game.
+
