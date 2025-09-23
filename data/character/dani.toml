@@ -8,6 +8,7 @@ PortraitPath="portrait/Dani_Portrait.png"
 Type="Bnnuy"
 Health=""
 MoveSpeed="1x"
+UniqueMovement=["%ref(Movement Control,Movement Control,k)"]
 Stage=""
 Reversals=[
     "%ref(Bait,ex.623S,s)"

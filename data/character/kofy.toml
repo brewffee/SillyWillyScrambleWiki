@@ -7,7 +7,7 @@ PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Health="500"
 MoveSpeed="1x"
-UniqueMovement=["%ref(Special1,Special1,k)"]
+UniqueMovement=["%ref(Special1,Special1,k), %ref(Espresso,41236K,k)"]
 Stage=""
 Reversals=[
     "%ref(Ristretto,214P,p)",

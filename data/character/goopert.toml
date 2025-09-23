@@ -6,7 +6,7 @@ so goop
 IconPath="icon/Goopert_Icon.png"
 PortraitPath="portrait/Goopert_Portrait.png"
 Type="Silly"
-Health=""
+Health="320"
 MoveSpeed="1x"
 Stage="Throne Room"
 Reversals=[

@@ -10,7 +10,7 @@ PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
 Health="375"
 MoveSpeed="1.1x (1.6x Airdash)"
-UniqueMovement=["Quadruple Jump"]
+UniqueMovement=["Quadruple Jump", "%ref(Skill,Skill,k)"]
 Stage="Seagull Corp Building"
 Reversals=[
     "%ref(Double or Nothing,632146H,h)",

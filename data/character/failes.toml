@@ -11,7 +11,7 @@ PortraitPath="portrait/Failes_Portrait.png"
 Type="Gooner"
 Health="420"
 MoveSpeed="1.269x"
-UniqueMovement=["%ref(Loyalty,Loyalty,_)"]
+UniqueMovement=["%ref(Loyalty,Loyalty)"]
 Stage="Creative Server Lava Pit"
 Reversals=[
     "%ref(Mending,623H,h)",
