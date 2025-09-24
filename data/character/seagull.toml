@@ -69,7 +69,7 @@ Recovery="-"
 Name="Scam"
 Type="Move"
 Inputs=["214S"]
-Condition="or %btn(s,4S) (Modern)"
+Condition="or %auto(4S) (Modern)"
 AirOK=true
 Buttons=["s"]
 Images=["move/Seagull_214S.png"]
@@ -100,13 +100,13 @@ Name="Bet"
 Type="Move"
 Inputs=["j.236P", "S", "H"]
 Buttons=["p", "s", "h"]
-Condition="or %btn(psh,j.6P/S/H,/) (Modern)"
+Condition="or %auto(j.6P/S/H) (Modern)"
 Images=["move/Seagull_Bet.png"]
 Hitboxes=["move/Seagull_Bet_Hitbox.png"]
 Description="""
-Seagull quickly dashes through the air, hitting anything in his path. The %btn(p,P) version sends Seagull diagonally
-upwards, the %btn(s,S) version sends Seagull horizontally, and the %btn(h,H) version sends Seagull diagonally downwards.
-All versions of Bet hit overhead. Using %btn(s,S) or %btn(h,H) <b>Bet</b> close to the ground combined with the
+Seagull quickly dashes through the air, hitting anything in his path. The %auto(P) version sends Seagull diagonally
+upwards, the %auto(S) version sends Seagull horizontally, and the %auto(H) version sends Seagull diagonally downwards.
+All versions of Bet hit overhead. Using %auto(S) or %auto(H) <b>Bet</b> close to the ground combined with the
 threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredibly ambiguous overhead.
 """
 [[Character.Specials.Data]]
@@ -139,7 +139,7 @@ Name="Skill"
 Type="Move"
 Inputs=["j.236K"]
 Buttons=["k"]
-Condition="or %btn(k,j.6K) (Modern)"
+Condition="or %auto(j.6K) (Modern)"
 Images=["move/Seagull_j236K.png"]
 Description="""
 Seagull shoots himself downwards at a steep angle with no hitbox. He can use this move to quickly cross through the
@@ -155,7 +155,7 @@ Name="Your"
 Type="Move"
 Inputs=["236S"]
 Buttons=["s"]
-Condition="or %btn(s,6S) (Modern)"
+Condition="or %auto(6S) (Modern)"
 Images=["move/Seagull_236S.png"]
 Hitboxes=["move/Seagull_236S_Hitbox.png"]
 Description="""
@@ -198,7 +198,7 @@ Name="The King"
 Type="Move"
 Inputs=["214H"]
 Buttons=["h"]
-Condition="or %btn(h,4H) (Modern)"
+Condition="or %auto(4H) (Modern)"
 Images=["move/Seagull_214H.png"]
 Hitboxes=["move/Seagull_214H_Hitbox.png"]
 Description="""
@@ -221,14 +221,14 @@ Name="Double or Nothing"
 Type="Move"
 Inputs=["632146H"]
 Buttons=["h"]
-Condition="or %btn(sh,6S+H,+) (Modern) with 50% meter"
+Condition="or %auto(6S+H) (Modern) with 50% meter"
 Images=["move/Seagull_632146H.png", "move/Seagull_632146H_Parry.png"]
 Hitboxes=["move/Seagull_632146H_Hitbox.png", "move/Seagull_632146H_Parry_Hitbox.png"]
 Description="""
 An invincible rising reversal that has the ability to loop into itself. Seagull rises up into the air, then divebombs
-downwards, taking the opponent with him. If %btn(h,H) is pressed again after the initial divebomb, Seagull will enter
+downwards, taking the opponent with him. If %auto(H) is pressed again after the initial divebomb, Seagull will enter
 a parry stance that catches strike attacks. If the parry makes contact, Double or Nothing will loop back into itself
-and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing %btn(h,H). If the parry
+and will be able to repeat the sequence until the parry whiffs or until Seagull stops pressing %auto(H). If the parry
 misses, Seagull will be locked in counter hit recovery for the remainder of the move, giving his opponent a free punish.
 <ul>
     <li>For every time the rising attack hits, an additional attack is added, and the height traveled is increased.</li>
@@ -257,7 +257,7 @@ Name="Ground Orange Duck"
 Type="Move"
 Inputs=["214214P"]
 Buttons=["p"]
-Condition="or %btn(pk,4P+K,+) (Modern) with 50% meter"
+Condition="or %auto(4P+K) (Modern) with 50% meter"
 Images=["move/Seagull_214214P.png", "move/Seagull_214214P_Install.png"]
 Hitboxes=["move/Seagull_214214P_Hitbox.png"]
 ImageNotes=["If you can't beat 'em, join 'em"]

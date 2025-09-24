@@ -100,16 +100,16 @@ Hitboxes=[
     "move/Tomo_236S_Hitbox.png", "move/Tomo_236H_Hitbox.png",
     "move/Tomo_j236S_Hitbox.png", "move/Tomo_j236H_Hitbox.png",
 ]
-HitboxNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,j.S) version", "%btn(h,j.H) version"]
+HitboxNotes=["%auto(S) version", "%auto(H) version", "%auto(j.S) version", "%auto(j.H) version"]
 Description="""
 A chargeable fire-based projectile that travels along a set path, exploding into a fiery vortex which launches the
 opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
 can travel before exploding or disappearing.
 <ul>
-    <li>%btn(s,S) <b>Ignis Rush</b> creates a projectile that travels along the ground. When performed in the air,
+    <li>%auto(S) <b>Ignis Rush</b> creates a projectile that travels along the ground. When performed in the air,
     the projectile maintains its usual horizontal trajectory. The explosion triggers after a certain amount of distance
      or upon hitting the opponent.</li>
-    <li>%btn(h,H) <b>Ignis Rush</b> creates a projectile that travels diagonally up into the air. When performed in
+    <li>%auto(H) <b>Ignis Rush</b> creates a projectile that travels diagonally up into the air. When performed in
      the air, the projectile travels diagonally downwards. The explosion no longer triggers automatically, only
      activating when it hits the opponent.</li>
 </ul>
@@ -164,15 +164,15 @@ Hitboxes=[
     "move/Tomo_214S~S_Hitbox.png",
     "move/Tomo_214H~H_Hitbox.png"
 ]
-HitboxNotes=["%btn(s,S) version", "%btn(h,H) version"]
+HitboxNotes=["%auto(S) version", "%auto(H) version"]
 Description="""
 Tomo summons blades of wind that can be used to push the opponent.
 <ul>
-    <li>In %btn(s,S) <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
-    the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing %btn(s,S) again makes
+    <li>In %auto(S) <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
+    the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing %auto(S) again makes
     Tomo perform a forward thrust with his spear, sending the opponent into the winds.</li>
-    <li>In %btn(h,H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the opponent.
-    Pressing %btn(h,H) again halts his movement to float upwards, shortly before diving into the ground and hitting
+    <li>In %auto(H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the opponent.
+    Pressing %auto(H) again halts his movement to float upwards, shortly before diving into the ground and hitting
     the opponent high.</li>
 </ul>
 """
@@ -220,11 +220,11 @@ Hitboxes=["move/Tomo_22X.png"]
 Description="""
 Tomo stands in place and recovers his Mana gauge
 <ul>
-    <li>%btn(p,P) <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
-    should be very careful when using it. This version is almost always overshadowed by %btn(k,22K) unless
+    <li>%auto(P) <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
+    should be very careful when using it. This version is almost always overshadowed by %auto(22K) unless
     Tomo has secured a safe position to use it in.</li>
-    <li>%btn(k,K) <b>Renovare</b> recovers mana quickly at the cost of meter. This version is much safer to use in
-    neutral, but is still requires a similar caution to its %btn(p,P) counterpart, as Tomo will gradually lose
+    <li>%auto(K) <b>Renovare</b> recovers mana quickly at the cost of meter. This version is much safer to use in
+    neutral, but is still requires a similar caution to its %auto(P) counterpart, as Tomo will gradually lose
     more meter over time.</li>
 </ul>
 """
@@ -251,9 +251,9 @@ Description="""
 Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
 place until a set amount of time passes or immediately upon the next hit.
 <ul>
-    <li>In %btn(p,P) <b>Glacies Pierce</b>, Tomo slams the ground in front of him, sprouting a large pillar of ice
+    <li>In %auto(P) <b>Glacies Pierce</b>, Tomo slams the ground in front of him, sprouting a large pillar of ice
     that hits the opponent low. Creates a large enough barrier to make it difficult for the opponent to jump over.</li>
-    <li>In %btn(k,K) <b>Glacies Pierce</b>, Tomo rides into the air, summoning a trail of ice underneath him that hits
+    <li>In %auto(K) <b>Glacies Pierce</b>, Tomo rides into the air, summoning a trail of ice underneath him that hits
     the opponent high. On air hit, the opponent is frozen until they reach the ground, taking additional damage and
     causing a ground bounce. The ice trail is summoned high enough to where it is difficult to jump over, and low
     enough that the opponent needs to use a good low-profile option to respond.</li>

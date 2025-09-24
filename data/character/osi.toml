@@ -96,7 +96,7 @@ Images=["move/Osi_236P.png"]
 Hitboxes=["move/Osi_236P_Hitbox.png"]
 Description="""
 The beginning of Osi's rekka. Osi transforms his hand into a flaming blade and slashes forward. This move can be
-cancelled into one of three different follow-up attacks by pressing %btn(p,P), %btn(k,K), or %btn(s,S) after the initial
+cancelled into one of three different follow-up attacks by pressing %auto(P), %auto(K), or %auto(S) after the initial
 hit connects, allowing him access to a high, low, or an evasive option respectively. Like all moves in his rekka, this
 move creates a large amount of visual noise, making it considerably dangerous and less preferable to use inside of Mist
 as a mix-up tool.

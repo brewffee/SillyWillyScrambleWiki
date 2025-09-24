@@ -120,9 +120,9 @@ Buttons=["p", "s", "h"]
 Images=["move/Guiblo_236PSH.png", "move/Guiblo_236PSH_Explosion.png"]
 Hitboxes=["move/Guiblo_236PSH_Explosion_Hitbox.png"]
 Description="""
-Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %btn(p,P) version
-launches himself upwards, %btn(s,S) version launches horizontally, and %btn(h,H) sends him diagonally downwards. If
-he performs the %btn(h,H) version on the ground, Guiblo will only move slightly forwards.
+Guiblo blows himself up with a grenade, damaging himself and sending him in a specified direction. %auto(P) version
+launches himself upwards, %auto(S) version launches horizontally, and %auto(H) sends him diagonally downwards. If
+he performs the %auto(H) version on the ground, Guiblo will only move slightly forwards.
 """
 [[Character.Specials.Data]]
 Version="236P"

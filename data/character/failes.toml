@@ -35,16 +35,16 @@ Hitboxes=[
     "move/Failes_Riptide~K_Hitbox.png"
 ]
 HitboxNotes=[
-    "%btn(s,[4]6S) version", "%btn(h,[2]8H) version",
-    "%btn(k,K) cancel"
+    "%auto([4]6S) version", "%auto([2]8H) version",
+    "%auto(K) cancel"
 ]
 Description="""
 Fail throws his trident and hops on, traveling until he hits the opponent or the edge of the screen. At any point
-during Riptide, he can choose to press %btn(p,P) or %btn(k,K) to exit early and enter recovery. %btn(s,[4]6S) sends
-Fail horizontally, while %btn(h,[2]8H) sends him upwards at a steep angle.
+during Riptide, he can choose to press %auto(P) or %auto(K) to exit early and enter recovery. %auto([4]6S) sends
+Fail horizontally, while %auto([2]8H) sends him upwards at a steep angle.
 <ul>
-    <li>%btn(p,P) cancel stops the attack immediately and sends him into a short recovery period.</li>
-    <li>%btn(k,K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.</li>
+    <li>%auto(P) cancel stops the attack immediately and sends him into a short recovery period.</li>
+    <li>%auto(K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.</li>
 </ul>
 """
 [[Character.Specials.Data]]
@@ -141,8 +141,8 @@ Fail throws his trident at a specified angle. If he presses the corresponding bu
 moves to the trident's position. Additionally, if he is moving towards the trident, he can cancel the rest of the
 attack into another special, including the recovery.
 <ul>
-    <li><b>%btn(p,P) Loyalty</b> throws the trident straight forwards.
-    <li><b>%btn(k,K) Loyalty</b> throws trident upwards diagonally, or if in the air, downwards diagonally.
+    <li><b>%auto(P) Loyalty</b> throws the trident straight forwards.
+    <li><b>%auto(K) Loyalty</b> throws trident upwards diagonally, or if in the air, downwards diagonally.
 </ul>
 """
 [[Character.Specials.Data]]

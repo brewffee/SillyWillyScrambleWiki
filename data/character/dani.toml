@@ -72,8 +72,8 @@ Description="""
 Dani fires one bullet aimed at either the ceiling or the floor. Both versions track to the opponent's position after
 ricocheting.
 <ul>
-    <li>%btn(s,S) version ricochets off the ceiling and hits the opponent high.</li>
-    <li>%btn(h,H) version ricochets off the floor and hits the opponent low, although at a much slower speed.</li>
+    <li>%auto(S) version ricochets off the ceiling and hits the opponent high.</li>
+    <li>%auto(H) version ricochets off the floor and hits the opponent low, although at a much slower speed.</li>
 </ul>
 """
 [[Character.Specials.Data]]
@@ -172,9 +172,9 @@ Description="""
 Dani charges towards the opponent before diving into the opponent with an attack that hits either high or low, depending
 on which button is pressed.
 <ul>
-    <li>In the %btn(s,S) version, Dani leaps into the air and dives downwards, hitting the opponent high and causing
+    <li>In the %auto(S) version, Dani leaps into the air and dives downwards, hitting the opponent high and causing
     ground bounce on hit.</li>
-    <li>In the %btn(h,H) version, Dani dives downwards onto the ground with a low profile, then launching the opponent
+    <li>In the %auto(H) version, Dani dives downwards onto the ground with a low profile, then launching the opponent
     upwards with a rising low attack.</li>
     <li>Both versions can still hit the opponent before the dive attack if they are close enough</li>
     <li>Without the initial hit, the effective startup of the move is ??F</li>

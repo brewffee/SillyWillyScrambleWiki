@@ -102,7 +102,7 @@ Buttons=["k"]
 Images=["move/Berb_214K.png"]
 Hitboxes=["move/Berb_214K_Hitbox.png"]
 Description="""
-Berb teleports to the most recent Rift Point. If %btn(k,K) is pressed again during the animation, Berb will instead
+Berb teleports to the most recent Rift Point. If %auto(K) is pressed again during the animation, Berb will instead
 move to the next point in line. This can be repeated an additional time to move to the oldest point. Choosing a
 different point to teleport to can help trip up opponents who are trying to predict Berb's movement, creating
 easy openings for counterattacks.
@@ -126,7 +126,7 @@ Images=["move/Berb_236S.png"]
 Hitboxes=["move/Berb_236S_Hitbox.png"]
 Description="""
 Berb attacks the opponent, creating a distortion in space-time that teleports them to the most recent Rift Point. Like
-%ref(Chrono Shift,214K,k), pressing %btn(s,S) teleports the opponent to the next available point, or again for the
+%ref(Chrono Shift,214K,k), pressing %auto(S) teleports the opponent to the next available point, or again for the
 oldest point. This move is a great way to extend combos or to reposition opponents into more unfavorable situations.
 <ul>
     <li>Forces the opponent into airborne state regardless of how close to the ground the Rift Point is</li>

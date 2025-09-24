@@ -416,6 +416,7 @@ a:has(.move-name) {
     box-sizing: border-box;
     font-size: 14px;
     font-weight: bold;
+    color: var(--color-x);
 }
 
 .image-note {

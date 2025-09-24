@@ -7,7 +7,7 @@ PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Health="500"
 MoveSpeed="1x"
-UniqueMovement=["%ref(Special1,Special1,k), %ref(Espresso,41236K,k)"]
+UniqueMovement=["%ref(Special1,Special1,k)", "%ref(Espresso,41236K,k)"]
 Stage=""
 Reversals=[
     "%ref(Ristretto,214P,p)",
@@ -64,7 +64,7 @@ Buttons=["k"]
 Images=["move/Kofy_214K.png"]
 Hitboxes=["move/Kofy_214K_Hitbox.png"]
 Description="""
-Kôfy performs a momentum preserving front flip without a hitbox. Pressing %btn(k,K) at any point during the flip will
+Kôfy performs a momentum preserving front flip without a hitbox. Pressing %auto(K) at any point during the flip will
 send out an attack that hits high. Can be used as combo fodder as it keeps the opponent in the air for some time.
 """
 [[Character.Specials.Data]]
@@ -90,7 +90,7 @@ Hitboxes=["move/Kofy_41236K_Hitbox.png"]
 Description="""
 Command dash that preserves momentum and crosses up the opponent at close range. Can be used to safely access
 follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Ristretto,214P,p) as a follow-up by
-pressing %btn(k,K).
+pressing %auto(K).
 """
 [[Character.Specials.Data]]
 Recovery="-"
@@ -107,7 +107,7 @@ Hitboxes=["move/Kofy_214P_Hitbox.png"]
 Description="""
 Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
 strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Espresso,41236K,k)
-by pressing %btn(k,K).
+by pressing %auto(K).
 """
 [[Character.Specials.Data]]
 Startup="1"
@@ -121,7 +121,7 @@ Type="Move"
 Inputs=["P"]
 Buttons=["p"]
 AirOK=true
-Condition="after %btn(k,41236K) or %btn(p,214P) catch"
+Condition="after %auto(41236K) or %auto(214P) catch"
 Images=["move/Kofy_214P~P.png", "move/Kofy_214P~P_Whiff.png"]
 Hitboxes=["move/Kofy_214P~P_Hitbox.png"]
 Description="""
@@ -140,12 +140,12 @@ Type="Move"
 Inputs=["S", "H"]
 Buttons=["s", "h"]
 AirOK=true
-Condition="after %btn(k,41236K) or %btn(p,214P) catch"
+Condition="after %auto(41236K) or %auto(214P) catch"
 Images=["move/Kofy_214P~S.png", "move/Kofy_214P~H.png"]
 Hitboxes=["move/Kofy_214P~S_Hitbox.png", "move/Kofy_214P~H_Hitbox.png"]
 Description="""
-Rising attack that launches the opponent into the air. Recovers at its peak height for more air follow-up. %btn(s,S)
-version causes ground bounce at the end of the attack, %btn(h,H) version causes wall bounce.
+Rising attack that launches the opponent into the air. Recovers at its peak height for more air follow-up. %auto(S)
+version causes ground bounce at the end of the attack, %auto(H) version causes wall bounce.
 <ul>
     <li> Data in brackets represent values when the attack is performed in the air</li>
 </ul>
@@ -179,15 +179,15 @@ Images=[
     "move/Kofy_236S~8S.png",
     "move/Kofy_236H~8H.png"
 ]
-ImageNotes=["%btn(s,S) version", "%btn(h,H) version", "%btn(s,8S) follow-up", "%btn(h,8H) follow-up"]
+ImageNotes=["%auto(S) version", "%auto(H) version", "%auto(8S) follow-up", "%auto(8H) follow-up"]
 Hitboxes=["move/Kofy_236SH_Hitbox.png", "move/Kofy_236SH~8X_Hitbox.png"]
 Description="""
 Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Espresso,41236K,k) followup.
-Kôfy stays in place during %btn(s,S) version. In %btn(h,H) version, Kôfy moves with the opponent, but has much more
-whiff recovery. If %btn(s,S) or %btn(h,H) is pressed again, Kôfy will perform a vertical poke to catch opponents
+Kôfy stays in place during %auto(S) version. In %auto(H) version, Kôfy moves with the opponent, but has much more
+whiff recovery. If %auto(S) or %auto(H) is pressed again, Kôfy will perform a vertical poke to catch opponents
 jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was
 blocked. Launches the opponent high into the air on counter hit, launches only slightly on other hits. Kôfy stays in
-place during %btn(s,S) follow-up. In the %btn(h,H) follow-up, Kôfy jumps to meet the opponent."""
+place during %auto(S) follow-up. In the %auto(H) follow-up, Kôfy jumps to meet the opponent."""
 [[Character.Specials.Data]]
 Version="236S"
 Damage="-"
@@ -274,7 +274,7 @@ Images=["move/Kofy_632146P.png"]
 Hitboxes=["move/Kofy_632146P_Hitbox.png"]
 Description="""
 A powerful swing that sends the opponent flying into the wall. Causes ground and wall bounce on hit. Can also be used
-as a followup for 236S/H or 236S~8S/H~8H, but does not retain its invulnerable startup.
+as a followup for %auto(236S/H) or %auto(236S~8S/H~8H), but does not retain its invulnerable startup.
 """
 [[Character.Supers.Data]]
 Version="632146P"
