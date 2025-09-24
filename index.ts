@@ -1,9 +1,10 @@
 import * as fs from "fs";
+
+import { Logger } from "./util/Logger.ts";
+import { compareVersions } from "./util/util.ts";
 import * as util from "./util/util.ts";
 
 import { Character } from "./character.ts";
-import { Logger } from "./util/Logger.ts";
-import { compareVersions } from "./util/util.ts";
 
 export const characterDir = "data/character/";
 export const exportDir = "docs/";

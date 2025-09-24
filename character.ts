@@ -1,12 +1,17 @@
 import * as fs from "fs";
 
-import { BtnMacro, ImgMacro, NoteMacro, RefMacro, RefOtherMacro, UrlMacro } from "./util/Macros.ts";
-import { compareVersions, safeID, renderInputString } from "./util/util.ts";
-import { FrameDataDefaults, type FrameData } from "./types/FrameData.ts";
+import type { FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move } from "./types/Move.ts";
-import { characters, exportDir } from "./index.ts";
 import type { MoveSection, SectionType, TextSection } from "./types/Section.ts";
+
+import { AutoMacro, BtnMacro, ImgMacro, NoteMacro, RefMacro, RefOtherMacro, UrlMacro } from "./util/Macros.ts";
 import { Logger } from "./util/Logger.ts";
+import { renderInputString } from "./util/Input.ts";
+import { safeID } from "./util/String.ts";
+import { compareVersions } from "./util/util.ts";
+
+import { FrameDataDefaults } from "./types/FrameData.ts";
+import { characters, exportDir } from "./index.ts";
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
 const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
@@ -98,6 +103,8 @@ export class Character {
     // resolve macros into HTML elements
     resolveReferences(input: string): string {
         let result = new RefMacro().execute(input);                       // References to moves
+        result = new AutoMacro().execute(result);                         // Auto-rendered inputs
+
         result = new RefOtherMacro().execute(result);                     // References to other characters' moves
         result = new BtnMacro().execute(result);                          // Button colored text
         result = new UrlMacro().execute(result, this.logger);             // Links to other pages
@@ -227,7 +234,7 @@ export class Character {
                         .replace(/%EXTRA%/g, this.renderExtras(item))
                         .replace(/%INPUT%/g, inputString)
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
-                        .replace(/%CONDITION%/g, item.Condition ? `<em button=x>${this.resolveReferences(item.Condition)}</em>` : "")
+                        .replace(/%CONDITION%/g, item.Condition ? this.resolveReferences(item.Condition) : "")
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))
                         .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes))
                         .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))

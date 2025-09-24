@@ -11,8 +11,7 @@
     "testMacro": "NODE_OPTIONS='--loader ts-node/esm' node --no-warnings=ExperimentalWarning util/Macros.ts"
   },
   "exports": {
-    ".": "./index.ts",
-    "./util/Macros": "./util/Macros.ts"
+    ".": "./index.ts"
   },
   "ts-node": {
     "esm": true,

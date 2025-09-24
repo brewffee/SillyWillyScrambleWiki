@@ -2,7 +2,8 @@ import * as fs from "fs";
 import * as p from "path";
 
 import { Logger } from "./Logger.ts";
-import { renderInputString, safeID, isContained } from "./util.ts";
+import { autoResolveInput, renderInputString } from "./Input.ts";
+import { isContained, safeID } from "./String.ts";
 
 export class Macro {
     name: string;
@@ -142,6 +143,23 @@ export class BtnMacro extends Macro {
     execute(input: string): string {
         return super.doExecute(input, ([btns, text, sep]: typeof BtnMacro.Args) => {
             return renderInputString(text, btns, sep).replace("em", "em class=btn");
+        });
+    }
+}
+
+// automatically renders an input/combo
+@MacroFor("auto")
+export class AutoMacro extends Macro {
+    static Args: [
+        input: string,              // The raw input string (e.g. "236S")
+    ];
+
+    execute(input: string): string {
+        return super.doExecute(input, ([input]: typeof AutoMacro.Args) => {
+            return autoResolveInput(input).map(({ part, color }) => {
+                if (color) return `<em class=btn button="${color.toLowerCase()}">${part}</em>`;
+                return `<em class=btn button="or">${part}</em>`;
+            }).join("");
         });
     }
 }
