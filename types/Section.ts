@@ -20,3 +20,4 @@ export interface MoveSection extends Section, Move {
 }
 
 export type SectionType = Section | SummarySection | TextSection | MoveSection;
+export type NamedSection = TextSection | MoveSection;

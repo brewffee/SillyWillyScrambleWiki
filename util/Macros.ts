@@ -2,8 +2,11 @@ import * as fs from "fs";
 import * as p from "path";
 
 import { Logger } from "./Logger.ts";
-import { autoResolveInput, renderInputString } from "./Input.ts";
+import { autoResolveInput, findByName, renderInputString } from "./Input.ts";
 import { isContained, safeID } from "./String.ts";
+
+import { Character } from "../character.ts";
+import { characters } from "../index.ts";
 
 export class Macro {
     name: string;
@@ -63,14 +66,14 @@ export class Macro {
         //  \\(              = lparen
         //  (?:
         //    [^()"']|       = non quote/paren
-        //    "[^"]*"|       = double quote strig
+        //    "[^"]*"|       = double quote string
         //    '[^']*'|       = single quote string
         //    \\([^()]*\\)   = escaped ()
         //  )*
         //  \)               = rparen
         // todo: to nobody's surprise i fucked up quotes, " ' " is an invalid string; this is probably an error inside of parseArgs
         return input.replace(new RegExp(`%${this.name}\\((?:[^()"']|"[^"]*"|'[^']*'|\\([^()]*\\))*\\)`, "g"), (match) => {
-            // the other one is just to taje the shiiit out
+            // the other exp is just to take the shiiit out
             return callback(this.parseArgs(match.replace(new RegExp(`^%${this.name}\\(|\\)$`, "g"), "")));
         });
     }
@@ -92,56 +95,79 @@ function MacroFor(name: string) {
 @MacroFor("ref")
 export class RefMacro extends Macro {
     static Args: [
-        name: string,               // What is this a reference to?
-        text: string,               // The raw input string (e.g. "236S")
-        btns: string[] | string,    // The button or buttons to color this input with
+        id: string,                 // What does this reference link to?
+        text?: string,              // The raw input string (e.g. "236S") or move name
+        btns?: string[] | string,   // The button or buttons to color this text with
         sep?: string                // If there are many buttons, what separates them?
     ];
 
-    execute(input: string): string {
-        return super.doExecute(input, ([name, text, btns, sep]: typeof RefMacro.Args) => {
+    execute(input: string, character: Character): string {
+        return super.doExecute(input, ([id, text, btns, sep]: typeof RefMacro.Args) => {
+            if (!text || !btns) {
+                const move = findByName(id, character);
+
+                if (!text && move) text = move.Name || move.ID;
+                if (!text && move && "Inputs" in move!) text = move.Inputs?.join(move.Separator);
+                if (!btns && move && "Buttons" in move) btns = move.Buttons as string[];
+            }
+
             const inputStr = renderInputString(text, btns, sep);
-            return `<a href="#${safeID(name)}" class=ref title="${name}">${inputStr}</a>`;
+            return `<a href="#${safeID(id)}" class=ref title="${id}">${inputStr}</a>`;
         });
     }
 }
 
-// todo: reference should automatically gather text btns, etc from the move object that we store on init
-// converts `%refOther(CHARACTER,NAME,CHARATEXT,MOVETEXT,BTNS,SEP)` to two <a.ref>s with character and move pages
+// converts `%refOther(CHARACTER,NAME,CTEXT,MTEXT,BTNS,SEP)` to two <a.ref>s with character and move pages
 @MacroFor("refOther")
 export class RefOtherMacro extends Macro {
     static Args: [
         character: string,          // Who does this move belong to?
-        name: string,               // What is this a reference to?
-        charaText: string,          // The text to display for the character
-        moveText: string,           // The raw input string (e.g. "236S")
-        btns: string[] | string,    // The button or buttons to color this input with
+        id: string,                 // What does this reference link to?
+        charaText?: string,         // The text to display for the character
+        moveText?: string,          // The raw input string (e.g. "236S") or move name
+        btns?: string[] | string,   // The button or buttons to color this input with
         sep?: string                // If there are many buttons, what separates them?
     ];
 
     execute(input: string): string {
-        return super.doExecute(input, ([chara, name, ctext, mtext, btns, sep]: typeof RefOtherMacro.Args) => {
+        return super.doExecute(input, ([chara, id, ctext, mtext, btns, sep]: typeof RefOtherMacro.Args) => {
+            const character = characters.filter(c => c.Name === chara)[0];
+            if (!ctext && character) ctext = character.Name;
+
+            if (!mtext || !btns) {
+                const move = findByName(id, character);
+
+                if (!mtext && move) mtext = move.Name;
+                if (!mtext && move && "Inputs" in move!) mtext = move.Inputs?.join(move.Separator);
+                if (!btns && move && "Buttons" in move) btns = move.Buttons as string[];
+            }
+
             const inputStr = renderInputString(mtext, btns, sep);
             return `
                 <a class="ref" href="../characters/${chara.toLowerCase()}.html" title="${chara}">${ctext}</a>
-                <a class="ref" href="../characters/${chara.toLowerCase()}.html#${safeID(name)}" title="${name}">${inputStr}</a>
+                <a class="ref" href="../characters/${chara.toLowerCase()}.html#${safeID(id)}" title="${id}">${inputStr}</a>
             `;
         });
     }
 }
 
-// todo: i wonder, can we create a utility to automatically extract buttons? this would be omega useful
-// converts `%btn(BTN1BTN2...,TEXT,SEP)` to `<em class=btn button="BTN">TEXT</em>`
+// converts `%btn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
 @MacroFor("btn")
 export class BtnMacro extends Macro {
     static Args: [
-        btns: string[] | string,    // The button or buttons to color this input with
-        text: string,               // The raw input string (e.g. "236S")
+        text: string,               // The raw input string (e.g. "236S") or move name
+        btns?: string[] | string,   // The button or buttons to color this input with
         sep?: string                // If there are many buttons, what separates them?
     ];
 
-    execute(input: string): string {
-        return super.doExecute(input, ([btns, text, sep]: typeof BtnMacro.Args) => {
+    execute(input: string, character: Character): string {
+        return super.doExecute(input, ([text, btns, sep]: typeof BtnMacro.Args) => {
+            // if btn wasn't provided, it's probably a move name so we'll just comb through and find something
+            if (!btns) {
+                const { Normals, Specials, Supers } = character;
+                btns = [...Normals || [], ...Specials || [], ...Supers || []].find(move => move.Name === text)?.Buttons;
+            }
+
             return renderInputString(text, btns, sep).replace("em", "em class=btn");
         });
     }

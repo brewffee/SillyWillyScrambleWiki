@@ -5,12 +5,12 @@ Running entirely off of coffee, Max is a patient character, taking great advanta
 wheel.
 <br><br>
 Max's premier mechanic is their Caffeine Gauge, giving them access to enhanced versions of their special moves.
-While the Caffeine Gauge serves as a powerful tool for Max, it doesn't come for free. Max must use %ref(Energizzze,22K,k)
+While the Caffeine Gauge serves as a powerful tool for Max, it doesn't come for free. Max must use %ref(Energizzze,22K)
 to recharge their levels, often having to give up powerful %note(When your opponent is knocked down and you are able to
 attack them as soon as they wake up,okizeme) to keep their momentum going.
 <br><br>
 Once fueled up, Max's combo game becomes much more potent and versatile, scoring massive corner carry off of small
-hits. With a great overhead in %ref(Anvil Mantle,en.214H,h) and the threat of %ref(Sweater Weather,623H,h)'s range and
+hits. With a great overhead in %ref(Anvil Mantle,en.214H) and the threat of %ref(Sweater Weather,623H)'s range and
 launch, Max has plenty of opportunities to open up the opponent and take them wherever they please.
 <br><br>
 Without Caffeine on their side, Max's moves are still nothing to scoff about—they still serve good utility when used
@@ -28,7 +28,7 @@ Health="500"
 MoveSpeed="1x"
 Stage="Floating Island"
 Reversals=[
-    "%ref(Maxsmash,632146P,p)"
+    "%ref(Maxsmash,632146P)"
 ]
 
 ###################################

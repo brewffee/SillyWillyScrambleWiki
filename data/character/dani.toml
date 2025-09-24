@@ -8,10 +8,10 @@ PortraitPath="portrait/Dani_Portrait.png"
 Type="Bnnuy"
 Health=""
 MoveSpeed="1x"
-UniqueMovement=["%ref(Movement Control,Movement Control,k)"]
+UniqueMovement=["%ref(Movement Control)"]
 Stage=""
 Reversals=[
-    "%ref(Bait,ex.623S,s)"
+    "%ref(Bait,ex.623S)"
 ]
 
 ###################################
@@ -24,8 +24,8 @@ Description="""
 Dani starts the round with 0% <b>Exhilaration Meter</b>. The Exhilaration Meter can be filled by dealing damage to the
 opponent. <b>Exhilaration</b> is a state that greatly enhances Dani's movement speed, damage output, and changes her
 moveset—making her no longer reliant on her limited resource, %ref(Ammo,Ammo,_). Exhilaration is entered automatically
-when the Exhilaration Meter maxes out, or manually by using %ref(Ace,Ace,p). While in Exhilaration, the Exhilaration
-Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using %ref(Ace,Ace,p),
+when the Exhilaration Meter maxes out, or manually by using %ref(Ace). While in Exhilaration, the Exhilaration
+Meter decreases over time. If the meter reaches 0% without Dani exiting Exhilaration manually using %ref(Ace),
 she will instead be forced out of Exhilaration and into a brief vulnerable period of recovery.
 
 %img(Dani_Exhilaration_Meters.png,Exhilaration Meters,"Exhilaration Meter when in normal mode (left), compared to

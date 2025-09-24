@@ -4,14 +4,14 @@ Description="""
 A master of forces beyond this world's comprehension, Berb bends reality itself to disorient and open up his opponent.
 <br><br>
 Berb possesses a wide range of tools for repositioning himself and his opponent. Placing %ref(Rifts in Time,Rift Points,g)
-across the stage using his %ref(Time Rift,Time Rift,p) or %ref(Time Fault,Time Fault,p) allows Berb to teleport himself
-back to any of these points using %ref(Chrono Shift,Chrono Shift,k). With well placement of these Points, Berb can
-instead use %ref(Distortion,Distortion,s) to keep the opponent in the air or to set up a reset with great mix-up
+across the stage using his %ref(Time Rift) or %ref(Time Fault) allows Berb to teleport himself
+back to any of these points using %ref(Chrono Shift). With well placement of these Points, Berb can
+instead use %ref(Distortion) to keep the opponent in the air or to set up a reset with great mix-up
 potential. Expert use of these Points is key to mastering Berb's power.
 <br><br>
 However, Berb is not only limited to his teleportation abilities. With access to his full-screen hitting super
-%ref(Chrono Stasis,Chrono Stasis,k), Berb can freeze time itself, allowing him to lock down the opponent and deliver
-devastating follow-ups. If Berb is feeling more extravagant, he can instead use %ref(Accent Acceleration,Accent Acceleration,h)
+%ref(Chrono Stasis), Berb can freeze time itself, allowing him to lock down the opponent and deliver
+devastating follow-ups. If Berb is feeling more extravagant, he can instead use %ref(Accent Acceleration)
 to speed up the rate of the match <i>and every mechanic timer</i> for him and his opponent—forcing them to play at his
 tempo.
 <br><br>
@@ -27,7 +27,7 @@ MoveSpeed="0.9x"
 UniqueMovement=["%ref(Rifts in Time,Rifts in Time,p)"]
 Stage=""
 Reversals=[
-    "%ref(Time Fault,2141236P,p)"
+    "%ref(Time Fault,2141236P)"
 ]
 
 ###################################
@@ -48,7 +48,7 @@ be destroyed.
 Name="Time Machine"
 Type="Text"
 Description="""
-With his supers %ref(Chrono Stasis,Chrono Stasis,k) and %ref(Accent Acceleration,Accent Acceleration,h) (and even
+With his supers %ref(Chrono Stasis) and %ref(Accent Acceleration) (and even
 his %ref(Taunt,taunt,taunt) to a degree), Berb can manipulate time to lock down or pressure the opponent. Combined
 with his incredible agility and his full-screen super, his time manipulation makes for a truly unique and threatening
 ability.

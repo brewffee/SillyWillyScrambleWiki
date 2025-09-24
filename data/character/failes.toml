@@ -2,7 +2,7 @@
 Name="failEs"
 Description="""
 Fail wields a trident and uses his momentum to speed around the stage. Using %ref(Riptide,Riptide,_),
-%ref(Channeling,Channeling,_), and %ref(Loyalty,Loyalty,_), Fail
+%ref(Channeling), and %ref(Loyalty), Fail
 is able to quickly get wherever he wishes. The ability to take advantage of his momentum is crucial to mastering this
 character.
 """
@@ -11,11 +11,11 @@ PortraitPath="portrait/Failes_Portrait.png"
 Type="Gooner"
 Health="420"
 MoveSpeed="1.269x"
-UniqueMovement=["%ref(Loyalty,Loyalty)"]
+UniqueMovement=["%ref(Loyalty)"]
 Stage="Creative Server Lava Pit"
 Reversals=[
-    "%ref(Mending,623H,h)",
-    "%ref(failEs Friday,632146H,h)"
+    "%ref(Mending,623H)",
+    "%ref(failEs Friday,632146H)"
 ]
 
 ###################################

@@ -102,11 +102,10 @@ export class Character {
 
     // resolve macros into HTML elements
     resolveReferences(input: string): string {
-        let result = new RefMacro().execute(input);                       // References to moves
+        let result = new RefMacro().execute(input, this);                 // References to moves
         result = new AutoMacro().execute(result);                         // Auto-rendered inputs
-
         result = new RefOtherMacro().execute(result);                     // References to other characters' moves
-        result = new BtnMacro().execute(result);                          // Button colored text
+        result = new BtnMacro().execute(result, this);                    // Button colored text
         result = new UrlMacro().execute(result, this.logger);             // Links to other pages
         result = new ImgMacro().execute(result, this.logger, this.Name);  // Character image embed
         result = new NoteMacro().execute(result);                         // Context tooltip

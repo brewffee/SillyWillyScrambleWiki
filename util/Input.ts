@@ -1,5 +1,9 @@
 // creates an input string with appropriate coloring
 // todo: we might encounter some weird strings like "236S~P/K", sep should become an array
+import { Character } from "../character.ts";
+import { Mechanic, Move } from "../types/Move.ts";
+import { NamedSection } from "../types/Section.ts";
+
 export const renderInputString = (inputs?: string[] | string, buttons?: string[] | string, sep: string = "/", clean: boolean = false): string => {
     if (!inputs) return "";
 
@@ -39,7 +43,7 @@ export const autoResolveInput = (input: string): { part: string, color?: string 
             const parts: typeof result = [];
             let cur = "", button: string | undefined = undefined;
 
-            // char of each peuce, bracket check will fail with negative edges that don't have a separator !!
+            // char of each piece, bracket check will fail with negative edges that don't have a separator !!
             for (let j = 0, char = piece[j]; j < piece.length; j++, char = piece[j]) {
                 if (char === "[") bracket = j;
                 if (char === "]") bracket = -1;
@@ -94,4 +98,22 @@ export const autoResolveInput = (input: string): { part: string, color?: string 
 
         return res;
     }, []);
+};
+
+export type Referrable = Move | Mechanic | NamedSection | undefined;
+// looks up a move by its name
+export const findByName = (name: string, character: Character): Referrable => {
+    const referables: Referrable[] = [
+        ...character.Normals || [],
+        ...character.Specials || [],
+        ...character.Supers || [],
+        ...character.Mechanics || [],
+        ...Object.values(character.sectionData).flat().filter((m) => "Name" in m),
+    ];
+
+    return referables.find(m => {
+        let found = m!.Name === name || m!.ID === name;
+        if (!found && "Inputs" in m!) found = m!.Inputs?.some(input => input === name) || false;
+        return found;
+    });
 };

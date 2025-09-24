@@ -10,11 +10,11 @@ PortraitPath="portrait/Seagull_Portrait.png"
 Type="Avian"
 Health="375"
 MoveSpeed="1.1x (1.6x Airdash)"
-UniqueMovement=["Quadruple Jump", "%ref(Skill,Skill,k)"]
+UniqueMovement=["Quadruple Jump", "%ref(Skill)"]
 Stage="Seagull Corp Building"
 Reversals=[
-    "%ref(Double or Nothing,632146H,h)",
-    "%ref(Double or Nothing,632146H~H,h)"
+    "%ref(Double or Nothing,632146H)",
+    "%ref(Double or Nothing,632146H~H)"
 ]
 
 ###################################
@@ -107,7 +107,7 @@ Description="""
 Seagull quickly dashes through the air, hitting anything in his path. The %auto(P) version sends Seagull diagonally
 upwards, the %auto(S) version sends Seagull horizontally, and the %auto(H) version sends Seagull diagonally downwards.
 All versions of Bet hit overhead. Using %auto(S) or %auto(H) <b>Bet</b> close to the ground combined with the
-threat of a possible %ref(Skill,Skill,k) allows Seagull to perform an incredibly ambiguous overhead.
+threat of a possible %ref(Skill) allows Seagull to perform an incredibly ambiguous overhead.
 """
 [[Character.Specials.Data]]
 Version="j.236P"
@@ -162,7 +162,7 @@ Description="""
 Seagull produces a slow moving fireball that travels in a straight line across the screen. While its slow speed makes it
 dangerous up close, it allows for great %note(When your opponent is knocked down and you are able to attack them as soon
 as they wake up,okizeme) and helps keep Seagull out of reach from the opponent. During the late recovery of Your, Seagull
-can cancel into %ref(Bad,Bad,s).
+can cancel into %ref(Bad).
 """
 [[Character.Specials.Data]]
 Damage="-"
@@ -177,7 +177,7 @@ Name="Bad"
 Type="Move"
 Inputs=["S"]
 Buttons=["s"]
-Condition="after %btn(s,Your)"
+Condition="after %btn(Your)"
 Images=["move/Seagull_236S~S.png"]
 Hitboxes=["move/Seagull_236S~S_Hitbox.png"]
 Description="""

@@ -7,11 +7,11 @@ PortraitPath="portrait/Kofy_Portrait.png"
 Type="All-Arounder"
 Health="500"
 MoveSpeed="1x"
-UniqueMovement=["%ref(Special1,Special1,k)", "%ref(Espresso,41236K,k)"]
+UniqueMovement=["%ref(Special1)", "%ref(Espresso)"]
 Stage=""
 Reversals=[
-    "%ref(Ristretto,214P,p)",
-    "%ref(Chiaroscuro ver.Omega,632146P,p)"
+    "%ref(Ristretto,214P)",
+    "%ref(Chiaroscuro ver.Omega,632146P)"
 ]
 
 ###################################
@@ -89,7 +89,7 @@ Images=["move/Kofy_41236K.png"]
 Hitboxes=["move/Kofy_41236K_Hitbox.png"]
 Description="""
 Command dash that preserves momentum and crosses up the opponent at close range. Can be used to safely access
-follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Ristretto,214P,p) as a follow-up by
+follow-up attacks. If on the ground, can be cancelled into itself or from %ref(Ristretto,214P) as a follow-up by
 pressing %auto(K).
 """
 [[Character.Specials.Data]]
@@ -106,7 +106,7 @@ Images=["move/Kofy_attach214P.png"]
 Hitboxes=["move/Kofy_214P_Hitbox.png"]
 Description="""
 Parry stance. Halts all momentum when used. Has a minimum active time of 30F. When the parry makes contact with a
-strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Espresso,41236K,k)
+strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Espresso,41236K)
 by pressing %auto(K).
 """
 [[Character.Specials.Data]]
@@ -182,7 +182,7 @@ Images=[
 ImageNotes=["%auto(S) version", "%auto(H) version", "%auto(8S) follow-up", "%auto(8H) follow-up"]
 Hitboxes=["move/Kofy_236SH_Hitbox.png", "move/Kofy_236SH~8X_Hitbox.png"]
 Description="""
-Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Espresso,41236K,k) followup.
+Large poke that covers a section of the screen. Causes enough tumble to combo into a %ref(Espresso,41236K) followup.
 Kôfy stays in place during %auto(S) version. In %auto(H) version, Kôfy moves with the opponent, but has much more
 whiff recovery. If %auto(S) or %auto(H) is pressed again, Kôfy will perform a vertical poke to catch opponents
 jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was

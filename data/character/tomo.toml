@@ -4,16 +4,16 @@ Description="""
 Wielding a glaive and tome, Tomo is a master of the midrange who uses his resources to control the ebb and flow
 of battle.
 <br><br>
-Tomo is entirely defined by his unique resource, %ref(Mana,Mana,generic). Tomo uses a portion of his Mana to cast
-any of his special moves (including %ref(6S,6S,s)). If a move costs more Mana than he currently has, it will not
-trigger and instead will whiff. If his Mana is depleted, he will enter %ref(Exhaustion,Exhaustion,generic)—a
+Tomo is entirely defined by his unique resource, %ref(Mana,Mana,_). Tomo uses a portion of his Mana to cast
+any of his special moves (including %ref(6S)). If a move costs more Mana than he currently has, it will not
+trigger and instead will whiff. If his Mana is depleted, he will enter %ref(Exhaustion,Exhaustion,_)—a
 debilitating state that leaves him highly vulnerable to massive damage.
 <br><br>
 Once he is at a safe range, Tomo can use his specials to expertly control the midrange, forcing the opponent to
 think twice about their approach. With the right momentum, he can easily keep up a solid web of denial; once
 his opponent is caught, Tomo is free to close in for a full combo combined with the choice of %note(When your opponent
 is knocked down and you are able to attack them as soon as they wake up,okizeme) or resource recovery. When he has
-%ref(Mana Crimen,Mana Crimen,k) and 50% meter on his side, Tomo can skip this choice altogether and opt for a much
+%ref(Mana Crimen) and 50% meter on his side, Tomo can skip this choice altogether and opt for a much
 longer and more effective pressure sequence which at worst leaves him at neutral odds with the opponent.
 <br><br>
 Tomo's kit gives him the freedom to decide how the game unfolds, provided he has the resources to do so. In the
@@ -26,7 +26,7 @@ Health="575"
 MoveSpeed="0.85x"
 Stage=""
 Reversals=[
-    "%ref(Tonitru Pirouette,236236S,s)",
+    "%ref(Tonitru Pirouette,236236S)",
 ]
 
 ###################################
@@ -259,8 +259,8 @@ place until a set amount of time passes or immediately upon the next hit.
     enough that the opponent needs to use a good low-profile option to respond.</li>
 </ul>
 Boasting its large space control and relatively low mana cost, Glacies Pierce is a formidable move that demands respect
-in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,generic) and a great
-option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,generic).
+in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,_) and a great
+option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,_).
 """
 [[Character.Specials.Data]]
 Version="214P"

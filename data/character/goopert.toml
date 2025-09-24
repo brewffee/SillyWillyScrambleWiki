@@ -10,7 +10,7 @@ Health="320"
 MoveSpeed="1x"
 Stage="Throne Room"
 Reversals=[
-    "%ref(lava snake,623S,s)"
+    "%ref(lava snake,623S)"
 ]
 
 ###################################
@@ -21,10 +21,10 @@ Name="Cursor State"
 Type="Text"
 Description="""
 In Cursor State, a Wii pointer tracks to the opponent at all times. The opponent can be placed in Cursor State by
-landing %ref(wii aim,wii aim,s) or by using %ref("lets go gambling","let\\'s go gambling !!!",s). This state lasts for a set
+landing %ref(wii aim) or by using %ref(lets go gambling). This state lasts for a set
 amount of time or until Goopert is hit. All items that perform attacks such as %ref(Funny Fork,Funny Fork,_),
 %ref(Blue Bird,Blue Bird,_), and %ref(Fishing Rod,Fishing Rod,_) will home into the opponent's current position.
-Additionally, when drawing an item with %ref(behold!,behold!,p), Goopert can influence the direction of the falling item
+Additionally, when drawing an item with %ref(behold!), Goopert can influence the direction of the falling item
 using 6 or 4 to pull the item forwards or backwards respectively.
 """
 
@@ -185,8 +185,8 @@ OnBlock="-"
 [[Character.Items]]
 Type="Summary"
 Description="""
-Goopert is able to summon a wide variety of items at any point. These items can be created using %ref(behold!,behold!,p)
-or %ref(item waterfall,"item waterfall !!!",h). The pool of items that can be summoned are in random order, but the next
+Goopert is able to summon a wide variety of items at any point. These items can be created using %ref(behold!)
+or %ref(item waterfall). The pool of items that can be summoned are in random order, but the next
 three will always be displayed on the HUD, giving Goopert or the opponent a chance to strategize their next moves. Some
 items are activated immediately upon drawing, some are activated once they land, and others require someone to pick them
 up before they can be used. Items that are thrown on the ground stay there until they are used.
@@ -363,7 +363,7 @@ Name="Goopert²"
 Images=["items/Goopert_Goopert2.png"]
 Description="""
 When this item is drawn, a secondary Goopert appears from the top of the screen, landing in a random position. Once
-landed, this Goopert randomly performs one of Goopert's specials (including an additional %ref(behold!,behold!,p)).
+landed, this Goopert randomly performs one of Goopert's specials (including an additional %ref(behold!)).
 Disappears after a few seconds or if behold! was used, when the drawn item's duration is over.
 """
 
@@ -373,7 +373,7 @@ Name="O-Tome"
 Images=["items/Goopert_OTome.png", "move/Goopert_OTome_Attack.png", "move/Goopert_OTome_Wall.png"]
 Hitboxes=["items/Goopert_OTome_Hitbox.png", "move/Goopert_OTome_Attack_Hitbox.png", "move/Goopert_OTome_Wall_Hitbox.png"]
 Description="""
-When Goopert or the opponent grabs this item, they immediately perform %refOther(Tomo,6S,"Tomo\\'s",6S,s). At the end of
+When Goopert or the opponent grabs this item, they immediately perform %refOther(Tomo,6S,"Tomo\\'s",6S). At the end of
 the initial reflection, the wall transforms into a wall of ice. This wall only disappears when hit by the opponent, and
 Goopert is able to pass through it.
 <ul>

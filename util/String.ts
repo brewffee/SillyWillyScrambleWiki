@@ -8,7 +8,7 @@ export const appendLast = (arr: string[], str: string): string[] => {
 
 // safely converts a string to a valid HTML ID
 export const safeID = (input: string): string => {
-    return input.replace(/ /g, "-").replace(/[^a-zA-Z0-9-.]/g, "");
+    return input.replace(/[^a-zA-Z0-9-.]/g, "").trim().replace(/ /g, "-");
 };
 
 // is this string contained by something?
