@@ -102,6 +102,9 @@ Hitboxes=["move/Guiblo_623H_Hitbox.png"]
 Description="""
 An invincible reversal. Guiblo reaches diagonally for the opponent. On contact, Guiblo rises with the opponent before
 slamming them down into the ground.
+<ul>
+    <li>Guiblo is in counterhit state for the entire duration of the move.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Damage="-"

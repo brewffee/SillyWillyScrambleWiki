@@ -179,6 +179,9 @@ Hitboxes=["move/Failes_623H_Hitbox.png"]
 Description="""
 An invincible rising reversal. Fail rises into the air as he spins his trident around him, preserving existing momentum.
 Launches the opponent upwards and gains a special cancel on hit.
+<ul>
+    <li>Fail is in counterhit state for the entire duration of the move.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="623H"
