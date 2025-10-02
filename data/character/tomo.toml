@@ -285,16 +285,29 @@ OnBlock="-"
 [[Character.Supers]] # Mana Crimen
 Name="Mana Crimen"
 Type="Move"
-Inputs=["214214K"]
-Buttons=["k"]
+Inputs=["214214K", "P"]
+Buttons=["k", "p"]
 Condition="with 50% meter"
-Images=["move/Tomo_214214K.png"]
-Hitboxes=["move/Tomo_214214K_Hitbox.png"]
+Images=["move/Tomo_214214KP.png"]
+Hitboxes=["move/Tomo_214214KP_Hitbox.png"]
 Description="""
-Tomo instantly charges his Mana gauge to max.
+Tomo quickly activates his reserve of Mana to refill his resources.
+<ul>
+    <li>In %auto(K) <b>Mana Crimen</b>, Tomo instantly refills his Mana gauge to full, letting him reset his offense
+    on a whim.</li>
+    <li>In %auto(P) <b>Mana Crimen</b>, Tomo's Mana reserve will slowly refill his gauge over time, eventually rewarding
+    more Mana than the %auto(K) version.
+    </li>
+</ul>
 """
 [[Character.Supers.Data]]
+Version="214214K"
 Startup="-"
+Recovery="-"
+[[Character.Supers.Data]]
+Version="214214P"
+Startup="-"
+Active="-"
 Recovery="-"
 
 [[Character.Supers]] # Tonitru Pirouette

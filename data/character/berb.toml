@@ -64,7 +64,8 @@ Type="Move"
 Images=["move/Berb_Taunt.png"]
 ImageNotes=["Would you look at the time!"]
 Description="""
-Advances the in-game timer by 3 seconds.
+Advances the in-game timer by 3 seconds. The duration and the recovery of this taunt are also affected by the time
+alterations caused by %ref(Accent Acceleration).
 """
 [[Character.Normals.Data]]
 Recovery="-"
@@ -178,7 +179,8 @@ Images=["move/Berb_236H.png"]
 Hitboxes=["move/Berb_236H_Hitbox.png"]
 Description="""
 Berb sends a version of him from an alternate timeline to assist in attacking the opponent, launching them into the
-air on hit.
+air on hit. The startup and travel speed of Berb's alternate self are also affected by the time alterations caused by
+%ref(Accent Acceleration).
 """
 [[Character.Specials.Data]]
 Damage="-"
@@ -226,7 +228,13 @@ Buttons=["h"]
 Images=["move/Berb_214214H.png"]
 Hitboxes=["move/Berb_214214H_Hitbox.png"]
 Description="""
-Increases the rate of which the in-game timer and mechanic timers advance by 15%
+The most unique super in the entire game; a pseudo-Scramble Cancel that increases the rate of which the in-game timer
+and mechanic timers advance by 15%. This move can speed up meter gain, cooldowns, and more for both Berb and his
+opponent.
+<ul>
+    <li>If Accent Acceleration is used 3 times in a single match, the opponent becomes a much older version of
+    themselves (in appearance only).</li>
+</ul>
 """
 [[Character.Supers.Data]]
 Startup="+"

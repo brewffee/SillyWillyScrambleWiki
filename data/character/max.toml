@@ -41,7 +41,13 @@ Description="""
 Max uses their Caffeine Gauge to perform enhanced versions of their special moves. Max starts the round with 0 out of
 3 Caffeine bars, and one is consumed every time a special move is performed. Max's moves when enhanced are significantly
 more powerful, deal more damage, and have more launch power, allowing for more combo potential when managed correctly.
+
 %img(Max_Caffeine_Gauge.png,Caffeine Gauge,"Max\\'s Caffeine Gauge when full")
+
+While Max is limited to having 3 Caffeine when recharging with %ref(Energizzze), they can still acquire more
+if they collect %refOther(Goopert, Coffee Cup, "Goopert\\'s", Coffee Cups, _). There is no limit to the amount of
+Caffeine Max can acquire with this method, but collecting such a large amount won't be feasible outside
+of Training Mode.
 """
 
 ###################################
