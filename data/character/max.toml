@@ -197,6 +197,7 @@ Max pours a bottle water on themselves and shakes it off like a Freakinge dog.
 [[Character.Specials.Data]]
 Version="214P"
 Guard="All"
+Damage="-, -"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -204,6 +205,7 @@ OnBlock="-"
 [[Character.Specials.Data]]
 Version="en.214P"
 Guard="All"
+Damage="-, -"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -226,6 +228,7 @@ Max pulls out a Deagle and physically hits the opponent with it.
 [[Character.Specials.Data]]
 Version="236S"
 Guard="All"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -233,6 +236,7 @@ OnBlock="-"
 [[Character.Specials.Data]]
 Version="en.236S"
 Guard="All (Guard Crush)"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -255,6 +259,7 @@ Max conjures up a minecraft anvil above the opponent's head and hurls it down at
 [[Character.Specials.Data]]
 Version="214H"
 Guard="High"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -262,6 +267,7 @@ OnBlock="-"
 [[Character.Specials.Data]]
 Version="en.214H"
 Guard="High"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -285,12 +291,14 @@ Max pulls out a sweater and wraps the opponent up before lighting it on fire.
 [[Character.Specials.Data]]
 Version="623H"
 Guard="Throw"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
 [[Character.Specials.Data]]
 Version="en.623H"
 Guard="Throw"
+Damage="-"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -325,7 +333,7 @@ Type="Move"
 Inputs=["236236K"]
 Buttons=["k"]
 Condition="with 50% meter"
-Images=["move/Max_236236K.png", "move/Max_236236K_2.png", "move/Max_236236K_3.png"]
+Images=["move/Max_236236K.png", "move/Max_236236K_2.png"]
 Hitboxes=["move/Max_236236K_Hitbox.png"]
 Description="""
 Max jumps really high into the air and takes off their glasses, reflecting the sun through their lenses to create a
@@ -333,6 +341,7 @@ powerful beam of light that incinerates the opponent.
 """
 [[Character.Supers.Data]]
 Guard="All"
+Damage="-xN"
 Startup="-"
 Active="-"
 Recovery="-"
