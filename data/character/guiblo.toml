@@ -24,7 +24,7 @@ PortraitPath="portrait/Guiblo_Portrait.png"
 Type="Grappler"
 Health="650"
 MoveSpeed="0.7x"
-UniqueMovement=["Step-dash"]
+UniqueMovement=["Step-dash", "No Airdash"]
 Stage="Sandwicheimer Destruction Site"
 Reversals=[
     "%ref(Huebenly Buster,623H)",
