@@ -7,6 +7,7 @@ import { isContained, safeID } from "./String.ts";
 
 import { Character } from "../character.ts";
 import { characters } from "../index.ts";
+import { Table, TableData } from "./Table.ts";
 
 export class Macro {
     name: string;
@@ -101,9 +102,9 @@ export class RefMacro extends Macro {
         sep?: string                // If there are many buttons, what separates them?
     ];
 
-    execute(input: string, character: Character): string {
+    execute(input: string, character?: Character): string {
         return super.doExecute(input, ([id, text, btns, sep]: typeof RefMacro.Args) => {
-            if (!text || !btns) {
+            if ((!text || !btns) && character) {
                 const move = findByName(id, character);
 
                 if (!text && move) text = move.Name || move.ID;
@@ -117,6 +118,7 @@ export class RefMacro extends Macro {
     }
 }
 
+// todo: split into character and move macros instead of this absolute mess
 // converts `%refOther(CHARACTER,NAME,CTEXT,MTEXT,BTNS,SEP)` to two <a.ref>s with character and move pages
 @MacroFor("refOther")
 export class RefOtherMacro extends Macro {
@@ -160,15 +162,15 @@ export class BtnMacro extends Macro {
         sep?: string                // If there are many buttons, what separates them?
     ];
 
-    execute(input: string, character: Character): string {
+    execute(input: string, character?: Character): string {
         return super.doExecute(input, ([text, btns, sep]: typeof BtnMacro.Args) => {
             // if btn wasn't provided, it's probably a move name so we'll just comb through and find something
-            if (!btns) {
+            if (!btns && character) {
                 const { Normals, Specials, Supers } = character;
                 btns = [...Normals || [], ...Specials || [], ...Supers || []].find(move => move.Name === text)?.Buttons;
             }
 
-            return renderInputString(text, btns, sep).replace("em", "em class=btn");
+            return renderInputString(text, btns, sep).replace(/button=(p|k|s|h|taunt)/g, "class=btn button=\"$1\"");
         });
     }
 }
@@ -197,15 +199,15 @@ export class UrlMacro extends Macro {
     static Args: [
         url: string,                // The URL to link to
         alt: string,                // The alt text for the url
-        text: string,               // Display text
+        text?: string,              // Display text
         external?: boolean          // Does this link outside the wiki?
     ];
 
-    execute(input: string, logger: Logger): string {
-        return super.doExecute(input, ([url, alt, text, external]: typeof UrlMacro.Args) => {
+    execute(input: string, logger?: Logger): string {
+        return super.doExecute(input, ([url, alt, text = alt, external = false]: typeof UrlMacro.Args) => {
             if (external) return `<a href="${url}" title="${alt}" target="_blank" rel="noreferrer">${text}</a>`;
 
-            if (!fs.existsSync(`docs/${url}`)) logger.warn(`Could not find requested link target: ${url}`);
+            if (!fs.existsSync(`docs/${url}`) && logger) logger.warn(`Could not find requested link target: ${url}`);
             return `<a href="../${url}" title="${alt}">${text}</a>`;
         });
     }
@@ -220,10 +222,10 @@ export class ImgMacro extends Macro {
         note?: string                // Any comments?
     ];
 
-    execute(input: string, logger: Logger, name?: string): string {
+    execute(input: string, logger?: Logger, name?: string): string {
         return super.doExecute(input, ([path, alt, note]: typeof ImgMacro.Args) => {
             if (name) path = p.join(name.toLowerCase(), path);
-            if (!fs.existsSync(p.join("docs", "images", path))) logger.warn(`Could not find requested image: ${path}`);
+            if (!fs.existsSync(p.join("docs", "images", path)) && logger) logger.warn(`Could not find requested image: ${path}`);
 
             return `<div class=embed><img src="${p.join("../", "images", path)}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
         });
@@ -245,3 +247,35 @@ export class NoteMacro extends Macro {
     }
 }
 
+// converts `%table(JSON,ORIENTATION)` into a full table element (headers are based on the keys of the first item)
+@MacroFor("table")
+export class TableMacro extends Macro {
+    static Args: [
+        data: TableData,
+        orientation?: "horizontal" | "vertical"
+    ];
+
+    execute(input: string, ctx: ReferenceContext): string {
+        return super.doExecute(input, ([data, orientation]: typeof TableMacro.Args) => {
+            return new Table(data, orientation).context(ctx).render() || input;
+        });
+    }
+}
+
+export interface ReferenceContext {
+    chara?: Character;
+    logger?: Logger;
+    name?: string;
+}
+
+export const resolveReferences = (input: string, { chara, logger = chara?.logger, name = chara?.Name }: ReferenceContext): string => {
+    let result = new RefMacro().execute(input, chara);                // References to moves
+    result = new AutoMacro().execute(result);                         // Auto-rendered inputs
+    result = new RefOtherMacro().execute(result);                     // References to other characters' moves
+    result = new BtnMacro().execute(result, chara);                   // Button colored text
+    result = new UrlMacro().execute(result, logger);                  // Links to other pages
+    result = new ImgMacro().execute(result, logger, name);            // Character image embed
+    result = new NoteMacro().execute(result);                         // Context tooltip
+    result = new TableMacro().execute(result, { chara, logger, name }); // Custom tables
+    return result;
+};

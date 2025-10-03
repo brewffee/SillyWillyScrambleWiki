@@ -1,0 +1,183 @@
+[System]
+Name="Mechanics"
+Description=""
+
+[[System.BasicMovement]]
+Type="Summary"
+Name="Basic Movement"
+Description=""
+
+[[System.BasicMovement]] # Walking
+Type="Text"
+Name="Walking"
+Description="""
+<code>[4] or [6] while grounded</code><br>
+Walking is the most basic form of movement in the game. By holding or tapping the direction, the character will
+continuously move in that direction based off their movement speed multiplier. Walking cannot be performed using
+diagonal inputs. Walking backwards while being attacked will automatically cancel into a block.
+"""
+
+[[System.BasicMovement]] # Running and Dashing
+Type="Text"
+Name="Running and Dashing"
+Description="""
+<code>6[6] or 6+Dash Macro</code><br>
+Running is a much faster form of with a few more drawbacks than simply walking. The first input of a run (if not using
+the Dash Macro) must be a 6 direction, after which any forwards direction will suffice. After releasing a run without
+directly cancelling into another move, the character will skid for a short time unless stopped with any backwards input.
+Characters can block during a skid, but they will not be able to walk until the skid is ended.
+<ul>
+    <li>The 6 input is not required when using the Dash Macro</li>
+</ul>
+<br><br>
+Some characters won't have a run and instead will have a step-dash. A Step-dash is performed the same as a run, but
+it cannot be held and must travel its full distance until stopping. This makes moving forwards a riskier option, as
+the character will not have full freedom to stop or change direction. Characters with step-dashes usually have other
+specialized movement options to make up for this.
+"""
+
+[[System.BasicMovement]] # Backdash
+Type="Text"
+Name="Backdash"
+Description="""
+<code>44 or 4+Dash Macro</code><br>
+Backdashing is a form of movement that allows the character to move backwards at a much faster speed than walking. The
+first input of a backdash (if not using the Backdash Macro) must be a 4 direction, after which any backwards direction
+will suffice. Backdashes cannot be performed using diagonal inputs. Backdashes can be cancelled into any move, but
+characters will not be able to walk until the backdash is ended.
+<ul>
+    <li>Backdashing has a short window of invulnerability on startup, allowing it to be used as a "reversal" against
+    some meaty options.</li>
+    <li>When backdashing, your character is forced into an airborne state. This means that when getting hit during a
+    backdash, your character will already be in the air, giving your opponent high-power combo opportunities when
+    misused.</li>
+</ul>
+"""
+
+[[System.AerialMovement]]
+Type="Summary"
+Name="Aerial Movement"
+Description="""
+Aerial movement, unlike grounded movement is much more restricted. Each character has a set amount of air actions,
+representing the amount of times they can perform a jump or airdash. Most characters come with only one air action
+available when in the air. Some characters have additional air actions, allowing them to perform multiple jumps or
+airdashes.
+"""
+
+[[System.AerialMovement]] # Prejump
+Type="Text"
+Name="Prejump"
+Description="""
+Jumps have their own startup frames and landing recovery frames. Before entering the air, characters will stand in place
+for a short amount of time. This prejump period gives them full throw invincibility. Unlike backdashing, characters
+hit during prejump will not be sent airborne and will still need to be launched manually.
+<br><br>
+Prejump frames can be cancelled at any point into specials or supers. This allows players to easily perform inputs
+that require an upwards direction, or to perform an air attack using a Tiger Knee motion. For example,
+%refOther(Seagull, Skill, "Seagull\\'s", Skill, K) can be performed at the earliest possible moment during or after
+prejump by inputting %auto(2369K).
+"""
+
+[[System.AerialMovement]] # Jumping
+Type="Text"
+Name="Jumping"
+Description="""
+<code>Any upwards direction (Air OK)</code><br>
+Jumping allows the character to move in the air. Air movement, unlike grounded movement, cannot be controlled as freely.
+Based on the input used to perform the jump (7, 8, 9), the character will move in a backwards (7), neutral (8), or
+forwards (9) direction.
+"""
+
+[[System.AerialMovement]] # Airdash
+Type="Text"
+Name="Airdash"
+Description="""
+<code>j.44/66</code> or <code>j.4/6+Dash Macro</code><br>
+Airdashing is a powerful movement option when in the air. Airdashes can be cancelled into any move except for blocking.
+Cancelling an airdash into a move (that does not halt air momentum) retains the character's air momemtum, allowing for
+easy screen travel depending on the move.
+"""
+
+# todo: Landing recovery
+
+
+[[System.Grab]]
+Type="Description"
+Description="""
+<code>??? (Air OK)</code><br>
+Universal proximity unblockable move. Grabs guarantee hard knockdown on success, but are in counter hit state for the
+entire duration. The attacker’s airborne state must match the defender’s when trying to land a grab. Grabs can be
+teched by also pressing grab within a short time period (10f?).
+<ul>
+    <li>Grabs have higher priority than strike attacks when clashing</li>
+    <li>Command Grabs, a unique type of grab, cannot be teched</li>
+    <li>Air Grab teching has significantly less recovery than ground teching</li>
+</ul>
+"""
+
+[[System.Burst]]
+Type="Description"
+Description="""
+<code>??? (Air OK) with 100% Burst Gauge</code><br>
+"""
+
+[[System.ScrambleCancel]]
+Type="Description"
+Description="""
+<code>??? (Air OK) with 25~50% meter</code><br>
+costs 25% on hit, 50% on whiff
+"""
+
+[[System.Cancels]]
+Type="Description"
+Description="""
+<h4>Gatling</h4>
+Most normal attacks can cancel into normals on hit or block. Gatlings will typically follow the order %auto(P > K > S > H).
+Some normals may follow different gatling rules such as %btn("5P, 2P, 6P",ppp,",") and %auto("j.P"), which can all
+self-gatling infinitely.
+<br><br>
+
+<h4>Special Cancel</h4>
+Most normals are special and super cancellable during their active and recovery periods.
+<br><br>
+
+<h4>Jump Cancel</h4>
+Specific attacks can be cancelled into a jump (WHO), provided the character is grounded or has enough air options to do
+so. Additionally, prejump frames can be special cancelled, enabling the use of Tiger Knee inputs.
+<br><br>
+
+<h4>Dash Cancel</h4>
+Specific attacks can be cancelled into a dash or airdash (WHOOV)
+<br><br>
+
+<h4>Scramble Cancel</h4>
+See the %ref(Scramble Cancel,Scramble Cancel,_) section for more information.
+<br><br>
+
+<h4>Kara Cancel</h4>
+Normals and dash cancels can be kara cancelled into specials or supers during their first 3 startup frames. Special
+moves can be kara cancelled into supers during their first 3 startup frames. Additionally, some attacks may also have
+specialized kara cancel windows with unique properties.
+<br><br>
+
+<h4>Strike Clash</h4>
+When two hitboxes intersect without making contact with the opponent’s hurtbox, they cancel out into a Clash. Clashes
+can immediately be cancelled into any attack, jump (if the clashing move is jump cancellable and if in the air, the
+character has enough air actions to do so), and forward runs/dashes.
+<br><br>
+
+<h4>Projectile Clash</h4>
+When two projectile-owned hitboxes intersect with eachother and neither reaches an enemy hurtbox, they create a Clash.
+Each projectile has a level attribute that determines their clash behavior. Projectiles with a higher level will
+instantly destroy those with lower levels. If two projectiles have the same level, then the projectile will consume
+hits until either or none survive.
+<br><br>
+
+<h4>Projectile Reflection</h4>
+When a reflectable projectile hits a reflecting hitbox (regardless if that projectile successfully connected with a
+hurtbox or not), its reflection state activates. Most reflectable projectiles will simply reverse the other way, but
+others may have special behavior.
+<br><br>
+"""
+
+

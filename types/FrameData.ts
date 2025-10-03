@@ -1,4 +1,6 @@
 export interface FrameData {
+    [key: string]: string | string[] | undefined;
+
     Version?: string;
     Damage: string;
     Guard: string;
@@ -7,7 +9,7 @@ export interface FrameData {
     Recovery: string;
     OnBlock: string;
     Invuln: string[];
-    SpecialFrames?: number[];
+    SpecialFrames?: string[];
     SpecialNote?: string;
 }
 

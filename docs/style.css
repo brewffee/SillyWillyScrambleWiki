@@ -483,7 +483,7 @@ em { font-style: normal }
     width: 100%;
 }
 
-.move-details table, .info table {
+.move-details > div > table, .info > div > table {
     border: none;
     th, td {
         border-top: none !important;
@@ -492,7 +492,7 @@ em { font-style: normal }
     }
 }
 
-.info table {
+.info > div > table {
     border-top: 1px solid #000;
 }
 

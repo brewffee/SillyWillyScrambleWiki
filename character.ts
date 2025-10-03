@@ -4,10 +4,11 @@ import type { FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move } from "./types/Move.ts";
 import type { MoveSection, SectionType, TextSection } from "./types/Section.ts";
 
-import { AutoMacro, BtnMacro, ImgMacro, NoteMacro, RefMacro, RefOtherMacro, UrlMacro } from "./util/Macros.ts";
+import { ReferenceContext, resolveReferences } from "./util/Macros.ts";
 import { Logger } from "./util/Logger.ts";
 import { renderInputString } from "./util/Input.ts";
 import { safeID } from "./util/String.ts";
+import { TableProvider } from "./util/Table.ts";
 import { compareVersions } from "./util/util.ts";
 
 import { FrameDataDefaults } from "./types/FrameData.ts";
@@ -45,6 +46,8 @@ export class Character {
     // ------------ //
 
     logger: Logger;
+    ctx: ReferenceContext;
+    tableProvider: TableProvider;
 
     // section order and unique data
     sections: string[] = [];
@@ -81,6 +84,8 @@ export class Character {
         }
 
         this.logger = new Logger(data.Name);
+        this.ctx = { chara: this, logger: this.logger, name: this.Name };
+        this.tableProvider = new TableProvider(this.ctx);
 
         // this can probably be done better but i don't care for now
         // for use in navigation bar on character pages
@@ -98,30 +103,6 @@ export class Character {
         } else {
             this.tableOfContents += `<li><a href="#${safeID(item)}">${displayName}</a></li>\n`;
         }
-    }
-
-    // resolve macros into HTML elements
-    resolveReferences(input: string): string {
-        let result = new RefMacro().execute(input, this);                 // References to moves
-        result = new AutoMacro().execute(result);                         // Auto-rendered inputs
-        result = new RefOtherMacro().execute(result);                     // References to other characters' moves
-        result = new BtnMacro().execute(result, this);                    // Button colored text
-        result = new UrlMacro().execute(result, this.logger);             // Links to other pages
-        result = new ImgMacro().execute(result, this.logger, this.Name);  // Character image embed
-        result = new NoteMacro().execute(result);                         // Context tooltip
-        return result;
-    }
-
-    // reversals field of the info table
-    renderReversals(): string {
-        if (!this.Reversals) return "<em button=x>None</em>";
-        return this.Reversals.map((rev) => this.resolveReferences(rev)).join("<br>");
-    }
-
-    // unique movement field of the info table
-    renderUniqueMovement(): string {
-        if (!this.UniqueMovement) return "<em button=x>-</em>";
-        return this.UniqueMovement.map((opt) => this.resolveReferences(opt)).join("<br>");
     }
 
     // adds Hold or Air OK to qualifying moves
@@ -142,40 +123,7 @@ export class Character {
             return res;
         });
 
-        return this.renderTable(filled);
-    }
-
-    renderTable(data: any[], orientation: "horizontal" | "vertical" = "horizontal"): string {
-        if (!data) return "";
-        let table = `<table orientation="${orientation}">\n`;
-        const keys = Object.keys(data[0]);
-
-        switch (orientation) {
-            case "horizontal":
-                // thead and tbody for header and body
-                table += `<thead>\n<tr>\n${keys.map((key) => `<th>${this.resolveReferences(key)}</th>`).join("\n")}\n</tr>\n</thead>`;
-
-                // tbody
-                return table + "<tbody>\n" + data.map((item) => {
-
-                    return "<tr>\n" + keys.map((key) => {
-                        const value = item[key];
-                        return `<td>${Array.isArray(value) ? value.join("<br>") : value}</td>`;
-                    }).join("\n") + "\n</tr>\n";
-
-                }).join("") + "</tbody>\n</table>";
-            case "vertical":
-                // single tbody with th and td
-                return table + "<tbody>\n" + data.map((item) => {
-                    return keys.map((key) => {
-                        const value = item[key];
-                        return `<tr><th>${key}</th><td>${Array.isArray(value) ? value.join("<br>") : value}</td></tr>`;
-                    }).join("\n");
-                }).join("\n") + "\n</tbody>\n</table>";
-            default:
-                this.logger.error(`Unknown table orientation: ${orientation}`);
-                return "";
-        }
+        return this.tableProvider.create(filled);
     }
 
     // creates the image gallery
@@ -190,7 +138,7 @@ export class Character {
             }
 
             imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`;
-            if (notes?.[i]) imageStr += `<span class=image-note>${this.resolveReferences(notes[i])}</span>`;
+            if (notes?.[i]) imageStr += `<span class=image-note>${resolveReferences(notes[i], this.ctx)}</span>`;
         }
         return imageStr;
     }
@@ -209,14 +157,14 @@ export class Character {
 
             switch (i.Type) {
                 case "Summary":
-                    return `<span class=section-text>${this.resolveReferences(i.Description)}</span>`;
+                    return `<span class=section-text>${resolveReferences(i.Description, this.ctx)}</span>`;
                 case "Text": {
                     const item = i as TextSection;
                     const id = item.ID ?? item.Name;
                     this.addNavigable(id, false, item.Name);
 
                     return `<a href=#${safeID(id)}><h3 id=${safeID(id)} class=move-name>${item.Name}</h3></a>\n` +
-                        `<span class=section-text>${this.resolveReferences(i.Description)}</span>`;
+                        `<span class=section-text>${resolveReferences(i.Description, this.ctx)}</span>`;
                 }
                 case "Move": {
                     const item = i as MoveSection;
@@ -233,11 +181,11 @@ export class Character {
                         .replace(/%EXTRA%/g, this.renderExtras(item))
                         .replace(/%INPUT%/g, inputString)
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
-                        .replace(/%CONDITION%/g, item.Condition ? this.resolveReferences(item.Condition) : "")
+                        .replace(/%CONDITION%/g, item.Condition ? resolveReferences(item.Condition, this.ctx) : "")
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))
                         .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes))
                         .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))
-                        .replace(/%DESCRIPTION%/g, this.resolveReferences(item.Description));
+                        .replace(/%DESCRIPTION%/g, resolveReferences(item.Description, this.ctx));
                 }
                 default:
                     this.logger.error(`Unknown section type: ${i.Type}`);
@@ -252,16 +200,16 @@ export class Character {
         this.logger.log("Generating character page...");
 
         const rendered = characterTemplate.replace(/%NAME%/g, this.Name)
-            .replace(/%DESCRIPTION%/g, this.resolveReferences(this.Description || ""))
+            .replace(/%DESCRIPTION%/g, resolveReferences(this.Description || "", this.ctx))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
-            .replace(/%INFO%/g, this.renderTable([{
-                "Type": this.Type || "<em button=x>-</em>",
-                "Health": this.Health || "<em button=x>-</em>",
-                "Movement Speed": this.MoveSpeed || "<em button=x>-</em>",
-                "Unique Movement": this.renderUniqueMovement(),
-                "Stage": this.Stage || "<em button=x>-</em>",
-                "Reversals": this.renderReversals(),
+            .replace(/%INFO%/g, this.tableProvider.create([{
+                "Type":             this.Type               || "<em button=x>-</em>",
+                "Health":           this.Health             || "<em button=x>-</em>",
+                "Movement Speed":   this.MoveSpeed          || "<em button=x>-</em>",
+                "Unique Movement":  this.UniqueMovement     || "<em button=x>-</em>",
+                "Stage":            this.Stage              || "<em button=x>-</em>",
+                "Reversals":        this.Reversals          || "<em button=x>None</em>",
             }], "vertical"))
             .replace(/%BODY%/g, this.sections.map((section) => {
                 switch (section) {

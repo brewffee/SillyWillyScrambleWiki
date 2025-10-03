@@ -1,0 +1,48 @@
+[System]
+Name="Controls"
+Description="""
+%banner(info, "This page uses Numpad Notation to represent motion inputs. If you are not already familliar, please see
+??? for more information.")
+<br><br>
+Silly Willy Scramble uses a simple control scheme with 4 buttons and several utility macros to perform a variety of
+actions. The names of these buttons take after the Guilty Gear series.
+"""
+
+[[System.ButtonLayout]]
+Type="Text"
+Name="Button Layout"
+Description="""
+<ul>
+    <li>%auto(P) - Punch - Your lightest normal attack button. Typically useful to get out of pressure with low
+    commitment, or stopping the opponent's approach with the universal %auto(6P) anti-air.</li>
+    <li>%auto(K) - Kick - Your second lightest normal button. This button is sometimes linked to motion inputs that
+    deal with special movement options.</li>
+    <li>%auto(S) - Slash - Your best button for a balance of power and versatility.</li>
+    <li>%auto(H) - Heavy Slash - In most cases, your most powerful button. Will usually come at a cost of being sluggish
+    or high commitment, but the rewards are well worth it when used correctly.</li>
+</ul>
+"""
+
+[[System.Macros]]
+Type="Text"
+Name="Macros"
+Description="""
+<ul>
+    <li>Dash - Allows you to run up or dash without having to manually press %btn(66,x). Additionally, you can input
+    other directions or motions significantly easier, as the 6 direction is not occupied when using the macro.
+    Backdash can be performed by inputting 4+Dash Macro, although it cannot be held.</li>
+    <li>Burst - Performs a Burst at the press of a button. </li>
+    <li>Scramble Cancel - One button Scramble Cancel macro.</li>
+    <li>Taunt - </li>
+</ul>
+"""
+#    While the input for Burst is relatively simple, it is
+#    useful if you have a controller layout that does not allow you to press the buttons as comfortably.
+
+[[System.MoreInformation]]
+Type="Text"
+Name="More Information"
+Description="""
+For more in-depth information on universal actions and movement, please see the %url(system/mechanics.html, "System Mechanics")
+page.
+"""

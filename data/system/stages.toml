@@ -1,0 +1,49 @@
+[System]
+Name="Stages"
+Description="""
+<h4>Character-Specific stages</h4>
+
+<h4>Other stages</h4>
+"""
+
+[[System.Stages]]
+Type="Text"
+Name="Throne Room"
+Description="""
+%img(ThroneRoom.png,Throne Room,The Throne Room stage)
+<b>Throne Room</b> is %chara(Goopert, "Goopert\\'s") default stage.
+"""
+
+[[System.Stages]]
+Type="Text"
+Name="Floating Island"
+Description="""
+%img(FloatingIsland.png,Floating Island,The Floating Island stage)
+<b>Floating Island</b> is %chara(Max, "Max\\'s") default stage.
+"""
+
+[[System.Stages]]
+Type="Text"
+Name="Creative Server Lava Pit"
+Description="""
+%img(CreativeServerLavaPit.png,Creative Server Lava Pit,The Creative Server Lava Pit stage)
+<b>Creative Server Lava Pit</b> is %chara(failEs, "failEs\\'s") default stage.
+"""
+
+[[System.Stages]]
+Type="Text"
+Name="Seagull Corp Building"
+Description="""
+%img(SeagullCorpBuilding.png,Seagull Corp Building,The Seagull Corp Building stage)
+<b>Seagull Corp Building</b> is %chara(Seagull, "Seagull\\'s") default stage.
+"""
+
+[[System.Stages]]
+Type="Text"
+Name="Sandwicheimer Destruction Site"
+Description="""
+%img(SandwicheimerDestructionSite.png,Sandwicheimer Destruction Site,The Sandwicheimer Destruction Site stage)
+<b>Sandwicheimer Destruction Site</b> is %chara(Guiblo, "Guiblo\\'s") default stage.
+"""
+
+
