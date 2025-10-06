@@ -8,11 +8,12 @@ import { ReferenceContext, resolveReferences } from "./util/Macros.ts";
 import { Logger } from "./util/Logger.ts";
 import { renderInputString } from "./util/Input.ts";
 import { safeID } from "./util/String.ts";
-import { TableProvider } from "./util/Table.ts";
 import { compareVersions } from "./util/util.ts";
 
 import { FrameDataDefaults } from "./types/FrameData.ts";
 import { characters, exportDir } from "./index.ts";
+
+import { TableProvider } from "./components/Table.ts";
 
 const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
 const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
@@ -127,9 +128,7 @@ export class Character {
     }
 
     // creates the image gallery
-    // todo: if there are no hitboxes, the button should be removed here
-    //   in other words, automatically add the hitbox button inside this func
-    renderImages(images: string[], name: string, notes?: string[]): string {
+    renderImages(images: string[], name: string, notes?: string[], isHitbox: boolean = false): string {
         if (!images) return "";
         let imageStr = "";
         for (let i = 0; i < images.length; i++) {
@@ -137,9 +136,18 @@ export class Character {
                 console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested image: ${images[i]}`);
             }
 
-            imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} Sprite ${i>0?i+1:''}" title="${images[i]}">\n`;
+            imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} ${isHitbox?'Hitbox':'Sprite'} ${i>0?i+1:''}" title="${images[i]}">\n`;
             if (notes?.[i]) imageStr += `<span class=image-note>${resolveReferences(notes[i], this.ctx)}</span>`;
         }
+
+        imageStr = `<div class=${isHitbox?'hitbox':'image'}-container>${imageStr}</div>`;
+        if (isHitbox) {
+            imageStr += `<div class=hitbox-toggle>
+            <input type=checkbox id="${safeID(name)}-hitbox-toggle" class=hitbox-checkbox hidden>
+            <label for="${safeID(name)}-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+          </div>`;
+        }
+
         return imageStr;
     }
 
@@ -183,7 +191,7 @@ export class Character {
                         .replace(/%BUTTON%/g, item.Buttons?.[0] ?? "")
                         .replace(/%CONDITION%/g, item.Condition ? resolveReferences(item.Condition, this.ctx) : "")
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))
-                        .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes))
+                        .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes, true))
                         .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))
                         .replace(/%DESCRIPTION%/g, resolveReferences(item.Description, this.ctx));
                 }

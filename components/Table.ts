@@ -1,4 +1,4 @@
-import { ReferenceContext, resolveReferences } from "./Macros.ts";
+import { ReferenceContext, resolveReferences } from "../util/Macros.ts";
 
 export type TableData = { [key: string]: string | string[] | undefined }[];
 

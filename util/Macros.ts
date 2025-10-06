@@ -7,7 +7,7 @@ import { isContained, safeID } from "./String.ts";
 
 import { Character } from "../character.ts";
 import { characters } from "../index.ts";
-import { Table, TableData } from "./Table.ts";
+import { Table, TableData } from "../components/Table.ts";
 
 export class Macro {
     name: string;
