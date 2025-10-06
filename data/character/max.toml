@@ -334,12 +334,46 @@ Inputs=["236236K"]
 Buttons=["k"]
 Condition="with 50% meter"
 Images=["move/Max_236236K.png", "move/Max_236236K_2.png"]
-Hitboxes=["move/Max_236236K_Hitbox.png"]
+Hitboxes=["move/Max_236236K_Levels_0-2.png", "move/Max_236236K_Level_3.png"]
+HitboxNotes=["Size comparison for levels 0-2", "Level 3"]
 Description="""
 Max jumps really high into the air and takes off their glasses, reflecting the sun through their lenses to create a
-powerful beam of light that incinerates the opponent.
+powerful beam of light that incinerates the opponent. When used with Caffeine available, the super deals more damage
+and has a larger beam. At level 3, the super will summon two beams of light, making it near unavoidable.
+<ul>
+    <li>If Max is to somehow have more than 3 Caffeine, the super will only consume the 3 necessary and play
+    as if it was Level 3.</li>
+</ul>
 """
 [[Character.Supers.Data]]
+Version="236236K Lv.0"
+Guard="All"
+Damage="-xN"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Airborne"]
+[[Character.Supers.Data]]
+Version="236236K Lv.1"
+Guard="All"
+Damage="-xN"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Airborne"]
+[[Character.Supers.Data]]
+Version="236236K Lv.2"
+Guard="All"
+Damage="-xN"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Airborne"]
+[[Character.Supers.Data]]
+Version="236236K Lv.3"
 Guard="All"
 Damage="-xN"
 Startup="-"
