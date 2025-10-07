@@ -2,6 +2,7 @@ import * as fs from "fs";
 
 import type { FrameData } from "./types/FrameData.ts";
 import type { Mechanic, Move } from "./types/Move.ts";
+import { MoveProperties, MovePropertiesDefaults } from "./types/MoveProperties.ts";
 import type { MoveSection, SectionType, TextSection } from "./types/Section.ts";
 
 import { ReferenceContext, resolveReferences } from "./util/Macros.ts";
@@ -115,7 +116,8 @@ export class Character {
         return extras.length > 0 ? `(${extras.join(", ")} OK)` : "";
     }
 
-    renderFrameData(data: FrameData[]): string {
+    // todo: this functionality should be able to be recreated easily by modifying Table()
+    renderFrameData(data?: FrameData[]): string {
         if (!data) return "";
         // as specified in FrameDataDefaults, only Version can be left unspecified. all other fields must remain
         const filled: FrameData[] = data.map((frame) => {
@@ -125,6 +127,31 @@ export class Character {
         });
 
         return this.tableProvider.create(filled);
+    }
+
+    renderAdvancedData(name: string, data?: MoveProperties[], content?: string): string {
+        if (!data && !content) return "";
+
+        let table = "";
+        if (data) {
+            const filled: MoveProperties[] = data.map((move) => {
+                const res: MoveProperties = { ...MovePropertiesDefaults, ...move };
+                if (res.Version === undefined) delete res.Version;
+                if (res.ProjectileLevel === undefined) delete res.ProjectileLevel;
+                return res;
+            });
+
+            table = `<div class="table-container">${this.tableProvider.create(filled)}</div>`;
+        }
+
+        return `<div class="advanced-toggle">
+          <input id="${safeID(name)}-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="${safeID(name)}-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            ${table}
+            <span>${content}</span>
+        </div>`;
     }
 
     // creates the image gallery
@@ -193,7 +220,8 @@ export class Character {
                         .replace(/%IMAGE%/g, this.renderImages(item.Images, id, item.ImageNotes))
                         .replace(/%HITBOX%/g, this.renderImages(item.Hitboxes, id, item.HitboxNotes, true))
                         .replace(/%FRAMEDATA%/g, this.renderFrameData(item.Data))
-                        .replace(/%DESCRIPTION%/g, resolveReferences(item.Description, this.ctx));
+                        .replace(/%DESCRIPTION%/g, resolveReferences(item.Description, this.ctx))
+                        .replace(/%PROPERTIES%/g, this.renderAdvancedData(id, item.Properties, resolveReferences(item.Advanced || "", this.ctx)));
                 }
                 default:
                     this.logger.error(`Unknown section type: ${i.Type}`);

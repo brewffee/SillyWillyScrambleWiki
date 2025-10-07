@@ -107,16 +107,14 @@ Berb teleports to the most recent Rift Point. If %auto(K) is pressed again durin
 move to the next point in line. This can be repeated an additional time to move to the oldest point. Choosing a
 different point to teleport to can help trip up opponents who are trying to predict Berb's movement, creating
 easy openings for counterattacks.
+<ul>
+    <li>Data in parenthesis represents the frame advantage when using the second Rift Point.</li>
+    <li>Data in brackets represents the frame advantage when using the third Rift Point.</li>
+</ul>
 """
 [[Character.Specials.Data]]
 Version="214K"
-Recovery="-"
-[[Character.Specials.Data]]
-Version="214K~K"
-Recovery="-"
-[[Character.Specials.Data]]
-Version="214K~K~K"
-Recovery="-"
+Recovery="- (-) [-]"
 
 [[Character.Specials]] # Distortion
 Name="Distortion"
@@ -130,23 +128,25 @@ Berb attacks the opponent, creating a distortion in space-time that teleports th
 %ref(Chrono Shift,214K,k), pressing %auto(S) teleports the opponent to the next available point, or again for the
 oldest point. This move is a great way to extend combos or to reposition opponents into more unfavorable situations.
 <ul>
-    <li>Forces the opponent into airborne state regardless of how close to the ground the Rift Point is</li>
+    <li>Forces the opponent into airborne state regardless of how close to the ground the Rift Point is.</li>
+    <li>Data in parenthesis represents the frame advantage when using the second Rift Point.</li>
+    <li>Data in brackets represents the frame advantage when using the third Rift Point.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
-Version="236S"
 Damage="-"
 Guard="All"
 Startup="-"
 Active="-"
-Recovery="-"
+Recovery="- (-) [-]"
 OnBlock="-"
-[[Character.Specials.Data]]
-Version="236S~S"
-Recovery="-"
-[[Character.Specials.Data]]
-Version="236S~S~S"
-Recovery="-"
 
 [[Character.Specials]] # Clockwork
 Name="Clockwork"
@@ -162,6 +162,13 @@ A slow, yet highly rewarding overhead attack.
 Gears pop out of Berb's robotic arm as he performs a large downward swing that hits overhead. Plays a large gong sound
 on hit, sending the opponent into stagger, or Guard Crush on block.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Properties=["Stagger", "Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="High"
@@ -182,6 +189,13 @@ Berb sends a version of him from an alternate timeline to assist in attacking th
 air on hit. The startup and travel speed of Berb's alternate self are also affected by the time alterations caused by
 %ref(Accent Acceleration).
 """
+[[Character.Specials.Properties]]
+Attributes=["Projectile"]
+Properties=["Launch", "NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -211,6 +225,19 @@ If blocked, the effect will not trigger and Berb will be left vulnerable.
     were not hit, they will simply fall to the ground or automatically recover</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>The strike hitbox ignores the invincibility property of the opponent's hurtbox. If the opponent has no hurtbox
+    for their invulnerable move, the pushbox will be targeted instead.</li>
+</ul>
+"""
+[[Character.Supers.Properties]]
+Attributes=["Strike*"]
+Properties=["NoParry"]
+Proration="-"
+CounterType="None"
+ChipRatio="0"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="All (Block only)"
@@ -253,6 +280,12 @@ Berb leaps backwards before suddenly appearing a far distance forwards. When hit
 created in their place, replacing the oldest point if 3 are already active. With invincibility on startup and cross-up
 properties, this is easily Berb's safest option for creating Rift Points.
 """
+[[Character.Supers.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="All"

@@ -483,6 +483,28 @@ em { font-style: normal }
     width: 100%;
 }
 
+
+.advanced-btn {
+    cursor: pointer;
+    float:right;
+    margin-top: -6px;
+    padding: 0 8px 4px;
+    text-decoration: underline;
+}
+
+.advanced {
+    display: none;
+
+    .table-container {
+        margin: 0 12px;
+        width: calc(100% - 24px);
+    }
+}
+
+.move-details:has(input:checked) {
+    .advanced { display: block }
+}
+
 .move-details > div > table, .info > div > table {
     border: none;
     th, td {

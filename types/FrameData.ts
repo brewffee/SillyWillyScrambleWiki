@@ -9,8 +9,6 @@ export interface FrameData {
     Recovery: string;
     OnBlock: string;
     Invuln: string[];
-    SpecialFrames?: string[];
-    SpecialNote?: string;
 }
 
 export const FrameDataDefaults: FrameData = {

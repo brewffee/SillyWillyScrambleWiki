@@ -89,10 +89,24 @@ Images=[""]         # Featured move sprites
 ImageNotes=[""]     # Notes for each featured move sprite
 Hitboxes=[""]       # Hitboxes for this move
 HitboxNotes=[""]    # Notes for each hitbox
-Description="""
-"""
+Description=""      # Information about this move, its uses, etc.
+Advanced=""         # More technical information that would benefit from explanation
 
-[[Character.Normals.Data]] # todo: this might get moved into a separate frame data file
+# todo: render frame data
+SpecialFrames=[""]  # Is there something of note for a specific frame?
+SpecialNote=""      # What's so special about them?
+
+[[Character.Normals.Properties]] # Technical properties about this move
+Version=""          # The version of this move to display
+Attributes=[""]     # The attributes of this move, such as Projectile, Strike, etc.
+ProjectileLevel=""  # If this move is a projectile, how strong is it?
+Properties=[""]     # What special properties does this move have?
+Proration=""        # The damage scaling if this move is used as a starter
+CounterType=""      # What is the reward for counterhitting with this move?
+ChipRatio=""        # The percent of chip damage dealt on block
+OnHit=""            # The advantage or disadvantage on hit
+
+[[Character.Normals.Data]]
 Version=""          # The version of this move to display
 Damage=""           # How much does this move deal?
 Guard=""            # Where the opponent can block this move
@@ -101,15 +115,12 @@ Active=""           # How many frames the move is active
 Recovery=""         # How many frames it takes to recover from the move
 OnBlock=""          # The advantage or disadvantage on block
 Invuln=[""]         # Where and how is this move invulnerable?
-SpecialFrames=[""]  # Is there something of note for a specific frame?
-SpecialNote=""      # What's so special about them?
 
 # todo: Attributes section, displays projectile status, knockdown type, etc.
 #Proration=""       # The combo damage scaling if this move is used as a starter
 #AttackType=""      # Is this a projectile, strike, command throw, or grab?
 #Reflectable=false  # Can this move be interrupted by reflector moves?
 #Armor=""           # What kind of armor does this move have, if applicable?
-#CounterType=""     # What is the reward for counterhitting with this move?
 #OnHit=""           # The advantage or disadvantage on hit
 #ChipPercent=""     # The percentage of damage dealt on block
 #Extra="""          # Any other notes or information that doesn't need to be displayed upfront?

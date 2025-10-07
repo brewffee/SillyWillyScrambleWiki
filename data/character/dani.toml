@@ -56,8 +56,12 @@ Description="""
 Allows Dani to swap manually to or from Exhilaration if she has enough. Dani is in counterhit state for the entire
 duration of this move, so use carefully—preferably during hard knockdown situations or where the opponent is a far
 enough distance away.
+<ul>
+    <li>Will not enter Exhilaration if Scramble Cancelled before the last startup frame</li>
+</ul>
 """
 [[Character.Specials.Data]]
+Startup="-"
 Recovery="-"
 
 [[Character.Specials]] # Ricochet
@@ -76,6 +80,20 @@ ricocheting.
     <li>%auto(H) version ricochets off the floor and hits the opponent low, although at a much slower speed.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="nm.214S"
+Attributes=["Projectile"]
+Proration="-, -"
+CounterType="-"
+ChipRatio="-, -"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="nm.214H"
+Attributes=["Projectile"]
+Proration="-, -"
+CounterType="-"
+ChipRatio="-, -"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="nm.214S"
 Damage="-"
@@ -104,6 +122,13 @@ Description="""
 Dani rolls along the ground without a hitbox, able to cross up opponents. Pressing K again instantly stops movement,
 but provides a hitbox that hits low. Move is also good for low profiling.
 """
+[[Character.Specials.Properties]]
+Version="nm.214K~K"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="nm.214K"
 Recovery="-"
@@ -135,6 +160,28 @@ is aimed much higher up.
     <li>Dani will whiff during this move if she runs out of ammo</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="nm.236S"
+Attributes=["Projectile"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="nm.236{S}"
+Attributes=["Projectile"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="nm.236[S]"
+Attributes=["Projectile"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="nm.236S"
 Damage="-"
@@ -147,7 +194,7 @@ OnBlock="-"
 Version="nm.236{S}"
 Damage="-"
 Guard="All"
-Startup="-"
+Startup="-, {-}"
 Active="-"
 Recovery="-"
 OnBlock="-"
@@ -155,7 +202,7 @@ OnBlock="-"
 Version="nm.236[S]"
 Damage="-"
 Guard="All"
-Startup="-"
+Startup="-, {-}, [-]"
 Active="-"
 Recovery="-"
 OnBlock="-"
@@ -180,6 +227,21 @@ on which button is pressed.
     <li>Without the initial hit, the effective startup of the move is ??F</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="ex.236S"
+Attributes=["Strike"]
+Properties=["Ground Bounce"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="ex.236H"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="ex.236S"
 Damage="-"
@@ -212,6 +274,13 @@ Description="""
 Dani grabs the opponent, strikes through them, and then stabs them in the back. She then throws the opponent into the
 air, allowing her to follow up with a combo.
 """
+[[Character.Specials.Properties]]
+Version="ex.236P"
+Attributes=["Grab"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-, -"
 Guard="Throw"
@@ -235,6 +304,13 @@ as it helps Dani quickly steal back her turn in Exhilaration if she is to lose h
     <li>Dani is in counterhit state for the entire duration of this move</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="ex.623S"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -257,6 +333,12 @@ Dani performs a leaping slash in front of her. During this move's recovery, it c
 supers to transfer horizontal momentum, or into itself for an additional boost. The cancel window is very narrow,
 requiring precise timing to properly execute.
 """
+[[Character.Specials.Properties]]
+Version="ex.214K"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -285,6 +367,13 @@ continues to attack depending on the amount of remaining Exhilaration Meter.
     <li>??% to ??% Exhilaration: ???</li>
 </ul>
 """
+[[Character.Supers.Properties]]
+Version="632146S"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-, -xN"
 Guard="All"
@@ -306,7 +395,19 @@ Dani jumps into the air and lays sights upon the opponent. She uses up all of he
 of hitscan shots that track to the opponent's location. Once she reaches the ground, she immediately enters
 Exhilaration. Because of the automatic activation, it is advised to only use this super when Dani has enough
 Exhilaration stored up to make it worthwhile.
+<ul>
+    <li>Will not enter Exhilaration if Scramble Cancelled before the last startup frame, although very expensive and not
+    recommended.</li>
+</ul>
 """
+[[Character.Supers.Properties]]
+Version="nm.632146H"
+Attributes=["Strike"]
+Properties=["NoParry"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-xN"
 Guard="All"
@@ -327,7 +428,26 @@ Hitboxes=["move/Dani_ex632146H_Hitbox.png"]
 Description="""
 Dani throws a knife which travels across the entire screen. On hit, the opponent is locked into stun, as Dani dashes
 towards the opponent, slicing through them with ease.
+<ul>
+    <li>Knife becomes an independent projectile when Scramble Cancelled.</li>
+</ul>
 """
+[[Character.Supers.Properties]]
+Version="Knife"
+Attributes=["Projectile"]
+ProjectileLevel="3"
+Properties=["NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="Stagger"
+[[Character.Supers.Properties]]
+Version="Follow-up"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="All"

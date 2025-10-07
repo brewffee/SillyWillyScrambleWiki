@@ -1,4 +1,5 @@
 import type { FrameData } from "./FrameData.ts";
+import type { MoveProperties } from "./MoveProperties.ts";
 
 export interface Move {
     Name: string;
@@ -14,7 +15,12 @@ export interface Move {
     Hitboxes: string[];
     HitboxNotes?: string[];
     Description: string;
+    Advanced: string;
 
+    SpecialFrames?: string[];
+    SpecialNote?: string;
+
+    Properties?: MoveProperties[];
     Data: FrameData[];
 }
 

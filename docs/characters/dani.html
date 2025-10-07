@@ -122,7 +122,7 @@ to use these special moves until she enters Exhilaration, which fully restocks h
 <tr>
 <td></td>
 <td></td>
-<td></td>
+<td>-</td>
 <td></td>
 <td>-</td>
 <td></td>
@@ -134,7 +134,11 @@ to use these special moves until she enters Exhilaration, which fully restocks h
     <span>Allows Dani to swap manually to or from Exhilaration if she has enough. Dani is in counterhit state for the entire
 duration of this move, so use carefully—preferably during hard knockdown situations or where the opponent is a far
 enough distance away.
+<ul>
+    <li>Will not enter Exhilaration if Scramble Cancelled before the last startup frame</li>
+</ul>
 </span>
+    
   </div>
 </div><a href="#Ricochet">
   <h3 id="Ricochet" class=move-name>Ricochet </h3>
@@ -198,6 +202,45 @@ ricocheting.
     <li><em class=btn button="h">H</em> version ricochets off the floor and hits the opponent low, although at a much slower speed.</li>
 </ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Ricochet-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Ricochet-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nm.214S</td>
+<td>Projectile</td>
+<td></td>
+<td>-, -</td>
+<td>-</td>
+<td>-, -</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nm.214H</td>
+<td>Projectile</td>
+<td></td>
+<td>-, -</td>
+<td>-</td>
+<td>-, -</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Movement-Control">
   <h3 id="Movement-Control" class=move-name>Movement Control </h3>
@@ -258,6 +301,36 @@ ricocheting.
     <span>Dani rolls along the ground without a hitbox, able to cross up opponents. Pressing K again instantly stops movement,
 but provides a hitbox that hits low. Move is also good for low profiling.
 </span>
+    <div class="advanced-toggle">
+          <input id="Movement-Control-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Movement-Control-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nm.214K~K</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trigger-Happy">
   <h3 id="Trigger-Happy" class=move-name>Trigger Happy (Hold OK)</h3>
@@ -304,7 +377,7 @@ but provides a hitbox that hits low. Move is also good for low profiling.
 <td>nm.236{S}</td>
 <td>-</td>
 <td>All</td>
-<td>-</td>
+<td>-, {-}</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -314,7 +387,7 @@ but provides a hitbox that hits low. Move is also good for low profiling.
 <td>nm.236[S]</td>
 <td>-</td>
 <td>All</td>
-<td>-</td>
+<td>-, {-}, [-]</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
@@ -331,6 +404,54 @@ is aimed much higher up.
     <li>Dani will whiff during this move if she runs out of ammo</li>
 </ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Trigger-Happy-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trigger-Happy-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nm.236S</td>
+<td>Projectile</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nm.236{S}</td>
+<td>Projectile</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nm.236[S]</td>
+<td>Projectile</td>
+<td>Launch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Cross-Fire">
   <h3 id="Cross-Fire" class=move-name>Cross Fire </h3>
@@ -399,6 +520,45 @@ on which button is pressed.
     <li>Without the initial hit, the effective startup of the move is ??F</li>
 </ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Cross-Fire-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Cross-Fire-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ex.236S</td>
+<td>Strike</td>
+<td>Ground Bounce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ex.236H</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Backstab">
   <h3 id="Backstab" class=move-name>Backstab </h3>
@@ -446,6 +606,36 @@ on which button is pressed.
     <span>Dani grabs the opponent, strikes through them, and then stabs them in the back. She then throws the opponent into the
 air, allowing her to follow up with a combo.
 </span>
+    <div class="advanced-toggle">
+          <input id="Backstab-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Backstab-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ex.236P</td>
+<td>Grab</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Bait">
   <h3 id="Bait" class=move-name>Bait </h3>
@@ -496,6 +686,36 @@ as it helps Dani quickly steal back her turn in Exhilaration if she is to lose h
     <li>Dani is in counterhit state for the entire duration of this move</li>
 </ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Bait-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Bait-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ex.623S</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Bunnyhop">
   <h3 id="Bunnyhop" class=move-name>Bunnyhop </h3>
@@ -543,6 +763,36 @@ as it helps Dani quickly steal back her turn in Exhilaration if she is to lose h
 supers to transfer horizontal momentum, or into itself for an additional boost. The cancel window is very narrow,
 requiring precise timing to properly execute.
 </span>
+    <div class="advanced-toggle">
+          <input id="Bunnyhop-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Bunnyhop-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ex.214K</td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div></div><div class=section><h2 id=Supers><a href=#Supers>Supers</a></h2><a href="#Clutch">
   <h3 id="Clutch" class=move-name>Clutch </h3>
@@ -594,6 +844,36 @@ continues to attack depending on the amount of remaining Exhilaration Meter.
     <li>??% to ??% Exhilaration: ???</li>
 </ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Clutch-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Clutch-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>632146S</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trickshot">
   <h3 id="Trickshot" class=move-name>Trickshot </h3>
@@ -641,7 +921,41 @@ continues to attack depending on the amount of remaining Exhilaration Meter.
 of hitscan shots that track to the opponent's location. Once she reaches the ground, she immediately enters
 Exhilaration. Because of the automatic activation, it is advised to only use this super when Dani has enough
 Exhilaration stored up to make it worthwhile.
+<ul>
+    <li>Will not enter Exhilaration if Scramble Cancelled before the last startup frame, although very expensive and not
+    recommended.</li>
+</ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Trickshot-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trickshot-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nm.632146H</td>
+<td>Strike</td>
+<td>NoParry</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Anchor">
   <h3 id="Anchor" class=move-name>Anchor </h3>
@@ -687,13 +1001,58 @@ Exhilaration stored up to make it worthwhile.
     </div>
     <span>Dani throws a knife which travels across the entire screen. On hit, the opponent is locked into stun, as Dani dashes
 towards the opponent, slicing through them with ease.
+<ul>
+    <li>Knife becomes an independent projectile when Scramble Cancelled.</li>
+</ul>
 </span>
+    <div class="advanced-toggle">
+          <input id="Anchor-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Anchor-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>ProjectileLevel</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Knife</td>
+<td>Projectile</td>
+<td>3</td>
+<td>NoReflect</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Stagger</td>
+</tr>
+<tr>
+<td>Follow-up</td>
+<td>Strike</td>
+<td></td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div></div>
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Sun Oct 05 2025, 11:04:07 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Tue Oct 07 2025, 1:43:21 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>
