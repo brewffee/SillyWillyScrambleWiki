@@ -41,7 +41,12 @@
             <span>%DESCRIPTION%</span>
             <section class=info>
               <h3>%NAME%</h3>
-              <img src="%PORTRAITPATH%" alt="%NAME% Portrait">
+              <img class="portrait" src="%PORTRAITPATH%" alt="%NAME% Portrait">
+              <img class="alt-portrait" src="%ALTERNATEPORTRAITPATH%" alt="%NAME% Alternate Costume Portrait">
+              <div class="alternate-toggle">
+                <input type="checkbox" id="alternate-toggle" class="alternate-checkbox" hidden="">
+                <label for="alternate-toggle" class="alternate-btn">Alternate Costume</label>
+              </div>
               <div class=table-container>
                 %INFO%
               </div>

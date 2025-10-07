@@ -26,6 +26,8 @@ amount of time or until Goopert is hit. All items that perform attacks such as %
 %ref(Blue Bird,Blue Bird,_), and %ref(Fishing Rod,Fishing Rod,_) will home into the opponent's current position.
 Additionally, when drawing an item with %ref(behold!), Goopert can influence the direction of the falling item
 using 6 or 4 to pull the item forwards or backwards respectively.
+
+%img(Goopert_Cursor_State.png,Cursor State,"The opponent after being placed in Cursor State")
 """
 
 ###################################

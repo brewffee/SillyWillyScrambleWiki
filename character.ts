@@ -25,7 +25,7 @@ const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
 // noinspection HtmlUnknownAnchorTarget
 export class Character {
     private static readonly OVERVIEW_FIELDS: (keyof Character)[] = [
-        "Name", "Description", "IconPath", "PortraitPath", "Type",
+        "Name", "Description", "IconPath", "PortraitPath", "AlternatePortraitPath", "Type",
         "Health", "MoveSpeed", "UniqueMovement", "Stage", "Reversals"
     ];
     private static readonly STANDARD_SECTIONS: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
@@ -34,6 +34,7 @@ export class Character {
     Description?: string;
     IconPath?: string;
     PortraitPath?: string;
+    AlternatePortraitPath?: string;
     Type?: string;
     Health?: string;
     MoveSpeed?: string;
@@ -66,6 +67,7 @@ export class Character {
         this.Description = data.Description || "";
         this.IconPath = data.IconPath || "";
         this.PortraitPath = data.PortraitPath || "";
+        this.AlternatePortraitPath = data.AlternatePortraitPath || "";
         this.Type = data.Type || "";
         this.Health = data.Health;
         this.MoveSpeed = data.MoveSpeed;
@@ -238,6 +240,7 @@ export class Character {
         const rendered = characterTemplate.replace(/%NAME%/g, this.Name)
             .replace(/%DESCRIPTION%/g, resolveReferences(this.Description || "", this.ctx))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
+            .replace(/%ALTERNATEPORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.AlternatePortraitPath}`)
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
             .replace(/%INFO%/g, this.tableProvider.create([{
                 "Type":             this.Type               || "<em button=x>-</em>",

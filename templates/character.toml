@@ -30,6 +30,7 @@ Description="""
 """
 IconPath=""         # Path to icon (relative to character's directory)
 PortraitPath=""     # Path to portrait art
+AltPortraitPath=""  # Path to alternate costume portrait art
 Health=""           # The amount of health the character has
 MoveSpeed=""        # The movement speed of this character
 UniqueMovement=[""] # Will this character have different movement options?
