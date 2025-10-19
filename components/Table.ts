@@ -1,4 +1,5 @@
 import { ReferenceContext, resolveReferences } from "../util/Macros.ts";
+import { humanize } from "../util/String.ts";
 
 export type TableData = { [key: string]: string | string[] | undefined }[];
 
@@ -38,7 +39,9 @@ export class Table {
         switch (this.orientation) {
             case "horizontal":
                 // thead and tbody for header and body
-                table += `<thead>\n<tr>\n${this.headers.map((header) => `<th>${resolveReferences(header, this.ctx)}</th>`).join("\n")}\n</tr>\n</thead>`;
+                table += `<thead>\n<tr>\n${this.headers.map((header) => 
+                    `<th>${humanize(resolveReferences(header, this.ctx))}</th>`
+                ).join("\n")}\n</tr>\n</thead>`;
 
                 // tbody
                 return table + "<tbody>\n" + this.data.map((item) => {
@@ -62,9 +65,9 @@ export class Table {
                         const value = item[key] ?? "";
 
                         if (Array.isArray(value)) {
-                            return `<tr><th>${key}</th><td>${value.map((i) => resolveReferences(i, this.ctx)).join(",<br>")}</td></tr>`;
+                            return `<tr><th>${humanize(key)}</th><td>${value.map((i) => resolveReferences(i, this.ctx)).join(",<br>")}</td></tr>`;
                         } else {
-                            return `<tr><th>${key}</th><td>${resolveReferences(value, this.ctx)}</td></tr>`;
+                            return `<tr><th>${humanize(key)}</th><td>${resolveReferences(value, this.ctx)}</td></tr>`;
                         }
                     }).join("\n");
 

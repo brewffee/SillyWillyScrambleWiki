@@ -13,3 +13,8 @@ export const isContained = (text: string, host: string): boolean => {
     const end = { "[": "]", "(": ")", "{": "}" }[host] || host;
     return text.startsWith(host) && text.endsWith(end);
 };
+
+// converts a key name to a more human-friendly string
+export const humanize = (str: string): string => {
+    return str.charAt(0).toUpperCase() + str.slice(1).replace(/([^A-Z]|^)([A-Z])/g, "$1 $2");
+};
