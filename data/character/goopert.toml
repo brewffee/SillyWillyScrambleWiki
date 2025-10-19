@@ -5,6 +5,7 @@ so goop
 """
 IconPath="icon/Goopert_Icon.png"
 PortraitPath="portrait/Goopert_Portrait.png"
+AlternatePortraitPath="portrait/Goopert_Alternate_Portrait.png"
 Type="Silly"
 Health="320"
 MoveSpeed="1x"
@@ -43,6 +44,13 @@ Description="""
 Goopert assumes the gooper-fied form of his opponent. If this move is used in a mirror match, Goopert will become
 unstable and will instead explode.
 """
+[[Character.Normals.Properties]]
+Version="Taunt (Mirror)"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Version="Taunt"
 Startup="-"
@@ -69,6 +77,10 @@ Description="""
 A command grab. Goopert wraps the opponent up using a Wii Remote and Nunchuck, before chucking them away. This move puts
 the opponent in Cursor State.
 """
+[[Character.Specials.Properties]]
+Attributes=["Grab"]
+Proration="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Throw"
@@ -88,6 +100,27 @@ Goopert jumps backwards quickly and attacks the opponent with his body. When %au
 forwards, moving past his original position. If the opponent or Goopert makes contact with the wall at any point, they
 will wallbounce.
 """
+Advanced="""
+<ul>
+    <li>The wallbounce Goopert experiences from this move is unique as he can still perform actions during the bounce.</li>
+</ul>
+"""
+[[Character.Specials.Properties]]
+Version="214K"
+Attributes=["Strike"]
+Properties=["Wall Bounce*"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="214K~K"
+Attributes=["Strike"]
+Properties=["Wall Bounce*"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="214K"
 Startup="-"
@@ -146,6 +179,20 @@ Goopert cloaks himself in fire before jumping and letting out a massive burst of
     <li>Data in brackets represents damage when hit at point-blank range.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="623S"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="623H"
+Attributes=["Strike"]
+Proration="- [-]"
+CounterType="-"
+ChipRatio="- [-]"
+OnHit="- [-]"
 [[Character.Specials.Data]]
 Version="623S"
 Damage="-"
@@ -229,6 +276,13 @@ move around while shooting. If picked up by the opponent, they will instead gain
     <li>The AK-47's magazine contains 30 rounds of ammunition.</li>
 </ul>
 """
+[[Character.Items.Properties]]
+Attributes=["Strike"]
+Properties=["NoParry"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Items.Data]]
 Damage="-xN"
 Guard="All"
@@ -265,6 +319,14 @@ Description="""
 When this item is drawn, it immediately flies horizontally across the screen to hit the opponent. Inflicts Guard Crush
 on block.
 """
+[[Character.Items.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Properties=["Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Items.Data]]
 Damage="-"
 Guard="All (Guard Crush)"
@@ -282,6 +344,18 @@ Description="""
 When this item is drawn, it immediately flies diagonally upwards, comes to a stop, then suddenly dives downwards. Hits
 as an overhead.
 """
+Advanced="""
+<ul>
+    <li>Blue Bird dies when reflected.</li>
+</ul>
+"""
+[[Character.Items.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Items.Data]]
 Damage="-"
 Guard="High"
@@ -303,6 +377,18 @@ at that moment. Time resumes after a couple seconds.
     <li>This item <b>cannot</b> be discarded with %auto(236[P]).</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>The strike hitbox ignores the invincibility property of the opponent's hurtbox. If the opponent has no hurtbox
+    for their invulnerable move, the pushbox will be targeted instead.</li>
+</ul>
+"""
+[[Character.Items.Properties]]
+Attributes=["Strike*"]
+Properties=["NoParry"]
+Proration="-"
+ChipRatio="0"
+OnHit="-"
 [[Character.Items.Data]]
 Damage="0"
 Guard="All"
@@ -334,6 +420,27 @@ it in. At any point in this attack, Goopert can explode the hook using %auto(P),
     <li>The hook can be deflected with any strike or projectile attack, delaying the final reel-in.</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>The explosion is nullified when reflecting.</li>
+</ul>
+"""
+[[Character.Items.Properties]]
+Version="Cast"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Items.Properties]]
+Version="Explosion"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Items.Data]]
 Version="Cast"
 Damage="-"
@@ -382,6 +489,24 @@ Goopert is able to pass through it.
     <li>When picked up by Tomo, this move will cost 5% Mana as if performed normally.</li>
 </ul>
 """
+[[Character.Items.Properties]]
+Version="Reflector"
+Attributes=["Projectile"]
+ProjectileLevel="4"
+Properties=["NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Items.Properties]]
+Version="Ice Wall"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Properties=["Shatter"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Items.Data]]
 Version="Reflector"
 Damage="-"
@@ -446,6 +571,13 @@ up to near-half health, making this move a top contender for the most damaging s
 spun and its effects have been applied, Goopert smacks the opponent away with a Wii Remote, placing the opponent in
 Cursor State.
 """
+[[Character.Supers.Properties]]
+Version="Capture"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="236236S"
 Damage="- ~ -"

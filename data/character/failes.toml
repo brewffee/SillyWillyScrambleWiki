@@ -8,6 +8,7 @@ character.
 """
 IconPath="icon/Failes_Icon.png"
 PortraitPath="portrait/Failes_Portrait.png"
+AlternatePortraitPath="portrait/Failes_Alternate_Portrait.png"
 Type="Gooner"
 Health="420"
 MoveSpeed="1.269x"
@@ -47,6 +48,20 @@ Fail horizontally, while %auto([2]8H) sends him upwards at a steep angle.
     <li>%auto(K) cancel will cause Fail to jump upwards out of the attack, giving him a strong mixup opportunity.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="[4]6S"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="[2]8H"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="[4]6S"
 Damage="-"
@@ -83,6 +98,12 @@ Fail, preserving his existing momentum, jumps into the air and charges his oppon
 the air, he quickly comes down for a high hitting dive attack. If he is already in the air, he will immediately begin
 charging from where he started.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="236S"
 Damage="-"
@@ -112,6 +133,12 @@ Fail slides along the floor until he hits the opponent or a set distance, before
 trident. Has a great low-profile and hits the opponent low for both slide and strike. The strike also reaches much
 higher and launches the opponent upwards a good distance.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Low,Low"
@@ -145,6 +172,17 @@ attack into another special, including the recovery.
     <li><b>%auto(K) Loyalty</b> throws trident upwards diagonally, or if in the air, downwards diagonally.
 </ul>
 """
+Advanced="""
+The follow-up cannot be executed if the trident is reflected before input.
+"""
+[[Character.Specials.Properties]]
+Version="214P/K"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="214P"
 Damage="-"
@@ -183,6 +221,12 @@ Launches the opponent upwards and gains a special cancel on hit.
     <li>Fail is in counterhit state for the entire duration of the move.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="623H"
 Damage="-"
@@ -219,6 +263,14 @@ between each launch, giving him safe pressure strings or excellent corner carry.
 upwards, and on block, the opponent is sent into Guard Crush. In exchange, Fail is in counterhit state for the entire
 duration of the move, and the tridents immediately disappear when countered.
 """
+[[Character.Supers.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="3"
+Properties=["Launch", "Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-xN"
 Guard="All"
@@ -248,6 +300,12 @@ An invincible rising reversal. Fail instantly flies offscreen. If the first hit 
 comes back down for a finisher. However, if blocked or whiffed, Fail falls down, unable to move and in a guaranteed
 counterhit state.
 """
+[[Character.Supers.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="632146H"
 Damage="-"

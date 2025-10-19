@@ -4,6 +4,7 @@ Description="""
 """
 IconPath="icon/Kofy_Icon.png"
 PortraitPath="portrait/Kofy_Portrait.png"
+AlternatePortraitPath="portrait/Kofy_Alternate_Portrait.png"
 Type="All-Arounder"
 Health="500"
 MoveSpeed="1x"
@@ -25,8 +26,24 @@ Images=["move/Kofy_Taunt.png"]
 Hitboxes=["move/Kofy_Taunt_Explosion_Hitbox.png"]
 Description="""
 Summons a handheld goopert. After 3 seconds, the goopert gains a guard point. If hit by the opponent, causes an
-explosion that deals damage to both players. Does not beat projectile moves.
+explosion that deals damage to both players.
 """
+Advanced="""
+<ul>
+    <li>The explosion affects both players, so the frame advantage on hit is effectively 0.</li>
+    <li>The explosion's projectile status and low projectile level means that it can very easily be beaten by an
+    opponent's projectile move.</li>
+</ul>
+"""
+[[Character.Normals.Properties]]
+Version="Explosion"
+Attributes=["Projectile"]
+ProjectileLevel="1"
+Properties=["Launch", "NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="KD (0)"
 [[Character.Normals.Data]]
 Damage="-"
 Guard="Unblockable"
@@ -45,6 +62,12 @@ Hitboxes=["move/Kofy_j2K_Hitbox.png"]
 Description="""
 A momentum stalling hop kick that can be used to extend an air combo.
 """
+[[Character.Normals.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Damage="-"
 Guard="High"
@@ -67,6 +90,13 @@ Description="""
 Kôfy performs a momentum preserving front flip without a hitbox. Pressing %auto(K) at any point during the flip will
 send out an attack that hits high. Can be used as combo fodder as it keeps the opponent in the air for some time.
 """
+[[Character.Specials.Properties]]
+Version="214K~K"
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="214K"
 Recovery="-"
@@ -109,6 +139,8 @@ Parry stance. Halts all momentum when used. Has a minimum active time of 30F. Wh
 strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into %ref(Espresso,41236K)
 by pressing %auto(K).
 """
+[[Character.Specials.Properties]]
+Attributes=["Parry"]
 [[Character.Specials.Data]]
 Startup="1"
 Active="30~120"
@@ -127,6 +159,10 @@ Hitboxes=["move/Kofy_214P~P_Hitbox.png"]
 Description="""
 Command grab follow-up. Leaves Kôfy and the opponent back to neutral.
 """
+[[Character.Specials.Properties]]
+Attributes=["Grab"]
+Proration="-"
+OnHit="KD+?"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Throw"
@@ -150,6 +186,22 @@ version causes ground bounce at the end of the attack, %auto(H) version causes w
     <li> Data in brackets represent values when the attack is performed in the air</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="S"
+Attributes=["Strike"]
+Properties=["Ground Bounce"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="H"
+Attributes=["Strike"]
+Properties=["Wall Bounce"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="S"
 Damage="-"
@@ -188,6 +240,38 @@ whiff recovery. If %auto(S) or %auto(H) is pressed again, Kôfy will perform a v
 jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was
 blocked. Launches the opponent high into the air on counter hit, launches only slightly on other hits. Kôfy stays in
 place during %auto(S) follow-up. In the %auto(H) follow-up, Kôfy jumps to meet the opponent."""
+[[Character.Specials.Properties]]
+Version="236S"
+Attributes=["Strike"]
+Properties=["Tumble"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="KD+?"
+[[Character.Specials.Properties]]
+Version="236H"
+Attributes=["Strike"]
+Properties=["Tumble"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="KD+?"
+[[Character.Specials.Properties]]
+Version="236X~8S"
+Attributes=["Strike"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="236X~8H"
+Attributes=["Strike"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="236S"
 Damage="-"
@@ -237,6 +321,30 @@ Description="""
 A strong super that can serve as a powerful combo starter or a pressure tool with large amounts of Guard Crush. Can be
 charged for a stronger effect, but is interruptible during startup.
 """
+[[Character.Supers.Properties]]
+Version="214214S"
+Attributes=["Strike"]
+Properties=["Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="12%"
+OnHit="KD+?"
+[[Character.Supers.Properties]]
+Version="214214{S}"
+Attributes=["Strike"]
+Properties=["Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="24%"
+OnHit="KD+?"
+[[Character.Supers.Properties]]
+Version="214214[S]"
+Attributes=["Strike"]
+Properties=["Tumble", "Guard Crush"]
+Proration="-"
+CounterType="-"
+ChipRatio="48%"
+OnHit="HKD+?"
 [[Character.Supers.Data]]
 Version="214214S"
 Damage="-"
@@ -247,7 +355,7 @@ Recovery="-"
 OnBlock="-"
 [[Character.Supers.Data]]
 Version="214214{S}"
-Damage="-"
+Damage="-x2"
 Guard="All"
 Startup="-"
 Active="-"
@@ -255,7 +363,7 @@ Recovery="-"
 OnBlock="-"
 [[Character.Supers.Data]]
 Version="214214[S]"
-Damage="-"
+Damage="-x4"
 Guard="All"
 Startup="-"
 Active="-"
@@ -276,6 +384,13 @@ Description="""
 A powerful swing that sends the opponent flying into the wall. Causes ground and wall bounce on hit. Can also be used
 as a followup for %auto(236S/H) or %auto(236S~8S/H~8H), but does not retain its invulnerable startup.
 """
+[[Character.Supers.Properties]]
+Attributes=["Strike"]
+Properties=["Guard Crush", "Wall Bounce", "Ground Bounce"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="632146P"
 Damage="-"
@@ -293,8 +408,3 @@ Startup="-"
 Active="-"
 Recovery="-"
 OnBlock="-"
-
-
-
-
-

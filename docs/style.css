@@ -334,6 +334,7 @@ div.roster a .type {
     display: flex;
     width: 100%;
     position: relative;
+    user-select: none;
 
     .alternate-btn {
         padding: 2px 16px;

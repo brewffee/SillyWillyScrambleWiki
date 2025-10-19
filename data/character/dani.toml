@@ -5,6 +5,7 @@ Dani wields both a pistol and a knife at separate times.
 """
 IconPath="icon/Dani_Icon.png"
 PortraitPath="portrait/Dani_Portrait.png"
+AlternatePortraitPath="portrait/Dani_Alternate_Portrait.png"
 Type="Bnnuy"
 Health=""
 MoveSpeed="1x"
@@ -275,11 +276,8 @@ Dani grabs the opponent, strikes through them, and then stabs them in the back. 
 air, allowing her to follow up with a combo.
 """
 [[Character.Specials.Properties]]
-Version="ex.236P"
 Attributes=["Grab"]
 Proration="-"
-CounterType="-"
-ChipRatio="-"
 OnHit="-"
 [[Character.Specials.Data]]
 Damage="-, -"
@@ -305,7 +303,6 @@ as it helps Dani quickly steal back her turn in Exhilaration if she is to lose h
 </ul>
 """
 [[Character.Specials.Properties]]
-Version="ex.623S"
 Attributes=["Strike"]
 Proration="-"
 CounterType="-"
@@ -334,7 +331,7 @@ supers to transfer horizontal momentum, or into itself for an additional boost. 
 requiring precise timing to properly execute.
 """
 [[Character.Specials.Properties]]
-Version="ex.214K"
+Attributes=["Strike"]
 Proration="-"
 CounterType="-"
 ChipRatio="-"
@@ -368,7 +365,6 @@ continues to attack depending on the amount of remaining Exhilaration Meter.
 </ul>
 """
 [[Character.Supers.Properties]]
-Version="632146S"
 Attributes=["Strike"]
 Proration="-"
 CounterType="-"
@@ -401,7 +397,6 @@ Exhilaration stored up to make it worthwhile.
 </ul>
 """
 [[Character.Supers.Properties]]
-Version="nm.632146H"
 Attributes=["Strike"]
 Properties=["NoParry"]
 Proration="-"

@@ -23,6 +23,7 @@ those who can keep up with their resource management.
 """
 IconPath="icon/Max_Icon.png"
 PortraitPath="portrait/Max_Portrait.png"
+AlternatePortraitPath="portrait/Max_Alternate_Portrait.png"
 Type="Sleepy"
 Health="500"
 MoveSpeed="1x"
@@ -84,6 +85,12 @@ Description="""
 Max holds out an angry cat that scratches the opponent. A pretty weak move when performed raw, but a great option for
 keeping an opponent in the air for combo extensions.
 """
+[[Character.Normals.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Damage="-xN"
 Guard="All"
@@ -102,6 +109,13 @@ Description="""
 Max covers themselves in a blanket, sending the opponent away into a tumble. Has a very small wall bounce when used
 in the corner.
 """
+[[Character.Normals.Properties]]
+Attributes=["Strike"]
+Properties=["Tumble", "Wall Bounce"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Damage="-"
 Guard="All"
@@ -131,6 +145,30 @@ damage, and launch of the splash depends on how long the input was held.
     enhanced.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="214K"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="- [-]"
+[[Character.Specials.Properties]]
+Version="214{K}"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="- [-]"
+[[Character.Specials.Properties]]
+Version="214[K]"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="- [-]"
 [[Character.Specials.Data]]
 Version="214K"
 Damage="- [-]"
@@ -194,6 +232,22 @@ Max pours a bottle water on themselves and shakes it off like a Freakinge dog.
     and dealing more damage after shaking it off.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="214P"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="en.214P"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="214P"
 Guard="All"
@@ -225,6 +279,17 @@ Max pulls out a Deagle and physically hits the opponent with it.
     Causes hard knockdown on hit, and Guard Crush on block.</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>Data in brackets represents the frame advantage of the enhanced version.</li>
+</ul>
+"""
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="- [-]"
 [[Character.Specials.Data]]
 Version="236S"
 Guard="All"
@@ -256,6 +321,18 @@ Max conjures up a minecraft anvil above the opponent's head and hurls it down at
     or continue the current one.</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>Data in brackets represents the frame advantage of the enhanced version.</li>
+</ul>
+"""
+[[Character.Specials.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="- [-]"
 [[Character.Specials.Data]]
 Version="214H"
 Guard="High"
@@ -285,9 +362,22 @@ Hitboxes=["move/Max_623H_Hitbox.png"]
 Description="""
 Max pulls out a sweater and wraps the opponent up before lighting it on fire.
 <ul>
-    <li>The enhanced version of this move has significantly increased reach and launch power.
+    <li>The enhanced version of this move has significantly increased reach and launch power.</li>
+    <li>Grants hard knockdown on hit.</li>
+    <li>Can grab opponents during hitstun.</li>
 </ul>
 """
+Advanced="""
+<ul>
+    <li>Data in brackets represents the frame advantage of the enhanced version.</li>
+</ul>
+"""
+[[Character.Specials.Properties]]
+Attributes=["Grab"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="HKD+ [HKD+]"
 [[Character.Specials.Data]]
 Version="623H"
 Guard="Throw"
@@ -313,11 +403,17 @@ Inputs=["632146P"]
 Buttons=["p"]
 Condition="with 50% meter"
 Images=["move/Max_632146P.png", "move/Max_632146P_2.png", "move/Max_632146P_Whiff.png"]
-Hitboxes=[""]
+Hitboxes=["move/Max_632146P_Hitbox.png"]
 Description="""
 Max prepares a large punch. On contact with the opponent, their fist moves towards the screen and smashes the camera.
 This shakes the whole window and reverses the opponent’s inputs for a short duration. Invincible on startup.
 """
+[[Character.Supers.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="All"
@@ -345,6 +441,14 @@ and has a larger beam. At level 3, the super will summon two beams of light, mak
     as if it was Level 3.</li>
 </ul>
 """
+[[Character.Supers.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="3"
+Properties=["NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="236236K Lv.0"
 Guard="All"

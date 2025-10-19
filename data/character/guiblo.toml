@@ -21,6 +21,7 @@ good sequence and a beer to thoroughly crush his foe.
 """
 IconPath="icon/Guiblo_Icon.png"
 PortraitPath="portrait/Guiblo_Portrait.png"
+AlternatePortraitPath="portrait/Guiblo_Alternate_Portrait.png"
 Type="Grappler"
 Health="650"
 MoveSpeed="0.7x"
@@ -47,6 +48,18 @@ Guiblo holds a toaster in his hand. If held for 3 seconds, the toaster sprouts l
 wandering around the stage and turning around when reaching the end of the stage. When reaching the opponent, the
 toaster electrocutes itself and explodes.
 """
+Advanced="""
+<ul>
+    <li>The strike hitbox from this move is owned by an independent entity. When parried or reflected, the explosion
+    will nullify.</li>
+</ul>
+"""
+[[Character.Normals.Properties]]
+Version="Explosion"
+Attributes=["Strike*"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
 [[Character.Normals.Data]]
 Version="Explosion"
 Damage="-"
@@ -64,6 +77,13 @@ Description="""
 Guiblo's arms turn into springs and then coil, shortly before springing forwards with a large and powerful disjointed
 punch. Causes ground and wall bounce on hit, and sends the opponent flying on counter hit.
 """
+[[Character.Normals.Properties]]
+Attributes=["Strike"]
+Properties=["Ground Bounce", "Wall Bounce", "Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Damage="-"
 Guard="All"
@@ -81,6 +101,13 @@ Hitboxes=["move/Guiblo_3S_Hitbox.png"]
 Description="""
 Guiblo drops a rake on the ground and steps on it, launching the opponent high into the air.
 """
+[[Character.Normals.Properties]]
+Attributes=["Strike"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Normals.Data]]
 Damage="-"
 Guard="All"
@@ -106,6 +133,11 @@ slamming them down into the ground.
     <li>Guiblo is in counterhit state for the entire duration of the move.</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Grab"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Throw"
@@ -127,6 +159,30 @@ Guiblo blows himself up with a grenade, damaging himself and sending him in a sp
 launches himself upwards, %auto(S) version launches horizontally, and %auto(H) sends him diagonally downwards. If
 he performs the %auto(H) version on the ground, Guiblo will only move slightly forwards.
 """
+Advanced="""
+<ul>
+    <li>If the grenade explosion is reflected, Guiblo will not be launched.</li>
+    <li>Guiblo will still be launched normally when being hit with the explosion if he cancels or is interrupted
+    during startup.</li>
+</ul>
+"""
+[[Character.Specials.Properties]]
+Version="Grenade"
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="Slam"
+Attributes=["Strike"]
+Properties=["Launch"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="236P"
 Damage="-"
@@ -165,6 +221,8 @@ Guiblo throws a right hook that can only hit opponents' strike or projectile hit
 opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back towards the
 opponent.
 """
+[[Character.Specials.Properties]]
+Attributes=["Parry"]
 [[Character.Specials.Data]]
 Startup="-"
 Active="-"
@@ -183,6 +241,12 @@ Description="""
 Guiblo equips an angler's hat and throws a fishing hook towards the opponent. When the hook
 reaches the opponent, it pulls them close to Guiblo.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -205,6 +269,11 @@ Hitboxes=["move/Guiblo_632146S_Hitbox.png"]
 Description="""
 An incredibly fast command grab super.
 """
+[[Character.Supers.Properties]]
+Attributes=["Grab"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="Throw"
@@ -226,6 +295,11 @@ Invincible at startup. Guiblo grabs the opponent and holds them in front of him.
 pocket, a light shines, revealing a sandwich that freezes the game and explodes the opponent
 on unfreeze.
 """
+[[Character.Supers.Properties]]
+Attributes=["Grab"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Damage="-"
 Guard="Throw"
@@ -234,3 +308,8 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 Invuln=["Full"]
+
+###################################
+# Instant Kills
+###################################
+# Guiblo unleashes a powerful kamehameha that vaporizes the opponent

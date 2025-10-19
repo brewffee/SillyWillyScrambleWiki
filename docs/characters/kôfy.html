@@ -37,7 +37,7 @@
 <li><a href="#Espresso">Espresso</a></li>
 <li><a href="#Ristretto">Ristretto</a></li>
 <li><a href="#Special4">Special4</a></li>
-<li><a href="#Special5">Special5</a></li>
+<li><a href="#Cortado">Cortado</a></li>
 <li><a href="#Chiaroscuro-ver.Beta">Chiaroscuro ver.β</a></li>
 <li class=header><a href="#Supers">Supers</a></li>
 <li><a href="#Grisaille">Grisaille</a></li>
@@ -55,7 +55,7 @@
             <section class=info>
               <h3>Kôfy</h3>
               <img class="portrait" src="../images/kôfy/portrait/Kofy_Portrait.png" alt="Kôfy Portrait">
-              <img class="alt-portrait" src="../images/kôfy/" alt="Kôfy Alternate Costume Portrait">
+              <img class="alt-portrait" src="../images/kôfy/portrait/Kofy_Alternate_Portrait.png" alt="Kôfy Alternate Costume Portrait">
               <div class="alternate-toggle">
                 <input type="checkbox" id="alternate-toggle" class="alternate-checkbox" hidden="">
                 <label for="alternate-toggle" class="alternate-btn">Alternate Costume</label>
@@ -118,9 +118,45 @@
 </table>
     </div>
     <span>Summons a handheld goopert. After 3 seconds, the goopert gains a guard point. If hit by the opponent, causes an
-explosion that deals damage to both players. Does not beat projectile moves.
+explosion that deals damage to both players.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Taunt-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Taunt-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>ProjectileLevel</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Explosion</td>
+<td>Projectile</td>
+<td>1</td>
+<td>Launch,<br>NoReflect</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>KD (0)</td>
+</tr>
+</tbody>
+</table></div>
+            <span><ul>
+    <li>The explosion affects both players, so the frame advantage on hit is effectively 0.</li>
+    <li>The explosion's projectile status and low projectile level means that it can very easily be beaten by an
+    opponent's projectile move.</li>
+</ul>
+</span>
+        </div>
   </div>
 </div><a href="#j.2K">
   <h3 id="j.2K" class=move-name><em button=k>j.2K</em> </h3>
@@ -166,7 +202,34 @@ explosion that deals damage to both players. Does not beat projectile moves.
     </div>
     <span>A momentum stalling hop kick that can be used to extend an air combo.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="j.2K-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="j.2K-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div></div><div class=section><h2 id=Special-Attacks><a href=#Special-Attacks>Special Attacks</a></h2><a href="#Breve">
   <h3 id="Breve" class=move-name>Breve </h3>
@@ -225,7 +288,36 @@ explosion that deals damage to both players. Does not beat projectile moves.
     <span>Kôfy performs a momentum preserving front flip without a hitbox. Pressing <em class=btn button="k">K</em> at any point during the flip will
 send out an attack that hits high. Can be used as combo fodder as it keeps the opponent in the air for some time.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Breve-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Breve-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>214K~K</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Espresso">
   <h3 id="Espresso" class=move-name>Espresso </h3>
@@ -321,7 +413,34 @@ pressing <em class=btn button="k">K</em>.
 strike, Kôfy can access one of their follow-up attacks. If on the ground, can follow-up into <a href="#Espresso" class=ref title="Espresso"><em button=k>41236K</em></a>
 by pressing <em class=btn button="k">K</em>.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Ristretto-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Ristretto-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Parry</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Special4">
   <h3 id="Special4" class=move-name>Special4 (Air OK)</h3>
@@ -368,24 +487,51 @@ by pressing <em class=btn button="k">K</em>.
     </div>
     <span>Command grab follow-up. Leaves Kôfy and the opponent back to neutral.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Special4-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Special4-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Grab</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td></td>
+<td>KD+?</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
-</div><a href="#Special5">
-  <h3 id="Special5" class=move-name>Special5 (Air OK)</h3>
+</div><a href="#Cortado">
+  <h3 id="Cortado" class=move-name>Cortado (Air OK)</h3>
 </a>
 <div class=move>
   <div class=move-info>
     <span class=move-input>
       <em button=s>S</em><em button=or>/</em><em button=h>H</em> after <em class=btn button="k">41236K</em> or <em class=btn button="p">214P</em> catch
     </span>
-    <div class=image-container><img src="../images/kôfy/move/Kofy_214P~S.png" alt="Special5 Sprite " title="move/Kofy_214P~S.png">
-<img src="../images/kôfy/move/Kofy_214P~H.png" alt="Special5 Sprite 2" title="move/Kofy_214P~H.png">
+    <div class=image-container><img src="../images/kôfy/move/Kofy_214P~S.png" alt="Cortado Sprite " title="move/Kofy_214P~S.png">
+<img src="../images/kôfy/move/Kofy_214P~H.png" alt="Cortado Sprite 2" title="move/Kofy_214P~H.png">
 </div>
-    <div class=hitbox-container><img src="../images/kôfy/move/Kofy_214P~S_Hitbox.png" alt="Special5 Hitbox " title="move/Kofy_214P~S_Hitbox.png">
-<img src="../images/kôfy/move/Kofy_214P~H_Hitbox.png" alt="Special5 Hitbox 2" title="move/Kofy_214P~H_Hitbox.png">
+    <div class=hitbox-container><img src="../images/kôfy/move/Kofy_214P~S_Hitbox.png" alt="Cortado Hitbox " title="move/Kofy_214P~S_Hitbox.png">
+<img src="../images/kôfy/move/Kofy_214P~H_Hitbox.png" alt="Cortado Hitbox 2" title="move/Kofy_214P~H_Hitbox.png">
 </div><div class=hitbox-toggle>
-            <input type=checkbox id="Special5-hitbox-toggle" class=hitbox-checkbox hidden>
-            <label for="Special5-hitbox-toggle" class=hitbox-btn>Hitbox</label>
+            <input type=checkbox id="Cortado-hitbox-toggle" class=hitbox-checkbox hidden>
+            <label for="Cortado-hitbox-toggle" class=hitbox-btn>Hitbox</label>
           </div>
   </div>
   <div class=move-details>
@@ -432,7 +578,45 @@ version causes ground bounce at the end of the attack, <em class=btn button="h">
     <li> Data in brackets represent values when the attack is performed in the air</li>
 </ul>
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Cortado-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Cortado-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>S</td>
+<td>Strike</td>
+<td>Ground Bounce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Strike</td>
+<td>Wall Bounce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Chiaroscuro-ver.Beta">
   <h3 id="Chiaroscuro-ver.Beta" class=move-name>Chiaroscuro ver.β </h3>
@@ -518,7 +702,63 @@ whiff recovery. If <em class=btn button="s">S</em> or <em class=btn button="h">H
 jumping over the initial attack. Use carefully as this follow-up is highly punishable, even if the initial attack was
 blocked. Launches the opponent high into the air on counter hit, launches only slightly on other hits. Kôfy stays in
 place during <em class=btn button="s">S</em> follow-up. In the <em class=btn button="h">H</em> follow-up, Kôfy jumps to meet the opponent.</span>
-    
+    <div class="advanced-toggle">
+          <input id="Chiaroscuro-ver.Beta-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Chiaroscuro-ver.Beta-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>236S</td>
+<td>Strike</td>
+<td>Tumble</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>KD+?</td>
+</tr>
+<tr>
+<td>236H</td>
+<td>Strike</td>
+<td>Tumble</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>KD+?</td>
+</tr>
+<tr>
+<td>236X~8S</td>
+<td>Strike</td>
+<td>Launch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>236X~8H</td>
+<td>Strike</td>
+<td>Launch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div></div><div class=section><h2 id=Supers><a href=#Supers>Supers</a></h2><a href="#Grisaille">
   <h3 id="Grisaille" class=move-name>Grisaille </h3>
@@ -563,7 +803,7 @@ place during <em class=btn button="s">S</em> follow-up. In the <em class=btn but
 </tr>
 <tr>
 <td>214214{S}</td>
-<td>-</td>
+<td>-x2</td>
 <td>All</td>
 <td>-</td>
 <td>-</td>
@@ -573,7 +813,7 @@ place during <em class=btn button="s">S</em> follow-up. In the <em class=btn but
 </tr>
 <tr>
 <td>214214[S]</td>
-<td>-</td>
+<td>-x4</td>
 <td>All</td>
 <td>-</td>
 <td>-</td>
@@ -587,7 +827,54 @@ place during <em class=btn button="s">S</em> follow-up. In the <em class=btn but
     <span>A strong super that can serve as a powerful combo starter or a pressure tool with large amounts of Guard Crush. Can be
 charged for a stronger effect, but is interruptible during startup.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Grisaille-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Grisaille-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>214214S</td>
+<td>Strike</td>
+<td>Guard Crush</td>
+<td>-</td>
+<td>-</td>
+<td>12%</td>
+<td>KD+?</td>
+</tr>
+<tr>
+<td>214214{S}</td>
+<td>Strike</td>
+<td>Guard Crush</td>
+<td>-</td>
+<td>-</td>
+<td>24%</td>
+<td>KD+?</td>
+</tr>
+<tr>
+<td>214214[S]</td>
+<td>Strike</td>
+<td>Tumble,<br>Guard Crush</td>
+<td>-</td>
+<td>-</td>
+<td>48%</td>
+<td>HKD+?</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Chiaroscuro-ver.Omega">
   <h3 id="Chiaroscuro-ver.Omega" class=move-name>Chiaroscuro ver.Ω (Air OK)</h3>
@@ -646,13 +933,40 @@ charged for a stronger effect, but is interruptible during startup.
     <span>A powerful swing that sends the opponent flying into the wall. Causes ground and wall bounce on hit. Can also be used
 as a followup for <em class=btn button="s">236S</em><em class=btn button="or">/</em><em class=btn button="h">H</em> or <em class=btn button="s">236S</em><em class=btn button="or">~</em><em class=btn button="s">8S</em><em class=btn button="or">/</em><em class=btn button="h">H</em><em class=btn button="or">~</em><em class=btn button="h">8H</em>, but does not retain its invulnerable startup.
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Chiaroscuro-ver.Omega-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Chiaroscuro-ver.Omega-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>CounterType</th>
+<th>ChipRatio</th>
+<th>OnHit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Strike</td>
+<td>Guard Crush,<br>Wall Bounce,<br>Ground Bounce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div></div>
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Tue Oct 07 2025, 3:53:53 AM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Sat Oct 18 2025, 9:01:20 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

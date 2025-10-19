@@ -21,6 +21,7 @@ strong fundamentals and execution is key to unleashing his full potential.
 """
 IconPath="icon/Berb_Icon.png"
 PortraitPath="portrait/Berb_Portrait.png"
+AlternatePortraitPath="portrait/Berb_Alternate_Portrait.png"
 Type="Freaky"
 Health="525"
 MoveSpeed="0.9x"
@@ -235,7 +236,6 @@ Advanced="""
 Attributes=["Strike*"]
 Properties=["NoParry"]
 Proration="-"
-CounterType="None"
 ChipRatio="0"
 OnHit="-"
 [[Character.Supers.Data]]

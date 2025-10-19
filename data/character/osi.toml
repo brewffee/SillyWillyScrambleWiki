@@ -8,6 +8,7 @@ this all together to thoroughly beat down your opponent.
 """
 IconPath="icon/Osi_Icon.png"
 PortraitPath="portrait/Osi_Portrait.png"
+AlternatePortraitPath="portrait/Osi_Alternate_Portrait.png"
 Type="Cloudy"
 Health="450"
 MoveSpeed="1.2x"
@@ -53,6 +54,12 @@ Osi dashes forward and attacks the opponent. If the attack hits, Osi automatical
 attacks, launching the opponent into the air. Pressing %auto(S) before the initial hit connects will cancel the attack
 and instead teleport Osi behind the opponent.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Version="236S"
 Damage="-, -, -"
@@ -79,11 +86,17 @@ Mist is deployed around Osi when he enters recovery.
     <li>Causes hard knockdown on hit</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="HKD+"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
 Startup="-"
-Active="-"
+Active="-~-"
 Recovery="-"
 OnBlock="-"
 
@@ -101,6 +114,12 @@ hit connects, allowing him access to a high, low, or an evasive option respectiv
 move creates a large amount of visual noise, making it considerably dangerous and less preferable to use inside of Mist
 as a mix-up tool.
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -122,6 +141,12 @@ The high follow-up to %ref(Ignited Blade). Osi transforms his sword hand into a 
 spins around, raising his scythe high before bringing it down in a wide arc. A rather slow overhead, but a great
 option for catching opponents who are instead expecting %ref(Ignited Sweep,236P~K,pk,~) or %ref(Billowing Backoff,236P~S,psy,~).
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="High"
@@ -147,6 +172,12 @@ to hard-punish %ref(Billowing Backoff,236P~S,ps,~).
     <li>Causes hard knockdown on hit</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="HKD+"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Low"
@@ -186,6 +217,12 @@ makes it much harder to punish when spaced correctly.
     <li>Osi is in counterhit state for the entire duration of the move</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="KD+"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -205,6 +242,14 @@ Hitboxes=["move/Osi_214K_Hitbox.png"]
 Description="""
 Osi slides along the ground, erupting a pillar of flame from his original position.
 """
+[[Character.Specials.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel="-"
+Properties=["Launch", "NoReflect"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -230,6 +275,13 @@ Osi takes a moment to gather himself, before engulfing himself in flame. In this
 increased, and every attack now sets the opponent on fire, dealing bonus damage over time. This state lasts for a
 limited time.
 """
+[[Character.Supers.Properties]]
+Attributes=["Strike"]
+Properties=["NoParry"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="Activation"
 Damage="-"
@@ -287,6 +339,12 @@ finishes by launching the opponent high into the air, jumping up after them to d
     <li>Creates a large cloud of Mist where the attack connects</li>
 </ul>
 """
+[[Character.Supers.Properties]]
+Attributes=["Proximity"]
+Proration="-"
+CounterType="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Supers.Data]]
 Version="2141236H"
 Damage="-"
