@@ -2,7 +2,7 @@
 // todo: we might encounter some weird strings like "236S~P/K", sep should become an array
 import { Character } from "../character.ts";
 import { Mechanic, Move } from "../types/Move.ts";
-import { NamedSection } from "../types/Section.ts";
+import { SectionType } from "../types/Section.ts";
 
 export const renderInputString = (inputs?: string[] | string, buttons?: string[] | string, sep: string = "/", clean: boolean = false): string => {
     if (!inputs) return "";
@@ -23,9 +23,9 @@ export const renderInputString = (inputs?: string[] | string, buttons?: string[]
 
 // automatically determines the colors and inputs for an input string or entire combo
 export const autoResolveInput = (input: string): { part: string, color?: string }[] => {
-    const buttons = ["P", "K", "S", "H", "X"];
+    const buttons = ["P", "K", "S", "H", "G", "X"];
     const separators = ["/", "~", ">", "▷", "+", " "];
-    const terms = ["dl", "delay", "whiff", "land", "jc", "dc", "CH", "aa", "ias", "tk", "ws", "wb"];
+    const terms = ["dl", "delay", "whiff", "land", "jc", "dc", "CH", "aa", "iad", "ias", "tk", "ws", "wb", "back"];
 
     // escapes our stuff otherwise regex explodes and everything breaks
     const regTerms = [...separators, ...terms].map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
@@ -100,7 +100,7 @@ export const autoResolveInput = (input: string): { part: string, color?: string 
     }, []);
 };
 
-export type Referrable = Move | Mechanic | NamedSection | undefined;
+export type Referrable = Move | Mechanic | SectionType | undefined;
 // looks up a move by its name
 export const findByName = (name: string, character: Character): Referrable => {
     const referables: Referrable[] = [

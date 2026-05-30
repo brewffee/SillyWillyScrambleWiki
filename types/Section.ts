@@ -2,7 +2,9 @@ import type { Move } from "./Move.ts";
 
 export interface Section {
     Type: string;
+    Name: string;
     Description: string;
+    ID?: string;
 }
 
 export interface SummarySection extends Section {
@@ -11,8 +13,6 @@ export interface SummarySection extends Section {
 
 export interface TextSection extends Section {
     Type: "Text";
-    Name: string;
-    ID?: string;
 }
 
 export interface MoveSection extends Section, Move {
@@ -20,4 +20,3 @@ export interface MoveSection extends Section, Move {
 }
 
 export type SectionType = Section | SummarySection | TextSection | MoveSection;
-export type NamedSection = TextSection | MoveSection;

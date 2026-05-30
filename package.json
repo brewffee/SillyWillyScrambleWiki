@@ -7,8 +7,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "build": "NODE_OPTIONS='--loader ts-node/esm' node --no-warnings=ExperimentalWarning index.ts",
-    "testMacro": "NODE_OPTIONS='--loader ts-node/esm' node --no-warnings=ExperimentalWarning util/Macros.ts"
+    "build": "node --no-warnings=ExperimentalWarning index.ts",
+    "testMacro": "node --no-warnings=ExperimentalWarning util/Macros.ts"
   },
   "exports": {
     ".": "./index.ts"

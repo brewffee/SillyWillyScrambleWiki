@@ -4,10 +4,12 @@ import path from "path";
 
 import { logger, templateDir } from "../index.ts";
 import { appendLast } from "./String.ts";
+import { Character } from "../character.ts";
 
 // todo: move functions to appropriate files
-export const loadToml = (path: string, validator: (data: TOML.JsonMap) => boolean): TOML.JsonMap | undefined => {
-    let data: TOML.JsonMap;
+export interface TOMLContent { parsed: TOML.JsonMap, content: string }
+export const loadToml = (path: string, validator: (d: TOML.JsonMap) => boolean): TOMLContent | undefined => {
+    let parsed: TOML.JsonMap;
     try {
         const content = fs.readFileSync(path, "utf8");
         if (!content) {
@@ -15,13 +17,13 @@ export const loadToml = (path: string, validator: (data: TOML.JsonMap) => boolea
             return;
         }
 
-        data = TOML.parse(content);
-        if (!validator(data)) {
+        parsed = TOML.parse(content);
+        if (!validator(parsed)) {
             logger.error("\x1b[31m%s\x1b[0m", `[Main] Invalid data structure in TOML file: ${path}`);
             return;
         }
 
-        return data;
+        return { parsed, content };
     } catch (error) {
         logger.error("\x1b[31m%s\x1b[0m", `[Main] Error parsing character file ${path}:`, error);
     }
@@ -37,7 +39,7 @@ export const loadTemplate = (...paths: string[]): string | undefined => {
     return template;
 };
 
-// Checks if there was a change between the old and new version
+// (lazy) Checks if there was a change between the old and new version
 export const compareVersions = (older: string, newer: string): boolean => { // true if changed, false if not
     try {
         if (!fs.existsSync(older)) return true;
@@ -61,4 +63,8 @@ export const compareVersions = (older: string, newer: string): boolean => { // t
         logger.error("Error comparing versions:", error);
         return true; // not my problem :P
     }
+};
+
+export const isHidden = (chara: Character): boolean => {
+    return JSON.parse(chara.Hidden || "false");
 };

@@ -1,12 +1,14 @@
 import * as fs from "fs";
 
 import { Logger } from "./util/Logger.ts";
-import { compareVersions } from "./util/util.ts";
+import { compareVersions, isHidden } from "./util/util.ts";
 import * as util from "./util/util.ts";
 
 import { Character } from "./character.ts";
+import { Page } from "./page.ts";
 
 export const characterDir = "data/character/";
+export const systemPageDir = "data/system/";
 export const exportDir = "docs/";
 export const templateDir = "templates/";
 
@@ -14,6 +16,7 @@ const mainTemplate = util.loadTemplate("index");
 const selectorTemplate = util.loadTemplate("character", "selector");
 
 export const characters: Character[] = [];
+export const systemPages: Page[] = [];
 export const logger = new Logger("Main");
 
 // parses all character data
@@ -28,7 +31,23 @@ function loadCharacters(): void {
         if (!file.endsWith(".toml")) return;
 
         const data = util.loadToml(characterDir + file, (data) => !!data["Character"]);
-        if (data) characters.push(new Character(data["Character"]));
+        if (data) characters.push(new Character(data));
+    });
+}
+
+// parses all system pages
+function loadSystemPages(): void {
+    logger.log("Reading system page data...");
+    if (!fs.existsSync(systemPageDir)) {
+        logger.error("System page data directory is missing or invalid!");
+        return;
+    }
+
+    fs.readdirSync(systemPageDir).forEach((file) => {
+        if (!file.endsWith(".toml")) return;
+
+        const data = util.loadToml(systemPageDir + file, (data) => !!data["System"]);
+        if (data) systemPages.push(new Page(data));
     });
 }
 
@@ -40,14 +59,19 @@ function generateMain(): void {
         return process.exit(1);
     }
 
+    const shownCharacters = characters.filter((chara) => !isHidden(chara));
+
     let rendered = mainTemplate;
-    rendered = rendered.replace("%CHARALIST%", characters.map((character) => character.mainNav).join(""))
-        .replace(/%CHARACTERS%/g, characters.map((chara) => {
+    rendered = rendered.replace("%CHARALIST%", shownCharacters.map((chara) => chara.mainNav).join(""))
+        .replace(/%CHARACTERS%/g, shownCharacters.map((chara) => {
             return selectorTemplate?.replace(/%NAME%/g, chara.Name.toLowerCase())
                 .replace(/%REALNAME%/g, chara.Name)
                 .replace(/%ICONPATH%/g, `images/${chara.Name.toLowerCase()}/${chara.IconPath}`)
                 .replace(/%TYPE%/g, chara.Type || "") || "";
-        }).join(""));
+        }).join(""))
+        .replace("%SYSTEM%", systemPages.map((page) =>
+            `<a class="syspage" href="system/${page.Name.toLowerCase()}.html">${page.Name}</a>`
+        ).join(""));
 
     if (compareVersions(exportDir + "index.html", rendered)) {
         rendered = rendered.replace("%DATE%", new Date().toDateString())
@@ -66,14 +90,23 @@ function generateCharacter(character: Character): void {
     if (!fs.existsSync(`${exportDir}characters/`)) fs.mkdirSync(`${exportDir}characters/`);
 
     const rendered = character.render();
-    if (!rendered) return;
+    if (rendered) fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
 
     // todo: safety on ALL file operations please, files can be mean like that
-    fs.writeFileSync(`${exportDir}characters/${character.Name.toLowerCase()}.html`, rendered);
+}
+
+// updates or creates a system page
+function generateSystemPage(page: Page): void {
+    if (!fs.existsSync(`${exportDir}system/`)) fs.mkdirSync(`${exportDir}system/`);
+
+    const rendered = page.render();
+    if (rendered) fs.writeFileSync(`${exportDir}system/${page.Name.toLowerCase()}.html`, rendered);
+
 }
 
 function main() {
     loadCharacters();
+    loadSystemPages();
 
     // Main Page
     generateMain();
@@ -83,7 +116,11 @@ function main() {
         generateCharacter(character);
     });
 
-    // todo: System Pages
+    // System Pages
+    systemPages.forEach(page => {
+        generateSystemPage(page);
+    });
+
     logger.ok("Done!");
 }
 

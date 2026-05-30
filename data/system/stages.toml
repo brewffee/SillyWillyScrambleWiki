@@ -1,49 +1,72 @@
 [System]
 Name="Stages"
 Description="""
-<h4>Character-Specific stages</h4>
-
-<h4>Other stages</h4>
+%banner(warning, "The contents of this page are still undergoing heavy construction, and may be severely lacking in
+detail.")
 """
 
-[[System.Stages]]
+[[System.CharacterStages]]
+Type="Summary"
+Name="Character-Specific Stages"
+
+[[System.CharacterStages]]
 Type="Text"
 Name="Throne Room"
 Description="""
 %img(ThroneRoom.png,Throne Room,The Throne Room stage)
-<b>Throne Room</b> is %chara(Goopert, "Goopert\\'s") default stage.
+<b>Throne Room</b> is %refChar(Goopert, "Goopert\\'s") default stage.
 """
 
-[[System.Stages]]
+[[System.CharacterStages]]
 Type="Text"
 Name="Floating Island"
 Description="""
 %img(FloatingIsland.png,Floating Island,The Floating Island stage)
-<b>Floating Island</b> is %chara(Max, "Max\\'s") default stage.
+<b>Floating Island</b> is %refChar(Max, "Max\\'s") default stage.
 """
 
-[[System.Stages]]
+[[System.CharacterStages]]
 Type="Text"
 Name="Creative Server Lava Pit"
 Description="""
 %img(CreativeServerLavaPit.png,Creative Server Lava Pit,The Creative Server Lava Pit stage)
-<b>Creative Server Lava Pit</b> is %chara(failEs, "failEs\\'s") default stage.
+<b>Creative Server Lava Pit</b> is %refChar(failEs, "failEs\\'s") default stage.
 """
 
-[[System.Stages]]
+[[System.CharacterStages]]
+Type="Text"
+Name="The Library"
+Description="""
+%img(TheLibrary.png,The Library,The Library stage)
+<b>The Library</b> is %refChar(Tomo, "Tomo\\'s") default stage.
+"""
+
+[[System.CharacterStages]]
 Type="Text"
 Name="Seagull Corp Building"
 Description="""
 %img(SeagullCorpBuilding.png,Seagull Corp Building,The Seagull Corp Building stage)
-<b>Seagull Corp Building</b> is %chara(Seagull, "Seagull\\'s") default stage.
+<b>Seagull Corp Building</b> is %refChar(Seagull, "Seagull\\'s") default stage.
 """
 
-[[System.Stages]]
+[[System.CharacterStages]]
 Type="Text"
 Name="Sandwicheimer Destruction Site"
 Description="""
 %img(SandwicheimerDestructionSite.png,Sandwicheimer Destruction Site,The Sandwicheimer Destruction Site stage)
-<b>Sandwicheimer Destruction Site</b> is %chara(Guiblo, "Guiblo\\'s") default stage.
+<b>Sandwicheimer Destruction Site</b> is %refChar(Guiblo, "Guiblo\\'s") default stage.
+"""
+
+[[System.OtherStages]]
+Type="Summary"
+Name="Other Stages"
+
+[[System.OtherStages]]
+Type="Text"
+Name="UwU SMP Election Podium"
+Description="""
+%img(UwUSMPElectionPodium.png,UwU SMP Election Podium,The UwU SMP Election Podium stage)
+<b>UwU SMP Election Podium</b> is an additional selectable stage.
 """
 
 

@@ -1,6 +1,7 @@
 [Character]
 Name="Kôfy"
 Description="""
+%banner(critical, "This page is archived. The contents here may be replaced with new content or removed at any time.")
 """
 IconPath="icon/Kofy_Icon.png"
 PortraitPath="portrait/Kofy_Portrait.png"
@@ -14,6 +15,7 @@ Reversals=[
     "%ref(Ristretto,214P)",
     "%ref(Chiaroscuro ver.Omega,632146P)"
 ]
+Hidden="true" # Archived Page
 
 ###################################
 # Command Normals
