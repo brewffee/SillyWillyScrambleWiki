@@ -1,6 +1,7 @@
 [Character]
 Name="Seagull"
 Description="""
+%banner(critical, "This page is archived. The contents here may be replaced with new content or removed at any time.")
 Seagull is a rushdown character with tight air movement who focuses on air combos and tricky movement to overwhelm
 the opponent. With an astonishing three air jumps and incredible mobility, Seagull is able to stay out of reach and
 take advantage when the opportunity presents itself.
@@ -16,6 +17,7 @@ Reversals=[
     "%ref(Double or Nothing,632146H)",
     "%ref(Double or Nothing,632146H~H)"
 ]
+Hidden="true" # Archived Page
 
 ###################################
 # Unique Mechanics

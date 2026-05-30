@@ -1,6 +1,7 @@
 [Character]
 Name="Tomo"
 Description="""
+%banner(warning, "This page is currently undergoing a complete rewrite. Information here may be incorrect or outdated.")
 Wielding a glaive and tome, Tomo is a master of the midrange who uses his resources to control the ebb and flow
 of battle.
 <br><br>
@@ -29,6 +30,7 @@ Stage=""
 Reversals=[
     "%ref(Tonitru Pirouette,236236S)",
 ]
+Hidden="true" # Archived Page
 
 ###################################
 # Unique Mechanics

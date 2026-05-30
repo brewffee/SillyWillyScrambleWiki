@@ -153,6 +153,25 @@ export class RefOtherMacro extends Macro {
     }
 }
 
+@MacroFor("refChar")
+export class RefCharMacro extends Macro {
+    static Args: [
+        character: string,          // Who
+        charaText?: string,         // The text to display for the character
+    ];
+
+    execute(input: string): string {
+        return super.doExecute(input, ([chara, ctext]: typeof RefCharMacro.Args) => {
+            const character = characters.filter(c => c.Name === chara)[0];
+            if (!ctext && character) ctext = character.Name;
+
+            return `
+                <a class="ref" href="../characters/${chara.toLowerCase()}.html" title="${chara}">${ctext}</a>
+            `;
+        });
+    }
+}
+
 // converts `%btn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
 @MacroFor("btn")
 export class BtnMacro extends Macro {
@@ -262,6 +281,21 @@ export class TableMacro extends Macro {
     }
 }
 
+// converts `%banner(TYPE,DATA) into `<div class="banner TYPE">DATA</div>`
+@MacroFor("banner")
+export class BannerMacro extends Macro {
+    static Args: [
+        type: "info" | "warning" | "critical" | "generic",
+        data: string
+    ];
+
+    execute(input: string): string {
+        return super.doExecute(input, ([type, data]: typeof BannerMacro.Args) => {
+            return `<div class="banner ${type}">${data}</div>`;
+        });
+    }
+}
+
 export interface ReferenceContext {
     chara?: Character;
     logger?: Logger;
@@ -271,11 +305,13 @@ export interface ReferenceContext {
 export const resolveReferences = (input: string, { chara, logger = chara?.logger, name = chara?.Name }: ReferenceContext): string => {
     let result = new RefMacro().execute(input, chara);                // References to moves
     result = new AutoMacro().execute(result);                         // Auto-rendered inputs
+    result = new RefCharMacro().execute(result);
     result = new RefOtherMacro().execute(result);                     // References to other characters' moves
     result = new BtnMacro().execute(result, chara);                   // Button colored text
     result = new UrlMacro().execute(result, logger);                  // Links to other pages
     result = new ImgMacro().execute(result, logger, name);            // Character image embed
     result = new NoteMacro().execute(result);                         // Context tooltip
     result = new TableMacro().execute(result, { chara, logger, name }); // Custom tables
+    result = new BannerMacro().execute(result);                       // Banners
     return result;
 };

@@ -31,6 +31,7 @@ Description="""
 IconPath=""         # Path to icon (relative to character's directory)
 PortraitPath=""     # Path to portrait art
 AltPortraitPath=""  # Path to alternate costume portrait art
+#AltDescription=""  # Text explaining the alternate costume, if referencing something
 Health=""           # The amount of health the character has
 MoveSpeed=""        # The movement speed of this character
 UniqueMovement=[""] # Will this character have different movement options?
@@ -38,6 +39,7 @@ Type=""             # Fighting style
 Stage=""            # The default stage associated with this character
 #FastestAttacks=[]   # The fastest moves this character has
 Reversals=[]        # List of moves with invulnerable startup
+Hidden=""           # Should this character be hidden from the character list?
 
 ###################################
 # Unique Mechanics

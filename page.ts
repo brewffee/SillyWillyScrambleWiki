@@ -1,120 +1,65 @@
-import * as fs from "fs";
-
-import type { FrameData } from "./types/FrameData.ts";
-import type { Mechanic, Move } from "./types/Move.ts";
-import { MoveProperties, MovePropertiesDefaults } from "./types/MoveProperties.ts";
 import type { MoveSection, SectionType, TextSection } from "./types/Section.ts";
-
-import { ReferenceContext, resolveReferences } from "./util/Macros.ts";
-import { Logger } from "./util/Logger.ts";
-import { renderInputString } from "./util/Input.ts";
-import { safeID} from "./util/String.ts";
 import { compareVersions, isHidden, TOMLContent } from "./util/util.ts";
-
-import { FrameDataDefaults } from "./types/FrameData.ts";
+import { Logger } from "./util/Logger.ts";
+import { ReferenceContext, resolveReferences } from "./util/Macros.ts";
+import { safeID } from "./util/String.ts";
+import { renderInputString } from "./util/Input.ts";
+import fs from "fs";
+import type { Move } from "./types/Move.ts";
+import { FrameData, FrameDataDefaults } from "./types/FrameData.ts";
+import { MoveProperties, MovePropertiesDefaults } from "./types/MoveProperties.ts";
+import { TableProvider } from "./components/Table.ts";
 import { characters, exportDir } from "./index.ts";
 
-import { TableProvider } from "./components/Table.ts";
-
-const characterTemplate = fs.readFileSync("templates/character/page.html", "utf8");
 const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
+const pageTemplate = fs.readFileSync("templates/system/page.html", "utf8");
 
-// todo: a lot of functionality is now based on a standard page component system
-//    this class should instead extend a base Page class as we'll need these
-//    components for other pages soon
-//
-//  update: a lot of page functionality is working, character data storage needs impl
-//    and components need to be fully functional before this class can be rid of for good
-
-// noinspection HtmlUnknownAnchorTarget
-export class Character {
-    private static readonly OVERVIEW_FIELDS: (keyof Character)[] = [
-        "Name", "Description", "IconPath", "PortraitPath", "AlternatePortraitPath", "Type",
-        "Health", "MoveSpeed", "UniqueMovement", "Stage", "Reversals",
-
-        "Hidden", "RawData"
+export class Page {
+    private static readonly OVERVIEW_FIELDS: (keyof Page)[] = [
+        "Name", "Description"
     ];
-    private static readonly STANDARD_SECTIONS: (keyof Character)[] = ["Mechanics", "Normals", "Specials", "Supers"];
-    // TOML fields //
+
+    // TOML Fields //
     Name: string;
-    Description?: string;
-    IconPath?: string;
-    PortraitPath?: string;
-    AlternatePortraitPath?: string;
-    Type?: string;
-    Health?: string;
-    MoveSpeed?: string;
-    UniqueMovement?: string[];
-    Stage?: string;
-    Reversals?: string[];
-
-    Mechanics?: Mechanic[];
-    Normals?: Move[];
-    Specials?: Move[];
-    Supers?: Move[];
-
-    Hidden: string;
-    RawData: string;
+    Description: string;
     // ------------ //
 
     logger: Logger;
     ctx: ReferenceContext;
     tableProvider: TableProvider;
 
-    // section order and unique data
     sections: string[] = [];
     sectionData: { [key: string]: SectionType[] } = {};
 
-    characterNav: string;
-    characterNavActive: string;
+    pageNav: string;
+    pageNavActive: string;
     mainNav: string;
 
-    tableOfContents: string = `<li><a href="#Overview">Overview</a></li>`;
+    tableOfContents: string = "";
 
     constructor(toml: TOMLContent) {
-        const data = toml.parsed["Character"] as any;
+        const data = toml.parsed["System"] as any;
 
         this.Name = data.Name;
         this.Description = data.Description || "";
-        this.IconPath = data.IconPath || "";
-        this.PortraitPath = data.PortraitPath || "";
-        this.AlternatePortraitPath = data.AlternatePortraitPath || "";
-        this.Type = data.Type || "";
-        this.Health = data.Health;
-        this.MoveSpeed = data.MoveSpeed;
-        this.UniqueMovement = data.UniqueMovement;
-        this.Stage = data.Stage || "";
-        this.Reversals = data.Reversals || [];
 
-        this.Hidden = data.Hidden || "false";
-        this.RawData = toml.content;
-
-        // determine the section order based on how things appear in toml
-        for (const [key, value] of Object.entries(data) as [keyof Character, any][]) {
-            if (Character.OVERVIEW_FIELDS.includes(key as keyof Character)) continue;
+        for (const [key, value] of Object.entries(data) as [keyof Page, any][]) {
+            if (Page.OVERVIEW_FIELDS.includes(key as keyof Page)) continue;
 
             this.sections.push(key);
-            if (Character.STANDARD_SECTIONS.includes(key as keyof Character)) {
-                this[key] = value;
-            } else {
-                this.sectionData[key] = value;
-            }
+            this.sectionData[key] = value;
         }
 
         this.logger = new Logger(data.Name);
-        this.ctx = { chara: this, logger: this.logger, name: this.Name };
+        this.ctx = { logger: this.logger, name: this.Name };
         this.tableProvider = new TableProvider(this.ctx);
 
-        // this can probably be done better but i don't care for now
-        // for use in navigation bar on character pages
-        this.characterNav = `<li><a href="./${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
-        this.characterNavActive = `<li class=active><a>${data.Name}</a></li>`;
+        this.pageNav = `<li><a href="./${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
+        this.pageNavActive = `<li class=active><a>${data.Name}</a></li>`;
 
-        // main page navigation bar
-        this.mainNav = `<li><a href="characters/${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
+        this.mainNav = `<li><a href="system/${data.Name.toLowerCase()}.html">${data.Name}</a></li>`;
     }
 
-    // adds an item to the table of contents (NOT THE MAIN NAVIGATION PANEL !!!)
     addNavigable(item: string, header: boolean = false, displayName: string = item): void {
         if (header) {
             this.tableOfContents += `<li class=header><a href="#${safeID(item)}">${displayName}</a></li>\n`;
@@ -200,8 +145,12 @@ export class Character {
     renderSection(data: SectionType[], name: string): string {
         if (!data) return "";
 
-        const sectionHeader = `<h2 id=${safeID(name)}><a href=#${safeID(name)}>${name}</a></h2>`;
-        this.addNavigable(name, true);
+        let title = data[0].Name || name;
+
+        let sectionHeader = `<h2 id=${safeID(title)}><a href=#${safeID(title)}>${title}</a></h2>`;
+        if (name == this.Name) sectionHeader = "";
+
+        this.addNavigable(title, true);
 
         return "<div class=section>" + sectionHeader + data.map((i) => {
             this.logger.log(`Generating documentation for custom item: ${i["Name" as keyof SectionType] ?? name}`);
@@ -246,41 +195,22 @@ export class Character {
         }).join("") + "</div>";
     }
 
-    // todo: in replacement lists, add the amount of whitespace before the placeholder ( i like neatness !! )
-    // semi-final page generation before populating navbar and update time
     render(): string {
-        this.logger.log("Generating character page...");
+        this.logger.log("Generating system page...");
         const shownCharacters = characters.filter((chara) => !isHidden(chara));
 
-        const rendered = characterTemplate.replace(/%NAME%/g, this.Name)
+        const rendered = pageTemplate.replace(/%NAME%/g, this.Name)
             .replace(/%DESCRIPTION%/g, resolveReferences(this.Description || "", this.ctx))
-            .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
-            .replace(/%ALTERNATEPORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.AlternatePortraitPath}`)
-            .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
-            .replace(/%INFO%/g, this.tableProvider.create([{
-                "Type":             this.Type               || "<em button=x>-</em>",
-                "Health":           this.Health             || "<em button=x>-</em>",
-                "Movement Speed":   this.MoveSpeed          || "<em button=x>-</em>",
-                "Unique Movement":  this.UniqueMovement     || "<em button=x>-</em>",
-                "Stage":            this.Stage              || "<em button=x>-</em>",
-                "Reversals":        this.Reversals          || "<em button=x>None</em>",
-            }], "vertical"))
-            .replace(/%BODY%/g, this.sections.map((section) => {
-                switch (section) {
-                    case "Mechanics":   return this.renderSection(this.Mechanics as TextSection[], "Mechanics");
-                    case "Normals":     return this.renderSection(this.Normals as MoveSection[], "Normals");
-                    case "Specials":    return this.renderSection(this.Specials as MoveSection[], "Special Attacks");
-                    case "Supers":      return this.renderSection(this.Supers as MoveSection[], "Supers");
-                    default:            return this.renderSection(this.sectionData[section], section);
-                }
-            }).join(""))
+            .replace(/%BODY%/g, this.sections.map((section) =>
+                this.renderSection(this.sectionData[section], section)
+            ).join(""))
             .replace(/%TABLE_OF_CONTENTS%/g, this.tableOfContents)
             .replace("%CHARALIST%", shownCharacters.map((chara) =>
-                chara === this ? chara.characterNavActive : chara.characterNav
+                `<li><a href="../characters/${chara.Name.toLowerCase()}.html">${chara.Name}</a></li>`
             ).join(""));
 
         // pages should only update if there are changes in content
-        if (!compareVersions(`${exportDir}characters/${this.Name.toLowerCase()}.html`, rendered)) {
+        if (!compareVersions(`${exportDir}system/${this.Name.toLowerCase()}.html`, rendered)) {
             this.logger.log("No changes detected, skipping character page generation.");
             return "";
         }

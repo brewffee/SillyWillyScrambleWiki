@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>%NAME% - Silly Willy Scramble Wiki</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../menu.js"></script>
+  </head>
+  <body class=main>
+    <header id=top>
+      <h1>
+        <a href="../index.html">Silly Willy Scramble Wiki</a>
+      </h1>
+    </header>
+
+    <div class="container">
+      <button class=nav-toggle onclick="showMenu()">&ctdot;</button>
+      <div class="sidebar">
+        <nav>
+          <h3>Navigation <input type=checkbox checked="checked"></h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class=header>Characters</li>
+            %CHARALIST%
+          </ul>
+        </nav>
+
+        <nav>
+          <h3>Table of Contents <input type=checkbox checked="checked"></h3>
+          <ul>
+            %TABLE_OF_CONTENTS%
+          </ul>
+        </nav>
+        <a class=nav-top href="#top">Back to Top</a>
+      </div>
+      <main>
+        <h2 id=Overview><a href="#Overview">%NAME%</a> <a href="../index.html">(Back to Home)</a></h2>
+        <div class=overview>
+          <div class=content>
+            <span>%DESCRIPTION%</span>
+          </div>
+        </div>
+          %BODY%
+      </main>
+    </div>
+    <footer>
+      <p>This page was last updated on %DATE%, %TIME% (%TZ%). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+    </footer>
+  </body>
+</html>

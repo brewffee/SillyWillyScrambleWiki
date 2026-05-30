@@ -1,6 +1,7 @@
 [Character]
 Name="Dani"
 Description="""
+%banner(critical, "This page is archived. The contents here may be replaced with new content or removed at any time.")
 Dani wields both a pistol and a knife at separate times.
 """
 IconPath="icon/Dani_Icon.png"
@@ -14,6 +15,7 @@ Stage=""
 Reversals=[
     "%ref(Bait,ex.623S)"
 ]
+Hidden="true" # Archived Page
 
 ###################################
 # Unique Mechanics
