@@ -29,8 +29,8 @@ const moveTemplate = fs.readFileSync("templates/character/move.html", "utf8");
 // noinspection HtmlUnknownAnchorTarget
 export class Character {
     private static readonly OVERVIEW_FIELDS: (keyof Character)[] = [
-        "Name", "Description", "IconPath", "PortraitPath", "AlternatePortraitPath", "Type",
-        "Health", "MoveSpeed", "UniqueMovement", "Stage", "Reversals",
+        "Name", "Description", "IconPath", "PortraitPath", "AlternatePortraitPath", "AlternateNote",
+        "Type", "Health", "MoveSpeed", "UniqueMovement", "Stage", "Reversals",
 
         "Hidden", "RawData"
     ];
@@ -41,6 +41,7 @@ export class Character {
     IconPath?: string;
     PortraitPath?: string;
     AlternatePortraitPath?: string;
+    AlternateNote?: string;
     Type?: string;
     Health?: string;
     MoveSpeed?: string;
@@ -79,6 +80,7 @@ export class Character {
         this.IconPath = data.IconPath || "";
         this.PortraitPath = data.PortraitPath || "";
         this.AlternatePortraitPath = data.AlternatePortraitPath || "";
+        this.AlternateNote = data.AlternateNote || "";
         this.Type = data.Type || "";
         this.Health = data.Health;
         this.MoveSpeed = data.MoveSpeed;
@@ -256,6 +258,7 @@ export class Character {
             .replace(/%DESCRIPTION%/g, resolveReferences(this.Description || "", this.ctx))
             .replace(/%PORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.PortraitPath}`)
             .replace(/%ALTERNATEPORTRAITPATH%/g, `../images/${this.Name.toLowerCase()}/${this.AlternatePortraitPath}`)
+            .replace(/%ALTERNATENOTE%/g, this.AlternateNote ? `<span class="image-note alt-note">${this.AlternateNote}</span>` : "")
             .replace(/%ICONPATH%/g, `../images/${this.Name.toLowerCase()}/${this.IconPath}`)
             .replace(/%INFO%/g, this.tableProvider.create([{
                 "Type":             this.Type               || "<em button=x>-</em>",

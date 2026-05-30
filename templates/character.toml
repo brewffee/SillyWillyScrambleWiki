@@ -7,7 +7,7 @@
 # for use in the aforementioned fields. (Commas or parenthesis
 # within macro arguments can be escaped with a backslash)
 #
-# Valid buttons are p, k, s, h, taunt, and additionally, x (gray), or (black), and generic (inherit)
+# Valid buttons are p, k, s, h, g, taunt, and additionally, x (gray), or (black), and generic (inherit)
 # Invalid buttons will be rendered as a generic button.
 #
 # %ref(<move name>, <display>, <button>) - Creates a link to another move
@@ -30,8 +30,8 @@ Description="""
 """
 IconPath=""         # Path to icon (relative to character's directory)
 PortraitPath=""     # Path to portrait art
-AltPortraitPath=""  # Path to alternate costume portrait art
-#AltDescription=""  # Text explaining the alternate costume, if referencing something
+AlternatePortraitPath=""  # Path to alternate costume portrait art
+#AlternateNote=""   # Text explaining the alternate costume, if referencing something
 Health=""           # The amount of health the character has
 MoveSpeed=""        # The movement speed of this character
 UniqueMovement=[""] # Will this character have different movement options?

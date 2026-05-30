@@ -43,6 +43,14 @@ Description="""
 
 [[System.CharacterStages]]
 Type="Text"
+Name="Time Machine"
+Description="""
+%img(TimeMachine.png,Time Machine,The Time Machine stage)
+<b>Time Machine</b> is %refChar(Berb, "Berb\\'s") default stage.
+"""
+
+[[System.CharacterStages]]
+Type="Text"
 Name="Seagull Corp Building"
 Description="""
 %img(SeagullCorpBuilding.png,Seagull Corp Building,The Seagull Corp Building stage)

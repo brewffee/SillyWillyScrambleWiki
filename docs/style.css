@@ -350,9 +350,17 @@ div.pages {
     display: none !important;
 }
 
+.alt-note {
+    display: none;
+    margin: 0 auto 12px;
+    font-size: 12px !important;
+}
+
 .info:has(.alternate-checkbox:checked) {
     .alt-portrait { display: block !important; }
     .portrait { display: none !important; }
+    .alt-note { display: block !important; }
+    .alternate-btn { margin-bottom: 10px; }
 }
 
 .alternate-toggle {

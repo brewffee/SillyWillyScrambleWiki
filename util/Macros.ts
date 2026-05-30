@@ -172,6 +172,20 @@ export class RefCharMacro extends Macro {
     }
 }
 
+@MacroFor("refStage")
+export class RefStageMacro extends Macro {
+    static Args: [
+        stage: string,
+        stageText?: string
+    ];
+
+    execute(input: string): string {
+        return super.doExecute(input, ([stage, stageText]: typeof RefStageMacro.Args) => {
+            return `<a class="ref" href="../system/stages.html#${safeID(stage)}" title="${stage}">${stageText || stage}</a>`;
+        });
+    }
+}
+
 // converts `%btn(TEXT,BTN1BTN2...,SEP)` to `<em class=btn button="BTN">TEXT</em>`
 @MacroFor("btn")
 export class BtnMacro extends Macro {
@@ -306,6 +320,7 @@ export const resolveReferences = (input: string, { chara, logger = chara?.logger
     let result = new RefMacro().execute(input, chara);                // References to moves
     result = new AutoMacro().execute(result);                         // Auto-rendered inputs
     result = new RefCharMacro().execute(result);
+    result = new RefStageMacro().execute(result);
     result = new RefOtherMacro().execute(result);                     // References to other characters' moves
     result = new BtnMacro().execute(result, chara);                   // Button colored text
     result = new UrlMacro().execute(result, logger);                  // Links to other pages

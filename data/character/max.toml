@@ -27,7 +27,7 @@ AlternatePortraitPath="portrait/Max_Alternate_Portrait.png"
 Type="Sleepy"
 Health="500"
 MoveSpeed="1x"
-Stage="Floating Island"
+Stage="%refStage(Floating Island)"
 Reversals=[
     "%ref(Maxsmash,632146P)"
 ]

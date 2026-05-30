@@ -22,11 +22,12 @@ good sequence and a beer to thoroughly crush his foe.
 IconPath="icon/Guiblo_Icon.png"
 PortraitPath="portrait/Guiblo_Portrait.png"
 AlternatePortraitPath="portrait/Guiblo_Alternate_Portrait.png"
+AlternateNote="Super Guiblo"
 Type="Grappler"
 Health="650"
 MoveSpeed="0.7x"
 UniqueMovement=["Step-dash", "No Airdash"]
-Stage="Sandwicheimer Destruction Site"
+Stage="%refStage(Sandwicheimer Destruction Site)"
 Reversals=[
     "%ref(Huebenly Buster,623H)",
     "%ref(Parry,214P)",

@@ -6,10 +6,11 @@ so goop
 IconPath="icon/Goopert_Icon.png"
 PortraitPath="portrait/Goopert_Portrait.png"
 AlternatePortraitPath="portrait/Goopert_Alternate_Portrait.png"
+AlternateNote="King Goopert"
 Type="Silly"
 Health="320"
 MoveSpeed="1x"
-Stage="Throne Room"
+Stage="%refStage(Throne Room)"
 Reversals=[
     "%ref(lava snake,623S)"
 ]
