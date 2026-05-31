@@ -632,6 +632,10 @@ em { font-style: normal }
     height: auto;
     display: block;
     margin: 0 auto;
+
+    &.resized {
+        height: revert-layer !important;
+    }
 }
 
 .embed p {

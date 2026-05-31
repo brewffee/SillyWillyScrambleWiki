@@ -29,20 +29,26 @@ Health="575"
 MoveSpeed="0.85x"
 Stage="%refStage(The Library)"
 Reversals=[
-    "%ref(Tonitru Pirouette,236236S)",
+    "%ref(Trinity Overdrive: Libertas,2141236H)",
 ]
-Hidden="true" # Archived Page
 
 ###################################
 # Unique Mechanics
 ###################################
+[[Character.Mechanics]] # Trinity
+Name="Trinity"
+Type="Text"
+Description="""
+%img(Tomo_Trinity.png,Trinity,"Trinity",320)
+"""
+
 [[Character.Mechanics]] # Mana
 Name="Mana"
 Type="Text"
 Description="""
-Mana is a resource that Tomo depends on to perform his specials. Upon being hit, he loses Mana proportional
-to the amount of damage he takes. He cannot use moves that cost more Mana than he has, requiring him to always
-stay on top of his resources. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,generic).
+Mana is a resource that Tomo depends on to perform his specials. Whenever Trinity is interrupted by an attack, Tomo
+loses Mana proportionate to the damage dealt. He cannot use moves that cost more mana than he has, requiring him to
+always stay on top of his resources. If he is to lose all of his Mana, he enters %ref(Exhaustion,Exhaustion,_).
 %img(Tomo_Mana_Meters.png,Mana Meters,"Mana meter when full (left), compared to Mana meter when in Exhaustion
 (right)")
 """
@@ -51,16 +57,51 @@ stay on top of his resources. If he is to lose all of his Mana, he enters %ref(E
 Name="Exhaustion"
 Type="Text"
 Description="""
-When Tomo's Mana is exhausted, he automatically enters Exhaustion. During this state, Tomo is left <b>helpless
-and vulnerable</b>—he cannot input any commands, takes <b>twice</b> as much damage as normal, and the following hit
-triggers an <b>automatic counter hit</b>. Exhaustion lasts until a couple seconds have passed or until the
-current combo ends. At the end of this state, Tomo recovers with 100% Mana, and is able to restart his
-offense.
+When Tomo's Mana is fully depleted, any action he is currently performing is canceled as he steps back to catch his
+breath, automatically entering the Exhaustion state. During this state, Tomo is left <b>helpless and vulnerable</b>,
+as he takes double damage when hit, and cannot summon his partner to cover his weak spots. Additionally, he cannot
+recover mana through %ref(Renovare) or %ref(Mana Crimen), instead being forced to wait for his resource to slowly
+auto-regenerate.
 """
 
 ###################################
 # Command Normals
 ###################################
+[[Character.Normals]] # 5S
+Inputs=["5S"]
+Buttons=["s"]
+Type="Move"
+Images=["move/Tomo_5S.png"]
+Hitboxes=["move/Tomo_5S_Hitbox.png"]
+Description="""
+Tomo creates a horizontal slash of air that covers a large area directly in front of him.
+"""
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
+[[Character.Normals]] # 5S~S
+Inputs=["5S~S"]
+Buttons=["s"]
+Type="Move"
+Images=["move/Tomo_5S.png"]
+Hitboxes=["move/Tomo_5S_Hitbox.png"]
+Description="""
+Follow-up from %ref(5S). Creates a secondary slash of air from the edge of the previous slash, vaccuuming the opponent
+towards Tomo.
+"""
+[[Character.Normals.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+
 [[Character.Normals]] # 6S Magia Wall
 Inputs=["6S"]
 Buttons=["s"]
@@ -68,6 +109,7 @@ Type="Move"
 Condition="with 5% Mana"
 Images=["move/Tomo_6S.png"]
 Hitboxes=["move/Tomo_6S_Hitbox.png"]
+ImageNotes=["\"Magia Wall\""]
 # TODO: Reflectable projectiles list
 Description="""
 Tomo uses his tome to summon a large wall of magic covering a wide area in front of him.
@@ -91,31 +133,53 @@ OnBlock="-"
 ###################################
 # Special Attacks
 ###################################
-[[Character.Specials]] # Ignis Rush
-Name="Ignis Rush"
+[[Character.Specials]] # Trinity: Apprehendere
+Name="Trinity: Apprehendere"
 Type="Move"
-Inputs=["236S", "H"]
-HoldOK=true
-AirOK=true
-Buttons=["s", "h"]
+Inputs=["236P"]
+Buttons=["p"]
 Condition="with 20% Mana"
-Images=["move/Tomo_236X.png", "move/Tomo_j236X.png"]
-Hitboxes=[
-    "move/Tomo_236S_Hitbox.png", "move/Tomo_236H_Hitbox.png",
-    "move/Tomo_j236S_Hitbox.png", "move/Tomo_j236H_Hitbox.png",
-]
-HitboxNotes=["%auto(S) version", "%auto(H) version", "%auto(j.S) version", "%auto(j.H) version"]
+Images=["move/Tomo_236P.png"]
+Hitboxes=["move/Tomo_236P.png"]
 Description="""
-A chargeable fire-based projectile that travels along a set path, exploding into a fiery vortex which launches the
-opponent up into the air after a few hits. Charging <b>Ignis Rush</b> increases the amount of distance the projectile
-can travel before exploding or disappearing.
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Throw"
+Startup="-"
+Active="-"
+Recovery="-"
+
+[[Character.Specials]] # Trinity: Lapso
+Name="Trinity: Lapso"
+Type="Move"
+Inputs=["236K"]
+Buttons=["k"]
+Condition="with 10% Mana"
+Images=["move/Tomo_236K.png"]
+Hitboxes=["move/Tomo_236K.png"]
+Description="""
+"""
+[[Character.Specials.Data]]
+Damage="-"
+Guard="Low"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Trinity: 1-hit Armor"]
+
+[[Character.Specials]] # Trinity: Scalpo
+Name="Trinity: Scalpo"
+Type="Move"
+Inputs=["236S"]
+Buttons=["s"]
+Condition="with 5% Mana"
+Images=["move/Tomo_236S.png", "move/Tomo_236S~S.png"]
+Hitboxes=["move/Tomo_236S.png", "move/Tomo_236S~S.png"]
+Description="""
 <ul>
-    <li>%auto(S) <b>Ignis Rush</b> creates a projectile that travels along the ground. When performed in the air,
-    the projectile maintains its usual horizontal trajectory. The explosion triggers after a certain amount of distance
-     or upon hitting the opponent.</li>
-    <li>%auto(H) <b>Ignis Rush</b> creates a projectile that travels diagonally up into the air. When performed in
-     the air, the projectile travels diagonally downwards. The explosion no longer triggers automatically, only
-     activating when it hits the opponent.</li>
+    <li>Follow-up costs 5% extra mana to perform</li>
 </ul>
 """
 [[Character.Specials.Data]]
@@ -127,23 +191,7 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 [[Character.Specials.Data]]
-Version="236[S]"
-Damage="-"
-Guard="All"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-[[Character.Specials.Data]]
-Version="236H"
-Damage="-"
-Guard="All"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-[[Character.Specials.Data]]
-Version="236[H]"
+Version="236S~S"
 Damage="-"
 Guard="All"
 Startup="-"
@@ -151,63 +199,38 @@ Active="-"
 Recovery="-"
 OnBlock="-"
 
-[[Character.Specials]] # Ventus Thrust
-Name="Ventus Thrust"
+[[Character.Specials]] # Trinity: Crepitus
+Name="Trinity: Crepitus"
 Type="Move"
-Inputs=["214S", "H"]
-Buttons=["s", "h"]
+Inputs=["214P"]
+Buttons=["p"]
 Condition="with 10% Mana"
-Images=[
-    "move/Tomo_Ventus_Thrust.png",
-    "move/Tomo_214S~S.png",
-    "move/Tomo_214H~H.png"
-]
-Hitboxes=[
-    "move/Tomo_214S_Hitbox.png",
-    "move/Tomo_214H_Hitbox.png",
-    "move/Tomo_214S~S_Hitbox.png",
-    "move/Tomo_214H~H_Hitbox.png"
-]
-HitboxNotes=["%auto(S) version", "%auto(H) version"]
+Images=["move/Tomo_214P.png"]
+Hitboxes=["move/Tomo_214P.png"]
 Description="""
-Tomo summons blades of wind that can be used to push the opponent.
-<ul>
-    <li>In %auto(S) <b>Ventus Thrust</b>, Tomo summons blades of wind from the opposite side of the screen, pushing
-    the opponent towards himself. Can catch opponents who have a habit of backdashing. Pressing %auto(S) again makes
-    Tomo perform a forward thrust with his spear, sending the opponent into the winds.</li>
-    <li>In %auto(H) <b>Ventus Thrust</b>, Tomo uses his wind to propel himself and stab into the opponent.
-    Pressing %auto(H) again halts his movement to float upwards, shortly before diving into the ground and hitting
-    the opponent high.</li>
-</ul>
 """
 [[Character.Specials.Data]]
-Version="214S"
 Damage="-"
 Guard="All"
 Startup="-"
 Active="-"
 Recovery="-"
 OnBlock="-"
+
+[[Character.Specials]] # Trinity: Ruina
+Name="Trinity: Ruina"
+Type="Move"
+Inputs=["214H"]
+Buttons=["h"]
+Condition="with 15% Mana"
+HoldOK=true
+Images=["move/Tomo_214H.png"]
+Hitboxes=["move/Tomo_214H.png"]
+Description="""
+"""
 [[Character.Specials.Data]]
-Version="214S~S"
 Damage="-"
-Guard="All"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-[[Character.Specials.Data]]
-Version="214H"
-Damage="-"
-Guard="All"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-[[Character.Specials.Data]]
-Version="214H~H"
-Damage="-"
-Guard="All"
+Guard="High"
 Startup="-"
 Active="-"
 Recovery="-"
@@ -222,11 +245,11 @@ HoldOK=true
 Images=["move/Tomo_22X.png"]
 Hitboxes=["move/Tomo_22X.png"]
 Description="""
-Tomo stands in place and recovers his Mana gauge
+Tomo stands in place and recovers his Mana gauge.
 <ul>
     <li>%auto(P) <b>Renovare</b> recovers mana with no cost, but at a slow speed. Is very easily counterhit, so Tomo
     should be very careful when using it. This version is almost always overshadowed by %auto(22K) unless
-    Tomo has secured a safe position to use it in.</li>
+    Tomo has secured a safe position to use it in, such as after sucessfully landing a %ref(Trinity: Apprehendere).</li>
     <li>%auto(K) <b>Renovare</b> recovers mana quickly at the cost of meter. This version is much safer to use in
     neutral, but is still requires a similar caution to its %auto(P) counterpart, as Tomo will gradually lose
     more meter over time.</li>
@@ -243,49 +266,30 @@ Startup="-"
 Active="-"
 Recovery="-"
 
-[[Character.Specials]] # Glacies Pierce
-Name="Glacies Pierce"
-Type="Move"
-Inputs=["214P", "K"]
-Buttons=["p", "k"]
-Condition="with 15% Mana"
-Images=["move/Tomo_214P.png", "move/Tomo_214K.png"]
-Hitboxes=["move/Tomo_214P_Hitbox.png", "move/Tomo_214K_Hitbox.png"]
-Description="""
-Tomo covers a large amount of space with ice, interrupting the opponent's approach. On hit, freezes the opponent in
-place until a set amount of time passes or immediately upon the next hit.
-<ul>
-    <li>In %auto(P) <b>Glacies Pierce</b>, Tomo slams the ground in front of him, sprouting a large pillar of ice
-    that hits the opponent low. Creates a large enough barrier to make it difficult for the opponent to jump over.</li>
-    <li>In %auto(K) <b>Glacies Pierce</b>, Tomo rides into the air, summoning a trail of ice underneath him that hits
-    the opponent high. On air hit, the opponent is frozen until they reach the ground, taking additional damage and
-    causing a ground bounce. The ice trail is summoned high enough to where it is difficult to jump over, and low
-    enough that the opponent needs to use a good low-profile option to respond.</li>
-</ul>
-Boasting its large space control and relatively low mana cost, Glacies Pierce is a formidable move that demands respect
-in neutral, making it simultaneously one of Tomo's safest options to set up %ref(Renovare,Renovare,_) and a great
-option for setting up damage using a fully charged %ref(Ignis Rush,Ignis Rush,_).
-"""
-[[Character.Specials.Data]]
-Version="214P"
-Damage="-"
-Guard="Low"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-[[Character.Specials.Data]]
-Version="214K"
-Damage="-"
-Guard="High"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
 
 ###################################
 # Supers
 ###################################
+[[Character.Supers]] # Trinity Overdrive: Libertas
+Name="Trinity Overdrive: Libertas"
+Type="Move"
+Inputs=["2141236H"]
+Buttons=["h"]
+Condition="with 50% meter"
+Images=["move/Tomo_2141236H.png"]
+Hitboxes=["move/Tomo_2141236H_Hitbox.png"]
+Description="""
+
+"""
+[[Character.Supers.Data]]
+Damage="-"
+Guard="All"
+Startup="-"
+Active="-"
+Recovery="-"
+OnBlock="-"
+Invuln=["Full"]
+
 [[Character.Supers]] # Mana Crimen
 Name="Mana Crimen"
 Type="Move"
@@ -313,25 +317,3 @@ Version="214214P"
 Startup="-"
 Active="-"
 Recovery="-"
-
-[[Character.Supers]] # Tonitru Pirouette
-Name="Tonitru Pirouette"
-Type="Move"
-Inputs=["236236S"]
-Buttons=["s"]
-Condition="with 50% meter"
-Images=["move/Tomo_236236S.png"]
-Hitboxes=["move/Tomo_236236S_Hitbox.png"]
-Description="""
-An invincible reversal. Tomo charges his glaive with electricity and spins it around, hitting the opponent regardless
-of what side they are on. On contact, flings the opponent far away, allowing Tomo ample time and space to set up for
-his next move.
-"""
-[[Character.Supers.Data]]
-Damage="-"
-Guard="All"
-Startup="-"
-Active="-"
-Recovery="-"
-OnBlock="-"
-Invuln=["Full"]

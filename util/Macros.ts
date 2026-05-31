@@ -246,21 +246,27 @@ export class UrlMacro extends Macro {
     }
 }
 
-// converts `%img(PATH,ALT,NOTE)` to `<div class=embed><img src="../images/CHARACTER/PATH" alt="ALT"><p>NOTE</p></div>`
+// converts `%img(PATH,ALT,NOTE,HEIGHT)` to `<div class=embed><img src="../images/CHARACTER/PATH" alt="ALT" height="HEIGHT"><p>NOTE</p></div>`
 @MacroFor("img")
 export class ImgMacro extends Macro {
     static Args: [
         path: string,                // Where the image is located relative to us
         alt: string,                 // Alt text for image
-        note?: string                // Any comments?
+        note?: string,               // Any comments?
+        height?: number              // Requested height of the image
     ];
 
     execute(input: string, logger?: Logger, name?: string): string {
-        return super.doExecute(input, ([path, alt, note]: typeof ImgMacro.Args) => {
+        return super.doExecute(input, ([path, alt, note, height]: typeof ImgMacro.Args) => {
             if (name) path = p.join(name.toLowerCase(), path);
             if (!fs.existsSync(p.join("docs", "images", path)) && logger) logger.warn(`Could not find requested image: ${path}`);
+            let heightAttr, resizeClass;
+            if (height) {
+                heightAttr = ` height="${height}px"`;
+                resizeClass = "class=resized";
+            }
 
-            return `<div class=embed><img src="${p.join("../", "images", path)}" alt="${alt}" title="${path}"><p>${note}</p></div>`;
+            return `<div class=embed><img ${resizeClass} src="${p.join("../", "images", path)}" alt="${alt}" title="${path}" ${heightAttr}><p>${note}</p></div>`;
         });
     }
 }

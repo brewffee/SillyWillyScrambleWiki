@@ -221,6 +221,9 @@ Description="""
 Guiblo throws a right hook that can only hit opponents' strike or projectile hitboxes. On contact with a strike, the
 opponent's attack is cancelled, and they are put into Guard Crush. With a projectile, it is sent back towards the
 opponent.
+<ul>
+    <li>Can be dash canceled after making contact with a strike or projectile.</li>
+</ul>
 """
 [[Character.Specials.Properties]]
 Attributes=["Parry"]
