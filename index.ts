@@ -17,6 +17,7 @@ const selectorTemplate = util.loadTemplate("character", "selector");
 
 export const characters: Character[] = [];
 export const systemPages: Page[] = [];
+export const missingResources: string[] = [];
 export const logger = new Logger("Main");
 
 // parses all character data
@@ -119,6 +120,14 @@ function main() {
     // System Pages
     systemPages.forEach(page => {
         generateSystemPage(page);
+    });
+
+    // Missing resources
+    missingResources.forEach((res, i) => {
+        logger.warn(`Missing resource "${res}".`);
+        if (i == missingResources.length - 1) {
+            logger.warn(`Encountered ${i+1} missing resources while generating pages.`);
+        }
     });
 
     logger.ok("Done!");

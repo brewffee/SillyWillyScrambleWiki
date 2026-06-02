@@ -139,13 +139,10 @@ export class Page {
         return imageStr;
     }
 
-    // rendering a section
-    // todo: sections aren't a character-specific feature, will be moved to a different
-    //   class once finalized
     renderSection(data: SectionType[], name: string): string {
         if (!data) return "";
 
-         const title = data[0].Name || name;
+        const title = data[0].Name || name;
 
         let sectionHeader = `<h2 id=${safeID(title)}><a href=#${safeID(title)}>${title}</a></h2>`;
         if (name == this.Name) sectionHeader = "";
@@ -153,7 +150,7 @@ export class Page {
         this.addNavigable(title, true);
 
         return "<div class=section>" + sectionHeader + data.map((i) => {
-            this.logger.log(`Generating documentation for custom item: ${i["Name" as keyof SectionType] ?? name}`);
+            this.logger.log(`Generating documentation for item: ${i["Name" as keyof SectionType] ?? name}`);
 
             switch (i.Type) {
                 case "Summary":

@@ -6,7 +6,7 @@ import { autoResolveInput, findByName, renderInputString } from "./Input.ts";
 import { isContained, safeID } from "./String.ts";
 
 import { Character } from "../character.ts";
-import { characters } from "../index.ts";
+import {characters, missingResources} from "../index.ts";
 import { Table, TableData } from "../components/Table.ts";
 
 export class Macro {
@@ -259,7 +259,7 @@ export class ImgMacro extends Macro {
     execute(input: string, logger?: Logger, name?: string): string {
         return super.doExecute(input, ([path, alt, note, height]: typeof ImgMacro.Args) => {
             if (name) path = p.join(name.toLowerCase(), path);
-            if (!fs.existsSync(p.join("docs", "images", path)) && logger) logger.warn(`Could not find requested image: ${path}`);
+            if (!fs.existsSync(p.join("docs", "images", path)) && logger) missingResources.push(path);
             let heightAttr, resizeClass;
             if (height) {
                 heightAttr = ` height="${height}px"`;

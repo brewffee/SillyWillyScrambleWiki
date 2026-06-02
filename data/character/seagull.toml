@@ -14,7 +14,7 @@ Type="Avian"
 Health="375"
 MoveSpeed="1.1x (1.6x Airdash)"
 UniqueMovement=["Quadruple Jump", "%ref(Skill)"]
-Stage="%ref(Seagull Corp Building)"
+Stage="%refStage(Seagull Corp Building)"
 Reversals=[
     "%ref(Double or Nothing,632146H)",
     "%ref(Double or Nothing,632146H~H)"

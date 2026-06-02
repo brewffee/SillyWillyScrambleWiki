@@ -100,7 +100,15 @@ right hands, Tomo is a highly versatile and cerebral fighter who rewards patienc
           </div>
         </div>
           <div class=section><h2 id=Mechanics><a href=#Mechanics>Mechanics</a></h2><a href=#Trinity><h3 id=Trinity class=move-name>Trinity</h3></a>
-<span class=section-text><div class=embed><img class=resized src="..\images\tomo\Tomo_Trinity.png" alt="Trinity" title="tomo\Tomo_Trinity.png"  height="320px"><p>Trinity</p></div>
+<span class=section-text>Whenever Tomo performs a special move (with the exception of <a href="#Renovare" class=ref title="Renovare"><em button=p>Renovare</em></a>), he uses his Mana to command his partner
+Trinity to attack the opponent. Trinity can act semi-independently of Tomo, allowing him to move freely and act while
+his partner is busy. After Trinity attacks an opponent, he stays in place for a short duration, allowing Tomo to command
+another attack from further distances.
+<br><br>
+If Tomo blocks an opponent's attack while Trinity is summoned, Trinity will move to Tomo's side and block alongside him,
+increasing the pushback on block and negating any chip damage. However, if Tomo or Trinity are hit, Trinity will
+cancel his current action and disappear, requiring Tomo to regain distance and summon him again.
+<div class=embed><img class=resized src="..\images\tomo\Tomo_Trinity.png" alt="Trinity" title="tomo\Tomo_Trinity.png"  height="320px"><p>Trinity</p></div>
 </span><a href=#Mana><h3 id=Mana class=move-name>Mana</h3></a>
 <span class=section-text>Mana is a resource that Tomo depends on to perform his specials. Whenever Trinity is interrupted by an attack, Tomo
 loses Mana proportionate to the damage dealt. He cannot use moves that cost more mana than he has, requiring him to
@@ -167,9 +175,9 @@ auto-regenerate.
     <span class=move-input>
       <em button=s>5S~S</em> 
     </span>
-    <div class=image-container><img src="../images/tomo/move/Tomo_5S.png" alt="5S~S Sprite " title="move/Tomo_5S.png">
+    <div class=image-container><img src="../images/tomo/move/Tomo_5S~S.png" alt="5S~S Sprite " title="move/Tomo_5S~S.png">
 </div>
-    <div class=hitbox-container><img src="../images/tomo/move/Tomo_5S_Hitbox.png" alt="5S~S Hitbox " title="move/Tomo_5S_Hitbox.png">
+    <div class=hitbox-container><img src="../images/tomo/move/Tomo_5S~S_Hitbox.png" alt="5S~S Hitbox " title="move/Tomo_5S~S_Hitbox.png">
 </div><div class=hitbox-toggle>
             <input type=checkbox id="5SS-hitbox-toggle" class=hitbox-checkbox hidden>
             <label for="5SS-hitbox-toggle" class=hitbox-btn>Hitbox</label>
@@ -303,7 +311,34 @@ than favorable position.
 </table>
     </div>
     <span></span>
-    
+    <div class="advanced-toggle">
+          <input id="Trinity-Apprehendere-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trinity-Apprehendere-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>Counter Type</th>
+<th>Chip Ratio</th>
+<th>On Hit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Grab</td>
+<td>Wall Bounce</td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trinity-Lapso">
   <h3 id="Trinity-Lapso" class=move-name>Trinity: Lapso </h3>
@@ -348,7 +383,34 @@ than favorable position.
 </table>
     </div>
     <span></span>
-    
+    <div class="advanced-toggle">
+          <input id="Trinity-Lapso-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trinity-Lapso-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>Counter Type</th>
+<th>Chip Ratio</th>
+<th>On Hit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>KD+</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trinity-Scalpo">
   <h3 id="Trinity-Scalpo" class=move-name>Trinity: Scalpo </h3>
@@ -410,7 +472,45 @@ than favorable position.
     <li>Follow-up costs 5% extra mana to perform</li>
 </ul>
 </span>
-    
+    <div class="advanced-toggle">
+          <input id="Trinity-Scalpo-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trinity-Scalpo-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Version</th>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>Counter Type</th>
+<th>Chip Ratio</th>
+<th>On Hit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>236S</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>236S~S</td>
+<td>Strike</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>KD+</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trinity-Crepitus">
   <h3 id="Trinity-Crepitus" class=move-name>Trinity: Crepitus </h3>
@@ -455,7 +555,36 @@ than favorable position.
 </table>
     </div>
     <span></span>
-    
+    <div class="advanced-toggle">
+          <input id="Trinity-Crepitus-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trinity-Crepitus-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Projectile Level</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>Counter Type</th>
+<th>Chip Ratio</th>
+<th>On Hit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Projectile</td>
+<td></td>
+<td>Guard Crush</td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Trinity-Ruina">
   <h3 id="Trinity-Ruina" class=move-name>Trinity: Ruina (Hold OK)</h3>
@@ -500,7 +629,34 @@ than favorable position.
 </table>
     </div>
     <span></span>
-    
+    <div class="advanced-toggle">
+          <input id="Trinity-Ruina-advanced-toggle" class="advanced-checkbox" type="checkbox" hidden>
+          <label for="Trinity-Ruina-advanced-toggle" class="advanced-btn">[Show/Hide More Information]</label>
+        </div>
+        <div class="advanced">
+            <div class="table-container"><table orientation="horizontal">
+<thead>
+<tr>
+<th>Attributes</th>
+<th>Properties</th>
+<th>Proration</th>
+<th>Counter Type</th>
+<th>Chip Ratio</th>
+<th>On Hit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Strike</td>
+<td>Guard Crush,<br>Ground Bounce,<br>Launch</td>
+<td>-</td>
+<td></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+            <span></span>
+        </div>
   </div>
 </div><a href="#Renovare">
   <h3 id="Renovare" class=move-name>Renovare (Hold OK)</h3>
@@ -683,7 +839,7 @@ than favorable position.
       </main>
     </div>
     <footer>
-      <p>This page was last updated on Sat May 30 2026, 9:15:57 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
+      <p>This page was last updated on Mon Jun 01 2026, 8:20:17 PM (EDT). <a href="https://github.com/brewffee/SillyWillyScrambleWiki">View Source</a></p>
     </footer>
   </body>
 </html>

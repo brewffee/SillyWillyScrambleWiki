@@ -12,7 +12,7 @@ import { safeID} from "./util/String.ts";
 import { compareVersions, isHidden, TOMLContent } from "./util/util.ts";
 
 import { FrameDataDefaults } from "./types/FrameData.ts";
-import { characters, exportDir } from "./index.ts";
+import {characters, exportDir, missingResources} from "./index.ts";
 
 import { TableProvider } from "./components/Table.ts";
 
@@ -178,7 +178,7 @@ export class Character {
         let imageStr = "";
         for (let i = 0; i < images.length; i++) {
             if (!fs.existsSync(`docs/images/${this.Name.toLowerCase()}/${images[i]}`)) {
-                console.warn("\x1b[33m%s\x1b[0m", `[${this.Name}] Could not find requested image: ${images[i]}`);
+                missingResources.push(images[i]);
             }
 
             imageStr += `<img src="../images/${this.Name.toLowerCase()}/${images[i]}" alt="${name} ${isHitbox?'Hitbox':'Sprite'} ${i>0?i+1:''}" title="${images[i]}">\n`;
@@ -206,7 +206,7 @@ export class Character {
         this.addNavigable(name, true);
 
         return "<div class=section>" + sectionHeader + data.map((i) => {
-            this.logger.log(`Generating documentation for custom item: ${i["Name" as keyof SectionType] ?? name}`);
+            this.logger.log(`Generating documentation for item: ${i["Name" as keyof SectionType] ?? name}`);
 
             switch (i.Type) {
                 case "Summary":

@@ -39,6 +39,14 @@ Reversals=[
 Name="Trinity"
 Type="Text"
 Description="""
+Whenever Tomo performs a special move (with the exception of %ref(Renovare)), he uses his Mana to command his partner
+Trinity to attack the opponent. Trinity can act semi-independently of Tomo, allowing him to move freely and act while
+his partner is busy. After Trinity attacks an opponent, he stays in place for a short duration, allowing Tomo to command
+another attack from further distances.
+<br><br>
+If Tomo blocks an opponent's attack while Trinity is summoned, Trinity will move to Tomo's side and block alongside him,
+increasing the pushback on block and negating any chip damage. However, if Tomo or Trinity are hit, Trinity will
+cancel his current action and disappear, requiring Tomo to regain distance and summon him again.
 %img(Tomo_Trinity.png,Trinity,"Trinity",320)
 """
 
@@ -88,8 +96,8 @@ OnBlock="-"
 Inputs=["5S~S"]
 Buttons=["s"]
 Type="Move"
-Images=["move/Tomo_5S.png"]
-Hitboxes=["move/Tomo_5S_Hitbox.png"]
+Images=["move/Tomo_5S~S.png"]
+Hitboxes=["move/Tomo_5S~S_Hitbox.png"]
 Description="""
 Follow-up from %ref(5S). Creates a secondary slash of air from the edge of the previous slash, vaccuuming the opponent
 towards Tomo.
@@ -143,6 +151,12 @@ Images=["move/Tomo_236P.png"]
 Hitboxes=["move/Tomo_236P.png"]
 Description="""
 """
+[[Character.Specials.Properties]]
+Attributes=["Grab"]
+Properties=["Wall Bounce"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Throw"
@@ -160,6 +174,11 @@ Images=["move/Tomo_236K.png"]
 Hitboxes=["move/Tomo_236K.png"]
 Description="""
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Proration="-"
+ChipRatio="-"
+OnHit="KD+"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="Low"
@@ -182,6 +201,18 @@ Description="""
     <li>Follow-up costs 5% extra mana to perform</li>
 </ul>
 """
+[[Character.Specials.Properties]]
+Version="236S"
+Attributes=["Strike"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
+[[Character.Specials.Properties]]
+Version="236S~S"
+Attributes=["Strike"]
+Proration="-"
+ChipRatio="-"
+OnHit="KD+"
 [[Character.Specials.Data]]
 Version="236S"
 Damage="-"
@@ -209,6 +240,13 @@ Images=["move/Tomo_214P.png"]
 Hitboxes=["move/Tomo_214P.png"]
 Description="""
 """
+[[Character.Specials.Properties]]
+Attributes=["Projectile"]
+ProjectileLevel=""
+Properties=["Guard Crush"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="All"
@@ -228,6 +266,12 @@ Images=["move/Tomo_214H.png"]
 Hitboxes=["move/Tomo_214H.png"]
 Description="""
 """
+[[Character.Specials.Properties]]
+Attributes=["Strike"]
+Properties=["Guard Crush", "Ground Bounce", "Launch"]
+Proration="-"
+ChipRatio="-"
+OnHit="-"
 [[Character.Specials.Data]]
 Damage="-"
 Guard="High"
